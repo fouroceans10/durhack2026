@@ -41,6 +41,50 @@ export function normalizeRhythm(phrase: RhythmicPhrase, gesture = 'plain', limit
   return { rhythm, durations, articulations: phrasing };
 }
 
+// Keep fresh model ideas intact. When onsets repeat, change the timing itself,
+// carrying each note's articulation and length with it through the edit.
+export function avoidRhythmicRepeat(phrase: RhythmicPhrase, recent: number[][], seed: number, gesture = 'plain') {
+  const normalized = normalizeRhythm(phrase, gesture);
+  const repeats = (rhythm: number[]) => recent.some(previous => previous.join() === rhythm.join());
+  if (!repeats(normalized.rhythm)) return normalized;
+  const events = normalized.rhythm.map((step, i) => ({ step, duration: normalized.durations[i], articulation: normalized.articulations[i] }));
+  for (let variation = 0; variation < 3; variation++) {
+    for (let offset = 0; offset < events.length; offset++) {
+      const i = (seed + offset) % events.length;
+      const edited = events.map(event => ({ ...event }));
+      const event = edited[i], next = edited[i + 1]?.step ?? 16;
+      switch ((seed + variation) % 3) {
+        case 0: { // Split a held note into a connected pair.
+          if (event.duration < 2 || events.length === 16) continue;
+          const first = fitValue(Math.floor(event.duration / 2));
+          edited.splice(i + 1, 0, { ...event, step: event.step + first, duration: fitValue(event.duration - first) });
+          event.duration = first;
+          break;
+        }
+        case 1: { // Merge a pair into a longer note, leaving other rests intact.
+          if (i + 1 === events.length) continue;
+          event.duration = fitValue(next + edited[i + 1].duration - event.step);
+          edited.splice(i + 1, 1);
+          break;
+        }
+        case 2: { // Displace an entrance and shorten it to leave breathing room.
+          const shift = seed % 2 ? -1 : 1;
+          const moved = event.step + shift;
+          if (moved < 0 || moved <= (edited[i - 1]?.step ?? -1) || moved >= next) continue;
+          event.step = moved;
+          event.duration = fitValue(Math.max(1, Math.min(event.duration, next - moved) - 1));
+          break;
+        }
+      }
+      const candidate = normalizeRhythm({ rhythm: edited.map(e => e.step), durations: edited.map(e => e.duration), articulations: edited.map(e => e.articulation) }, gesture);
+      if (!repeats(candidate.rhythm)) return candidate;
+    }
+  }
+  // Dense or very short phrases may exhaust local edits; use a contrasting cell.
+  const alternative = phrasingIdeas(seed, 0, recent)[0];
+  return alternative ? normalizeRhythm(alternative, gesture) : normalized;
+}
+
 export function soundingDuration(value: number, gap: number, tempo: number, articulation: Articulation, connects = true): number {
   const seconds = value * 60 / tempo / 4;
   if (articulation === 'staccato') return seconds * .4;

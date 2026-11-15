@@ -66,7 +66,7 @@ test('every pitched instrument performs the seed in order for two bars before ev
     } else assert.deepEqual(agent.rhythm, orchestra[agent.instrument].pattern);
     const peer = { ...agents[5], id: 'neighbour', beat: 16, recentNotes: [{ step: 15, midi: 71, duration: .3, velocity: .5 }] };
     assert.deepEqual(evolve({ ...agent, beat: 16 }, [peer]).motif, phrase.motif);
-    assert.notDeepEqual(evolve({ ...agent, beat: 32 }, [peer]).motif, phrase.motif);
+    assert.notDeepEqual(evolve({ ...agent, beat: 31 }, [peer]).motif, phrase.motif);
     assert.equal(isOpening({ ...agent, beat: 32 }), false);
   }
   assert.notEqual(agents[0].motif, agents[1].motif, 'Agents have independent seed copies');

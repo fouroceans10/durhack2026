@@ -38,13 +38,13 @@ for (let instrument = 0; instrument < orchestra.length; instrument++) {
 test('higher peer energy changes an individual instrument’s musical decisions', () => {
   const quiet = { ...createMusician(0), energy: .3 };
   let loud = { ...quiet };
-  const peers = createOrchestra().slice(1).map(a => ({ ...a, energy: .9 }));
+  const peers = createOrchestra().slice(1).map(a => ({ ...a, energy: .9, recentNotes: [{ midi: 60, step: 0, duration: .3, velocity: .9 }] }));
   for (let i = 0; i < 32; i++) loud = evolve(loud, peers);
   const countNotes = (m: Musician) => Array.from({ length: 16 }, (_, beat) => compose({ ...m, beat }).length).reduce((a, b) => a + b, 0);
   assert.ok(countNotes(loud) > countNotes(quiet));
 });
 
-test('all partitioned instruments continue and tempos converge without inventing unheard notes', () => {
+test('all partitioned instruments develop locally and tempos converge without reading unheard motifs', () => {
   let agents = createOrchestra().map(a => ({ ...a, tempo: a.group ? 135 : 95, motif: a.group ? [5, 6, 1] : [0, 2, 4] }));
   for (let step = 0; step < 64; step++) {
     agents = agents.map(a => evolve(a, agents.filter(p => p.group === a.group)));
@@ -52,10 +52,15 @@ test('all partitioned instruments continue and tempos converge without inventing
   assert.ok(agents.every(a => a.beat === 64));
   assert.ok(agents.every(a => a.motif.length === 3), 'Isolated branches do not receive the other motif');
   const spreadBefore = Math.max(...agents.map(a => a.tempo)) - Math.min(...agents.map(a => a.tempo));
-  for (let step = 0; step < 128; step++) agents = agents.map(a => evolve(a, agents));
+  for (let step = 0; step < 128; step++) agents = agents.map(a => {
+    const next = evolve(a, agents);
+    const hidden = evolve(a, agents.map(p => ({ ...p, motif: [6, 6, 6] })));
+    assert.deepEqual(next.motif, hidden.motif, 'Unperformed peer motifs cannot influence local development');
+    return next;
+  });
   const spreadAfter = Math.max(...agents.map(a => a.tempo)) - Math.min(...agents.map(a => a.tempo));
   assert.ok(spreadAfter < spreadBefore / 4);
-  for (const a of agents) assert.deepEqual(a.motif, a.group ? [5, 6, 1] : [0, 2, 4]);
+  assert.ok(agents.every(a => a.motif.length === 3));
 });
 
 test('peer validation supports the whole catalog and rejects invalid instrument IDs and malformed state', () => {
@@ -77,7 +82,7 @@ test('agent evolution is deterministic and leaves peer state untouched', () => {
 
 
 test('melodic fallback responds to performed notes, not only a peer’s intended motif', () => {
-  const self = { ...createMusician(0), beat: 16 };
+  const self = { ...createMusician(0), beat: 15 };
   const peer = { ...createMusician(1), beat: 16, recentNotes: [{ step: 15, midi: 69, duration: .4, velocity: .5 }] };
   const responseA = evolve(self, [peer]);
   const responseB = evolve(self, [{ ...peer, recentNotes: [{ step: 15, midi: 71, duration: .4, velocity: .5 }] }]);

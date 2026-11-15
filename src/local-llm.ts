@@ -1,9 +1,12 @@
 import { allowedKeyChanges, applyDecision, decisionKey, isOpening, isFormEntrance, musicianPhrasing, type Musician } from './engine';
-import { normalizeRhythm, phrasingIdeas } from './phrasing';
+import { avoidRhythmicRepeat, normalizeRhythm, phrasingIdeas } from './phrasing';
 import { currentKey, homeKey, keyName, degreeName, modes, nearestDegree } from './tonality';
-import { formIds, formNames, formPosition, gestures, themeActions } from './forms';
+import { formIds, formNames, formPosition, gestures } from './forms';
 import { strategySchema, validStrategy, validDecision, type MelodyDecision, type MusicalStrategy } from './melody';
 import { orchestra, isPitched } from './orchestra';
+import { avoidMelodicRepeat, melodicVariations, transformMelody } from './melodic-variation';
+import { harmonicMotion } from './harmonic-motion';
+import { rhythmicDrive } from './ensemble-rhythm';
 
 export const DEFAULT_MODEL = 'qwen3:1.7b';
 export const DEFAULT_BRAIN_OPTIONS = { concurrency: 4, intervalMs: 2000, timeoutMs: 20000 };
@@ -41,8 +44,10 @@ export function buildMessages(context: ListeningContext) {
   const position = formPosition(context.self.form, context.self.beat);
   const form = context.self.form;
   const key = currentKey(context.self);
+  const chord = harmonicMotion(context.self);
   const harmony = { current: keyName(key), home: keyName(homeKey(context.self)), modulation: context.self.harmony?.modulation ?? 'fixed',
     notes: modes[key.mode].map((_, i) => degreeName(i, key)),
+    accompaniment: { root: chord.root, degrees: chord.degrees.map(n => n % 7), notes: chord.degrees.map(n => degreeName(n, key)), tension: chord.tension },
     destinations: Object.fromEntries(allowedKeyChanges(context.self).map(change => [change, keyName(decisionKey(context.self, change))])) };
   const structure = form ? {
     choice: formNames[form.choice], selected: form.selected ?? 'choose once now',
@@ -55,13 +60,17 @@ export function buildMessages(context: ListeningContext) {
   return [
     { role: 'system', content: `You are one autonomous musician. You play ONLY self.instrument, following self.role. Choose a musical response to nearby players, never control them. Played events are [sixteenth step, MIDI note, scale degree, sounding duration seconds, velocity, onset offset seconds, written note value, articulation]; null pitch means unpitched percussion. For ornaments the written value belongs to the parent figure; duration/offset describe each sounded sub-note.
 Pick respondTo from the actual neighbour names ("self" if alone). Choose approach: echo repeats their contour; counterpoint moves against it; support outlines their harmony; contrast reverses it; develop mixes their notes with your memory. interval shifts the result by -2..2 diatonic steps. The deterministic sound engine realizes these choices using that musician's ACTUAL recent notes, in your register.
+Choose variation to shape that response: keep preserves it; sequence develops a short cell at new scale steps; invert turns rises into falls; reverse plays it backwards; turn adds neighbouring-note motion. Vary contour and phrase openings, not just the last note or rhythm. Prefer a variation you have not used recently, balance stepwise motion with occasional leaps, and answer a repeated neighbour with a different shape. Preserve recognizable hooks on theme returns.
 Consider structure over multiple sections. Choose form once if not selected: aba returns A after contrasting B; abb repeats B; pop has intro, verse, chorus, verse, chorus, bridge, final chorus, outro; classical has Allegro exposition/development/reprise, Adagio ABA, Scherzo ABA, rondo ABACA finale; free develops without sections. Keep the selected form thereafter. Each agent advances on its own clock.
-Choose themeAction: recall reuses the remembered section theme and rhythm exactly (use on returns); contrast creates a different contour; develop responds to nearby notes. In the last bar, aim for resolution. Consider neighbours' sections but follow your own form.
+Choose themeAction: recall reuses the remembered section theme and rhythm exactly (only on structured returns); contrast creates a different contour; develop responds to nearby notes. Free development and new sections must develop or contrast, not keep recalling the opening. In the last bar, aim for resolution. Consider neighbours' sections but follow your own form.
 Choose gesture for your instrument and movement: plain; arpeggio (broken triad); mordent (main/lower neighbour/main); trill (quick upper-neighbour alternation); ostinato (repeat a short cell). Choose legato/staccato separately in each note's articulations array. Only a manual gesture focus may require a uniform legato/staccato gesture. Use legato articulation and space for Adagio, light ornaments for Scherzo, hooks for choruses, contrast for bridges. Unpitched percussion keeps rhythmic onsets without pitched ornaments.
 Respect harmony: degrees 0..6 refer to the CURRENT key/mode, never assume C major. Played MIDI pitches are absolute; their degree is approximated in that player's displayed key. Listen across different keys using actual pitches. Choose keyChange only from harmony.destinations. 'stay' keeps the current key; other destinations are relative to the HOME key. Modulation happens at a bar boundary, at most once per section (four bars in free development); returning themes preserve their key. Avoid unnecessary modulation when neighbours already agree. Cadences resolve to the current tonic.
+Harmony.accompaniment describes the local chord progression. Bass instruments anchor its roots/fifths and piano voices its chords; your motif still supplies melodic contour and ornaments. Shape melody around chord tones on strong beats, leaving passing tones between them. rhythmicDrive reports audible nearby percussion: energetic drums invite syncopation, while absent or quiet drums leave room for sustained lyrical replies. Preserve your own role instead of making every part equally busy.
 Choose rhythm: 1..16 ascending unique onsets, integers 0..15, in a 16-step bar. Choose durations and articulations with EXACTLY one entry per onset, in the same order. Durations are WRITTEN lengths in sixteenth steps: 1=semiquaver, 2=quaver, 3=dotted quaver, 4=crotchet, 6=dotted crotchet, 8=minim, 12=dotted minim, 16=semibreve. Fit each duration before the next onset and the bar end. A shorter value leaves a rest. Examples: rhythm [0,1,3,6,10], durations [1,2,3,4,6]; or rhythm [0,8], durations [8,8].
 Experiment with coherent rhythmic cells: mix short runs with held notes and breathing spaces; vary your previous durations rather than endlessly repeating one size. Answer a busy neighbour with space, or animate a sustained line with quavers/semiquavers. Slower movements favour longer values; scherzos favour short gestures. Choose per-note articulation: normal, legato (connected), staccato (detached), tenuto (full value), accent (strong attack). Shape groups of connected notes with detached endings; do not randomly switch every note. Articulation is independent of written length and ornaments, so an arpeggio can be staccato or legato. A legato/staccato gesture focus overrides every note's articulation. Recall restores the remembered theme's rhythm and note values. energy: 0.2..0.9. Give ONE short reason under 100 characters naming your partner and rhythmic/phrasing intention. Return ONLY JSON matching ${JSON.stringify(strategySchema)}` },
-    { role: 'user', content: JSON.stringify({ self: describe(context.self, true), harmony, structure, neighbours: context.neighbours.map(m => describe(m)), previousDecisions: context.memory.slice(-2).map(d => ({ motif: d.motif, rhythm: d.rhythm, durations: d.durations, articulations: d.articulations, respondTo: d.respondTo, approach: d.approach, gesture: d.gesture, themeAction: d.themeAction, key: d.tonality ? keyName(d.tonality) : undefined })),
+    { role: 'user', content: JSON.stringify({ self: describe(context.self, true), harmony, structure, rhythmicDrive: rhythmicDrive(context.self, context.neighbours), neighbours: context.neighbours.map(m => describe(m)), previousDecisions: context.memory.slice(-3).map(d => ({ motif: d.motif, rhythm: d.rhythm, durations: d.durations, articulations: d.articulations, respondTo: d.respondTo, approach: d.approach, interval: d.interval, variation: d.variation ?? 'keep', gesture: d.gesture, themeAction: d.themeAction, key: d.tonality ? keyName(d.tonality) : undefined })),
+      melodicExperiment: { invitation: 'Change the opening and contour while retaining a connection to the heard phrase.',
+        tryVariations: melodicVariations.filter(v => v !== 'keep' && !context.memory.slice(-2).some(d => d.variation === v)) },
       phraseExperiment: position.returning ? 'Recall the theme with its remembered note values, or develop it gently.' : {
         invitation: 'Choose a new rhythmic idea below, combine them or invent a variation that responds to your neighbours. Avoid repeating your current rhythm. Use gesture plain or an ornament for mixed articulation; gesture legato/staccato makes the whole phrase uniform.',
         ideas: phrasingIdeas(context.self.instrument, context.self.beat, [context.self.rhythm, ...context.memory.slice(-2).map(d => d.rhythm)]),
@@ -82,7 +91,7 @@ export function responseSchema(context: ListeningContext) {
   return { ...strategySchema, properties: { ...strategySchema.properties,
     form: { type: 'string', enum: context.self.form?.selected ? [context.self.form.selected] : context.self.form?.choice === 'auto' ? formIds.filter(id => id !== 'free') : ['free'] },
     gesture: { type: 'string', enum: context.self.form?.expression && context.self.form.expression !== 'auto' ? [context.self.form.expression] : gestures.filter(g => g !== 'legato' && g !== 'staccato') },
-    themeAction: { type: 'string', enum: context.self.form && formPosition(context.self.form, context.self.beat).returning ? ['recall', 'develop'] : themeActions },
+    themeAction: { type: 'string', enum: context.self.form && formPosition(context.self.form, context.self.beat).returning ? ['recall', 'develop'] : ['develop', 'contrast'] },
     keyChange: { type: 'string', enum: allowedKeyChanges(context.self) },
     respondTo: { type: 'string', enum: context.neighbours.length ? context.neighbours.map(p => orchestra[p.instrument].name) : ['self'] },
   } };
@@ -112,7 +121,7 @@ export function realizeStrategy(context: ListeningContext, strategy: MusicalStra
     return { ...strategy, tonality, motif, ...normalizeRhythm(theme, strategy.gesture) };
   }
   const wrap = (n: number) => (n % 7 + 7) % 7;
-  const motif = Array.from({ length: 8 }, (_, i) => {
+  let motif = Array.from({ length: 8 }, (_, i) => {
     const note = line[i % line.length];
     let degree: number;
     switch (strategy.approach) {
@@ -124,10 +133,15 @@ export function realizeStrategy(context: ListeningContext, strategy: MusicalStra
     }
     return wrap(degree + strategy.interval + (strategy.themeAction === 'contrast' ? 2 : 0));
   });
-  // If an echo exactly repeats the current phrase, give its final note a turn.
-  if (JSON.stringify(motif) === JSON.stringify(own)) motif[motif.length - 1] = wrap(motif[motif.length - 1] + 1);
+  const seed = context.self.instrument + Math.floor(context.self.beat / 16);
+  const phrasing = avoidRhythmicRepeat(strategy, [context.self.rhythm, ...context.memory.slice(-3).map(d => d.rhythm)], seed, strategy.gesture);
+  if (isPitched(context.self.instrument)) {
+    motif = transformMelody(motif, strategy.variation, seed);
+    motif = avoidMelodicRepeat(motif, [own, ...context.memory.slice(-3).map(d => d.motif)],
+      Math.min(phrasing.rhythm.length, strategy.gesture === 'ostinato' ? 4 : motif.length), seed);
+  }
   if (context.self.form && position.cadence) motif[motif.length - 1] = 0;
-  return { ...strategy, tonality, ...normalizeRhythm(strategy, strategy.gesture), motif };
+  return { ...strategy, tonality, ...phrasing, motif };
 }
 
 export function ollamaDecider(model: string): Decide {
@@ -147,7 +161,7 @@ export function ollamaDecider(model: string): Decide {
     if (!strategy.form || !strategy.gesture || !strategy.themeAction) throw new Error('Local model omitted form or phrasing choices.');
     if (!responseSchema(context).properties.form.enum.includes(strategy.form)) throw new Error('Local model changed the selected form.');
     if (!responseSchema(context).properties.gesture.enum.includes(strategy.gesture)) throw new Error('Local model ignored the gesture focus.');
-    if (!responseSchema(context).properties.themeAction.enum.includes(strategy.themeAction)) throw new Error('Local model replaced a returning theme with a contrast.');
+    if (!responseSchema(context).properties.themeAction.enum.includes(strategy.themeAction)) throw new Error('Local model chose a theme action unavailable in this section.');
     if (!strategy.keyChange || !allowedKeyChanges(context.self).includes(strategy.keyChange)) throw new Error('Local model returned an unavailable key change.');
     if (!strategy.durations || !strategy.articulations) throw new Error('Local model omitted note lengths or articulation.');
     return realizeStrategy(context, strategy);

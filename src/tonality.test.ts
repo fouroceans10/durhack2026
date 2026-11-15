@@ -104,7 +104,8 @@ test('listening uses chromatic MIDI from other keys and realizes in the destinat
   const d = realizeStrategy(context, { ...strategy, respondTo: 'Viola', keyChange: 'relative' });
   assert.deepEqual(d.tonality, { tonic: 5, mode: 'major' });
   assert.deepEqual(d.motif.slice(0, 3), [66, 70, 73].map(n => nearestDegree(n, d.tonality)));
-  const fallback = evolve(self, [partner]); assert.notDeepEqual(fallback.motif, self.motif);
+  assert.deepEqual(evolve(self, [partner]).motif, self.motif, 'The phrase does not change mid-bar');
+  const fallback = evolve({ ...self, beat: 15 }, [partner]); assert.notDeepEqual(fallback.motif, self.motif);
   assert.deepEqual(responseSchema({ ...context, self: player(Dm) }).properties.keyChange.enum, ['stay']);
 });
 

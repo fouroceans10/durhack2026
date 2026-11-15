@@ -3,8 +3,11 @@ import { validDecision, validStartingMotif, type MelodyDecision, type StartingMo
 import { formPosition, makeForm, validForm, type FormSettings, type FormState } from './forms';
 import { currentKey, homeKey, DEFAULT_TONALITY, degreePitch, nearestDegree, makeHarmony, validHarmony, sameKey, sectionKey, relatedKey, keyChanges, type HarmonyState, type KeyChange, type Modulation, type Tonality } from './tonality';
 export { instruments } from './orchestra';
-import { articulations, noteValues, normalizeRhythm, onsetGap, soundingDuration, validPhrasing, type Articulation, type NoteValue, type Phrasing } from './phrasing';
+import { articulations, noteValues, normalizeRhythm, onsetGap, soundingDuration, validPhrasing, avoidRhythmicRepeat, type Articulation, type NoteValue, type Phrasing } from './phrasing';
 import { SampleBank, type SampleProgress } from './sample-bank';
+import { harmonicMotion, voiceChord } from './harmonic-motion';
+import { ensembleRhythm } from './ensemble-rhythm';
+import { avoidMelodicRepeat } from './melodic-variation';
 
 export type PlayedNote = NoteEvent & { step: number };
 export type Musician = Phrasing & {
@@ -74,33 +77,52 @@ export function seedMusician(m: Musician, phrase: StartingMotif | null): Musicia
   return m.form ? configureForm(seeded, m.form) : seeded;
 }
 
+function advanceRhythm(m: Musician, peers: Musician[]): Musician {
+  if (m.beat % 16 !== 0 || isOpening(m) || isFormEntrance(m) || m.decision?.themeAction === 'recall') return m;
+  const age = m.beat - (m.decision?.appliedAt ?? m.form?.enteredAt ?? 0);
+  const gesture = m.form?.expression && m.form.expression !== 'auto' ? m.form.expression : m.decision?.gesture ?? m.form?.gesture;
+  // Let the phrase establish itself for two bars; hooks get four. The same
+  // development runs during inference delays and with the LLM disabled.
+  const interval = gesture === 'ostinato' ? 64 : 32;
+  if (age < interval || age % interval !== 0) return m;
+  if (!m.decision) return { ...m, ...ensembleRhythm(m, peers, gesture) };
+  const recent = [m.rhythm, ...(m.decision ? [m.decision.rhythm] : [])];
+  return { ...m, ...avoidRhythmicRepeat(m, recent, m.instrument + Math.floor(m.beat / 16), gesture) };
+}
+
 export function evolve(self: Musician, peers: Musician[]): Musician {
-  const valid = peers.filter(p => p.id !== self.id);
+  const valid = peers.filter(p => p.id !== self.id).sort((a, b) => a.id.localeCompare(b.id));
   const peerTempo = valid.length ? valid.reduce((s, p) => s + p.tempo, 0) / valid.length : 112;
   const position = formPosition(self.form, self.beat);
   const structured = self.form && !position.waiting && position.form !== 'free';
   const target = structured ? position.tempo * .85 + peerTempo * .15 : peerTempo;
-  const energy = valid.length ? valid.reduce((s, p) => s + p.energy, 0) / valid.length : self.energy;
+  const sounding = valid.filter(p => p.audible && p.recentNotes.some(n => n.step >= p.beat - 32));
+  const energy = sounding.length ? sounding.reduce((s, p) => s + p.energy, 0) / sounding.length : self.energy;
   const bar = Math.floor(self.beat / 16);
   // Shared intentions temper local exploration; isolated branches develop more freely.
   const exploration = valid.some(p => p.group !== self.group) ? .15 : 1;
   const drift = Math.sin(bar * .7 + self.group * 2.6) * .35 * exploration;
-  // A model's phrase is retained intact until that agent adopts its next decision.
+  // A model's pitches remain intact; held rhythms develop at later bar boundaries.
   // Without inference, the rule fallback still listens to performed notes once per bar.
-  const heard = valid.filter(p => p.audible && isPitched(p.instrument)).flatMap(p => p.recentNotes.filter(n => n.step >= p.beat - 32));
+  const heard = sounding.filter(p => isPitched(p.instrument)).flatMap(p => p.recentNotes.filter(n => n.step >= p.beat - 32));
   const degrees = heard.map(n => nearestDegree(n.midi, currentKey(self)));
-  let motif = self.motif;
-  if (!self.decision && !isOpening(self) && !isFormEntrance(self) && self.beat > 0 && self.beat % 16 === 0 && degrees.length) {
-    motif = Array.from({ length: 8 }, (_, i) => i % 2 === 0
+  // Even a solo instrument can develop its own contour. Perform this before
+  // the next bar sounds; accepted LLM pitches and remembered themes stay intact.
+  const next = { ...self, tempo: Math.max(70, Math.min(150, self.tempo + (target - self.tempo) * .12 + drift)), energy: Math.max(.2, Math.min(.9, self.energy + (energy - self.energy) * .1 + drift * .015 + (structured ? (position.energy - self.energy) * .025 : 0))), beat: self.beat + 1 };
+  if (!next.decision && !isOpening(next) && !isFormEntrance(next) && next.beat % 16 === 0 && degrees.length) {
+    next.motif = Array.from({ length: 8 }, (_, i) => i % 2 === 0
       ? self.motif[(i / 2) % self.motif.length]
-      : degrees[(self.instrument * 3 + Math.floor(self.beat / 16) + i) % degrees.length]);
+      : degrees[(self.instrument * 3 + Math.floor(next.beat / 16) + i) % degrees.length]);
   }
-  return { ...self, tempo: Math.max(70, Math.min(150, self.tempo + (target - self.tempo) * .12 + drift)), energy: Math.max(.2, Math.min(.9, self.energy + (energy - self.energy) * .1 + drift * .015 + (structured ? (position.energy - self.energy) * .025 : 0))), motif, beat: self.beat + 1 };
+  if (!next.decision && isPitched(next.instrument) && !isOpening(next) && !isFormEntrance(next) && next.beat % 32 === 0) {
+    next.motif = avoidMelodicRepeat(next.motif, [self.motif], next.rhythm.length, next.instrument + Math.floor(next.beat / 16));
+  }
+  return advanceRhythm(next, valid);
 }
 export function validState(p: unknown): p is Musician {
   if (!p || typeof p !== 'object') return false;
   const s = p as Musician;
-  return typeof s.id === 'string' && s.id.length > 0 && s.id.length < 100 && Number.isInteger(s.instrument) && s.instrument >= 0 && s.instrument < orchestra.length && Number.isFinite(s.tempo) && s.tempo >= 60 && s.tempo <= 180 && Number.isFinite(s.energy) && s.energy >= 0 && s.energy <= 1 && Number.isSafeInteger(s.beat) && s.beat >= 0 && [0, 1].includes(s.group) && Array.isArray(s.motif) && s.motif.length > 0 && s.motif.length <= 16 && s.motif.every(n => Number.isInteger(n) && n >= 0 && n < 7)
+  return typeof s.id === 'string' && s.id.length > 0 && s.id.length < 100 && Number.isInteger(s.instrument) && s.instrument >= 0 && s.instrument < orchestra.length && Number.isFinite(s.tempo) && s.tempo >= 60 && s.tempo <= 180 && Number.isFinite(s.energy) && s.energy >= 0 && s.energy <= 1 && Number.isSafeInteger(s.beat) && s.beat >= 0 && Number.isInteger(s.group) && s.group >= 0 && s.group < orchestra.length && Array.isArray(s.motif) && s.motif.length > 0 && s.motif.length <= 16 && s.motif.every(n => Number.isInteger(n) && n >= 0 && n < 7)
     && typeof s.audible === 'boolean' && Array.isArray(s.rhythm) && s.rhythm.length > 0 && s.rhythm.length <= 16 && new Set(s.rhythm).size === s.rhythm.length && s.rhythm.every(n => Number.isInteger(n) && n >= 0 && n < 16)
     && validPhrasing(s, s.rhythm.length)
     && Array.isArray(s.recentNotes) && s.recentNotes.length <= 24 && s.recentNotes.every(n => n && Number.isSafeInteger(n.step) && n.step >= 0 && n.step <= s.beat && Number.isInteger(n.midi) && n.midi >= 12 && n.midi <= 120 && Number.isFinite(n.duration) && n.duration > 0 && n.duration <= 5 && Number.isFinite(n.velocity) && n.velocity >= 0 && n.velocity <= 1)
@@ -114,16 +136,14 @@ export function validState(p: unknown): p is Musician {
 
 export type NoteEvent = { midi: number; duration: number; velocity: number; offset?: number; noteValue?: NoteValue; articulation?: Articulation };
 
-// Each agent derives notes from its own history, profile and received energy.
-// It can add an offbeat when the surrounding musicians become more energetic.
+// Each agent derives notes from its own history, harmonic role and received energy.
 export function compose(m: Musician): NoteEvent[] {
   const profile = orchestra[m.instrument];
   const key = isPitched(m.instrument) ? currentKey(m) : DEFAULT_TONALITY;
   const pitch = (base: number, degree: number) => degreePitch(base, degree, key);
   const step = m.beat % 16;
   const planned = !!m.decision || m.seeded === true || m.form?.enteredAt !== undefined;
-  const extra = !planned && m.energy > .65 && profile.section !== 'Percussion' && m.rhythm.includes((step + 15) % 16);
-  if (!m.rhythm.includes(step) && !extra) return [];
+  if (!m.rhythm.includes(step)) return [];
   if (!m.decision && profile.voice === 'cymbal' && Math.floor(m.beat / 16) % 4 !== 0) return [];
   const phrasePosition = Math.floor((m.beat - (m.decision?.appliedAt ?? m.form?.enteredAt ?? 0)) / 16) * m.rhythm.length + Math.max(0, m.rhythm.indexOf(step));
   const gesture = isPitched(m.instrument) && !isOpening(m) ? m.decision?.gesture ?? m.form?.gesture ?? 'plain' : 'plain';
@@ -131,6 +151,10 @@ export function compose(m: Musician): NoteEvent[] {
   const degree = m.motif[(planned ? phrasePosition : Math.floor(m.beat / 2) + m.instrument) % cellLength];
   const root = m.motif[0];
   let selected = !planned && profile.base <= 36 ? root : degree;
+  const preserveTheme = isOpening(m) || isFormEntrance(m) || m.decision?.themeAction === 'recall';
+  const accompaniment = isPitched(m.instrument) && !preserveTheme && (profile.base <= 36 || profile.name === 'Piano');
+  const chord = harmonicMotion(m);
+  if (accompaniment) selected = profile.name === 'Piano' || step % 8 === 0 ? chord.root : (chord.root + 4) % 7;
   const position = formPosition(m.form, m.beat);
   if (m.form && !position.waiting && position.cadence && step === m.rhythm.at(-1)) selected = 0;
   const unit = 60 / m.tempo / 4;
@@ -140,18 +164,24 @@ export function compose(m: Musician): NoteEvent[] {
   const gapToNext = onset >= 0 ? onsetGap(phrasing.rhythm, onset) : 1;
   // No slur through a written rest or the end of a bar; new phrases may enter there.
   const duration = soundingDuration(noteValue, gapToNext, m.tempo, articulation, step + gapToNext < 16);
-  const velocity = Math.min(1, m.energy * (articulation === 'accent' ? 1.18 : 1)) * (extra ? .6 : 1);
+  const ghost = !m.decision && !preserveTheme && profile.voice === 'snare' && step !== 4 && step !== 12;
+  const velocity = Math.min(1, m.energy * (articulation === 'accent' ? 1.18 : 1)) * (ghost ? .45 : 1);
+  const lastStep = m.recentNotes.filter(n => n.step < m.beat && n.step >= m.beat - 32).at(-1)?.step;
+  const voicing = accompaniment && profile.name === 'Piano'
+    ? voiceChord(profile.base, chord.degrees, key, m.recentNotes.filter(n => n.step === lastStep).map(n => n.midi)) : undefined;
   if (gesture === 'arpeggio' || gesture === 'mordent' || gesture === 'trill') {
-    const figure = gesture === 'arpeggio' ? [selected, selected + 2, selected + 4] : gesture === 'mordent' ? [selected, selected - 1, selected] : [selected, selected + 1, selected, selected + 1];
+    const figure = gesture === 'arpeggio' && accompaniment ? chord.degrees.slice(0, 3)
+      : gesture === 'arpeggio' ? [selected, selected + 2, selected + 4] : gesture === 'mordent' ? [selected, selected - 1, selected] : [selected, selected + 1, selected, selected + 1];
     const span = gesture === 'arpeggio' ? noteValue * unit : Math.min(unit, duration);
     const gap = span / figure.length;
-    return figure.map((n, i) => ({ midi: pitch(profile.base, n), offset: i * gap,
+    return figure.map((n, i) => ({ midi: gesture === 'arpeggio' && voicing ? voicing[i] : pitch(profile.base, n), offset: i * gap,
       duration: gesture === 'arpeggio' ? soundingDuration(noteValue / figure.length, noteValue / figure.length, m.tempo, articulation, i < figure.length - 1)
         : i === figure.length - 1 ? Math.max(gap * .4, duration - i * gap) : gap * (articulation === 'staccato' ? .4 : articulation === 'legato' ? 1.02 : .9),
       velocity: velocity * (i ? .72 : 1) / Math.sqrt(figure.length), noteValue, articulation }));
   }
   const degrees = profile.name === 'Piano' ? [selected, selected + 2, selected + 4] : [selected];
-  return degrees.map(n => ({ midi: pitch(profile.base, n), duration, velocity: velocity / Math.sqrt(degrees.length), noteValue, articulation }));
+  const pitches = voicing ?? degrees.map(n => pitch(profile.base, n));
+  return pitches.map(midi => ({ midi, duration, velocity: velocity / Math.sqrt(pitches.length), noteValue, articulation }));
 }
 
 // Record only notes that the scheduler actually sends to the local audio engine.

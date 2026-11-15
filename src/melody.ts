@@ -1,6 +1,7 @@
 import { formIds, gestures, themeActions, type FormId, type Gesture, type ThemeAction } from './forms';
 import { keyChanges, validTonality, type KeyChange, type Tonality } from './tonality';
 import { articulations, noteValues, validPhrasing, type Phrasing } from './phrasing';
+import { melodicVariations, type MelodicVariation } from './melodic-variation';
 export const approaches = ['echo', 'counterpoint', 'support', 'contrast', 'develop'] as const;
 export type MusicalStrategy = Phrasing & {
   rhythm: number[];
@@ -12,6 +13,7 @@ export type MusicalStrategy = Phrasing & {
   // Optional on older peer messages; required by the current model response schema.
   form?: FormId; gesture?: Gesture; themeAction?: ThemeAction;
   keyChange?: KeyChange;
+  variation?: MelodicVariation;
 };
 export type MelodyDecision = MusicalStrategy & { motif: number[]; tonality?: Tonality };
 export type StartingMotif = Phrasing & { motif: number[]; rhythm: number[]; tonality?: Tonality };
@@ -27,6 +29,7 @@ export const strategySchema = {
     respondTo: { type: 'string', minLength: 1, maxLength: 60 },
     approach: { type: 'string', enum: approaches },
     interval: { type: 'integer', minimum: -2, maximum: 2 },
+    variation: { type: 'string', enum: melodicVariations },
     rhythm: { type: 'array', minItems: 1, maxItems: 16, items: { type: 'integer', minimum: 0, maximum: 15 } },
     durations: { type: 'array', minItems: 1, maxItems: 16, items: { type: 'integer', enum: noteValues } },
     articulations: { type: 'array', minItems: 1, maxItems: 16, items: { type: 'string', enum: articulations } },
@@ -37,11 +40,12 @@ export const strategySchema = {
     themeAction: { type: 'string', enum: themeActions },
     keyChange: { type: 'string', enum: keyChanges },
   },
-  required: ['respondTo', 'approach', 'interval', 'rhythm', 'durations', 'articulations', 'energy', 'reason', 'form', 'gesture', 'themeAction', 'keyChange'],
+  required: ['respondTo', 'approach', 'interval', 'variation', 'rhythm', 'durations', 'articulations', 'energy', 'reason', 'form', 'gesture', 'themeAction', 'keyChange'],
 };
 export function validStrategy(value: unknown): value is MusicalStrategy {
   if (!value || typeof value !== 'object') return false;
   const d = value as MusicalStrategy;
+  if (d.variation !== undefined && !melodicVariations.includes(d.variation)) return false;
   if (d.keyChange !== undefined && !keyChanges.includes(d.keyChange)) return false;
   if ((d.form !== undefined && !formIds.includes(d.form)) || (d.gesture !== undefined && !gestures.includes(d.gesture)) || (d.themeAction !== undefined && !themeActions.includes(d.themeAction))) return false;
   return Array.isArray(d.rhythm) && d.rhythm.length >= 1 && d.rhythm.length <= 16 && d.rhythm.every(n => Number.isInteger(n) && n >= 0 && n <= 15)

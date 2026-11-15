@@ -1,1 +1,41 @@
-{"name":"symphony-without-a-conductor","private":true,"version":"1.0.0","type":"module","scripts":{"dev":"vite --host 0.0.0.0","signal":"node server/signalling.mjs","build":"tsc -b && vite build","test":"node --import tsx --test src/*.test.ts server/*.test.mjs","preview":"vite preview --host 0.0.0.0","llm:serve":"node scripts/local-llm.mjs serve","llm:pull":"node scripts/local-llm.mjs pull","llm:status":"node scripts/local-llm.mjs ps","test:llm":"node --import tsx scripts/check-local-llm.mjs","test:gpu":"node --import tsx scripts/check-local-llm.mjs --require-gpu","test:forms":"node --import tsx scripts/check-local-forms.mjs","test:tonality":"node --import tsx scripts/check-local-tonality.mjs","test:phrasing":"node --import tsx scripts/check-local-phrasing.mjs","test:throughput":"node --import tsx scripts/check-local-throughput.mjs"},"dependencies":{"pitchy":"^4.1.0","react":"latest","react-dom":"latest","ws":"latest"},"devDependencies":{"@types/node":"latest","@types/react":"latest","@types/react-dom":"latest","@vitejs/plugin-react":"latest","tsx":"latest","typescript":"latest","vite":"latest"}}
+{
+  "name": "symphony-without-a-conductor",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "signalling",
+    "web"
+  ],
+  "scripts": {
+    "dev:signalling": "tsx watch signalling/server.ts",
+    "dev:web": "vite --config web/vite.config.ts",
+    "dev": "concurrently -n SIG,WEB -c cyan,magenta \"npm run dev:signalling\" \"npm run dev:web\"",
+    "typecheck": "tsc -p tsconfig.json --noEmit && tsc -p signalling/tsconfig.json --noEmit && tsc -p web/tsconfig.json --noEmit",
+    "test": "vitest run",
+    "build": "tsc -p signalling/tsconfig.json --noEmit && tsc -p web/tsconfig.json --noEmit && vite build --config web/vite.config.ts"
+  },
+  "dependencies": {
+    "lucide-react": "^0.468.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "tone": "^15.0.4",
+    "ws": "^8.18.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.0.0",
+    "@types/node": "^22.10.0",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@types/ws": "^8.5.13",
+    "@vitejs/plugin-react": "^4.3.4",
+    "autoprefixer": "^10.4.20",
+    "concurrently": "^9.1.0",
+    "postcss": "^8.4.49",
+    "tailwindcss": "^4.0.0",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2",
+    "vite": "^6.0.3",
+    "vitest": "^2.1.8"
+  }
+}

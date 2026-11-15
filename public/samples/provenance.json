@@ -1,0 +1,4938 @@
+{
+  "version": 1,
+  "pins": {
+    "VSCO-2-CE": "440300901dfe9275fd84e0b7763af1f8443ae62e",
+    "VCSL": "c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e",
+    "FluidR3": "044fab8e1456bfafc5776e86dfd6bb8697149aef"
+  },
+  "patches": [
+    {
+      "name": "Violin",
+      "samples": [
+        "cb8b289610b0a7e9",
+        "f054a07ce63f94d0",
+        "ea72c61783c1ad1f",
+        "a8abe4b143daecbe",
+        "02c60df0a1bf8103",
+        "6b855119edccf7d9",
+        "16cef9c2a8f31288",
+        "ad8bbbe0b981fdde",
+        "f72b7ea61a236f9a",
+        "e4a15d570f7db2a3",
+        "b3aa4154996a4fe0",
+        "230155a5f318bc56",
+        "f21ebc7639db23e8",
+        "7cb5384b06c6c3bd",
+        "8c1ad8dbcfc13b19",
+        "dc978160c6022976",
+        "94aab9b23ae8bd73",
+        "c18bee7532352208"
+      ],
+      "source": "VSCO 2 CE"
+    },
+    {
+      "name": "Viola",
+      "samples": [
+        "a432b551cb25e238",
+        "d816bf9c7f3dad9b",
+        "c58d0fc8671782e7",
+        "f4a5d86cfe0f6afd",
+        "842287591949d4d7",
+        "04f204069fc08faf",
+        "095a784ccab80eef",
+        "fe09a140b9ec6d90",
+        "d24f76b06ada4622",
+        "707f3fbbf7c984a1",
+        "c719fd13def122b2",
+        "161e4053fd771e61",
+        "92aafafc05360e0c",
+        "a4ad28a4c5367ca6",
+        "62b7bd990810bb0e",
+        "87f96d334abf5b1c",
+        "76e50a4c08263a0f",
+        "95a73a8540b6d376",
+        "e0542240c645495b",
+        "17d2ac8e3a1d6383",
+        "fd192f510fd149f5",
+        "6f140526f8077a3d",
+        "8270edc5f61a31a8",
+        "cfe61030cba90809",
+        "f42e6b6c0bade5a4",
+        "2a9dd7138e746945",
+        "f39c860b25c271cd"
+      ],
+      "source": "VSCO 2 CE"
+    },
+    {
+      "name": "Cello",
+      "samples": [
+        "bab656bda7326a4e",
+        "113ab81c6b91001d",
+        "e5055043e9ef05c8",
+        "9a4650066729d98f",
+        "58ff0313d175a5ec",
+        "b7dc00c110d6776f",
+        "ba0c16233f3ab375",
+        "22e1722c1d8e2007",
+        "5c873074ba8ae6c9",
+        "5ee36f8e42c810e6",
+        "b7a7dd7927dc7f07",
+        "f3bdf0f190f83d78",
+        "619cf19936080dea",
+        "cc01da25b457b1e2",
+        "5e76c2f76d0c5175",
+        "a8dcd7c3c5579e47",
+        "521ce32782c57947",
+        "68bb3e902bfa26d3",
+        "fc75113186296b66",
+        "1ace46f7c365beca",
+        "f0b339a662576856",
+        "e53f0111c6dc9ffa",
+        "7052430e0f8a76a6",
+        "60e9bd255868668a",
+        "4966fda807de0970",
+        "0a9ce7fd5b91c868",
+        "584b70921f1d70c0",
+        "5a3b015b0c04ec23",
+        "120082e3765da8c6",
+        "de6ad7e510e4714e"
+      ],
+      "source": "VSCO 2 CE"
+    },
+    {
+      "name": "Double bass",
+      "samples": [
+        "4b75e8460eca4936",
+        "763567822cbef9df",
+        "b10492ceb94b46b2",
+        "c2632df6067668f8",
+        "5a0ae9bb7b0d4c06",
+        "62da9e6de90b139c",
+        "f1a5ecd9809452b2",
+        "86532a411b5fa2a4",
+        "5a44e8e2bc7fe34f",
+        "21587279555a0fbb",
+        "cbf0528a30330d12",
+        "24b5787837242a0b",
+        "1ee0abbc5444e9a3",
+        "ef0853508b8ec146",
+        "b3850f1e7f57cc9c",
+        "bca7718be91eb920",
+        "d76a80120509fe88",
+        "1c63d42f0e38c7ba",
+        "fa9b112fdbd4df59",
+        "67320e0d753ff335",
+        "aa0621d8d19382b5",
+        "6493ec0a142c55f6",
+        "a4ee48fff91513f8",
+        "10e5e2d2f42dd5b1",
+        "47cdbedceb737d82",
+        "d37c75ba758d6089",
+        "a198814e721516b1",
+        "09ba6ad2e5e69e33",
+        "70c8e96c6bb86fae",
+        "12a709d712a70a2e",
+        "d84ab2ae9e33bd14",
+        "7f861baea660ebc6",
+        "fbf3bfc5ee9b4e09"
+      ],
+      "source": "VSCO 2 CE"
+    },
+    {
+      "name": "Piccolo",
+      "samples": [
+        "eb50ab2c08567a12",
+        "b32acb4104f05296",
+        "4e69f16063c8716a",
+        "bf978b46f21a64e8",
+        "deb54dec51637959",
+        "8538f15361298d8f",
+        "715dc32db9b13f64",
+        "3ca26fe737abfa15",
+        "b4bdf392add33600"
+      ],
+      "source": "VSCO 2 CE"
+    },
+    {
+      "name": "Flute",
+      "samples": [
+        "b7cc8cf31fdafa3d",
+        "6e9a71b05234fe12",
+        "cfa8fa4e8a636801",
+        "b5365e9d638d3a01",
+        "fd74097bfb46950f",
+        "2add2567f6a1b523",
+        "20f19721e5066ea9",
+        "7cfff28a8add6567",
+        "d1f6b9682ab92e53",
+        "3eeda7f1fa60711b",
+        "f6d3328707a81a49",
+        "6e71586e200866d1",
+        "0ee7148d3e8bc87e",
+        "b77b17ab404d55ea",
+        "66536918be9cf9f3",
+        "fada3e8c78ddc5ea",
+        "8d93acd3bbcd2c0e",
+        "047ee8fda22e8d71",
+        "4dca5e2a456e24b6",
+        "de5dbf300dbdcce4",
+        "bb013ce4e93d7e32",
+        "f8c050db04537847",
+        "249d4b3f80720351",
+        "b25b32bef576f8db"
+      ],
+      "source": "VSCO 2 CE"
+    },
+    {
+      "name": "Oboe",
+      "samples": [
+        "fe0049c8fe58d098",
+        "1733ee9ae5703bd4",
+        "9327bc6720e24937",
+        "cd783997a9e060be",
+        "53cb8486e1fa0d72",
+        "a7cff26e5ccc0b02",
+        "11d821ff0a9b8bb3",
+        "99d99e473a2e6945",
+        "e04e5c12da9c72c0",
+        "362b6f7726231904",
+        "ae439d54299605e9",
+        "6c983fb412c208c9",
+        "7e0fbc8d849c170a",
+        "7f64edf41ef15601",
+        "4c7211d67a723928",
+        "19cb987a004827bb",
+        "acbda84a75e5882a",
+        "906fde98bc6ecf2d"
+      ],
+      "source": "VSCO 2 CE"
+    },
+    {
+      "name": "English horn",
+      "source": "FluidR3",
+      "samples": [
+        "fluid-english_horn-60",
+        "fluid-english_horn-64",
+        "fluid-english_horn-68",
+        "fluid-english_horn-72",
+        "fluid-english_horn-76",
+        "fluid-english_horn-80",
+        "fluid-english_horn-84",
+        "fluid-english_horn-88",
+        "fluid-english_horn-92"
+      ]
+    },
+    {
+      "name": "Clarinet",
+      "samples": [
+        "2eaef43ea67f016a",
+        "fc757029ffed35f6",
+        "b6cf90d597ecb98f",
+        "882aff58380e88e2",
+        "24f9866141839a7e",
+        "75ca3ca16e6a5a94",
+        "e7cd4555cf636155",
+        "28c7091a3e4bad45",
+        "915e8d85be76e294",
+        "dbb9078ad12bcc4d",
+        "96077c6413fe6661",
+        "ca429a81cc8df847",
+        "c24d857c43ffa2bc",
+        "246db600648edf3a",
+        "507b8cc756cda95d",
+        "488c8cfe335bc6a3",
+        "2cb4d6bc04130e8a",
+        "f3365dbdda47f765",
+        "cad0a1b7730d6c6b",
+        "36043c1074dd917d",
+        "dc2c603958552592",
+        "608f40b084cee43a",
+        "b1b4c0e085923714",
+        "dc016dde8f9de50c",
+        "a2515a2b979cdcf8",
+        "53cfb870959d64aa",
+        "22a0db12bf782d30"
+      ],
+      "source": "VSCO 2 CE"
+    },
+    {
+      "name": "Bass clarinet",
+      "samples": [
+        "7c69a2e6aad66a98",
+        "e78bf3f39073ba1b",
+        "2eaef43ea67f016a",
+        "fc757029ffed35f6",
+        "b6cf90d597ecb98f",
+        "882aff58380e88e2",
+        "24f9866141839a7e",
+        "75ca3ca16e6a5a94",
+        "4adc83121298fad1",
+        "6f26bf3106e7d7b8",
+        "86fcb9f76e1cb75a",
+        "77409edb29ec0c5d",
+        "dbb9078ad12bcc4d",
+        "96077c6413fe6661",
+        "ca429a81cc8df847",
+        "c24d857c43ffa2bc",
+        "246db600648edf3a",
+        "507b8cc756cda95d",
+        "488c8cfe335bc6a3",
+        "2cb4d6bc04130e8a",
+        "f3365dbdda47f765",
+        "cad0a1b7730d6c6b",
+        "36043c1074dd917d",
+        "dc2c603958552592"
+      ],
+      "source": "VSCO 2 CE",
+      "derived": "Clarinet recordings adapted to the lower register"
+    },
+    {
+      "name": "Bassoon",
+      "samples": [
+        "5de48b0adae58c0d",
+        "4ddaf37fa8199e74",
+        "f55aa88ac32d8a60",
+        "984715fc49994ec9",
+        "17273f8370451fd0",
+        "c84be5a9edf4cdfa",
+        "563e2a61da0719a0",
+        "2df4158691182151",
+        "a525da599083625e",
+        "348e8032519521f0",
+        "b8962d601d208941",
+        "b30a7712798d6b2a",
+        "b058239257ff992d",
+        "f6877dfbd58979ee",
+        "37b466628569e0ad",
+        "cce19d0eee5b9b96",
+        "72d0e5cbcf6c506d",
+        "eaaf97d30d54bf3f",
+        "79f9a0ebadccf34f",
+        "856585ae76ee84c5",
+        "12223e30089626e7",
+        "e23e397b0d5991fe",
+        "397a5b55eb5ba269",
+        "9e9a2e869017b77d",
+        "7bf738f4a2388748",
+        "aa6d63782566e79c",
+        "e71a393901a910a3",
+        "8ca4a7ecc33e6de7",
+        "692f8d2e027e8244"
+      ],
+      "source": "VSCO 2 CE"
+    },
+    {
+      "name": "Contrabassoon",
+      "samples": [
+        "6aba2ca23ab1b051",
+        "27c08e2a729c8c42",
+        "cb58bd51a93a48b5",
+        "6953e5ffdbc4e9a2",
+        "5de48b0adae58c0d",
+        "4ddaf37fa8199e74",
+        "f55aa88ac32d8a60",
+        "207634a2b994413f",
+        "6004aa621bce0e62",
+        "98130018b2622459",
+        "ab3ef54e9b29183c",
+        "50657a4fbfdef96d",
+        "0fe035896bfb23ea",
+        "348e8032519521f0",
+        "b8962d601d208941",
+        "b30a7712798d6b2a",
+        "b058239257ff992d",
+        "f6877dfbd58979ee",
+        "37b466628569e0ad",
+        "cce19d0eee5b9b96",
+        "72d0e5cbcf6c506d",
+        "eaaf97d30d54bf3f",
+        "79f9a0ebadccf34f"
+      ],
+      "source": "VSCO 2 CE",
+      "derived": "Bassoon recordings adapted to the lower register"
+    },
+    {
+      "name": "French horn",
+      "samples": [
+        "c51552fd9c881ed8",
+        "569ff50fd721b6ce",
+        "7bb9f106d8e667cb",
+        "505fd2ea3db3305a",
+        "4eef620474ae871a",
+        "3e4373ba6cdb4b89",
+        "3af99b35b17f6df9",
+        "605b7b7c4ed88f62",
+        "f9096ba4208577f1",
+        "cfa9fc84272cfe2f",
+        "39ee93556c243b3b",
+        "b7e87eb5cb535c87",
+        "c0b3b4538fbc7001",
+        "7679d95c8d367348",
+        "ed2f9ead165dd147",
+        "d6a11ba9f610c903",
+        "e0d41fa1cc80bd83",
+        "b8792bf118043ac9",
+        "fb193f9aad7fbb80",
+        "53ab87be251a3153",
+        "95826b6e69d22e86"
+      ],
+      "source": "VSCO 2 CE"
+    },
+    {
+      "name": "Trumpet",
+      "samples": [
+        "6b0c325ac5a96c9e",
+        "2d4a2aef7cbb5d0d",
+        "92ccfe7c41c302d7",
+        "2e4230a3c2820c22",
+        "e0c007cfb2f11464",
+        "d29122389ad56def",
+        "7d9d15bc67d16847",
+        "8b2f0c04c174b0e2",
+        "cb7f0d8d8b718b21",
+        "25dee1af3244a1b9",
+        "96d91e6aa65483c7",
+        "8be851dd2982c146",
+        "bf5f4223a3dd02af",
+        "a559918e6e1580e5",
+        "87112a3b2e12e336"
+      ],
+      "source": "VSCO 2 CE"
+    },
+    {
+      "name": "Trombone",
+      "samples": [
+        "e0e8a60ff6d431a0",
+        "60e4b06c37e6f098",
+        "752c808bd8ee5179",
+        "336a788d15c8ba06",
+        "951e9869d9779949",
+        "953881b209e2779b",
+        "f68f60836b26b129",
+        "39614d6f49649fc7",
+        "9f38a5579f77be1d",
+        "c6d6bc8a8c5182b4",
+        "89805180b1592ec5",
+        "0bd75f6e08db9403",
+        "d0369bd10aa0e63d",
+        "5fd5dc40e1a468e5",
+        "cb720d3b5f9039d3",
+        "06734cb170e3a6e5",
+        "e395e82ba9eca9d9"
+      ],
+      "source": "VSCO 2 CE"
+    },
+    {
+      "name": "Bass trombone",
+      "samples": [
+        "40e01a2819f4e085",
+        "6517cca9b60b5a7b",
+        "502a0e9622483653",
+        "824a06fbf358ce6e",
+        "e0e8a60ff6d431a0",
+        "60e4b06c37e6f098",
+        "752c808bd8ee5179",
+        "336a788d15c8ba06",
+        "951e9869d9779949",
+        "953881b209e2779b",
+        "f68f60836b26b129",
+        "9217facfc297a1d9",
+        "98994f7ad692f87c",
+        "8f36372379bfb719",
+        "44cf7e16bf38d89c",
+        "39614d6f49649fc7",
+        "9f38a5579f77be1d",
+        "c6d6bc8a8c5182b4",
+        "89805180b1592ec5",
+        "0bd75f6e08db9403",
+        "d0369bd10aa0e63d",
+        "5fd5dc40e1a468e5",
+        "cb720d3b5f9039d3",
+        "06734cb170e3a6e5",
+        "e395e82ba9eca9d9"
+      ],
+      "source": "VSCO 2 CE",
+      "derived": "Tenor trombone recordings adapted to the lower register"
+    },
+    {
+      "name": "Tuba",
+      "samples": [
+        "c72372afdbf41a12",
+        "49bd1f14b070d6dd",
+        "9c7d60bfea120149",
+        "da8ff6a91c2f3551",
+        "fd221b7908120d39",
+        "51103602aedc4911",
+        "188aad3413489457",
+        "99d98e639643c6d9",
+        "f39f908c0d56ec7c",
+        "27c91c283c31a370",
+        "cb8374c3912e3890",
+        "de36dd4e251fec92",
+        "2aca2046ab6bc948",
+        "1c374536198ac319",
+        "fa70f224c0761403",
+        "4e6aa9b834ce636f",
+        "4c743bc780f9e7db",
+        "4a5aec7049ad2d07",
+        "ce4e9e4a48f5a6be",
+        "c40f6df781553a54",
+        "b7634c62e157d073",
+        "0b0bf3e497f145c9",
+        "b16766357aa283b0",
+        "c532506a7778b8e1"
+      ],
+      "source": "VSCO 2 CE"
+    },
+    {
+      "name": "Timpani",
+      "source": "VSCO 2 CE",
+      "samples": [
+        "1d5664ebe7058d13",
+        "47caa955131c337b",
+        "30b76c03465f20a1",
+        "d077e4b44799cf09",
+        "adf27f7f7f0eff13",
+        "b532f6c16d3de44f",
+        "74c03dac6d7588c1",
+        "1b329027ef0500fa",
+        "dd7281cd67b6f1ed",
+        "0e7e07d2224182c9"
+      ]
+    },
+    {
+      "name": "Snare drum",
+      "source": "VCSL",
+      "unpitched": true,
+      "samples": [
+        "50f93e819f24158b",
+        "581101c593bd07bc"
+      ]
+    },
+    {
+      "name": "Bass drum",
+      "source": "VCSL",
+      "unpitched": true,
+      "samples": [
+        "5db2e255ed817d7b",
+        "19af54ec1422c76e"
+      ]
+    },
+    {
+      "name": "Cymbals",
+      "source": "VCSL",
+      "unpitched": true,
+      "samples": [
+        "24e847cdaa5483af",
+        "df88b0b80ef45bee"
+      ]
+    },
+    {
+      "name": "Triangle",
+      "source": "VCSL",
+      "unpitched": true,
+      "samples": [
+        "b2be8fb1f3ea46dc",
+        "c1ccebf8bc75bb9a"
+      ]
+    },
+    {
+      "name": "Glockenspiel",
+      "source": "VCSL",
+      "samples": [
+        "2690ba59decc10de",
+        "60feaff95006bd3a",
+        "28c34d5ba3c7ea0f",
+        "d70e1267abe3b258",
+        "5fe3733a72bf8b09"
+      ]
+    },
+    {
+      "name": "Harp",
+      "source": "VCSL",
+      "samples": [
+        "25c58e0b0f28253f",
+        "986eaee449f7f3f0",
+        "32e0d01037b4b5c0",
+        "0fc00eaf48d17908",
+        "860e507821372ea3",
+        "0bdd0c3c35c0ecd0",
+        "9a5b67ad3f1268c6",
+        "c7a79f603d50303f",
+        "3d763d90b56e8757",
+        "f0d6ab42c8d0338a",
+        "02744e17a36fcf39"
+      ]
+    },
+    {
+      "name": "Piano",
+      "source": "VCSL",
+      "samples": [
+        "10fe541a00ab413e",
+        "e96fd1f686bdc749",
+        "3e879a4fcb3e792a",
+        "54e2bda5810bba63",
+        "9f4f412dcf914f50",
+        "bdd47858d2f037da",
+        "d97c466c5ba910ea",
+        "3371aec4d71635df",
+        "b7b920d3ee4c124f",
+        "50daf7fc81790ef5",
+        "8313be313787593e",
+        "b7af914af105e02b",
+        "ad3c5ffbc2645d07",
+        "fe12de3f11aca4d5",
+        "28450ce2c8522810",
+        "c76a80d76047b448",
+        "b03c6cb3cd1235a4",
+        "86dcf748a0eaf904",
+        "8f163b16213281f6",
+        "b83428e92ae62436",
+        "9254e4a35b61484f"
+      ]
+    },
+    {
+      "name": "Celesta",
+      "source": "FluidR3",
+      "samples": [
+        "fluid-celesta-72",
+        "fluid-celesta-76",
+        "fluid-celesta-80",
+        "fluid-celesta-84",
+        "fluid-celesta-88",
+        "fluid-celesta-92",
+        "fluid-celesta-96",
+        "fluid-celesta-100",
+        "fluid-celesta-104"
+      ]
+    }
+  ],
+  "samples": {
+    "cb8b289610b0a7e9": {
+      "file": "cb8b289610b0a7e9.wav",
+      "root": 69,
+      "style": "sustain",
+      "loop": [
+        0.9,
+        2.7999773
+      ],
+      "repo": "VSCO-2-CE",
+      "path": "Strings/Violin Section/susVib/VlnEns_susVib_A3_v2.wav",
+      "sha256": "76060ca90e88acd49cbea98f59f136c02ceec26de0f71d4f1da60657406386d4",
+      "sourceSha256": "3fc4a9e22037643fce11e755da72c61c664893f83e637c24a7b5c2d3824ab986",
+      "trimSeconds": 0.0066
+    },
+    "f054a07ce63f94d0": {
+      "file": "f054a07ce63f94d0.wav",
+      "root": 72,
+      "style": "sustain",
+      "loop": [
+        0.9,
+        2.7999773
+      ],
+      "repo": "VSCO-2-CE",
+      "path": "Strings/Violin Section/susVib/VlnEns_susVib_C4_v2.wav",
+      "sha256": "41bc976ec9d6c4e536855f12fe51fb1a56c4534efc6535f635a89167afc24d1e",
+      "sourceSha256": "5857387b40c412f756ef281c1171247664432a4e5078c98142d595d15cd92ef9",
+      "trimSeconds": 0.001
+    },
+    "ea72c61783c1ad1f": {
+      "file": "ea72c61783c1ad1f.wav",
+      "root": 76,
+      "style": "sustain",
+      "loop": [
+        0.9,
+        2.7999773
+      ],
+      "repo": "VSCO-2-CE",
+      "path": "Strings/Violin Section/susVib/VlnEns_susVib_E4_v2.wav",
+      "sha256": "9c00083695b93ac0f012de2ec8de5ad58c244043588f9aa87570df78a56b4dc4",
+      "sourceSha256": "030c09a631ebbc7304fc0b47bb5c346cd646e7451d9fdc531870f2534c60d9e9",
+      "trimSeconds": 0.009
+    },
+    "a8abe4b143daecbe": {
+      "file": "a8abe4b143daecbe.wav",
+      "root": 79,
+      "style": "sustain",
+      "loop": [
+        0.9,
+        2.7999773
+      ],
+      "repo": "VSCO-2-CE",
+      "path": "Strings/Violin Section/susVib/VlnEns_susVib_G4_v2.wav",
+      "sha256": "5ce39e0348bbce10cdb0ffc55d2b7887ddf15d3a5ac389c4efd047e1211d733b",
+      "sourceSha256": "a1d6d5a0397541692e2f88a0cd9820eabe90407784ee631aa3bfa74772637a65",
+      "trimSeconds": 0.0149
+    },
+    "02c60df0a1bf8103": {
+      "file": "02c60df0a1bf8103.wav",
+      "root": 83,
+      "style": "sustain",
+      "loop": [
+        0.9,
+        2.7999773
+      ],
+      "repo": "VSCO-2-CE",
+      "path": "Strings/Violin Section/susVib/VlnEns_susVib_B4_v2.wav",
+      "sha256": "e12998769f4b5efd10d75911b45ad5955def74ec4ddb6509493984da98ed2159",
+      "sourceSha256": "bdb85532f47e4ebd681f9617a415116e7e5aeb786dce2eeab5ab9b93c1b31644",
+      "trimSeconds": 0.0109
+    },
+    "6b855119edccf7d9": {
+      "file": "6b855119edccf7d9.wav",
+      "root": 86,
+      "style": "sustain",
+      "loop": [
+        0.9,
+        2.7999773
+      ],
+      "repo": "VSCO-2-CE",
+      "path": "Strings/Violin Section/susVib/VlnEns_susVib_D5_v2.wav",
+      "sha256": "1984ba4a4960af00c7203a210fb528cb99132cbdbd9ca3f0b83ec04b4621eb7a",
+      "sourceSha256": "0c2ca9de723bed0a0968e32126b934f778cd678b367a29e7fde91004daf84daf",
+      "trimSeconds": 0.0022
+    },
+    "16cef9c2a8f31288": {
+      "file": "16cef9c2a8f31288.wav",
+      "root": 69,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Strings/Violin Section/Spic/VlnEns_Spic_A3_v2_rr1.wav",
+      "sha256": "7be5b58ffe337c4edd4ed9c1577dea4b6e01505c925768df1f75fa915656a37c",
+      "sourceSha256": "ce5d025e7c2ac71e220a3f6487c5a2ce431a150e808c93276570f19536568a5e",
+      "trimSeconds": 0.0017
+    },
+    "ad8bbbe0b981fdde": {
+      "file": "ad8bbbe0b981fdde.wav",
+      "root": 69,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Strings/Violin Section/Spic/VlnEns_Spic_A3_v2_rr2.wav",
+      "sha256": "05d212976592567eb0b839aa6cd17a339dd3ddc8d59089d88b0a91e899e5d4f5",
+      "sourceSha256": "f64465f4248514f785abab573a3b1440ee016b525f6550612c0fcb189e67ba47",
+      "trimSeconds": 0.0031
+    },
+    "f72b7ea61a236f9a": {
+      "file": "f72b7ea61a236f9a.wav",
+      "root": 72,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Strings/Violin Section/Spic/VlnEns_Spic_C4_v2_rr1.wav",
+      "sha256": "4c224d16439c662b34fa3dedf2a3bfff89d717331b8cdf7dfed28c84aae98542",
+      "sourceSha256": "a14e9795677e0c418f1e18f7b640bc27b8cb3aef4cfef766e18caf38549ffe56",
+      "trimSeconds": 0.0
+    },
+    "e4a15d570f7db2a3": {
+      "file": "e4a15d570f7db2a3.wav",
+      "root": 72,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Strings/Violin Section/Spic/VlnEns_Spic_C4_v2_rr2.wav",
+      "sha256": "e80cdb0ea6598557c53aabb2bfd952bdb5383eb93d2455e5c78d30cc45862075",
+      "sourceSha256": "a6dbe1a0118aceb93665afb4d8bf1fab249d0842c75801745bf9d3526bddcf73",
+      "trimSeconds": 0.002
+    },
+    "b3aa4154996a4fe0": {
+      "file": "b3aa4154996a4fe0.wav",
+      "root": 76,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Strings/Violin Section/Spic/VlnEns_Spic_E4_v2_rr1.wav",
+      "sha256": "655240ce21ab84d5ef90a74c2043cb3c5f4c23aef24d051a109b4459ecfbf6de",
+      "sourceSha256": "db063e7e21abb2d3271d0e96068601fbb48a91f2f0bfde8dea773ce1a6bacfb0",
+      "trimSeconds": 0.0001
+    },
+    "230155a5f318bc56": {
+      "file": "230155a5f318bc56.wav",
+      "root": 76,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Strings/Violin Section/Spic/VlnEns_Spic_E4_v2_rr2.wav",
+      "sha256": "84e2cda54f6caf1ddf9407df4c9dac91c0a641b61f07c68573d21f7947c2b982",
+      "sourceSha256": "4acf30d89e77aedaa2c69d0ae8a475abe98539134c8b72985f860658daa8630d",
+      "trimSeconds": 0.0
+    },
+    "f21ebc7639db23e8": {
+      "file": "f21ebc7639db23e8.wav",
+      "root": 79,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Strings/Violin Section/Spic/VlnEns_Spic_G4_v2_rr1.wav",
+      "sha256": "6068fd635f970bae91768795dc5dc992411ead9d27958adf2d64223a9eea6b53",
+      "sourceSha256": "3345451be62b9bdfbbf6bb03f22f410484abb75585992336d530215fc4df7141",
+      "trimSeconds": 0.0
+    },
+    "7cb5384b06c6c3bd": {
+      "file": "7cb5384b06c6c3bd.wav",
+      "root": 79,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Strings/Violin Section/Spic/VlnEns_Spic_G4_v2_rr2.wav",
+      "sha256": "a9096a3602a26f03f318db2ea4a727590b717f50330ca7603839c8bcaf736a6c",
+      "sourceSha256": "f41d60066c6d0fa7d21308e97f237a34d6ac2765e477cc330ffb7e8821e4cc3c",
+      "trimSeconds": 0.0001
+    },
+    "8c1ad8dbcfc13b19": {
+      "file": "8c1ad8dbcfc13b19.wav",
+      "root": 83,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Strings/Violin Section/Spic/VlnEns_Spic_B4_v2_rr1.wav",
+      "sha256": "ce5e033b3fd47de0e8002b9fd39ec56d9c146c085c719e7c571486ac1e611da4",
+      "sourceSha256": "d1495f4eaff7b3e4bd8d86b886dc81ccb52b113fb93630e8f68792ed452dc822",
+      "trimSeconds": 0.0029
+    },
+    "dc978160c6022976": {
+      "file": "dc978160c6022976.wav",
+      "root": 83,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Strings/Violin Section/Spic/VlnEns_Spic_B4_v2_rr2.wav",
+      "sha256": "d6f3e2d4c9be255a8748d1a4577082c70edad64271a41e4fec673f0ca16902db",
+      "sourceSha256": "94f256b01d2c37eb429336d32385d8b05072e4e896f387731178d2a33a7a9b78",
+      "trimSeconds": 0.0029
+    },
+    "94aab9b23ae8bd73": {
+      "file": "94aab9b23ae8bd73.wav",
+      "root": 86,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Strings/Violin Section/Spic/VlnEns_Spic_D5_v2_rr1.wav",
+      "sha256": "98b722fbf6454b579c093f83539b8cc100f606903cefb7a0e4a3e976a1f0b0bc",
+      "sourceSha256": "959a93165a9271657b4bc97c75eded62deab37b03128f71f0f1f4c8903e50b84",
+      "trimSeconds": 0.0001
+    },
+    "c18bee7532352208": {
+      "file": "c18bee7532352208.wav",
+      "root": 86,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Strings/Violin Section/Spic/VlnEns_Spic_D5_v2_rr2.wav",
+      "sha256": "c21d71cc3d5f966e0a1906b5de42f8f91717625fec2264ab63b61fa7dcd8948a",
+      "sourceSha256": "703d7eda8a0e6502a95eee3a1f3bbdcdea28a74211762a0a409525482b44009d",
+      "trimSeconds": 0.0003
+    },
+    "a432b551cb25e238": {
+      "file": "a432b551cb25e238.wav",
+      "root": 59,
+      "style": "sustain",
+      "loop": [
+        0.9,
+        2.7999773
+      ],
+      "repo": "VSCO-2-CE",
+      "path": "Strings/Viola Section/susvib/ViolaEns_susvib_B2_v2_1.wav",
+      "sha256": "84e2e98f9b5d68d6b242755639adc0dc1463e86cc5a1ca5b750c1316191016b0",
+      "sourceSha256": "edc77038a83f47cf49296c0009fdac23cb5ade3133a2beabd0d2d1f591ccf3cb",
+      "trimSeconds": 0.0002
+    },
+    "d816bf9c7f3dad9b": {
+      "file": "d816bf9c7f3dad9b.wav",
+      "root": 62,
+      "style": "sustain",
+      "loop": [
+        0.9,
+        2.7999773
+      ],
+      "repo": "VSCO-2-CE",
+      "path": "Strings/Viola Section/susvib/ViolaEns_susvib_D3_v2_1.wav",
+      "sha256": "f4e4d22c26468294ca598f288ae9e0e35b3cdd9d49437241097ad5b0fd72bace",
+      "sourceSha256": "f941028c5d5e854b4391669056f0f639799f80ac7c8da3939c7788b1a394d16c",
+      "trimSeconds": 0.0
+    },
+    "c58d0fc8671782e7": {
+      "file": "c58d0fc8671782e7.wav",
+      "root": 65,
+      "style": "sustain",
+      "loop": [
+        0.9,
+        2.7999773
+      ],
+      "repo": "VSCO-2-CE",
+      "path": "Strings/Viola Section/susvib/ViolaEns_susvib_F3_v2_1.wav",
+      "sha256": "9c2b0af30477a272ac451ec641797bcd349ff47122d2a86ed6e839211fb10eea",
+      "sourceSha256": "d281171e60b852451deecce57a6f5e9b623eea9632916336324c52c4ada6c750",
+      "trimSeconds": 0.001
+    },
+    "f4a5d86cfe0f6afd": {
+      "file": "f4a5d86cfe0f6afd.wav",
+      "root": 69,
+      "style": "sustain",
+      "loop": [
+        0.9,
+        2.7999773
+      ],
+      "repo": "VSCO-2-CE",
+      "path": "Strings/Viola Section/susvib/ViolaEns_susvib_A3_v2_1.wav",
+      "sha256": "03aa11034391bbfbef69e42eab98d97773439eea1a90e352740675db469f27aa",
+      "sourceSha256": "35984c7bfffe781d8e33bee045f66427a827794ff5c53c3d3bb82baeee3272dd",
+      "trimSeconds": 0.0
+    },
+    "842287591949d4d7": {
+      "file": "842287591949d4d7.wav",
+      "root": 72,
+      "style": "sustain",
+      "loop": [
+        0.9,
+        2.7999773
+      ],
+      "repo": "VSCO-2-CE",
+      "path": "Strings/Viola Section/susvib/ViolaEns_susvib_C4_v2_1.wav",
+      "sha256": "a22ab8fedd4a441fa15a52dd6047533f3baa949f7598fac4241737135145eb9e",
+      "sourceSha256": "81e1ef9109a1434974092c0165ffee44918b2553fd4afeeee42b91b8007ad263",
+      "trimSeconds": 0.0015
+    },
+    "04f204069fc08faf": {
+      "file": "04f204069fc08faf.wav",
+      "root": 76,
+      "style": "sustain",
+      "loop": [
+        0.9,
+        2.7999773
+      ],
+      "repo": "VSCO-2-CE",
+      "path": "Strings/Viola Section/susvib/ViolaEns_susvib_E4_v2_1.wav",
+      "sha256": "5da71ca6deb24dee9a9e7116d774cc249b72c79e093c1695bf0603ffcc9bd28e",
+      "sourceSha256": "29899afd4513761c3f1e3a4cc56f5c11cdb4de2b204f9f1467946327362e4bd7",
+      "trimSeconds": 0.0002
+    },
+    "095a784ccab80eef": {
+      "file": "095a784ccab80eef.wav",
+      "root": 79,
+      "style": "sustain",
+      "loop": [
+        0.9,
+        2.7999773
+      ],
+      "repo": "VSCO-2-CE",
+      "path": "Strings/Viola Section/susvib/ViolaEns_susvib_G4_v2_1.wav",
+      "sha256": "d12aab594544e7732256129e9466b602ea8df75ae4606aacba29e89305343f47",
+      "sourceSha256": "b09b8338945b814b9ce6dd8980a49323d10e55f89f1c4dcf6d58b04cd672d99c",
+      "trimSeconds": 0.0
+    },
+    "fe09a140b9ec6d90": {
+      "file": "fe09a140b9ec6d90.wav",
+      "root": 83,
+      "style": "sustain",
+      "loop": [
+        0.9,
+        2.7999773
+      ],
+      "repo": "VSCO-2-CE",
+      "path": "Strings/Viola Section/susvib/ViolaEns_susvib_B4_v2_1.wav",
+      "sha256": "f9a471a9b91a7fc741ff03d4790269b22ea22397965233e12388e862cf9861ba",
+      "sourceSha256": "cac7c5f73d9f7974156ef52c7b5202428271d8fcf9ceb11936e694c199be2f31",
+      "trimSeconds": 0.0197
+    },
+    "d24f76b06ada4622": {
+      "file": "d24f76b06ada4622.wav",
+      "root": 86,
+      "style": "sustain",
+      "loop": [
+        0.9,
+        2.7999773
+      ],
+      "repo": "VSCO-2-CE",
+      "path": "Strings/Viola Section/susvib/ViolaEns_susvib_D5_v2_1.wav",
+      "sha256": "82dc1ce06275e8004447af88890b592ee46aba5f4f041332dd3a91acb67f24d4",
+      "sourceSha256": "d3c5d05da8f90533aa7587649f18f4e68147aa7abc7a5559d8741089bea32239",
+      "trimSeconds": 0.0408
+    },
+    "707f3fbbf7c984a1": {
+      "file": "707f3fbbf7c984a1.wav",
+      "root": 59,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Strings/Viola Section/spic/Violas_spic_B2_v2_rr1.wav",
+      "sha256": "06eac77f196af1a2713bddfc1f0ef4818c647c1582d1b5b70de744019d633746",
+      "sourceSha256": "1d9b8a9047d11b06750c24bb783c8925ac300135235a94ce64c6c78934eb712f",
+      "trimSeconds": 0.0
+    },
+    "c719fd13def122b2": {
+      "file": "c719fd13def122b2.wav",
+      "root": 59,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Strings/Viola Section/spic/Violas_spic_B2_v2_rr2.wav",
+      "sha256": "ae67a39b85afd949afc0c12b3cc80dfa6fd8ab7cf079c2d85d77c353383faef8",
+      "sourceSha256": "e69d80890f3b724b0981a80bd55a3f3b2811c7164b78479905481a07dfe61d07",
+      "trimSeconds": 0.0
+    },
+    "161e4053fd771e61": {
+      "file": "161e4053fd771e61.wav",
+      "root": 62,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Strings/Viola Section/spic/Violas_spic_D3_v2_rr1.wav",
+      "sha256": "ecf4f0834c56c087bcf579a7ec33ca4271b5a95f5d231fd41b8c2f23d475c8e0",
+      "sourceSha256": "7eab07c87ffc99ffed8ce111ff297e6bde95350136cf93db706d4f658c96570c",
+      "trimSeconds": 0.0
+    },
+    "92aafafc05360e0c": {
+      "file": "92aafafc05360e0c.wav",
+      "root": 62,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Strings/Viola Section/spic/Violas_spic_D3_v2_rr2.wav",
+      "sha256": "a129da5f5ba8ab6d23d478a7237dce661f2c20f47ffadfad0021e30c30115d9d",
+      "sourceSha256": "c500f1199fb2182adab4a7d67a0a687b02f0748736f0df973fbf4b7b93d801da",
+      "trimSeconds": 0.0
+    },
+    "a4ad28a4c5367ca6": {
+      "file": "a4ad28a4c5367ca6.wav",
+      "root": 65,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Strings/Viola Section/spic/Violas_spic_F3_v2_rr1.wav",
+      "sha256": "00c33616da9d040007d47bccfc0a9e57e63bf803323efa8d56eebd490247b936",
+      "sourceSha256": "96f7e921c5c929d225d63a3615afa2aacd5c2901fc66ec79b26ddd56d832efb9",
+      "trimSeconds": 0.0
+    },
+    "62b7bd990810bb0e": {
+      "file": "62b7bd990810bb0e.wav",
+      "root": 65,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Strings/Viola Section/spic/Violas_spic_F3_v2_rr2.wav",
+      "sha256": "5035bc0071911453dd16fa50bc4339b8944ab92826b20969f743ef52e2993810",
+      "sourceSha256": "fd32cf80809378517941a24eac6bf9fefebd0a87405cbfac37eaf1b943c0f28f",
+      "trimSeconds": 0.0
+    },
+    "87f96d334abf5b1c": {
+      "file": "87f96d334abf5b1c.wav",
+      "root": 69,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Strings/Viola Section/spic/Violas_spic_A3_v2_rr1.wav",
+      "sha256": "475b76c7c0d906ceb83bff94c2221f7f0ab5e889694acb53552c5287ebfe776c",
+      "sourceSha256": "f6baadc442ac3ae31076ff746ed2415f347e7260600ef05069ce7894cb147884",
+      "trimSeconds": 0.0
+    },
+    "76e50a4c08263a0f": {
+      "file": "76e50a4c08263a0f.wav",
+      "root": 69,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Strings/Viola Section/spic/Violas_spic_A3_v2_rr2.wav",
+      "sha256": "31dc209daf988059472e7a6ba9689a6d4b97c7a54a0a43d4c3e76eb307b8e171",
+      "sourceSha256": "e55ce26b701a574ef0800814abf1fa031cebaddaeed46961828a560b8dcdba13",
+      "trimSeconds": 0.0
+    },
+    "95a73a8540b6d376": {
+      "file": "95a73a8540b6d376.wav",
+      "root": 72,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Strings/Viola Section/spic/Violas_spic_C4_v2_rr1.wav",
+      "sha256": "80c24f735083ab67fd90e1030a467f4c1860a4971a524e827b9ae55433fb8f86",
+      "sourceSha256": "3b4c0644c38ec7d13e03e3de88bce2dad899eb3c94a6251ec2acc8e6531687a5",
+      "trimSeconds": 0.0
+    },
+    "e0542240c645495b": {
+      "file": "e0542240c645495b.wav",
+      "root": 72,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Strings/Viola Section/spic/Violas_spic_C4_v2_rr2.wav",
+      "sha256": "c370aa3d4136c60d8b9a834676f2ce64053c99ed717f0645f943eb06e0ac5d80",
+      "sourceSha256": "8a928fa6f67590c0a9c849997d2449ef3cbd40668f2d75ef3e2d315ace4dd645",
+      "trimSeconds": 0.0
+    },
+    "17d2ac8e3a1d6383": {
+      "file": "17d2ac8e3a1d6383.wav",
+      "root": 76,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Strings/Viola Section/spic/Violas_spic_E4_v2_rr1.wav",
+      "sha256": "7ee78014b4991d4ca98efcac4b2428ed877c4ede8b1e091cb9157c9edede7d46",
+      "sourceSha256": "d66d31214f831ea6649d6b3584459a2ba855ed8eed8adeecbec7e7db99e882a0",
+      "trimSeconds": 0.0
+    },
+    "fd192f510fd149f5": {
+      "file": "fd192f510fd149f5.wav",
+      "root": 76,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Strings/Viola Section/spic/Violas_spic_E4_v2_rr2.wav",
+      "sha256": "57fc03286aebb37abde9c2e1771a80e8672f335ca6926e3f2196a537979fd9a6",
+      "sourceSha256": "4faae262fc6d26d394e4ac4f06b892d3bdd3791802e246d3caebc80840c3900f",
+      "trimSeconds": 0.0
+    },
+    "6f140526f8077a3d": {
+      "file": "6f140526f8077a3d.wav",
+      "root": 79,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Strings/Viola Section/spic/Violas_spic_G4_v2_rr1.wav",
+      "sha256": "373bafa29e8cc0c2a36e9c98990c8fecdb415f70062b9d1b15cc9e65ffc62929",
+      "sourceSha256": "67a6c39d014e1f630159a59e515d4c3552826114e64b1fc12e36f79cc87a5118",
+      "trimSeconds": 0.0
+    },
+    "8270edc5f61a31a8": {
+      "file": "8270edc5f61a31a8.wav",
+      "root": 79,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Strings/Viola Section/spic/Violas_spic_G4_v2_rr2.wav",
+      "sha256": "576e82f84f9fb69d3643f94f95e6fa1571535ef9ae613c3aaf856bc3c293887b",
+      "sourceSha256": "2c5c48463c5c8f9398daa5c33a0a6cb46db44ac38b4c7f8409a42b6fb6079d0b",
+      "trimSeconds": 0.0
+    },
+    "cfe61030cba90809": {
+      "file": "cfe61030cba90809.wav",
+      "root": 83,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Strings/Viola Section/spic/Violas_spic_B4_v2_rr1.wav",
+      "sha256": "14f1f30789a5490bf606f3bc7b203b8afadfeaeae38f5153e3e19645f0b6bc39",
+      "sourceSha256": "a633475a3e6d11d81cf80e8d9e3a0f9d80239a808ea5dc9c0e09c421df70fbda",
+      "trimSeconds": 0.0
+    },
+    "f42e6b6c0bade5a4": {
+      "file": "f42e6b6c0bade5a4.wav",
+      "root": 83,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Strings/Viola Section/spic/Violas_spic_B4_v2_rr2.wav",
+      "sha256": "ad80bc535c6a3128671148eb7fba293d5a3eaa2b7d2ca445cbab15cd36f518f2",
+      "sourceSha256": "18008084b4d1079a242193eaad619e3d20fec8b0439fa4f667263d0f2620676d",
+      "trimSeconds": 0.0
+    },
+    "2a9dd7138e746945": {
+      "file": "2a9dd7138e746945.wav",
+      "root": 86,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Strings/Viola Section/spic/Violas_spic_D5_v2_rr1.wav",
+      "sha256": "aed41614ba88c15889c95f88e79ada16598f8b7ce6edff46498d8bde8c6b2578",
+      "sourceSha256": "b4dfbd83b650796046d5b0f05e01ef1ccc564bd9f01523997fb7965de2c697f0",
+      "trimSeconds": 0.0
+    },
+    "f39c860b25c271cd": {
+      "file": "f39c860b25c271cd.wav",
+      "root": 86,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Strings/Viola Section/spic/Violas_spic_D5_v2_rr2.wav",
+      "sha256": "2e4e5cdf5a0e0a0f6535dabc14dddb9b23a83ed71bb16d3dfa2d873e35907a4b",
+      "sourceSha256": "85899fe74927489b33967c5dea07f2e8d60e57306ef6f39502deb92f34062f77",
+      "trimSeconds": 0.0
+    },
+    "bab656bda7326a4e": {
+      "file": "bab656bda7326a4e.wav",
+      "root": 47,
+      "style": "sustain",
+      "loop": [
+        0.9,
+        2.7999773
+      ],
+      "repo": "VSCO-2-CE",
+      "path": "Strings/Cello Section/susvib/susvib_B1_v1_1.wav",
+      "sha256": "b1e7469ef1f8d84752cd39e5ee5cf7143d9f67d15c95c49064ec8c774159770e",
+      "sourceSha256": "4f95c087c4b8d87ee591e9d39c3c9caf085c6f1b9125eac3ca9e4e637da628ee",
+      "trimSeconds": 0.0481
+    },
+    "113ab81c6b91001d": {
+      "file": "113ab81c6b91001d.wav",
+      "root": 50,
+      "style": "sustain",
+      "loop": [
+        0.9,
+        2.7999773
+      ],
+      "repo": "VSCO-2-CE",
+      "path": "Strings/Cello Section/susvib/susvib_D2_v1_1.wav",
+      "sha256": "12a8dc9b3bf8074a4e2f3b67809cfaacbb08e2d014459e3d5ff67d4960c5c7d1",
+      "sourceSha256": "e8640dec9febc6e39fcf06b19d2c95a85d5ff8c38f13c9879e69f551eaf38ab8",
+      "trimSeconds": 0.0185
+    },
+    "e5055043e9ef05c8": {
+      "file": "e5055043e9ef05c8.wav",
+      "root": 53,
+      "style": "sustain",
+      "loop": [
+        0.9,
+        2.7999773
+      ],
+      "repo": "VSCO-2-CE",
+      "path": "Strings/Cello Section/susvib/susvib_F2_v1_1.wav",
+      "sha256": "2755cd2638c9bd5af0d108974d893441af4918ee74be83f8feb66a5590a7f6cf",
+      "sourceSha256": "162054eab4ba118924f8f8986cf1b17ccfd65211d1945743ffbae30b4953f901",
+      "trimSeconds": 0.0043
+    },
+    "9a4650066729d98f": {
+      "file": "9a4650066729d98f.wav",
+      "root": 57,
+      "style": "sustain",
+      "loop": [
+        0.9,
+        2.7999773
+      ],
+      "repo": "VSCO-2-CE",
+      "path": "Strings/Cello Section/susvib/susvib_A2_v1_1.wav",
+      "sha256": "c288f6cba45a2fc7e85d16cebf9e2c1ae6e07dcdbf5d1789a4fc47c0eb91fc89",
+      "sourceSha256": "c97a003184fdcb153d6b6c0bae8d82a90592a1b04b06bd7caaeda8b9776d5284",
+      "trimSeconds": 0.0137
+    },
+    "58ff0313d175a5ec": {
+      "file": "58ff0313d175a5ec.wav",
+      "root": 60,
+      "style": "sustain",
+      "loop": [
+        0.9,
+        2.7999773
+      ],
+      "repo": "VSCO-2-CE",
+      "path": "Strings/Cello Section/susvib/susvib_C3_v1_1.wav",
+      "sha256": "6491715f6e1ce38ebc859add5b3b4cbd2bc757e1e75431230c5f70a26c8271db",
+      "sourceSha256": "a614ee7ca821b44660236e47b89620cf914ec6ad27a99bc0d9764f47dbe512e1",
+      "trimSeconds": 0.0062
+    },
+    "b7dc00c110d6776f": {
+      "file": "b7dc00c110d6776f.wav",
+      "root": 64,
+      "style": "sustain",
+      "loop": [
+        0.9,
+        2.7999773
+      ],
+      "repo": "VSCO-2-CE",
+      "path": "Strings/Cello Section/susvib/susvib_E3_v1_1.wav",
+      "sha256": "e55afdf477c88a53d9e27a45049a857f09cde806dfd0642a488f33487a70ba9e",
+      "sourceSha256": "d2f961e30bf64021cf4acbd88e0e7a1fd1840943ae78c62a711bcce3d109216e",
+      "trimSeconds": 0.0067
+    },
+    "ba0c16233f3ab375": {
+      "file": "ba0c16233f3ab375.wav",
+      "root": 67,
+      "style": "sustain",
+      "loop": [
+        0.9,
+        2.7999773
+      ],
+      "repo": "VSCO-2-CE",
+      "path": "Strings/Cello Section/susvib/susvib_G3_v1_1.wav",
+      "sha256": "ed631b8c05cd1bf85a49e022dc052d5cb1848db8dec201ee23dddd151cf779de",
+      "sourceSha256": "8d658346b8d2054fd534b3222b5d7a23196d22a83a68c3a04ffb76b21853a3db",
+      "trimSeconds": 0.0125
+    },
+    "22e1722c1d8e2007": {
+      "file": "22e1722c1d8e2007.wav",
+      "root": 71,
+      "style": "sustain",
+      "loop": [
+        0.9,
+        2.7999773
+      ],
+      "repo": "VSCO-2-CE",
+      "path": "Strings/Cello Section/susvib/susvib_B3_v1_1.wav",
+      "sha256": "d0ec03be0bc93a3f605c6ede1e2b59d42350f688fdad1c7766d1b2e0b6a305ec",
+      "sourceSha256": "bd25d66c1c4e73f5827bf3b931244e51ec8388594d8004529a762be81258097f",
+      "trimSeconds": 0.0
+    },
+    "5c873074ba8ae6c9": {
+      "file": "5c873074ba8ae6c9.wav",
+      "root": 74,
+      "style": "sustain",
+      "loop": [
+        0.9,
+        2.7999773
+      ],
+      "repo": "VSCO-2-CE",
+      "path": "Strings/Cello Section/susvib/susvib_D4_v1_1.wav",
+      "sha256": "fcfe762c9c494e49d84f31ef3725762c176ab165d2ead92ef1fe7608fe0241d8",
+      "sourceSha256": "b4aa3a7fec1f0e783fa560f493868c17045feb271738e3d6834d1b00594b1c38",
+      "trimSeconds": 0.1438
+    },
+    "5ee36f8e42c810e6": {
+      "file": "5ee36f8e42c810e6.wav",
+      "root": 77,
+      "style": "sustain",
+      "loop": [
+        0.9,
+        2.7999773
+      ],
+      "repo": "VSCO-2-CE",
+      "path": "Strings/Cello Section/susvib/susvib_F4_v1_1.wav",
+      "sha256": "c2c603a1ce699b05ae68cee4e67e83745887760b74a19c3ff05d8e489f15a5e1",
+      "sourceSha256": "a9888547b4b684c7649a882e693d61964848f18401a18e4646a8449b40c08bad",
+      "trimSeconds": 0.0198
+    },
+    "b7a7dd7927dc7f07": {
+      "file": "b7a7dd7927dc7f07.wav",
+      "root": 47,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Strings/Cello Section/spic/spic_B1_v2_RR1.wav",
+      "sha256": "cde14accf64587ee11dfe10e4d8a19bc6eb75679410a1f0007c0a87c9c1b5947",
+      "sourceSha256": "3883a65c6d301bf6f61b21d5ec6e27f9740ba219b5b022a9e5f3a67c62aeaa2a",
+      "trimSeconds": 0.0
+    },
+    "f3bdf0f190f83d78": {
+      "file": "f3bdf0f190f83d78.wav",
+      "root": 47,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Strings/Cello Section/spic/spic_B1_v2_RR2.wav",
+      "sha256": "7350208a3d34303304134eb356e242874db059bb9dad3e433d21bc2512d7d5ce",
+      "sourceSha256": "d59af5e67b221405d69294434f72b2e3523cbf88f378bc888136839a5f4eff7a",
+      "trimSeconds": 0.0057
+    },
+    "619cf19936080dea": {
+      "file": "619cf19936080dea.wav",
+      "root": 50,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Strings/Cello Section/spic/spic_D2_v2_RR1.wav",
+      "sha256": "2bb863431888401f4d721bace64bb8256677b8183bafe1e41088185cb3b7cbe1",
+      "sourceSha256": "c647723304b5f4b2d3af02739017e38bc4e85244c15355ebd6f8443c1445b5ab",
+      "trimSeconds": 0.0
+    },
+    "cc01da25b457b1e2": {
+      "file": "cc01da25b457b1e2.wav",
+      "root": 50,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Strings/Cello Section/spic/spic_D2_v2_RR2.wav",
+      "sha256": "ac18e4ab88acd184fb377317098ef45755dfaa3af89da7ac3a5678fc9b980f58",
+      "sourceSha256": "798af63a9273d686805c94427fe977c13362ba3263357ba5f1ec7db38efc628e",
+      "trimSeconds": 0.0017
+    },
+    "5e76c2f76d0c5175": {
+      "file": "5e76c2f76d0c5175.wav",
+      "root": 53,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Strings/Cello Section/spic/spic_F2_v2_RR1.wav",
+      "sha256": "0b9f9d1ba91d2b1a5d02481eb476e4372a8eeea44992b11951d388460953e58c",
+      "sourceSha256": "840ea94753ece4334d62da823cd74a83c3fc8ff28166ff8a71f589d75fc6e591",
+      "trimSeconds": 0.0
+    },
+    "a8dcd7c3c5579e47": {
+      "file": "a8dcd7c3c5579e47.wav",
+      "root": 53,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Strings/Cello Section/spic/spic_F2_v2_RR2.wav",
+      "sha256": "84b060182103fd89794d9602d181928fd86945d519fcf3bf5c358cc4103178d7",
+      "sourceSha256": "f00536e596eadd7b61f944f812e7d08683ee0d7ddfedac6573516657585dfbbe",
+      "trimSeconds": 0.0013
+    },
+    "521ce32782c57947": {
+      "file": "521ce32782c57947.wav",
+      "root": 57,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Strings/Cello Section/spic/spic_A2_v2_RR1.wav",
+      "sha256": "3aa40e4236cebcefce4dbf05532c8c5db6d408367ee5eb18e3f01dbb073b9e1a",
+      "sourceSha256": "a0f0d6a225e5a31debd902b518b96987b322e064bd38c29f891196c06ed4b7be",
+      "trimSeconds": 0.0022
+    },
+    "68bb3e902bfa26d3": {
+      "file": "68bb3e902bfa26d3.wav",
+      "root": 57,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Strings/Cello Section/spic/spic_A2_v2_RR2.wav",
+      "sha256": "4b12acde03652ecff54923218591b3dfc9710d2c9c970571b956e87878d623e6",
+      "sourceSha256": "ddec2ced000c1e948a32c9d4d1dc8625ff52c60fd37df89948aace604c736df2",
+      "trimSeconds": 0.0039
+    },
+    "fc75113186296b66": {
+      "file": "fc75113186296b66.wav",
+      "root": 60,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Strings/Cello Section/spic/spic_C3_v2_RR1.wav",
+      "sha256": "117461ba4a748f1823811b4a1c03bceb34a2a826104c46bb65fd897938757708",
+      "sourceSha256": "278a14177cd3ffffc5418e403d9583af22778a8ce8fc548f88ea707e044a62d4",
+      "trimSeconds": 0.0
+    },
+    "1ace46f7c365beca": {
+      "file": "1ace46f7c365beca.wav",
+      "root": 60,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Strings/Cello Section/spic/spic_C3_v2_RR2.wav",
+      "sha256": "dd9b0669f7f5ca8a49c06065a2357aa1d7fdc006371dfe3ae944393df40ffa04",
+      "sourceSha256": "8ac75e28eaeaf48e92c536bf16b01eaa6b21172a0072cf96650a0e80cb443438",
+      "trimSeconds": 0.0
+    },
+    "f0b339a662576856": {
+      "file": "f0b339a662576856.wav",
+      "root": 64,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Strings/Cello Section/spic/spic_E3_v2_RR1.wav",
+      "sha256": "0940395f774bd1c54f423affc02bd3032f5709df66f1f783d7ea2c4ea90ef9fe",
+      "sourceSha256": "1daf39c60a6c83dfa941418a2ab51328f79ae738fe7c3e302e8395774eac8681",
+      "trimSeconds": 0.0
+    },
+    "e53f0111c6dc9ffa": {
+      "file": "e53f0111c6dc9ffa.wav",
+      "root": 64,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Strings/Cello Section/spic/spic_E3_v2_RR2.wav",
+      "sha256": "cab04b805473b0125fada81db8704b94aa115ec275554dddf279636d1ddc9ca0",
+      "sourceSha256": "38ba726d9c4d30870b84e06caad28fc39f84458dee439ccb016df4bbdc743809",
+      "trimSeconds": 0.0
+    },
+    "7052430e0f8a76a6": {
+      "file": "7052430e0f8a76a6.wav",
+      "root": 67,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Strings/Cello Section/spic/spic_G3_v2_RR1.wav",
+      "sha256": "25a27aca5e0299b3f23bd32d65d57a73befa56506e39eb2ff2db5ce5bd554b54",
+      "sourceSha256": "adedb635e08e72f6e06e31dc1355edca528de2753f06eea271ec004e6a3b44f5",
+      "trimSeconds": 0.0
+    },
+    "60e9bd255868668a": {
+      "file": "60e9bd255868668a.wav",
+      "root": 67,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Strings/Cello Section/spic/spic_G3_v2_RR2.wav",
+      "sha256": "958ee3b4944848fc4e1fdb01c2a7c43187afd8631c9384a4a2bbdb5ebbd3f601",
+      "sourceSha256": "56f59a67ac8ec56ce37b0de04ecb8bc1b86570660e55553a6e70a79cc81dee9e",
+      "trimSeconds": 0.0
+    },
+    "4966fda807de0970": {
+      "file": "4966fda807de0970.wav",
+      "root": 71,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Strings/Cello Section/spic/spic_B3_v2_RR1.wav",
+      "sha256": "507c8a2c3e24a68d32eef71354e131c04211a292180b73ec40c13d524fc2e1da",
+      "sourceSha256": "94323b0e1489234b9d01733571404302de5b04b583f817d4ff9497fd1e6b92eb",
+      "trimSeconds": 0.0
+    },
+    "0a9ce7fd5b91c868": {
+      "file": "0a9ce7fd5b91c868.wav",
+      "root": 71,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Strings/Cello Section/spic/spic_B3_v2_RR2.wav",
+      "sha256": "023c074b2480117bcfb8ccee06049642dcce8ce110c826a760687f3af30e1991",
+      "sourceSha256": "3df455a0d305a203508d6ad3a98761b7e160ff825dd96709f2c43534585679b8",
+      "trimSeconds": 0.0002
+    },
+    "584b70921f1d70c0": {
+      "file": "584b70921f1d70c0.wav",
+      "root": 74,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Strings/Cello Section/spic/spic_D4_v2_RR1.wav",
+      "sha256": "ced63f0afd75489b3887546ce1c38f036025d1289cd5fc4ea393f6dcfe198a55",
+      "sourceSha256": "bbfcd62bd98a45a5f5f323e2c35d22c05aeb715b25c3e3cda87b6811c3753e73",
+      "trimSeconds": 0.0006
+    },
+    "5a3b015b0c04ec23": {
+      "file": "5a3b015b0c04ec23.wav",
+      "root": 74,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Strings/Cello Section/spic/spic_D4_v2_RR2.wav",
+      "sha256": "1b178c9ad78c4b29f9ce749739e0160892713f01027bf105193d5d3d2b348a48",
+      "sourceSha256": "faf9b8c4e4746adc95984488a99ac314d3ea22d0fe7e26f8bf5811c351cde42f",
+      "trimSeconds": 0.0
+    },
+    "120082e3765da8c6": {
+      "file": "120082e3765da8c6.wav",
+      "root": 77,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Strings/Cello Section/spic/spic_F4_v2_RR1.wav",
+      "sha256": "66ffa2d55ffc2b2a3c166bea07a4e35bed50cfe27b9dbd38390cdfb74800e116",
+      "sourceSha256": "bae94c2ee8f140997542b60d0aaea722b63dfec6700ca1a783b46ae7466bc4f1",
+      "trimSeconds": 0.0
+    },
+    "de6ad7e510e4714e": {
+      "file": "de6ad7e510e4714e.wav",
+      "root": 77,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Strings/Cello Section/spic/spic_F4_v2_RR2.wav",
+      "sha256": "28a6aef184db8e4ae96133cb890b2d83463052369bd5c433dd29e49a3d77bc4a",
+      "sourceSha256": "b54fbb9f59fe043210fff288508f966f6e8aaf65309a920856fd39702e97788f",
+      "trimSeconds": 0.0
+    },
+    "4b75e8460eca4936": {
+      "file": "4b75e8460eca4936.wav",
+      "root": 34,
+      "style": "sustain",
+      "loop": [
+        0.9,
+        2.7999773
+      ],
+      "repo": "VSCO-2-CE",
+      "path": "Strings/Solo Contrabass/SusVib/BKCtbss_SusVib_A#0_v1_rr1.wav",
+      "sha256": "efc4fedb642e0d2aeff8f5ae01fb65706bd160dcf4aa632c091f05b819d33164",
+      "sourceSha256": "bfed36e434e4f8a10abecf9ef8875a409ed32a698ab0faad7e253337c7bc6bf6",
+      "trimSeconds": 0.0
+    },
+    "763567822cbef9df": {
+      "file": "763567822cbef9df.wav",
+      "root": 36,
+      "style": "sustain",
+      "loop": [
+        0.9,
+        2.7999773
+      ],
+      "repo": "VSCO-2-CE",
+      "path": "Strings/Solo Contrabass/SusVib/BKCtbss_SusVib_C1_v1_rr1.wav",
+      "sha256": "a096d459bf2a1aa0ed44528bc0f1cb1c7a1f8f8bc2b451dab667a6432f55c3a0",
+      "sourceSha256": "35031ed9356f18b2ad4de86fff3192fe0cbcf79d5d63c079285246b51472f280",
+      "trimSeconds": 0.0
+    },
+    "b10492ceb94b46b2": {
+      "file": "b10492ceb94b46b2.wav",
+      "root": 38,
+      "style": "sustain",
+      "loop": [
+        0.9,
+        2.7999773
+      ],
+      "repo": "VSCO-2-CE",
+      "path": "Strings/Solo Contrabass/SusVib/BKCtbss_SusVib_D1_v1_rr1.wav",
+      "sha256": "91309495eb6576b9be0ebe5f9c2178af50aa27ff2e09af9cdcd7efbfb34ce792",
+      "sourceSha256": "02aafdc953cd07649f4e0be571a5569c80665cf61ac6062b6bae22c302289d2f",
+      "trimSeconds": 0.0
+    },
+    "c2632df6067668f8": {
+      "file": "c2632df6067668f8.wav",
+      "root": 40,
+      "style": "sustain",
+      "loop": [
+        0.9,
+        2.7999773
+      ],
+      "repo": "VSCO-2-CE",
+      "path": "Strings/Solo Contrabass/SusVib/BKCtbss_SusVib_E1_v1_rr1.wav",
+      "sha256": "f314a83cd2edf1f7b81b605557a168d7a6a5c13c114552c63e535dd5dd56e7dd",
+      "sourceSha256": "ffe06f830d10a24f04beb4683d5aae7516810d27c38dba3cc7a55d1c785840cd",
+      "trimSeconds": 0.0
+    },
+    "5a0ae9bb7b0d4c06": {
+      "file": "5a0ae9bb7b0d4c06.wav",
+      "root": 42,
+      "style": "sustain",
+      "loop": [
+        0.9,
+        2.7999773
+      ],
+      "repo": "VSCO-2-CE",
+      "path": "Strings/Solo Contrabass/SusVib/BKCtbss_SusVib_F#1_v1_rr1.wav",
+      "sha256": "ad99dae21ccf4d6a1ece1e072a217de4bf10b2443ee37f27170eeffe2a2b70cb",
+      "sourceSha256": "dbf26625b7e12392fb8222f75b82fc2e48d3121cbb9b7b7ebe6361225b9a2313",
+      "trimSeconds": 0.0
+    },
+    "62da9e6de90b139c": {
+      "file": "62da9e6de90b139c.wav",
+      "root": 44,
+      "style": "sustain",
+      "loop": [
+        0.9,
+        2.7999773
+      ],
+      "repo": "VSCO-2-CE",
+      "path": "Strings/Solo Contrabass/SusVib/BKCtbss_SusVib_G#1_v1_rr1.wav",
+      "sha256": "6c7307afabae6f0f2679c5aa704e14a74bc6dd4fe549cd3185fda8427ea5399f",
+      "sourceSha256": "601eda5755db1d15efa3203d457a8c43eb26f85ffe19455bf4efa895ed54adc6",
+      "trimSeconds": 0.0
+    },
+    "f1a5ecd9809452b2": {
+      "file": "f1a5ecd9809452b2.wav",
+      "root": 45,
+      "style": "sustain",
+      "loop": [
+        0.9,
+        2.7999773
+      ],
+      "repo": "VSCO-2-CE",
+      "path": "Strings/Solo Contrabass/SusVib/BKCtbss_SusVib_A1_v1_rr1.wav",
+      "sha256": "bc4eda23b9fcec097d7802467675c38d37fcfdf4651f8503b7231eb7899cd426",
+      "sourceSha256": "c1594db9e43851d429e34086cf16944b5a9f5e48d544d10ebd17a4f682d376e1",
+      "trimSeconds": 0.0
+    },
+    "86532a411b5fa2a4": {
+      "file": "86532a411b5fa2a4.wav",
+      "root": 49,
+      "style": "sustain",
+      "loop": [
+        0.9,
+        2.7999773
+      ],
+      "repo": "VSCO-2-CE",
+      "path": "Strings/Solo Contrabass/SusVib/BKCtbss_SusVib_C#2_v1_rr1.wav",
+      "sha256": "b8a10ce8fff3ea8daec635c681a11334ea432d116de88e6776c0a8b26e471b21",
+      "sourceSha256": "083751a59f87ed5ded98d073226ea975441748ee5a2a1647784029cb60cb4570",
+      "trimSeconds": 0.0
+    },
+    "5a44e8e2bc7fe34f": {
+      "file": "5a44e8e2bc7fe34f.wav",
+      "root": 52,
+      "style": "sustain",
+      "loop": [
+        0.9,
+        2.7999773
+      ],
+      "repo": "VSCO-2-CE",
+      "path": "Strings/Solo Contrabass/SusVib/BKCtbss_SusVib_E2_v1_rr1.wav",
+      "sha256": "1c13ef459c30b6f37c2e379c6ba2c413be641d13ce7f5c4c38e3a5e988571929",
+      "sourceSha256": "1f4f7b8718c3e3562f4dd851981ceccf2200741573adc24d3f8bfe9fc3087123",
+      "trimSeconds": 0.0
+    },
+    "21587279555a0fbb": {
+      "file": "21587279555a0fbb.wav",
+      "root": 56,
+      "style": "sustain",
+      "loop": [
+        0.9,
+        2.7999773
+      ],
+      "repo": "VSCO-2-CE",
+      "path": "Strings/Solo Contrabass/SusVib/BKCtbss_SusVib_G#2_v1_rr1.wav",
+      "sha256": "f32dec834cb2f0159e03fb138357d43d96c339d75ce6f68263aadb517c37d64b",
+      "sourceSha256": "ddde6da7902a3b00d5086bce6604ce1c4b6b6a45e81cff8ea2225420ab3d397d",
+      "trimSeconds": 0.0
+    },
+    "cbf0528a30330d12": {
+      "file": "cbf0528a30330d12.wav",
+      "root": 59,
+      "style": "sustain",
+      "loop": [
+        0.9,
+        2.7999773
+      ],
+      "repo": "VSCO-2-CE",
+      "path": "Strings/Solo Contrabass/SusVib/BKCtbss_SusVib_B2_v1_rr1.wav",
+      "sha256": "0e122f805832c1978530a4e164479b9a15661136d1e8e81a3b389e74308c57ac",
+      "sourceSha256": "c7d2fcd4794786c654c930b86909cf3ae3e09df37ec1120e13d13a8fbee23f9f",
+      "trimSeconds": 0.0
+    },
+    "24b5787837242a0b": {
+      "file": "24b5787837242a0b.wav",
+      "root": 34,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Strings/Solo Contrabass/Spic/BKCtbss_Spic_A#0_v1_rr1.wav",
+      "sha256": "df5f3c5e825cedac8bed0028c5e20c6e4539cebe69df99e0f8200822b57917f7",
+      "sourceSha256": "39d13610eb3aa3f40e510b0b4821422e16dbe942719a4f1516424951f481e68e",
+      "trimSeconds": 0.0
+    },
+    "1ee0abbc5444e9a3": {
+      "file": "1ee0abbc5444e9a3.wav",
+      "root": 34,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Strings/Solo Contrabass/Spic/BKCtbss_Spic_A#0_v1_rr2.wav",
+      "sha256": "a7a1198ab3d057908b7d20112a806b20c58baf7209f04712fdb1a5444696f491",
+      "sourceSha256": "70bff5a8cad019cb82f5fe9ab36aaf8a14d394344c64f83180e455fd850299d3",
+      "trimSeconds": 0.0
+    },
+    "ef0853508b8ec146": {
+      "file": "ef0853508b8ec146.wav",
+      "root": 36,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Strings/Solo Contrabass/Spic/BKCtbss_Spic_C1_v1_rr1.wav",
+      "sha256": "b1fa5bd273f69dcd207a7dc6e66322fcd520ee5529462981afa6197e420f7fd6",
+      "sourceSha256": "8a6f149e558e3fe2459c0d2acb640a0e6c2186ea2618372c4d5cd67fb3fd3332",
+      "trimSeconds": 0.0
+    },
+    "b3850f1e7f57cc9c": {
+      "file": "b3850f1e7f57cc9c.wav",
+      "root": 36,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Strings/Solo Contrabass/Spic/BKCtbss_Spic_C1_v1_rr2.wav",
+      "sha256": "4c8236320efa5b55464533331e92d778efae7e194630c731ff9e855d4fe9cc6a",
+      "sourceSha256": "b43d452a585bcb4157233ce039bd8321c67532372871bf8ae9bdd9792984bfba",
+      "trimSeconds": 0.0
+    },
+    "bca7718be91eb920": {
+      "file": "bca7718be91eb920.wav",
+      "root": 38,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Strings/Solo Contrabass/Spic/BKCtbss_Spic_D1_v1_rr1.wav",
+      "sha256": "5f12a0799d319e36a41f34090b6def71601fc3617b3c834f851b48872caa8809",
+      "sourceSha256": "2a529cacb20e87c4787be25d2516d73b9740f0ad7eecd150dbc66954280d9b93",
+      "trimSeconds": 0.0
+    },
+    "d76a80120509fe88": {
+      "file": "d76a80120509fe88.wav",
+      "root": 38,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Strings/Solo Contrabass/Spic/BKCtbss_Spic_D1_v1_rr2.wav",
+      "sha256": "54d6558a488a62d4256946246395d72dd3a473373202d67b68ea42cf6c1dffd0",
+      "sourceSha256": "2a08c752b6f2a3ff7adc0d53daa6aa36f2036cdfc430115f33b640dae70728c9",
+      "trimSeconds": 0.0002
+    },
+    "1c63d42f0e38c7ba": {
+      "file": "1c63d42f0e38c7ba.wav",
+      "root": 40,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Strings/Solo Contrabass/Spic/BKCtbss_Spic_E1_v1_rr1.wav",
+      "sha256": "f37a956a67d55a32b41e70fcb8f91e109585ca74252abbf484571e684dca0854",
+      "sourceSha256": "870196e13eb76affd55e386b0a1e5d12f2db9a4d6750cd24c0aabff082607ee4",
+      "trimSeconds": 0.0
+    },
+    "fa9b112fdbd4df59": {
+      "file": "fa9b112fdbd4df59.wav",
+      "root": 40,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Strings/Solo Contrabass/Spic/BKCtbss_Spic_E1_v1_rr2.wav",
+      "sha256": "1216c8795e77443890403572b607193ea2aec993a99a22fa98c24aff66e67203",
+      "sourceSha256": "bb4d709a57d2e81a1161fd9d4590bf43835d2605b9ba55a8a61cd7c5d0dbe0f3",
+      "trimSeconds": 0.0
+    },
+    "67320e0d753ff335": {
+      "file": "67320e0d753ff335.wav",
+      "root": 42,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Strings/Solo Contrabass/Spic/BKCtbss_Spic_F#1_v1_rr1.wav",
+      "sha256": "de51e9007055cdbac700e1ffc17d3ae7c4ba88c8744f5c4ffb7b0bf4b5812c0c",
+      "sourceSha256": "e410c1f3115cf0f8d5b2f75f4ccae558bc43460b6832c63807505d186df4d428",
+      "trimSeconds": 0.0
+    },
+    "aa0621d8d19382b5": {
+      "file": "aa0621d8d19382b5.wav",
+      "root": 42,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Strings/Solo Contrabass/Spic/BKCtbss_Spic_F#1_v1_rr2.wav",
+      "sha256": "775afc51d943ca3a3ee97f966623a4a7edfe81ebdf118a4a81c3be74505ee23c",
+      "sourceSha256": "6520b1971de211c1e0ef86492b180c3d41fdf90eacd45fd962c86f92f8d178ef",
+      "trimSeconds": 0.0
+    },
+    "6493ec0a142c55f6": {
+      "file": "6493ec0a142c55f6.wav",
+      "root": 44,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Strings/Solo Contrabass/Spic/BKCtbss_Spic_G#1_v1_rr1.wav",
+      "sha256": "fa6f7d5166fa00c6bfc3bf77ef4e025e81eac154600f7fd5158eff91dc19bc11",
+      "sourceSha256": "5d8548ca2673b10dd78b7c644f0a488f4170e333b528630af757b34abd41f814",
+      "trimSeconds": 0.0
+    },
+    "a4ee48fff91513f8": {
+      "file": "a4ee48fff91513f8.wav",
+      "root": 44,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Strings/Solo Contrabass/Spic/BKCtbss_Spic_G#1_v1_rr2.wav",
+      "sha256": "910c2e6d5a42dacac0b5a915b60132e99719d82d83de85b75449b8969abf2660",
+      "sourceSha256": "038b6f1027e2a1d5c94570544125412672910c5bad3d8d3b8317882d258ae30a",
+      "trimSeconds": 0.0
+    },
+    "10e5e2d2f42dd5b1": {
+      "file": "10e5e2d2f42dd5b1.wav",
+      "root": 45,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Strings/Solo Contrabass/Spic/BKCtbss_Spic_A1_v1_rr1.wav",
+      "sha256": "5c8f510fdbf26a2763b9cb79b21e0caae548c48690652519baa931833f6d4994",
+      "sourceSha256": "32111c59f0e40962564221f9f9f003466c369fe18051f4ffaad3d8cd205ee23d",
+      "trimSeconds": 0.0
+    },
+    "47cdbedceb737d82": {
+      "file": "47cdbedceb737d82.wav",
+      "root": 45,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Strings/Solo Contrabass/Spic/BKCtbss_Spic_A1_v1_rr2.wav",
+      "sha256": "e13bfe812246b8ffc6a479dea540c6fc3ecd6d53ead17a6a8726d5547a6db652",
+      "sourceSha256": "a3e24b931102aa3ca280c67a072c01426fd9a68f832905593f110e734771d692",
+      "trimSeconds": 0.0
+    },
+    "d37c75ba758d6089": {
+      "file": "d37c75ba758d6089.wav",
+      "root": 49,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Strings/Solo Contrabass/Spic/BKCtbss_Spic_C#2_v1_rr1.wav",
+      "sha256": "d430c0a51356b23274a4c919a5761a8d6d29c0253004f19c8014a40bdc7fd2f8",
+      "sourceSha256": "22fc17a5c7d55805fe689b329b08eaaf47ea0134d7e144f25c93594b6713b692",
+      "trimSeconds": 0.0
+    },
+    "a198814e721516b1": {
+      "file": "a198814e721516b1.wav",
+      "root": 49,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Strings/Solo Contrabass/Spic/BKCtbss_Spic_C#2_v1_rr2.wav",
+      "sha256": "9b04fb9e003d213308539ace20a7f9f87e8a8f2711b946e3eee8c2d640075f13",
+      "sourceSha256": "150c71a4864330269e2263b6a2447dc1146c8fa5482cc5fa278f047107b8f8ac",
+      "trimSeconds": 0.0
+    },
+    "09ba6ad2e5e69e33": {
+      "file": "09ba6ad2e5e69e33.wav",
+      "root": 52,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Strings/Solo Contrabass/Spic/BKCtbss_Spic_E2_v1_rr1.wav",
+      "sha256": "0749bd00bb54b1a44421fa0a420fc84cac1ca3e63fe0d66fd0836d00867ee016",
+      "sourceSha256": "747c4e51164d6582c9e253d3fa37aea939be691e95f1573f66b660137c0adcf5",
+      "trimSeconds": 0.0
+    },
+    "70c8e96c6bb86fae": {
+      "file": "70c8e96c6bb86fae.wav",
+      "root": 52,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Strings/Solo Contrabass/Spic/BKCtbss_Spic_E2_v1_rr2.wav",
+      "sha256": "909c3f5bb365dbe8d72df6f29bbdf1b980e7760989151bd277568d96839ccf2f",
+      "sourceSha256": "24b455de876987fcce1d09d7ec4766ed761eb7878614715090fefc69f4ee52ce",
+      "trimSeconds": 0.0
+    },
+    "12a709d712a70a2e": {
+      "file": "12a709d712a70a2e.wav",
+      "root": 56,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Strings/Solo Contrabass/Spic/BKCtbss_Spic_G#2_v1_rr1.wav",
+      "sha256": "9799ded5eb01360590bdf2cecb13094cfc10149623c8e4f4d9ccddcc87d48746",
+      "sourceSha256": "ec3aa1973906ddad82d83ed5e54a32299c3f413147d97c16f6602340bc9af2f2",
+      "trimSeconds": 0.0
+    },
+    "d84ab2ae9e33bd14": {
+      "file": "d84ab2ae9e33bd14.wav",
+      "root": 56,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Strings/Solo Contrabass/Spic/BKCtbss_Spic_G#2_v1_rr2.wav",
+      "sha256": "8f59019810aee98828a78a6567ce4ffa5235ea2ecc24999418cbc9a1f7ac5719",
+      "sourceSha256": "5b3cbd541d44e63f3a29f1d8e4dcf76ca77cb87c49526ffeb59e44bbc94e10f6",
+      "trimSeconds": 0.0
+    },
+    "7f861baea660ebc6": {
+      "file": "7f861baea660ebc6.wav",
+      "root": 59,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Strings/Solo Contrabass/Spic/BKCtbss_Spic_B2_v1_rr1.wav",
+      "sha256": "7591d1043651975920cab6c5ead5173721090839a35bd2e6143ef27333c3ce9a",
+      "sourceSha256": "8d3be1969f10820373ed4853d81604d3f3cb074a77ef0b3381d2016251d7e890",
+      "trimSeconds": 0.0
+    },
+    "fbf3bfc5ee9b4e09": {
+      "file": "fbf3bfc5ee9b4e09.wav",
+      "root": 59,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Strings/Solo Contrabass/Spic/BKCtbss_Spic_B2_v1_rr2.wav",
+      "sha256": "aaf0c66f5746d67fb3774c02e8ad8fea96fae1748d263c633cd701dc5abd1562",
+      "sourceSha256": "4fe5711c6c86cc6ff5d7612d7cceb17434486d465ad354aabe75df480094290f",
+      "trimSeconds": 0.0
+    },
+    "eb50ab2c08567a12": {
+      "file": "eb50ab2c08567a12.wav",
+      "root": 84,
+      "style": "sustain",
+      "loop": [
+        0.9,
+        2.7999773
+      ],
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Piccolo/Sus/piccolo_C5_sustain1.wav",
+      "sha256": "350c9888e10931667248a47e4094aceea5cb3ca8fbfca10281dee998d7d22686",
+      "sourceSha256": "d3069f1cf627d1cf9715ea5564e26e0988d321a6e7c5d4ffe8ff5345ff78c09f",
+      "trimSeconds": 0.0
+    },
+    "b32acb4104f05296": {
+      "file": "b32acb4104f05296.wav",
+      "root": 91,
+      "style": "sustain",
+      "loop": [
+        0.9,
+        2.7999773
+      ],
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Piccolo/Sus/piccolo_G5_sustain1.wav",
+      "sha256": "502457f0ed8f0fc93b30c87332c39831e37202abf8716b5be2464bb55a41650d",
+      "sourceSha256": "1d12025a1985e51c4223b21b03baa9dc3c4f6a344f0358bcdcfdecce41158cd5",
+      "trimSeconds": 0.0
+    },
+    "4e69f16063c8716a": {
+      "file": "4e69f16063c8716a.wav",
+      "root": 96,
+      "style": "sustain",
+      "loop": [
+        0.9,
+        2.7999773
+      ],
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Piccolo/Sus/piccolo_C6_sustain1.wav",
+      "sha256": "9ae777a1c46b3df2db838f4d4b6a599dc07a5ca45a4a9ed6259979417152be7c",
+      "sourceSha256": "72a4ef9adf0788a3accbf38bd5f1f850220c67c92146f998f2c2b91e30627f43",
+      "trimSeconds": 0.0
+    },
+    "bf978b46f21a64e8": {
+      "file": "bf978b46f21a64e8.wav",
+      "root": 103,
+      "style": "sustain",
+      "loop": [
+        0.9,
+        2.7999773
+      ],
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Piccolo/Sus/piccolo_G6_sustain1.wav",
+      "sha256": "1ba28c6a18c1655bc32d14f394cdd645a4914fb0cd2c1fd711157c4c3a9b2e30",
+      "sourceSha256": "a17900c99093951d62a1179f4cafbc14b19b8a8e9ff4375ff0b83e8f0cbebbf6",
+      "trimSeconds": 0.0
+    },
+    "deb54dec51637959": {
+      "file": "deb54dec51637959.wav",
+      "root": 82,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Piccolo/Stac/piccolo_A#4_staccato1.wav",
+      "sha256": "2ccba3c5ea42d324c9ae844a8b5778743d61f91feb05900381bed03e67fbaf4d",
+      "sourceSha256": "6ecb70160befbc7f388f8567372734398ead56c7f7f1b56f512c7e69774e7ede",
+      "trimSeconds": 0.0
+    },
+    "8538f15361298d8f": {
+      "file": "8538f15361298d8f.wav",
+      "root": 91,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Piccolo/Stac/piccolo_G5_staccato1.wav",
+      "sha256": "cf623a31d38a9ad5890f3cea5b9c2c54b52a6d1149f22b1076e11e462d797ac8",
+      "sourceSha256": "25da0dacfa9cf968e73ad05cb9068f2c3fde8932103aafa8c397c9272d0354b1",
+      "trimSeconds": 0.0
+    },
+    "715dc32db9b13f64": {
+      "file": "715dc32db9b13f64.wav",
+      "root": 94,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Piccolo/Stac/piccolo_A#5_staccato1.wav",
+      "sha256": "da9f0f6ecd693549325ff8a528064166dfb8332e81216b67cbaf5bb79906706c",
+      "sourceSha256": "5fb29db9708695e664c9f802c650810710295322f8d991b432f0ed9add5638ca",
+      "trimSeconds": 0.0
+    },
+    "3ca26fe737abfa15": {
+      "file": "3ca26fe737abfa15.wav",
+      "root": 103,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Piccolo/Stac/piccolo_G6_staccato1.wav",
+      "sha256": "72d7453bcb3f2bde7d00f049261a116c2f663d0ddc6c61fd7d102a57f115e04e",
+      "sourceSha256": "4c6b7bfe1a90e5e5dda0a894d2ba10443aa18cac3528ef00f49b17ee63acf205",
+      "trimSeconds": 0.0
+    },
+    "b4bdf392add33600": {
+      "file": "b4bdf392add33600.wav",
+      "root": 106,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Piccolo/Stac/piccolo_A#6_staccato1.wav",
+      "sha256": "773d56ba6d943de68eb1ae06cccbb07b8f6bbae5954081c6545025011e5e4479",
+      "sourceSha256": "56e8f0def0c86eb1e7bc354a38808f673889b01ecd2ff5d0897b476a2138807f",
+      "trimSeconds": 0.0
+    },
+    "b7cc8cf31fdafa3d": {
+      "file": "b7cc8cf31fdafa3d.wav",
+      "root": 69,
+      "style": "sustain",
+      "loop": [
+        0.9,
+        2.7999773
+      ],
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Flute/susvib/LDFlute_susvib_A3_v1_1.wav",
+      "sha256": "39af55ca9a706c24b5caaef9922c564aef99e9f557689aa767bf3c3cc510f0d0",
+      "sourceSha256": "4ea04a7a2ba152752e1b475798619a62f2546f54972caa6ddcd88f29a2046c81",
+      "trimSeconds": 0.0038
+    },
+    "6e9a71b05234fe12": {
+      "file": "6e9a71b05234fe12.wav",
+      "root": 72,
+      "style": "sustain",
+      "loop": [
+        0.9,
+        2.7999773
+      ],
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Flute/susvib/LDFlute_susvib_C4_v1_1.wav",
+      "sha256": "f30fe7422dd32c0e7761db6d33781705a30401cc4a8ca47954d241a5b33b7769",
+      "sourceSha256": "e88a0ff35e6b8c29fd88bc778a4c817d955b2c3a2934def97a7d093b72e2ae97",
+      "trimSeconds": 0.0
+    },
+    "cfa8fa4e8a636801": {
+      "file": "cfa8fa4e8a636801.wav",
+      "root": 76,
+      "style": "sustain",
+      "loop": [
+        0.9,
+        2.7999773
+      ],
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Flute/susvib/LDFlute_susvib_E4_v1_1.wav",
+      "sha256": "48240e91609334a47e7b87290791d6257380519dc623bd9fcdd23c87f3900752",
+      "sourceSha256": "83d4eed0c54ebfe25fe9dfb0475fb90a88a43d11777bc2afac879b8b695e494c",
+      "trimSeconds": 0.0024
+    },
+    "b5365e9d638d3a01": {
+      "file": "b5365e9d638d3a01.wav",
+      "root": 81,
+      "style": "sustain",
+      "loop": [
+        0.9,
+        2.7999773
+      ],
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Flute/susvib/LDFlute_susvib_A4_v1_1.wav",
+      "sha256": "93138298187023dab9fc9b6680dc938145a5e2b33ffbea74d98abaad5dcdff8f",
+      "sourceSha256": "cf3c1c30943b8b8ef8b5b9ced89430c014987a037204098d002f86e424391ba9",
+      "trimSeconds": 0.0
+    },
+    "fd74097bfb46950f": {
+      "file": "fd74097bfb46950f.wav",
+      "root": 84,
+      "style": "sustain",
+      "loop": [
+        0.9,
+        2.7999773
+      ],
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Flute/susvib/LDFlute_susvib_C5_v1_1.wav",
+      "sha256": "36f1cef4b64d80e23da0e516aa154d1b2c38c8961cf731079378a13fa69754d7",
+      "sourceSha256": "ecb78c59069866ea7c3327594851827cd2f50c5d411aad422269a88e53614fbe",
+      "trimSeconds": 0.0019
+    },
+    "2add2567f6a1b523": {
+      "file": "2add2567f6a1b523.wav",
+      "root": 88,
+      "style": "sustain",
+      "loop": [
+        0.9,
+        2.7999773
+      ],
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Flute/susvib/LDFlute_susvib_E5_v1_1.wav",
+      "sha256": "0b8123f397d4188b2e58dc2aaf02c354c29278376c83b19caabfcc14651ec4be",
+      "sourceSha256": "6eab0a4827c43b49415cb0c846affd40e9555c884c74683422554923faf17681",
+      "trimSeconds": 0.0
+    },
+    "20f19721e5066ea9": {
+      "file": "20f19721e5066ea9.wav",
+      "root": 93,
+      "style": "sustain",
+      "loop": [
+        0.9,
+        2.7999773
+      ],
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Flute/susvib/LDFlute_susvib_A5_v1_1.wav",
+      "sha256": "cfc0c0aa0308688f5fd222ffd6c1cb7c2fe01041aaa1484bb403568c2914d072",
+      "sourceSha256": "067a42df19ec1864389c28235a6794033471c0ffa3d7e16637396a505ca7d7fd",
+      "trimSeconds": 0.0
+    },
+    "7cfff28a8add6567": {
+      "file": "7cfff28a8add6567.wav",
+      "root": 96,
+      "style": "sustain",
+      "loop": [
+        0.9,
+        2.7999773
+      ],
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Flute/susvib/LDFlute_susvib_C6_v1_1.wav",
+      "sha256": "a2f19595dc2b5158e25a29978a4fb398baf6c77756bb3904b4400f923ab7feaa",
+      "sourceSha256": "0ead172a529daad09ecbab66027027b92189afe79f50f71dc20ee58ca66c9135",
+      "trimSeconds": 0.0024
+    },
+    "d1f6b9682ab92e53": {
+      "file": "d1f6b9682ab92e53.wav",
+      "root": 69,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Flute/stac/LDFlute_stac_A3_v2_rr1.wav",
+      "sha256": "c7f6cae2161365817f8dc09d14998b5de1c039d50f5854c26e913b52ca37b297",
+      "sourceSha256": "d951b3e2883a6011c16cce815d92454da66b0b698c7567ec00b3dda2b41264f3",
+      "trimSeconds": 0.0073
+    },
+    "3eeda7f1fa60711b": {
+      "file": "3eeda7f1fa60711b.wav",
+      "root": 69,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Flute/stac/LDFlute_stac_A3_v2_rr2.wav",
+      "sha256": "9e8b2a228aa4f0ec6016612bd69b9ac9631a170e8739495d08bfb6414d884370",
+      "sourceSha256": "9add50ce4ecad6b1ab503ee018c1654a04b00c2e6fe64f450ba5b4b78b0aa5a2",
+      "trimSeconds": 0.0
+    },
+    "f6d3328707a81a49": {
+      "file": "f6d3328707a81a49.wav",
+      "root": 72,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Flute/stac/LDFlute_stac_C4_v2_rr1.wav",
+      "sha256": "6947cde7b4726afddcd69c58f7f12cf6ca70fd33f34e717b2a23588297d25eb6",
+      "sourceSha256": "dc1938d6becee0d3c175b69899490cb7a24e1ad8d73a57668835afd2ae516838",
+      "trimSeconds": 0.0
+    },
+    "6e71586e200866d1": {
+      "file": "6e71586e200866d1.wav",
+      "root": 72,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Flute/stac/LDFlute_stac_C4_v2_rr2.wav",
+      "sha256": "9a2f3035e06c613a5d002ed16b153ca97a76fa520508ea3b0276d69eab568e8b",
+      "sourceSha256": "cd6598682fc02f15a7ba2eb7bfda54415dfba41bc749d8760bbbc501c24c1869",
+      "trimSeconds": 0.0
+    },
+    "0ee7148d3e8bc87e": {
+      "file": "0ee7148d3e8bc87e.wav",
+      "root": 76,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Flute/stac/LDFlute_stac_E4_v2_rr1.wav",
+      "sha256": "cf3313b55f42518c6c7bf2f08960188aec2a0aa2ddf9edb6796d5b076ebf89a3",
+      "sourceSha256": "0d57d2bae924f0c0ad587165013030f167429b1f116b0b3332b56ff6cc043549",
+      "trimSeconds": 0.0
+    },
+    "b77b17ab404d55ea": {
+      "file": "b77b17ab404d55ea.wav",
+      "root": 76,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Flute/stac/LDFlute_stac_E4_v2_rr2.wav",
+      "sha256": "40f28aa07ae5f7827492e778a9275bfaa320e273bab6b2cb1733514fb1f0cd01",
+      "sourceSha256": "9d60b93762fbff2c3d06ffefd84f8d5440cc3329067038c7a89bed6459e404d6",
+      "trimSeconds": 0.0
+    },
+    "66536918be9cf9f3": {
+      "file": "66536918be9cf9f3.wav",
+      "root": 81,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Flute/stac/LDFlute_stac_A4_v2_rr1.wav",
+      "sha256": "d861281a4540f79e1c15b654b6c5ed07938e9d021c768a6491711091dafedcdd",
+      "sourceSha256": "92b4993b763f185209a6b2aad79cc163465ed9f94dcec360a2e3b24cc0b57ed8",
+      "trimSeconds": 0.0
+    },
+    "fada3e8c78ddc5ea": {
+      "file": "fada3e8c78ddc5ea.wav",
+      "root": 81,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Flute/stac/LDFlute_stac_A4_v2_rr2.wav",
+      "sha256": "c2f565572b628deae6ac79f9c2a87737ad396c91f735084d68a7aa9fb654318b",
+      "sourceSha256": "1a5a2abab7f7171ae05c2b256f78c1556084b3acad36f23577b740cfb8b3f035",
+      "trimSeconds": 0.0
+    },
+    "8d93acd3bbcd2c0e": {
+      "file": "8d93acd3bbcd2c0e.wav",
+      "root": 84,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Flute/stac/LDFlute_stac_C5_v2_rr1.wav",
+      "sha256": "55f2398fd5ab7be0f2bad67d67e1026f1c3fbdc23faffbebcd0156c141c81494",
+      "sourceSha256": "11eefb155e4d6dced1059363a00915c3b606ab05e41c98bd83e19e57cd1ca9e7",
+      "trimSeconds": 0.0
+    },
+    "047ee8fda22e8d71": {
+      "file": "047ee8fda22e8d71.wav",
+      "root": 84,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Flute/stac/LDFlute_stac_C5_v2_rr2.wav",
+      "sha256": "e9006360f20a6763481a462ea9d63e288b25e669c9bcf4cbfe5bbc6d71793b4e",
+      "sourceSha256": "824e91dd5ddcbe28bf577fe4286ceb2c98e455710810b19482be3e5c5dc9cb20",
+      "trimSeconds": 0.0
+    },
+    "4dca5e2a456e24b6": {
+      "file": "4dca5e2a456e24b6.wav",
+      "root": 88,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Flute/stac/LDFlute_stac_E5_v2_rr1.wav",
+      "sha256": "b25d03f699b75689c2e7fbb25b6ef44aee9d0af69773946d482dde95b942315d",
+      "sourceSha256": "af5eac8faf4416fef53574f537d612f29778810d9faa5dcc1f2b5db38cd91e52",
+      "trimSeconds": 0.0
+    },
+    "de5dbf300dbdcce4": {
+      "file": "de5dbf300dbdcce4.wav",
+      "root": 88,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Flute/stac/LDFlute_stac_E5_v2_rr2.wav",
+      "sha256": "eded109fb0d06d3ed05fcf93f94764f04b0bb3592094b58d1f8a4ad52b20b6c0",
+      "sourceSha256": "a5a50b87bda3fc15781a8d20a66f8d0dedbad082df4e88673e93b2887c1194d5",
+      "trimSeconds": 0.0
+    },
+    "bb013ce4e93d7e32": {
+      "file": "bb013ce4e93d7e32.wav",
+      "root": 93,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Flute/stac/LDFlute_stac_A5_v2_rr1.wav",
+      "sha256": "9a5912f9c39941390ffb4490a92823ccde71ebea1bfbc0b3f4aa6ff6a97b2ce6",
+      "sourceSha256": "c57ba9b63ed62797002c26a7dc25d6f291fba6c1d5e7d0642fedd8167f50a1ff",
+      "trimSeconds": 0.0
+    },
+    "f8c050db04537847": {
+      "file": "f8c050db04537847.wav",
+      "root": 93,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Flute/stac/LDFlute_stac_A5_v2_rr2.wav",
+      "sha256": "4c100611b74e01c193df58a295f3bcd9340245899faf348c309ef8c5f06a8092",
+      "sourceSha256": "cea7742faa82b6a8ff45dabf2be5d2ddca96fe5026e914e8e793aeee9d795286",
+      "trimSeconds": 0.0
+    },
+    "249d4b3f80720351": {
+      "file": "249d4b3f80720351.wav",
+      "root": 96,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Flute/stac/LDFlute_stac_C6_v2_rr1.wav",
+      "sha256": "933a6a559e5ef6e2d4550464bb8a3c2b10b830a9f905b8eeebcb173707e18d97",
+      "sourceSha256": "ef37125091975656951d20ff99b671671e4a1d5647b0617bd7a24621ece90681",
+      "trimSeconds": 0.0
+    },
+    "b25b32bef576f8db": {
+      "file": "b25b32bef576f8db.wav",
+      "root": 96,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Flute/stac/LDFlute_stac_C6_v2_rr2.wav",
+      "sha256": "bd43f35109b302635a720488305f64de3436e7af81ea129ee24fc8ceeb1ba4ce",
+      "sourceSha256": "8cfb906d5c80f79ce8d1ab8bc60e519596d6d7c937231b3351c8925747110145",
+      "trimSeconds": 0.0
+    },
+    "fe0049c8fe58d098": {
+      "file": "fe0049c8fe58d098.wav",
+      "root": 70,
+      "style": "sustain",
+      "loop": [
+        0.9,
+        2.7999773
+      ],
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Oboe/Sus/Oboe_Sus_A#3_v1_Main.wav",
+      "sha256": "c1ab7533da52ec9b389f131a8279d126cb8b57a59464b17a918958249b71f3fa",
+      "sourceSha256": "07a36bd18290315aee1a98221c4d40935f1d926c85ba6f29017e59f7b450444a",
+      "trimSeconds": 0.0
+    },
+    "1733ee9ae5703bd4": {
+      "file": "1733ee9ae5703bd4.wav",
+      "root": 74,
+      "style": "sustain",
+      "loop": [
+        0.9,
+        2.7999773
+      ],
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Oboe/Sus/Oboe_Sus_D4_v1_Main.wav",
+      "sha256": "ab98c387b94ae6603b48f12a50998c9d74fc7b5f1e64fd1fb4046ea4bb931d7c",
+      "sourceSha256": "cbc9cdf1b6ca5765ec67918cd4a19669f792f9c6f755837ab807d3b8e0f3dfa9",
+      "trimSeconds": 0.0
+    },
+    "9327bc6720e24937": {
+      "file": "9327bc6720e24937.wav",
+      "root": 77,
+      "style": "sustain",
+      "loop": [
+        0.9,
+        2.7999773
+      ],
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Oboe/Sus/Oboe_Sus_F4_v1_Main.wav",
+      "sha256": "6949971e02715bf2c6150de7bc038fcc6b32b9e5aa234670f5d709a79af08fff",
+      "sourceSha256": "e4d1bf4166f77f42ad1f113f23c758db109e860c4764d5dd19705c70917a7c43",
+      "trimSeconds": 0.0
+    },
+    "cd783997a9e060be": {
+      "file": "cd783997a9e060be.wav",
+      "root": 82,
+      "style": "sustain",
+      "loop": [
+        0.9,
+        2.7999773
+      ],
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Oboe/Sus/Oboe_Sus_A#4_v1_Main.wav",
+      "sha256": "899a02cf6f6b91514fb0b7716c7687468478edd411eff0e26c732cbd1ff51722",
+      "sourceSha256": "b22a4feac3fb400fa5cd8454f9c45b3ca008b7ac22bdbbe18616161c3235a928",
+      "trimSeconds": 0.0
+    },
+    "53cb8486e1fa0d72": {
+      "file": "53cb8486e1fa0d72.wav",
+      "root": 86,
+      "style": "sustain",
+      "loop": [
+        0.9,
+        2.7999773
+      ],
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Oboe/Sus/Oboe_Sus_D5_v1_Main.wav",
+      "sha256": "9a17fb393c78c2719509b2bbd128918750a752d763e74300dfbdf2f679f438b7",
+      "sourceSha256": "e276fa641f2074b97da41289e1cc99caf6facfec83225fd8b086295b9f14f3a0",
+      "trimSeconds": 0.0
+    },
+    "a7cff26e5ccc0b02": {
+      "file": "a7cff26e5ccc0b02.wav",
+      "root": 89,
+      "style": "sustain",
+      "loop": [
+        0.9,
+        2.7999773
+      ],
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Oboe/Sus/Oboe_Sus_F5_v1_Main.wav",
+      "sha256": "87817a402406a8bc4b0fd3530d4673277dc6cf9f74ad5b48afb0f83cba719e45",
+      "sourceSha256": "4b9f2e24f15aafa331c43040967bc8238988a201dae23006819c190dea397a16",
+      "trimSeconds": 0.0
+    },
+    "11d821ff0a9b8bb3": {
+      "file": "11d821ff0a9b8bb3.wav",
+      "root": 70,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Oboe/Stacc/Oboe_Stacc_A#3_v2_rr1_Main.wav",
+      "sha256": "17cfe71608d9b2433691f7df00e3be2c2b370de7a94443b2be70f5f6ce3face6",
+      "sourceSha256": "8e1db2f16d8384263df8b7714b1e7a47997608d924151defdad44bcbb612e6a7",
+      "trimSeconds": 0.0
+    },
+    "99d99e473a2e6945": {
+      "file": "99d99e473a2e6945.wav",
+      "root": 70,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Oboe/Stacc/Oboe_Stacc_A#3_v2_rr2_Main.wav",
+      "sha256": "60c15edd656b1590fde27f5ae0a4d385bf7683fe58251cc4a758e14be0665074",
+      "sourceSha256": "121a9bdcb77b2f8723887e07b8f8009fd199b7cdac570dbf86f44ed30a8bb28a",
+      "trimSeconds": 0.0
+    },
+    "e04e5c12da9c72c0": {
+      "file": "e04e5c12da9c72c0.wav",
+      "root": 74,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Oboe/Stacc/Oboe_Stacc_D4_v2_rr1_Main.wav",
+      "sha256": "7d6a444ab66186f0520ccdff9f01937b18438366a0db029ca510dff0837d7008",
+      "sourceSha256": "5f6cd3cfa2f75bb6d55a6263340131d845c5a9903bc0392d36799c9946fb7515",
+      "trimSeconds": 0.0
+    },
+    "362b6f7726231904": {
+      "file": "362b6f7726231904.wav",
+      "root": 74,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Oboe/Stacc/Oboe_Stacc_D4_v2_rr2_Main.wav",
+      "sha256": "838bdbb6ebf0a35306c98c1cfcaa8c536cfe5068d3eceac25076d8896c1eb45b",
+      "sourceSha256": "e8d3e2dae6cc30c8a524b1d4128d7629273fd1004fdf7fc67f2c08470970040e",
+      "trimSeconds": 0.0
+    },
+    "ae439d54299605e9": {
+      "file": "ae439d54299605e9.wav",
+      "root": 77,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Oboe/Stacc/Oboe_Stacc_F4_v2_rr1_Main.wav",
+      "sha256": "e45a40f451542879459f67a0d55c0aad873d26bb41d8d23e3fbe8d26a5e5d640",
+      "sourceSha256": "b35d22185f912112e5413a80e92861a992b17e0a9e781bdafc49dc539b32b00f",
+      "trimSeconds": 0.0
+    },
+    "6c983fb412c208c9": {
+      "file": "6c983fb412c208c9.wav",
+      "root": 77,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Oboe/Stacc/Oboe_Stacc_F4_v2_rr2_Main.wav",
+      "sha256": "563f06dc2987de8376deaa0b0aabfe0b70da77a713401610cc8156b82cf36ee5",
+      "sourceSha256": "cc305ef5fd7d6735bd7ba985b0aaa6a1cfea18b95198caa15b9c969ba5c5c877",
+      "trimSeconds": 0.0
+    },
+    "7e0fbc8d849c170a": {
+      "file": "7e0fbc8d849c170a.wav",
+      "root": 82,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Oboe/Stacc/Oboe_Stacc_A#4_v2_rr1_Main.wav",
+      "sha256": "24bd543986c62c7838bc41af96d4c2ad340291d3b3a6ce68cc4e7ffa9bf4f8a6",
+      "sourceSha256": "b0ddcbba174ded39c057c2aae5077d3a24c7cd5573cba24d0896ab5db8c08019",
+      "trimSeconds": 0.0
+    },
+    "7f64edf41ef15601": {
+      "file": "7f64edf41ef15601.wav",
+      "root": 82,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Oboe/Stacc/Oboe_Stacc_A#4_v2_rr2_Main.wav",
+      "sha256": "0953041166376764636b128d6bd7ec837a1e7b48b6d478ee491d1275b49515a3",
+      "sourceSha256": "2a70bc7db82d81167242a2c305302d08b6593c85114dc6fc13bf8b6055748557",
+      "trimSeconds": 0.0
+    },
+    "4c7211d67a723928": {
+      "file": "4c7211d67a723928.wav",
+      "root": 86,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Oboe/Stacc/Oboe_Stacc_D5_v1_rr1_Main.wav",
+      "sha256": "4edd6a65b2e26ea9b3a315575fc786647cc697a66a687344a3dfd3bcc53cbeec",
+      "sourceSha256": "da9e938e7480df04d4cd87acc35e62917fa5d3e264048dac0160f473820bb3b8",
+      "trimSeconds": 0.0
+    },
+    "19cb987a004827bb": {
+      "file": "19cb987a004827bb.wav",
+      "root": 86,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Oboe/Stacc/Oboe_Stacc_D5_v1_rr2_Main.wav",
+      "sha256": "f512afd8dccc5da13e6e041de1c2bfc5b2056fe22fdea0feda57f6808e812250",
+      "sourceSha256": "b12772b43a3a3a1a0fe224bc5a5a984f47421437af89fc42b76e5d1e2e536a0e",
+      "trimSeconds": 0.0
+    },
+    "acbda84a75e5882a": {
+      "file": "acbda84a75e5882a.wav",
+      "root": 89,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Oboe/Stacc/Oboe_Stacc_F5_v2_rr1_Main.wav",
+      "sha256": "9d47d5f416b85b8b1094a617f416d90bf7ed45df90a850598a66c06c205888c9",
+      "sourceSha256": "17689d2dcedbd3b2070b96444956de479cc9daade87d4b4c352d22b8cf5e2813",
+      "trimSeconds": 0.0
+    },
+    "906fde98bc6ecf2d": {
+      "file": "906fde98bc6ecf2d.wav",
+      "root": 89,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Oboe/Stacc/Oboe_Stacc_F5_v2_rr2_Main.wav",
+      "sha256": "9d7f774ee2d18c4a2550890c0721fbd676be862a983b5126887b2503da2ddc2c",
+      "sourceSha256": "399f8e27fed6b8a37825d01c8b6789b8e455e40dd9a91eefb93508a4c8262561",
+      "trimSeconds": 0.0
+    },
+    "2eaef43ea67f016a": {
+      "file": "2eaef43ea67f016a.wav",
+      "root": 58,
+      "style": "sustain",
+      "loop": [
+        0.9,
+        2.7999773
+      ],
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Clarinet/susLong/DCClar_susLong_A#2_v2_rr1_sum.wav",
+      "sha256": "db937f8a0b28f6310697e810e54135a9943cfc71c999ce9593ac0b7dd56a6c9a",
+      "sourceSha256": "82be872b7915c833e06910846e3398b55591f69bfe6474c39dd4051742db2700",
+      "trimSeconds": 0.0
+    },
+    "fc757029ffed35f6": {
+      "file": "fc757029ffed35f6.wav",
+      "root": 62,
+      "style": "sustain",
+      "loop": [
+        0.9,
+        2.7999773
+      ],
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Clarinet/susLong/DCClar_susLong_D3_v2_rr1_sum.wav",
+      "sha256": "ff666b00725af1f4b42a200d62d2de564eacddf4d6eba93977f577c4bc98aff1",
+      "sourceSha256": "30e686ffc58caa48bbfae309a06f1c27c75b192fb653729ffdf8586cbd9b8405",
+      "trimSeconds": 0.0
+    },
+    "b6cf90d597ecb98f": {
+      "file": "b6cf90d597ecb98f.wav",
+      "root": 65,
+      "style": "sustain",
+      "loop": [
+        0.9,
+        2.7999773
+      ],
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Clarinet/susLong/DCClar_susLong_F3_v2_rr1_sum.wav",
+      "sha256": "5d2af582c069290280cd37a2064cbe872db24a59cc72a51ddf98baeaf54b9d88",
+      "sourceSha256": "3c9a237651cd049cacdf4052ef85ff406da1d9e5d4f59439c20f45a7578ff431",
+      "trimSeconds": 0.0
+    },
+    "882aff58380e88e2": {
+      "file": "882aff58380e88e2.wav",
+      "root": 70,
+      "style": "sustain",
+      "loop": [
+        0.9,
+        2.7999773
+      ],
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Clarinet/susLong/DCClar_susLong_A#3_v2_rr1_sum.wav",
+      "sha256": "9f92703c0a01839b7ce1078877953c0968f324fea395ee425660800b68f3a8a6",
+      "sourceSha256": "779e2cad84f6f5103272f17cb4637a94d8e9c533a5811233595960cad61b391f",
+      "trimSeconds": 0.0
+    },
+    "24f9866141839a7e": {
+      "file": "24f9866141839a7e.wav",
+      "root": 74,
+      "style": "sustain",
+      "loop": [
+        0.9,
+        2.7999773
+      ],
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Clarinet/susLong/DCClar_susLong_D4_v2_rr1_sum.wav",
+      "sha256": "8fcc2baaaa0a9cc40cf7c1b40712a348b4616d6be71f977eefc20ad7cfd9f7fe",
+      "sourceSha256": "4bdc53f3ef917cc9146e10cec5eb33744524e8b510c4a39c080dc5c774b3c956",
+      "trimSeconds": 0.006
+    },
+    "75ca3ca16e6a5a94": {
+      "file": "75ca3ca16e6a5a94.wav",
+      "root": 77,
+      "style": "sustain",
+      "loop": [
+        0.9,
+        2.7999773
+      ],
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Clarinet/susLong/DCClar_susLong_F4_v2_rr1_sum.wav",
+      "sha256": "8e373419a1ee639edb7b2d006f0badfbaf537d98fa7cd0611093c2144545b950",
+      "sourceSha256": "9988142d8fd2856af4217e3983316a42ef1d91b6381afd9fa138072d91122c2e",
+      "trimSeconds": 0.0
+    },
+    "e7cd4555cf636155": {
+      "file": "e7cd4555cf636155.wav",
+      "root": 82,
+      "style": "sustain",
+      "loop": [
+        0.9,
+        2.7999773
+      ],
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Clarinet/susLong/DCClar_susLong_A#4_v2_rr1_sum.wav",
+      "sha256": "6460b15873529722794f41575f4e6789e9b20cc4667963c32d4271e2a099fe03",
+      "sourceSha256": "569e902693e7d04ecd20507f0a3dd0be92a7a3cdf14ab685d89aefacff2a34cb",
+      "trimSeconds": 0.0
+    },
+    "28c7091a3e4bad45": {
+      "file": "28c7091a3e4bad45.wav",
+      "root": 86,
+      "style": "sustain",
+      "loop": [
+        0.9,
+        2.7999773
+      ],
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Clarinet/susLong/DCClar_susLong_D5_v2_rr1_sum.wav",
+      "sha256": "90a958f6ce76c2f6a4d1c0c08a2f28b4b1e2558df68cd1bc36359c37b20e1a6c",
+      "sourceSha256": "4cedd1d7bd779fe357529e34ff398bc0e80c5088fc3908944962d65fcdc94823",
+      "trimSeconds": 0.0235
+    },
+    "915e8d85be76e294": {
+      "file": "915e8d85be76e294.wav",
+      "root": 90,
+      "style": "sustain",
+      "loop": [
+        0.9,
+        2.7999773
+      ],
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Clarinet/susLong/DCClar_susLong_F#5_v2_rr1_sum.wav",
+      "sha256": "1dfeaae24ca802eaadbdc74e9da480d225d1af5529d401f0488ed55af7b916b1",
+      "sourceSha256": "2f024789f1b2ecc25f0e07dcff06084e4c2def83ff74e693c098c28fbec319fc",
+      "trimSeconds": 0.0008
+    },
+    "dbb9078ad12bcc4d": {
+      "file": "dbb9078ad12bcc4d.wav",
+      "root": 58,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Clarinet/stac/DCClar_stac_A#2_v2_rr1_sum.wav",
+      "sha256": "078935ae733a41dc51d3df4880ab6f7368fedbb4e7bbb46ea0d410445a69677d",
+      "sourceSha256": "db1ed41aed911f7148a08c8c74b2bcac056c68f0bb4a32d589a928585bc9d6b0",
+      "trimSeconds": 0.0
+    },
+    "96077c6413fe6661": {
+      "file": "96077c6413fe6661.wav",
+      "root": 58,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Clarinet/stac/DCClar_stac_A#2_v2_rr2_sum.wav",
+      "sha256": "24cab26cdc64c6d7dd8404084c25753273818ac02954e0022cfdafd880a2d9e9",
+      "sourceSha256": "003155b931aaebfec089b9823c8bc903147f3b6d8d9a98878af8e421bef0230d",
+      "trimSeconds": 0.0
+    },
+    "ca429a81cc8df847": {
+      "file": "ca429a81cc8df847.wav",
+      "root": 62,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Clarinet/stac/DCClar_stac_D3_v2_rr1_sum.wav",
+      "sha256": "13d7a9eac3acf2af8d22ee1715927055b18d160e8027a5ee28cacc4a7a99910a",
+      "sourceSha256": "ffd6122784c9acb0e49890955be3130d9634c25b99fed501d03eed4e6d882d98",
+      "trimSeconds": 0.0
+    },
+    "c24d857c43ffa2bc": {
+      "file": "c24d857c43ffa2bc.wav",
+      "root": 62,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Clarinet/stac/DCClar_stac_D3_v2_rr2_sum.wav",
+      "sha256": "33cdfd3b8952c6130189cfe2d4916740830bbfd775e6fb921b8ff1777f056730",
+      "sourceSha256": "3764f6639bdf0f54dc7abe1216764ecd3a3605595f01d0c56084c439aaa45dae",
+      "trimSeconds": 0.0
+    },
+    "246db600648edf3a": {
+      "file": "246db600648edf3a.wav",
+      "root": 65,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Clarinet/stac/DCClar_stac_F3_v2_rr1_sum.wav",
+      "sha256": "d80842c1f7a2201cf1d8bc6e7ab1fa13c100b63ec8bf20fffce13b021f66f1aa",
+      "sourceSha256": "07bed093b00a621f95f3237fa9e6d66b7b644b20efae0824ad54e419c127aadf",
+      "trimSeconds": 0.0
+    },
+    "507b8cc756cda95d": {
+      "file": "507b8cc756cda95d.wav",
+      "root": 65,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Clarinet/stac/DCClar_stac_F3_v2_rr2_sum.wav",
+      "sha256": "46b4d012006e56c001f59b6a01c6cc96808be354ea66441728825b9240119f08",
+      "sourceSha256": "e3e64224a05dc9bba490c84635cf5cd0f319c762ab2590e25095c25ae45a3e9e",
+      "trimSeconds": 0.0
+    },
+    "488c8cfe335bc6a3": {
+      "file": "488c8cfe335bc6a3.wav",
+      "root": 70,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Clarinet/stac/DCClar_stac_A#3_v2_rr1_sum.wav",
+      "sha256": "9b8fedf571b8a8f0d8ea238350aae974fb757445df03b96a40aa457ba9363dbd",
+      "sourceSha256": "1461ca3338c041c893957498a11480d7b9caa6112e9c991bc4667a22ff8a61df",
+      "trimSeconds": 0.0
+    },
+    "2cb4d6bc04130e8a": {
+      "file": "2cb4d6bc04130e8a.wav",
+      "root": 70,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Clarinet/stac/DCClar_stac_A#3_v2_rr2_sum.wav",
+      "sha256": "e8cb3166ad64221022e9894b6e6dd97120a1e6d4d2e043268c48d639ee58b5b6",
+      "sourceSha256": "558f2d5487dd02de5f8b5fe7d7c4bfa9ec36d7705a344bb0bbf2a5076b54160d",
+      "trimSeconds": 0.0
+    },
+    "f3365dbdda47f765": {
+      "file": "f3365dbdda47f765.wav",
+      "root": 74,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Clarinet/stac/DCClar_stac_D4_v2_rr1_sum.wav",
+      "sha256": "ff7174054803709f6f601b15073348f5dadd68dfda0ddcecc0a03426faaa6253",
+      "sourceSha256": "d691b4b3c557a1fe2c3ed674f0264457e801b653ef007ac26cbafbd2b36cbd99",
+      "trimSeconds": 0.0
+    },
+    "cad0a1b7730d6c6b": {
+      "file": "cad0a1b7730d6c6b.wav",
+      "root": 74,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Clarinet/stac/DCClar_stac_D4_v2_rr2_sum.wav",
+      "sha256": "420d63dccd6c2ca69854f9cc5ec0883d5a2ff0d337150f10b3a0ae5a9f681648",
+      "sourceSha256": "fad7878627c2abf5e0586df61434e1492968d09f91c655ae697fcc0c17641b7e",
+      "trimSeconds": 0.0
+    },
+    "36043c1074dd917d": {
+      "file": "36043c1074dd917d.wav",
+      "root": 77,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Clarinet/stac/DCClar_stac_F4_v2_rr1_sum.wav",
+      "sha256": "bb5f902453e571d53b341947d4e32200c281d451ca1a6625c64f20511c4a120d",
+      "sourceSha256": "317a52552509405422a4b76d8671a9c2287a2b36f96382e00213f3e2d6903318",
+      "trimSeconds": 0.0
+    },
+    "dc2c603958552592": {
+      "file": "dc2c603958552592.wav",
+      "root": 77,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Clarinet/stac/DCClar_stac_F4_v2_rr2_sum.wav",
+      "sha256": "28756f90ebf47ad8d350005487fbd66baa8ae6951d81a7b6466dad361957f91a",
+      "sourceSha256": "18b12ceade7643c51ee2efec569216ede2af9f1dd4b3faf54257e7f95476a693",
+      "trimSeconds": 0.0
+    },
+    "608f40b084cee43a": {
+      "file": "608f40b084cee43a.wav",
+      "root": 82,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Clarinet/stac/DCClar_stac_A#4_v2_rr1_sum.wav",
+      "sha256": "3e7101fcede2172c34ba6e82421894ce180aea5f6dfe9655298f9c6e98153352",
+      "sourceSha256": "b498829247cbd00089d92a5636ab673b2f0a5f977c4754f71360d58f24c9f07a",
+      "trimSeconds": 0.0
+    },
+    "b1b4c0e085923714": {
+      "file": "b1b4c0e085923714.wav",
+      "root": 82,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Clarinet/stac/DCClar_stac_A#4_v2_rr2_sum.wav",
+      "sha256": "ec0b35f06f5901e0ac236e5be76c0d78c2b3a6dcbd3e67db1c92162861baf150",
+      "sourceSha256": "60a47b700781088f934a598e582bb2a8ddc4ab5201bbb88618e793d39cae6137",
+      "trimSeconds": 0.0
+    },
+    "dc016dde8f9de50c": {
+      "file": "dc016dde8f9de50c.wav",
+      "root": 86,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Clarinet/stac/DCClar_stac_D5_v2_rr1_sum.wav",
+      "sha256": "31744badc2be62c69513becbf5abb2d24bcffa76a438c3bcf3e5a9c4346c8833",
+      "sourceSha256": "69176eaeebf433de17bf86b55e7c4824c758503668d5b4e5df4ac0e8b19646fa",
+      "trimSeconds": 0.0
+    },
+    "a2515a2b979cdcf8": {
+      "file": "a2515a2b979cdcf8.wav",
+      "root": 86,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Clarinet/stac/DCClar_stac_D5_v2_rr2_sum.wav",
+      "sha256": "b85579a2e5f4d96448b1713cadc858cc551d104b31f5dc6ec2c3afcde4ec3691",
+      "sourceSha256": "4e4ea32b83cfabf7277fa6b5c9992c2b4db981a7fb971c3de8611f98bb3c6b64",
+      "trimSeconds": 0.0
+    },
+    "53cfb870959d64aa": {
+      "file": "53cfb870959d64aa.wav",
+      "root": 89,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Clarinet/stac/DCClar_stac_F5_v2_rr1_sum.wav",
+      "sha256": "1e49c560f9d11b5f5f06232d56cbda507bd60cb6fc75e66dbad30afb1eef27c0",
+      "sourceSha256": "fb4dd1633ee38dfdf5fa843191fe17721398a09abf7b5042f7dabdc8cf252eca",
+      "trimSeconds": 0.0
+    },
+    "22a0db12bf782d30": {
+      "file": "22a0db12bf782d30.wav",
+      "root": 89,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Clarinet/stac/DCClar_stac_F5_v2_rr2_sum.wav",
+      "sha256": "a90ceb46817aef764529f0200ed3daaa964674ffacf778ab18d160e14d1ed865",
+      "sourceSha256": "c8ed3700784728becc7834007b710356a3ee2003c68c2102e12b1a396696c57d",
+      "trimSeconds": 0.0
+    },
+    "7c69a2e6aad66a98": {
+      "file": "7c69a2e6aad66a98.wav",
+      "root": 50,
+      "style": "sustain",
+      "loop": [
+        0.9,
+        2.7999773
+      ],
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Clarinet/susLong/DCClar_susLong_D2_v2_rr1_sum.wav",
+      "sha256": "da882c39e965987b3ce20e0a96d19fc1ca812f2106d9c6ff66e2fa5b224875d2",
+      "sourceSha256": "b1a793ff45d8f068dd83b591924b1a29bbece98e6e8177b31fc003f2f426fe00",
+      "trimSeconds": 0.0
+    },
+    "e78bf3f39073ba1b": {
+      "file": "e78bf3f39073ba1b.wav",
+      "root": 53,
+      "style": "sustain",
+      "loop": [
+        0.9,
+        2.7999773
+      ],
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Clarinet/susLong/DCClar_susLong_F2_v2_rr1_sum.wav",
+      "sha256": "567b73bc3259a2a65ddaeccf8757a2574526a28d38efa8afdf8fa221a208313e",
+      "sourceSha256": "36348e1fd1a1e53485c7f48983cfd758ced036f6af1a832671bf5ef1f8b00448",
+      "trimSeconds": 0.0
+    },
+    "4adc83121298fad1": {
+      "file": "4adc83121298fad1.wav",
+      "root": 50,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Clarinet/stac/DCClar_stac_D2_v2_rr1_sum.wav",
+      "sha256": "874dee009cd1098adebde194d4b7f61b95c5f71dfd0f3011ca8e3659c29903d1",
+      "sourceSha256": "d9ab058176af0671a3913eb814a01a7dea05d9e128e8fe724ab47fbd2a9b7f60",
+      "trimSeconds": 0.0
+    },
+    "6f26bf3106e7d7b8": {
+      "file": "6f26bf3106e7d7b8.wav",
+      "root": 50,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Clarinet/stac/DCClar_stac_D2_v2_rr2_sum.wav",
+      "sha256": "94ec209dd4072fd4ef365292e4483ece3cb3708de154c13830815ca5938079af",
+      "sourceSha256": "7dc717ad90fe1d0421efa28b8e5ec3dd0ab4a550a6544ee47896dda33760f7fb",
+      "trimSeconds": 0.0
+    },
+    "86fcb9f76e1cb75a": {
+      "file": "86fcb9f76e1cb75a.wav",
+      "root": 53,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Clarinet/stac/DCClar_stac_F2_v2_rr1_sum.wav",
+      "sha256": "3df30923bac54593d3c6a90dc2fd79cd5770ce3452ba5cd3510c053696e2f858",
+      "sourceSha256": "091b60dc2b1847e8c3dd2662d8063d473c5731b57c704653b7edb2bb00aa22e8",
+      "trimSeconds": 0.0
+    },
+    "77409edb29ec0c5d": {
+      "file": "77409edb29ec0c5d.wav",
+      "root": 53,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Clarinet/stac/DCClar_stac_F2_v2_rr2_sum.wav",
+      "sha256": "47944f0265ec406a187e43c09c853267ab5e9f6ac69756ec9d8b639b0581cdd1",
+      "sourceSha256": "a417a1277eae1e56a3b2e9a9df76196f2a531073101bf47c0cd24b3e0d09bc37",
+      "trimSeconds": 0.0
+    },
+    "5de48b0adae58c0d": {
+      "file": "5de48b0adae58c0d.wav",
+      "root": 46,
+      "style": "sustain",
+      "loop": [
+        0.9,
+        2.7999773
+      ],
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Bassoon/sus/PSBassoon_A#1_v2_1.wav",
+      "sha256": "9605d6ec71ad47254c92220ff3945c0155c6bdd903f59620d3b407b1b4147352",
+      "sourceSha256": "c6f682ed7117316525b21bf33be5e4a9562eb2abbe1c421bc9305a2b967602f3",
+      "trimSeconds": 0.0
+    },
+    "4ddaf37fa8199e74": {
+      "file": "4ddaf37fa8199e74.wav",
+      "root": 48,
+      "style": "sustain",
+      "loop": [
+        0.9,
+        2.7999773
+      ],
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Bassoon/sus/PSBassoon_C2_v2_1.wav",
+      "sha256": "fc40d060733b517efcd56fe8d429ce6ae7f63a7b5b048fb854a713ecf4f365f7",
+      "sourceSha256": "836cda0976c44922375cf2cad0ac280c4638d8b943f44cadb1c3a75259bd22cf",
+      "trimSeconds": 0.0
+    },
+    "f55aa88ac32d8a60": {
+      "file": "f55aa88ac32d8a60.wav",
+      "root": 55,
+      "style": "sustain",
+      "loop": [
+        0.9,
+        2.7999773
+      ],
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Bassoon/sus/PSBassoon_G2_v2_1.wav",
+      "sha256": "cf5cf2da35c11e890a72f9402f916809225f6ce01dcbac688ab95ebc59cdd06b",
+      "sourceSha256": "74f59f6ad00584ed709b16c58769f099b64e4886c3af1bb74f2626719611f35c",
+      "trimSeconds": 0.0
+    },
+    "984715fc49994ec9": {
+      "file": "984715fc49994ec9.wav",
+      "root": 60,
+      "style": "sustain",
+      "loop": [
+        0.9,
+        2.7999773
+      ],
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Bassoon/sus/PSBassoon_C3_v2_1.wav",
+      "sha256": "736150ded85fd88d4096b71cb71f6f7e863b9a0a77a74079f13629c7fb9bbffa",
+      "sourceSha256": "c1162eee63c6334ee60c7add58ce0e2f8d87b427c7a7cb64930f3bd63494e121",
+      "trimSeconds": 0.0
+    },
+    "17273f8370451fd0": {
+      "file": "17273f8370451fd0.wav",
+      "root": 63,
+      "style": "sustain",
+      "loop": [
+        0.9,
+        2.7999773
+      ],
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Bassoon/sus/PSBassoon_D#3_v2_1.wav",
+      "sha256": "a78748ba3203f53fdebda8c90269e413ba21756150c849bb656fa4cc12821931",
+      "sourceSha256": "25b80a0a842290c24a15bde363528254bc611a556af4e517150769c253fb126b",
+      "trimSeconds": 0.0
+    },
+    "c84be5a9edf4cdfa": {
+      "file": "c84be5a9edf4cdfa.wav",
+      "root": 68,
+      "style": "sustain",
+      "loop": [
+        0.9,
+        2.7999773
+      ],
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Bassoon/sus/PSBassoon_G#3_v2_1.wav",
+      "sha256": "8f196d59162202bc85fde82f3c2540ec18d711a00872c66769d1b83a1b61caae",
+      "sourceSha256": "0fdc30b08b1836e444c0f6f6bc2bec485973c28d4bfeb110572038777558984a",
+      "trimSeconds": 0.0
+    },
+    "563e2a61da0719a0": {
+      "file": "563e2a61da0719a0.wav",
+      "root": 69,
+      "style": "sustain",
+      "loop": [
+        0.9,
+        2.7999773
+      ],
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Bassoon/sus/PSBassoon_A3_v2_1.wav",
+      "sha256": "5ac2a8cdefe39e406f1562a589bc610d424ca2cdba450e612292e39951f6898d",
+      "sourceSha256": "f3d5c76d885236a006ef184bae4ba9f3d94cadbcf40fb157964349a8db6eedc8",
+      "trimSeconds": 0.0
+    },
+    "2df4158691182151": {
+      "file": "2df4158691182151.wav",
+      "root": 72,
+      "style": "sustain",
+      "loop": [
+        0.9,
+        2.7999773
+      ],
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Bassoon/sus/PSBassoon_C4_v2_1.wav",
+      "sha256": "8efe3e1ef229e3d2af123d5dbdd528cbc0065c69b017d58730bcc021ed433ced",
+      "sourceSha256": "5609028197a4ab16724398b17618b08704bf27fd0ae6e9e3cdd3bcee88f8e438",
+      "trimSeconds": 0.0
+    },
+    "a525da599083625e": {
+      "file": "a525da599083625e.wav",
+      "root": 75,
+      "style": "sustain",
+      "loop": [
+        0.9,
+        2.7999773
+      ],
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Bassoon/sus/PSBassoon_D#4_v2_1.wav",
+      "sha256": "dd28885fc8bef6e66e1d068cb4b9b6711f518b7c6a2fc14a70600826e2e03e7e",
+      "sourceSha256": "7e4bd7de6c81a2060d6d108aaa3032c4509eca9352bd182ae6fc0052e0ed1f95",
+      "trimSeconds": 0.0
+    },
+    "348e8032519521f0": {
+      "file": "348e8032519521f0.wav",
+      "root": 45,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Bassoon/stac/PSBassoon_A1_v2_rr1.wav",
+      "sha256": "5a03e03a210a5ec83a8f8a47696e36a6ec0dae588cc403da2666c70e82e88dda",
+      "sourceSha256": "0995cbe3f99c6719179cc07786647e1a99bb45255fe7fa771209d4614459dffc",
+      "trimSeconds": 0.0
+    },
+    "b8962d601d208941": {
+      "file": "b8962d601d208941.wav",
+      "root": 45,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Bassoon/stac/PSBassoon_A1_v2_rr2.wav",
+      "sha256": "2ad8d9c607f17b404aa3fe79a224ee265fe81fed826a0975c6e22c55c90946ab",
+      "sourceSha256": "f54d577d5cac5ed16c9c7196ad76006b52726053e14c57ba104c154236b4cc93",
+      "trimSeconds": 0.0
+    },
+    "b30a7712798d6b2a": {
+      "file": "b30a7712798d6b2a.wav",
+      "root": 48,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Bassoon/stac/PSBassoon_C2_v2_rr1.wav",
+      "sha256": "d5ddd0d873d0adb9aa25d3a58f93b91db66a31bd5b4f7537edb73019ae1c2a9b",
+      "sourceSha256": "3c1104957f8f7f38ef861582ad642f1474e903dab96274ad16c51912fceda31f",
+      "trimSeconds": 0.0
+    },
+    "b058239257ff992d": {
+      "file": "b058239257ff992d.wav",
+      "root": 48,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Bassoon/stac/PSBassoon_C2_v2_rr2.wav",
+      "sha256": "16ea5e910c753dbaceceb6fb249183aa0fad5295444b4f79ade2e4d21a1fde38",
+      "sourceSha256": "7737678d9b3eaaaffb71f90942612fe12a6ce57a23f590f22fbccc32cd474dd0",
+      "trimSeconds": 0.0
+    },
+    "f6877dfbd58979ee": {
+      "file": "f6877dfbd58979ee.wav",
+      "root": 51,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Bassoon/stac/PSBassoon_D#2_v2_rr1.wav",
+      "sha256": "01e895285440954283822ed77eb93dd073b40f90ca3d0045a5048ea25863bffc",
+      "sourceSha256": "83881b66b1096e2346924e4b54c57e67aac85e99b2319a279bfa94eea4aa0a55",
+      "trimSeconds": 0.0
+    },
+    "37b466628569e0ad": {
+      "file": "37b466628569e0ad.wav",
+      "root": 51,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Bassoon/stac/PSBassoon_D#2_v2_rr2.wav",
+      "sha256": "d962f4810608a22b17ed4dce505d3fe34f4e6af4b2201962012c9e9c68bbd5b0",
+      "sourceSha256": "05bae26c55eb7a4d83630d3ac7f7a3bd113baa219e2be0f1ad2d89518e9e413d",
+      "trimSeconds": 0.0
+    },
+    "cce19d0eee5b9b96": {
+      "file": "cce19d0eee5b9b96.wav",
+      "root": 52,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Bassoon/stac/PSBassoon_E2_v2_rr1.wav",
+      "sha256": "9386d6cc67cc859eb1b34f5ecc1e2a76986ef694e454357967b4249f45ae9800",
+      "sourceSha256": "5ddb4c3f0f61b5efe182c776fa1d27305c41855a175d5309064f9c030b7ae5a1",
+      "trimSeconds": 0.0042
+    },
+    "72d0e5cbcf6c506d": {
+      "file": "72d0e5cbcf6c506d.wav",
+      "root": 52,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Bassoon/stac/PSBassoon_E2_v2_rr2.wav",
+      "sha256": "8f01ce0f2d02b2f32ea99038750ad94c8e8861dec2bd8816ba2a40d0dbf5627b",
+      "sourceSha256": "53016d7afd148411b236b592e1f626d246f03f4a6843eef6bd82cbc76b7aa70a",
+      "trimSeconds": 0.0
+    },
+    "eaaf97d30d54bf3f": {
+      "file": "eaaf97d30d54bf3f.wav",
+      "root": 55,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Bassoon/stac/PSBassoon_G2_v2_rr1.wav",
+      "sha256": "cab90f519a5bd0db00f14e92f160c0e155519a6abb9d855ab1ff1e92f56ab4c2",
+      "sourceSha256": "6a3d8c9da12bcc181093047ca0c0420caa8aac014da916b69447b88ada44021a",
+      "trimSeconds": 0.0
+    },
+    "79f9a0ebadccf34f": {
+      "file": "79f9a0ebadccf34f.wav",
+      "root": 55,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Bassoon/stac/PSBassoon_G2_v2_rr2.wav",
+      "sha256": "6c2a8343dd996b80366f9fa45c5be33368e6fceaeebeb93c4008f58cbcbf3aa9",
+      "sourceSha256": "a366c8532ce92b7d50ca395c8318bf408d02419cbfe85579ece832e03f7da5e6",
+      "trimSeconds": 0.0
+    },
+    "856585ae76ee84c5": {
+      "file": "856585ae76ee84c5.wav",
+      "root": 57,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Bassoon/stac/PSBassoon_A2_v2_rr1.wav",
+      "sha256": "6af39cc238ea93ce20a90eb38c8c54c894152e079d1c184717497256acd9075b",
+      "sourceSha256": "f2cf7a848c9f0f470689584e1e545685d49c190a7cc0e1092480865643906aae",
+      "trimSeconds": 0.0
+    },
+    "12223e30089626e7": {
+      "file": "12223e30089626e7.wav",
+      "root": 57,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Bassoon/stac/PSBassoon_A2_v2_rr2.wav",
+      "sha256": "2102d3d792dc939d3c9b95f25167d20437994225c47edcd2d06101fb252c15fb",
+      "sourceSha256": "d3de021a82cb79bc8034768ba06f3b2272d75be9021b2a8e07c9b969cedb9287",
+      "trimSeconds": 0.0017
+    },
+    "e23e397b0d5991fe": {
+      "file": "e23e397b0d5991fe.wav",
+      "root": 60,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Bassoon/stac/PSBassoon_C3_v2_rr1.wav",
+      "sha256": "e33c5a0357e188144d08a5d056eafa10e9cc3284640981e0a42cbf782a8ce995",
+      "sourceSha256": "e2c3473ab074c1c8e2330c96c379e3896d77cf30b6f4a3abced62d616ee6bb1c",
+      "trimSeconds": 0.0
+    },
+    "397a5b55eb5ba269": {
+      "file": "397a5b55eb5ba269.wav",
+      "root": 60,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Bassoon/stac/PSBassoon_C3_v2_rr2.wav",
+      "sha256": "25544cdc97be87b04aed34d3b0b22b17a3c7dcea713cc7bb69f38c2612228fa8",
+      "sourceSha256": "46ef7883b13a29d83fb3d8d98207895e298ed0973b50be62e5c19f23bbc5d1e7",
+      "trimSeconds": 0.0
+    },
+    "9e9a2e869017b77d": {
+      "file": "9e9a2e869017b77d.wav",
+      "root": 64,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Bassoon/stac/PSBassoon_E3_v2_rr1.wav",
+      "sha256": "a3cb529d21c92de3c70594ffe5a0bdfea9eb8a118709530b9231fe6c6e919008",
+      "sourceSha256": "e71165d38d17045428d1d4bbc5e0ef7a1ee483dd1a806cd4be48eb8dcf6aee15",
+      "trimSeconds": 0.0
+    },
+    "7bf738f4a2388748": {
+      "file": "7bf738f4a2388748.wav",
+      "root": 64,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Bassoon/stac/PSBassoon_E3_v2_rr2.wav",
+      "sha256": "731f2ed889101171bd1812de9f0434af4a48fb68ba4006c3d7a7f7d7e549ddf5",
+      "sourceSha256": "cbaabdcaf70c6aced9353f097d4575cb4351ce2a85d0363000db0d275d412ad4",
+      "trimSeconds": 0.0
+    },
+    "aa6d63782566e79c": {
+      "file": "aa6d63782566e79c.wav",
+      "root": 67,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Bassoon/stac/PSBassoon_G3_v2_rr1.wav",
+      "sha256": "2de2e42f1dab57a4446b261592853be110c637b8ee389e9a8dc279fdd65227ec",
+      "sourceSha256": "d2a891d880fa2d026c24dcf08c27a722622db8d5460164e395af130dceefd4c1",
+      "trimSeconds": 0.0
+    },
+    "e71a393901a910a3": {
+      "file": "e71a393901a910a3.wav",
+      "root": 67,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Bassoon/stac/PSBassoon_G3_v2_rr2.wav",
+      "sha256": "d28966a2d93f55ee87453014464a7b9db0e2c9443a8154d1d39963af3a749d6a",
+      "sourceSha256": "a0ffa0d7be64b8f7390eba543178c4f5272e732ec241fc77ab44ae4b5e8b0210",
+      "trimSeconds": 0.0
+    },
+    "8ca4a7ecc33e6de7": {
+      "file": "8ca4a7ecc33e6de7.wav",
+      "root": 72,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Bassoon/stac/PSBassoon_C4_v2_rr1.wav",
+      "sha256": "571124f342565349409e76f70eaa7c3b8499939cf187d73457675f1c75c11dc5",
+      "sourceSha256": "f433f2e1c06d11f0410dccc8f502ef3372150046022a0f96ef6e99d1e92efeee",
+      "trimSeconds": 0.0
+    },
+    "692f8d2e027e8244": {
+      "file": "692f8d2e027e8244.wav",
+      "root": 72,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Bassoon/stac/PSBassoon_C4_v2_rr2.wav",
+      "sha256": "419766b347931c9669d24a1c790f7af55162edac9d0208543cc4b14239607010",
+      "sourceSha256": "33f93e9c4df42510740af757855df02a25d9eafd129454059c760dd82c0bff11",
+      "trimSeconds": 0.0
+    },
+    "6aba2ca23ab1b051": {
+      "file": "6aba2ca23ab1b051.wav",
+      "root": 34,
+      "style": "sustain",
+      "loop": [
+        0.9,
+        2.7999773
+      ],
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Bassoon/sus/PSBassoon_A#0_v2_1.wav",
+      "sha256": "0fd0ba1a4cc1e202538db65f44b7011898c13f2b0b4b93979af2e41514b5b8d9",
+      "sourceSha256": "6d3a270be26862e40c1689111c0f91ef0ff9439ecb9805db344f1aba6ff7fff5",
+      "trimSeconds": 0.0
+    },
+    "27c08e2a729c8c42": {
+      "file": "27c08e2a729c8c42.wav",
+      "root": 37,
+      "style": "sustain",
+      "loop": [
+        0.9,
+        2.7999773
+      ],
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Bassoon/sus/PSBassoon_C#1_v2_1.wav",
+      "sha256": "1a7d65ff9c7f65266e731d7bf2ced10a43bc6af9d0a438fc1a4dccbd0d4075f8",
+      "sourceSha256": "b92996681196177fd90af2baf0b3fe1f58b52b085bf292da1fefef83dd0ec94f",
+      "trimSeconds": 0.0
+    },
+    "cb58bd51a93a48b5": {
+      "file": "cb58bd51a93a48b5.wav",
+      "root": 41,
+      "style": "sustain",
+      "loop": [
+        0.9,
+        2.7999773
+      ],
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Bassoon/sus/PSBassoon_F1_v2_1.wav",
+      "sha256": "34ba589096aa1c2ac2adab111fa4a8fac799fb532dedfd82a3178dec2047a5a1",
+      "sourceSha256": "e510329bca3889d1a6e826f4ca1644c8347567e1dcc751eee6f6a2143935d0bc",
+      "trimSeconds": 0.0
+    },
+    "6953e5ffdbc4e9a2": {
+      "file": "6953e5ffdbc4e9a2.wav",
+      "root": 45,
+      "style": "sustain",
+      "loop": [
+        0.9,
+        2.7999773
+      ],
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Bassoon/sus/PSBassoon_A1_v2_1.wav",
+      "sha256": "fb66eee1f8945a46cc0be5953e2b67f7d2bffb60497fd18c0339aca04fa452c2",
+      "sourceSha256": "b954f1115c3c937ed9f793b1727a3ede0498d246045e4410111d5b620494cb41",
+      "trimSeconds": 0.0
+    },
+    "207634a2b994413f": {
+      "file": "207634a2b994413f.wav",
+      "root": 34,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Bassoon/stac/PSBassoon_A#0_v2_rr1.wav",
+      "sha256": "543acbcec84a0cb29ec9c4d41b4adddf88687b5a8e440cd58778ce4c3f508f63",
+      "sourceSha256": "f7eb4eb7a1db0df411f6601f10ca191a4249fe0a71bc1678d82a5f71455610c8",
+      "trimSeconds": 0.0
+    },
+    "6004aa621bce0e62": {
+      "file": "6004aa621bce0e62.wav",
+      "root": 34,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Bassoon/stac/PSBassoon_A#0_v2_rr2.wav",
+      "sha256": "79bcac05939d4e35a16f16ed69670a17c91ac51b778c960de2111e892e78de2b",
+      "sourceSha256": "a364d27ad48dc2799fb21c0eb8b0dabdc89f319b2d53a5ff2aa40cd2578e1fa4",
+      "trimSeconds": 0.0
+    },
+    "98130018b2622459": {
+      "file": "98130018b2622459.wav",
+      "root": 38,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Bassoon/stac/PSBassoon_D1_v2_rr1.wav",
+      "sha256": "ce601059f54dcac22c8c1bb19540e95dba88326ffa880db73ba8d6ad070f041d",
+      "sourceSha256": "706bb57746b0a21d6aed70f277747e62f0fa044ca6e6d7695ef89e7a205cb83d",
+      "trimSeconds": 0.0
+    },
+    "ab3ef54e9b29183c": {
+      "file": "ab3ef54e9b29183c.wav",
+      "root": 38,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Bassoon/stac/PSBassoon_D1_v2_rr2.wav",
+      "sha256": "370127980103996d38da9fd4d116a508e24b89bcb37d52059a22da7c83b94fd0",
+      "sourceSha256": "00a39b848c4c373d8e706689dfe6a778731497a8e2fe18be34db0690ab2c3c1c",
+      "trimSeconds": 0.0
+    },
+    "50657a4fbfdef96d": {
+      "file": "50657a4fbfdef96d.wav",
+      "root": 41,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Bassoon/stac/PSBassoon_F1_v2_rr1.wav",
+      "sha256": "9a83f91f87dccdc097389d65e26f9b67000235022e2a4c304622520685d94701",
+      "sourceSha256": "be631f5eb2d0580cdc24d40ee401b17ba1dccf57f50293cc68a7049ba9d68a2a",
+      "trimSeconds": 0.0
+    },
+    "0fe035896bfb23ea": {
+      "file": "0fe035896bfb23ea.wav",
+      "root": 41,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Woodwinds/Bassoon/stac/PSBassoon_F1_v2_rr2.wav",
+      "sha256": "24df0e380963749f548a452c25605630f83e10e3357e3f50480bab3bf1aa0464",
+      "sourceSha256": "71fc83066512ff4e4ba2555bde8c06e33726da30be2776831e1bf2574b3e5056",
+      "trimSeconds": 0.0
+    },
+    "c51552fd9c881ed8": {
+      "file": "c51552fd9c881ed8.wav",
+      "root": 46,
+      "style": "sustain",
+      "loop": [
+        0.9,
+        2.7999773
+      ],
+      "repo": "VSCO-2-CE",
+      "path": "Brass/F Horn/sus/MOHorn_sus_A#1_v2_1.wav",
+      "sha256": "081c11dc859deb4fdde9d6f07b34ede0b55795102459d10263047ecb37265f84",
+      "sourceSha256": "1a65415731a0be8a1a51ce31f7989180fde674173821acceaceef0f3511d5f35",
+      "trimSeconds": 0.0
+    },
+    "569ff50fd721b6ce": {
+      "file": "569ff50fd721b6ce.wav",
+      "root": 50,
+      "style": "sustain",
+      "loop": [
+        0.9,
+        2.7999773
+      ],
+      "repo": "VSCO-2-CE",
+      "path": "Brass/F Horn/sus/MOHorn_sus_D2_v2_1.wav",
+      "sha256": "141b7e379ad36e1a29ec15c079a5d7f287ff2239385695a979af9750f87bf23d",
+      "sourceSha256": "9155ef0c33c06ebe55daeaaaca7dec4090578af6cf3d6a028fbfa7b7f2ec876e",
+      "trimSeconds": 0.0
+    },
+    "7bb9f106d8e667cb": {
+      "file": "7bb9f106d8e667cb.wav",
+      "root": 53,
+      "style": "sustain",
+      "loop": [
+        0.9,
+        2.7999773
+      ],
+      "repo": "VSCO-2-CE",
+      "path": "Brass/F Horn/sus/MOHorn_sus_F2_v2_1.wav",
+      "sha256": "c8e087b9d55eade4b8cb2317ff03ed55cab48fd50970aaf09ab44bc377ee8c58",
+      "sourceSha256": "2e487a49c834ff2d76aff1c9755875fc03013bf202b949a5c5fe354d0c2123c2",
+      "trimSeconds": 0.0
+    },
+    "505fd2ea3db3305a": {
+      "file": "505fd2ea3db3305a.wav",
+      "root": 57,
+      "style": "sustain",
+      "loop": [
+        0.9,
+        2.7999773
+      ],
+      "repo": "VSCO-2-CE",
+      "path": "Brass/F Horn/sus/MOHorn_sus_A2_v2_1.wav",
+      "sha256": "76fe84c16c350695f76bdcf53c0aea7b85c46442a70f4940988c825520e3be91",
+      "sourceSha256": "8fab29daee8570e8a272b373e7ad906bbe6b4845c1994897e45112e71233c708",
+      "trimSeconds": 0.0
+    },
+    "4eef620474ae871a": {
+      "file": "4eef620474ae871a.wav",
+      "root": 60,
+      "style": "sustain",
+      "loop": [
+        0.9,
+        2.7999773
+      ],
+      "repo": "VSCO-2-CE",
+      "path": "Brass/F Horn/sus/MOHorn_sus_C3_v2_1.wav",
+      "sha256": "f0b00e41c23f4f67cd68365e99d9c34fcc32b0e9dfbc96907e34314464ea4dba",
+      "sourceSha256": "c0c0b157dcde094c4417b7c165d645897cde9ea6d74247bbab0c0e75355e78c3",
+      "trimSeconds": 0.0
+    },
+    "3e4373ba6cdb4b89": {
+      "file": "3e4373ba6cdb4b89.wav",
+      "root": 74,
+      "style": "sustain",
+      "loop": [
+        0.9,
+        2.7999773
+      ],
+      "repo": "VSCO-2-CE",
+      "path": "Brass/F Horn/sus/MOHorn_sus_D4_v1_1.wav",
+      "sha256": "de361cdd7bd7d88cbc79fdc20828f7739e0cd21f0516870a8de76419d873e29a",
+      "sourceSha256": "2866520e737f3826ee9f53693f148109a9cc2d2e54235db0b92f78b2c100b8f7",
+      "trimSeconds": 0.0
+    },
+    "3af99b35b17f6df9": {
+      "file": "3af99b35b17f6df9.wav",
+      "root": 77,
+      "style": "sustain",
+      "loop": [
+        0.9,
+        2.7999773
+      ],
+      "repo": "VSCO-2-CE",
+      "path": "Brass/F Horn/sus/MOHorn_sus_F4_v1_1.wav",
+      "sha256": "fd37d7ad2773e6be0e9cce570f274e34beb116586e24cc3408c71950eaf065df",
+      "sourceSha256": "580b2e57aa42f5fd6e4ecb65dcb79f01dfe510e98ddc2bea0a77fca1cba8d424",
+      "trimSeconds": 0.0
+    },
+    "605b7b7c4ed88f62": {
+      "file": "605b7b7c4ed88f62.wav",
+      "root": 46,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Brass/F Horn/stac/MOHorn_stac_A#1_v2_rr1.wav",
+      "sha256": "2deae3ca27a8f140977088da931a078a842905d793c8cff3453c8f36680b97c2",
+      "sourceSha256": "21ff086ea3846becf0374f3e3a575707b8debbc4b9a94b7b2675fe53a87807fb",
+      "trimSeconds": 0.0
+    },
+    "f9096ba4208577f1": {
+      "file": "f9096ba4208577f1.wav",
+      "root": 46,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Brass/F Horn/stac/MOHorn_stac_A#1_v2_rr2.wav",
+      "sha256": "0cc1fbefbdd7d124bcce20da1ef22948928a04b88fe4430398b5c68b388d2fbc",
+      "sourceSha256": "94f1e43904b4334e3fbdcf3df8365395a0bdcd1cd0913d8c9e554516a281e71e",
+      "trimSeconds": 0.0
+    },
+    "cfa9fc84272cfe2f": {
+      "file": "cfa9fc84272cfe2f.wav",
+      "root": 50,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Brass/F Horn/stac/MOHorn_stac_D2_v2_rr1.wav",
+      "sha256": "63dcabe2b83c0319877be4a2a2b265df264b04312b6ea846c6aa9281920e41c0",
+      "sourceSha256": "aa488c9a79b1ddca82d82e216b912be61a33c649a1d58841882556883d1b0654",
+      "trimSeconds": 0.0
+    },
+    "39ee93556c243b3b": {
+      "file": "39ee93556c243b3b.wav",
+      "root": 50,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Brass/F Horn/stac/MOHorn_stac_D2_v2_rr2.wav",
+      "sha256": "ed233fe75dfacb8770f6d3aab14f5a38808aa9f6d64eb5785cd5591d0ecb87fe",
+      "sourceSha256": "5bcc9100969986ec20b7252096c2ee5d8769cb8dc86ac8e236d3fe997e1adc1c",
+      "trimSeconds": 0.0
+    },
+    "b7e87eb5cb535c87": {
+      "file": "b7e87eb5cb535c87.wav",
+      "root": 53,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Brass/F Horn/stac/MOHorn_stac_F2_v2_rr1.wav",
+      "sha256": "2f08e47a2b9a4c5ffea5392f4da3c1f4601594f82701ab581cb32ff0d7591605",
+      "sourceSha256": "13e10aa9d65c9dfac0926db82b87b83eae460c8806b8c909f537f684db05c0af",
+      "trimSeconds": 0.0
+    },
+    "c0b3b4538fbc7001": {
+      "file": "c0b3b4538fbc7001.wav",
+      "root": 53,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Brass/F Horn/stac/MOHorn_stac_F2_v2_rr2.wav",
+      "sha256": "e0010dd37394465f2c5344229b4594c219f53e1d67c59afcf48d353c31df9aca",
+      "sourceSha256": "a8d056d5e0333417b97e89814c899b02e2d1b83abaa0358c6d616fc872251941",
+      "trimSeconds": 0.0
+    },
+    "7679d95c8d367348": {
+      "file": "7679d95c8d367348.wav",
+      "root": 57,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Brass/F Horn/stac/MOHorn_stac_A2_v2_rr1.wav",
+      "sha256": "2a2ee4fe0842cc78bc623601096a54d09df85e970a9995d7423d81da9f5314f1",
+      "sourceSha256": "1f7159887489a01fe61a53c47ed09c3f460d59e25f391a1bd851e725c039228c",
+      "trimSeconds": 0.0
+    },
+    "ed2f9ead165dd147": {
+      "file": "ed2f9ead165dd147.wav",
+      "root": 57,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Brass/F Horn/stac/MOHorn_stac_A2_v2_rr2.wav",
+      "sha256": "b3e22c6b74dab2876c9c94377018bf70d3b1a900615822fa3cd69c8017bdb534",
+      "sourceSha256": "bdfcde94e020d394761d7055eb7dc6f03683184d0ec8750cfa0b24a28b07b04b",
+      "trimSeconds": 0.0
+    },
+    "d6a11ba9f610c903": {
+      "file": "d6a11ba9f610c903.wav",
+      "root": 60,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Brass/F Horn/stac/MOHorn_stac_C3_v2_rr1.wav",
+      "sha256": "959680e7445f509a88558dbc0d50c48b2f7e32b3f97e8cc1d630d0e8dcf42570",
+      "sourceSha256": "fdaf3d5ad1e732a6e8e466ee232b101fe83b4cc79e79941315fba3037666eedf",
+      "trimSeconds": 0.0
+    },
+    "e0d41fa1cc80bd83": {
+      "file": "e0d41fa1cc80bd83.wav",
+      "root": 60,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Brass/F Horn/stac/MOHorn_stac_C3_v2_rr2.wav",
+      "sha256": "878c100101379e6d9e5af74214ef422c20dcdd3678a847abda883fb98049a5d6",
+      "sourceSha256": "5c030d793aea9e7f07c31b8ed6f9b65ad183bfca87f424bf8c1545843aa734b1",
+      "trimSeconds": 0.0
+    },
+    "b8792bf118043ac9": {
+      "file": "b8792bf118043ac9.wav",
+      "root": 74,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Brass/F Horn/stac/MOHorn_stac_D4_v2_rr1.wav",
+      "sha256": "325daaf650b9faceb4fc987e3d20c38c11b4ee0f40b29f9b63e6a6e35b5501d9",
+      "sourceSha256": "06003ac8bfaa154949296447bf6b5cf74df9656137402564ab0717e91bd00714",
+      "trimSeconds": 0.0
+    },
+    "fb193f9aad7fbb80": {
+      "file": "fb193f9aad7fbb80.wav",
+      "root": 74,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Brass/F Horn/stac/MOHorn_stac_D4_v2_rr2.wav",
+      "sha256": "55304100bd93906b28a3eb4ee82a2e33b402ccc9a17978523a792b5d2b2be100",
+      "sourceSha256": "e96e04228c61ec6895e9b1c3f7c9e742e4e5e4e0a3761ee0d2a8ba09dedab456",
+      "trimSeconds": 0.0
+    },
+    "53ab87be251a3153": {
+      "file": "53ab87be251a3153.wav",
+      "root": 77,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Brass/F Horn/stac/MOHorn_stac_F4_v2_rr1.wav",
+      "sha256": "63681e3b5a92b5147aa4356a80759d4fd7b34f3d4ca9dd78f0ccbaace8a94229",
+      "sourceSha256": "a8abc312d5fc44ccc2b076aaf22932a0011c1c30c35a57565c8f584df1d75e92",
+      "trimSeconds": 0.0
+    },
+    "95826b6e69d22e86": {
+      "file": "95826b6e69d22e86.wav",
+      "root": 77,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Brass/F Horn/stac/MOHorn_stac_F4_v2_rr2.wav",
+      "sha256": "f3a6dd9bac9b13319f702b5cb4bbe5f9bacacf408709c555d49522f590e4914c",
+      "sourceSha256": "06ab406082fac50d40d3520ec880c676af6aa686f0b0695638653a70091f8f44",
+      "trimSeconds": 0.0
+    },
+    "6b0c325ac5a96c9e": {
+      "file": "6b0c325ac5a96c9e.wav",
+      "root": 70,
+      "style": "sustain",
+      "loop": [
+        0.9,
+        2.7999773
+      ],
+      "repo": "VSCO-2-CE",
+      "path": "Brass/Trumpet/sus/Sum_SHTrumpet_sus_A#3_v1_rr1.wav",
+      "sha256": "c99c6151235ea49d5a49821ae6c024292d59f72f3fdd8330912821c9d365cd04",
+      "sourceSha256": "0a432ceeddcecea962e2e0ebb5c3e80be3d3f251d38c5d4ddc0df4089e97351b",
+      "trimSeconds": 0.0
+    },
+    "2d4a2aef7cbb5d0d": {
+      "file": "2d4a2aef7cbb5d0d.wav",
+      "root": 74,
+      "style": "sustain",
+      "loop": [
+        0.9,
+        2.7999773
+      ],
+      "repo": "VSCO-2-CE",
+      "path": "Brass/Trumpet/sus/Sum_SHTrumpet_sus_D4_v1_rr1.wav",
+      "sha256": "67a75532648378c946d5fcf6541302882c4cf8ca186c79c1fddc475832a08624",
+      "sourceSha256": "fa4a3f77ead22cb58afdaa1732b9b6c8ec6033708ae339df6446a56c1b7cc8e9",
+      "trimSeconds": 0.0
+    },
+    "92ccfe7c41c302d7": {
+      "file": "92ccfe7c41c302d7.wav",
+      "root": 77,
+      "style": "sustain",
+      "loop": [
+        0.9,
+        2.7999773
+      ],
+      "repo": "VSCO-2-CE",
+      "path": "Brass/Trumpet/sus/Sum_SHTrumpet_sus_F4_v1_rr1.wav",
+      "sha256": "36f2132b26be2245f8d6b209412313cc3d650f1d17d26c73f4b0fb3050c3bbf7",
+      "sourceSha256": "81954b71f23a9ebe3ea02c7c9c6cfb68a3904a965bc916bc27f061e643604992",
+      "trimSeconds": 0.0
+    },
+    "2e4230a3c2820c22": {
+      "file": "2e4230a3c2820c22.wav",
+      "root": 81,
+      "style": "sustain",
+      "loop": [
+        0.9,
+        2.7999773
+      ],
+      "repo": "VSCO-2-CE",
+      "path": "Brass/Trumpet/sus/Sum_SHTrumpet_sus_A4_v1_rr1.wav",
+      "sha256": "0269f99041334e67f90402a2e69a95a21a0cbec1a88c60d2bd9df9cbac07c995",
+      "sourceSha256": "f720df13ae0eef9889692283a4ea9033ef4d4826ded3f47dbe81a0dd2585a3cf",
+      "trimSeconds": 0.0
+    },
+    "e0c007cfb2f11464": {
+      "file": "e0c007cfb2f11464.wav",
+      "root": 84,
+      "style": "sustain",
+      "loop": [
+        0.9,
+        2.7999773
+      ],
+      "repo": "VSCO-2-CE",
+      "path": "Brass/Trumpet/sus/Sum_SHTrumpet_sus_C5_v1_rr1.wav",
+      "sha256": "784f2cc9188b5a3fa6fda2a4dff78361fb0fa96a889a4e4c3ddf47165e329fba",
+      "sourceSha256": "8112b044343d65e2c368ef740fd36935ceaa1865dcbcceb9ee409544ef805bd8",
+      "trimSeconds": 0.0
+    },
+    "d29122389ad56def": {
+      "file": "d29122389ad56def.wav",
+      "root": 70,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Brass/Trumpet/stac/Sum_SHTrumpet_stac_A#3_v2_rr1.wav",
+      "sha256": "25e02e81e2fa49fd7846f729cce4a8cf519b8591b7b244b5dd794d6e9b9e00f4",
+      "sourceSha256": "d8cbce4381ae171e4ba19963da5c9d8c5a140164775e0c5ca0ec5afcdadd1d57",
+      "trimSeconds": 0.0
+    },
+    "7d9d15bc67d16847": {
+      "file": "7d9d15bc67d16847.wav",
+      "root": 70,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Brass/Trumpet/stac/Sum_SHTrumpet_stac_A#3_v2_rr2.wav",
+      "sha256": "8609bdaaa53a87b3d303e006060b19bd01611283414e26e6afcffde37f25a25e",
+      "sourceSha256": "c6d7fcb0aca04e913d712c8e4e3d8dbad9f49fb6dee3ef36c6f8da9b77f6593e",
+      "trimSeconds": 0.0
+    },
+    "8b2f0c04c174b0e2": {
+      "file": "8b2f0c04c174b0e2.wav",
+      "root": 74,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Brass/Trumpet/stac/Sum_SHTrumpet_stac_D4_v2_rr1.wav",
+      "sha256": "690cc0a1e04ce499071c30984b7527e075e70ffe52299b85ba71b87febf74e8f",
+      "sourceSha256": "a817b4b11b818e04cf73197a382b380c5dd8576f1e7f7d1ee359559d0542eb8a",
+      "trimSeconds": 0.0
+    },
+    "cb7f0d8d8b718b21": {
+      "file": "cb7f0d8d8b718b21.wav",
+      "root": 74,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Brass/Trumpet/stac/Sum_SHTrumpet_stac_D4_v2_rr2.wav",
+      "sha256": "d76c4a6416f6a6067416146ea53ad3824e5f610f21da4f71b68ff851f04ea65f",
+      "sourceSha256": "043cf7ce0c16474c077291f2eda7671fa89841c27646ce597c450f51b5e3f7fe",
+      "trimSeconds": 0.0
+    },
+    "25dee1af3244a1b9": {
+      "file": "25dee1af3244a1b9.wav",
+      "root": 77,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Brass/Trumpet/stac/Sum_SHTrumpet_stac_F4_v2_rr1.wav",
+      "sha256": "934a0ddbaab653f886e57c4bd1d263eeaf0e65ce830c09cd6578b2922f8b06d6",
+      "sourceSha256": "624f8ff3ba6845dd5acfaec1730d7bfcc6bf05fd2260bd4023d00a7dacffbaa2",
+      "trimSeconds": 0.0
+    },
+    "96d91e6aa65483c7": {
+      "file": "96d91e6aa65483c7.wav",
+      "root": 77,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Brass/Trumpet/stac/Sum_SHTrumpet_stac_F4_v2_rr2.wav",
+      "sha256": "f5ed5ee667e2312d043f54a7348345252d4b826df596c6c49d4d7b3b2bc2c2cd",
+      "sourceSha256": "90a6a74f3b3a56b50620a82d76e7e4372049983f1fb5909fa2413625c9ef7d5e",
+      "trimSeconds": 0.0
+    },
+    "8be851dd2982c146": {
+      "file": "8be851dd2982c146.wav",
+      "root": 81,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Brass/Trumpet/stac/Sum_SHTrumpet_stac_A4_v2_rr1.wav",
+      "sha256": "49c58b46fa54447c3a228140854b199a6fb50ed81a071a785cb1087d3de66f01",
+      "sourceSha256": "d28cae30c146c8df5da21ff31ebe2ee570b8f77f18793c11f05bdbc1b16b4d7f",
+      "trimSeconds": 0.0
+    },
+    "bf5f4223a3dd02af": {
+      "file": "bf5f4223a3dd02af.wav",
+      "root": 81,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Brass/Trumpet/stac/Sum_SHTrumpet_stac_A4_v2_rr2.wav",
+      "sha256": "51d98e45451ae854fa5910b1273f706fa488ab2f6b6e9f931963d4d6ad2038ef",
+      "sourceSha256": "f44da529f373fd2fadf77d32364f324712409de9033fa752f0f73cb3fb686159",
+      "trimSeconds": 0.0
+    },
+    "a559918e6e1580e5": {
+      "file": "a559918e6e1580e5.wav",
+      "root": 84,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Brass/Trumpet/stac/Sum_SHTrumpet_stac_C5_v2_rr1.wav",
+      "sha256": "0c04394b5706094f9cf573f26534b8435fc11611d3c91231d26d47f16a6bd39e",
+      "sourceSha256": "17dd7aad381f8663dbb5d5657319c9bece2ea4b6331ce2e8a233dc73de77be2d",
+      "trimSeconds": 0.0
+    },
+    "87112a3b2e12e336": {
+      "file": "87112a3b2e12e336.wav",
+      "root": 84,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Brass/Trumpet/stac/Sum_SHTrumpet_stac_C5_v2_rr2.wav",
+      "sha256": "e2299162ae24f6782e87669df113299aff5a58cc671141276fd728be00c8485a",
+      "sourceSha256": "49f1e9eae6b4d8af01cc31b9c3ee1639bdab1d9b1fde769352074397001bae50",
+      "trimSeconds": 0.0
+    },
+    "e0e8a60ff6d431a0": {
+      "file": "e0e8a60ff6d431a0.wav",
+      "root": 46,
+      "style": "sustain",
+      "loop": [
+        0.9,
+        2.7999773
+      ],
+      "repo": "VSCO-2-CE",
+      "path": "Brass/Tenor Trombone/sus/tenortbn_sus_A#1_v2_1.wav",
+      "sha256": "b6ce8eb847220f4006c3bfa9e9e6b8cab7b9f4614f75e8ec73195751f08cea9c",
+      "sourceSha256": "09d6fff28ec8d8a3ac83505c61cf4e2e95fce5b232f3ae4f7adfefddb7af56e1",
+      "trimSeconds": 0.0001
+    },
+    "60e4b06c37e6f098": {
+      "file": "60e4b06c37e6f098.wav",
+      "root": 50,
+      "style": "sustain",
+      "loop": [
+        0.9,
+        2.7999773
+      ],
+      "repo": "VSCO-2-CE",
+      "path": "Brass/Tenor Trombone/sus/tenortbn_sus_D2_v2_1.wav",
+      "sha256": "1f9457fe5209e8801b0e72991e178f4f5110f7b91ae8cd8bdb56089f82440375",
+      "sourceSha256": "f71a6d3914ac0daa656553cbd2b50af560897fd31920fb578ac85313d2787b36",
+      "trimSeconds": 0.0004
+    },
+    "752c808bd8ee5179": {
+      "file": "752c808bd8ee5179.wav",
+      "root": 53,
+      "style": "sustain",
+      "loop": [
+        0.9,
+        2.7999773
+      ],
+      "repo": "VSCO-2-CE",
+      "path": "Brass/Tenor Trombone/sus/tenortbn_sus_F2_v2_1.wav",
+      "sha256": "3a78761c1ebcb2626b9e883033678e17aa9664b61a49892ea462425593faef42",
+      "sourceSha256": "9d4d0eeef23a823416724e150deebb141f85d5ff1a90226e947bc4ba13c00597",
+      "trimSeconds": 0.0045
+    },
+    "336a788d15c8ba06": {
+      "file": "336a788d15c8ba06.wav",
+      "root": 60,
+      "style": "sustain",
+      "loop": [
+        0.9,
+        2.7999773
+      ],
+      "repo": "VSCO-2-CE",
+      "path": "Brass/Tenor Trombone/sus/tenortbn_sus_C3_v2_1.wav",
+      "sha256": "818ed04c9d8fe23aaf6181409b61d4ca10cd6328ec255f59404ae135f4bb35f9",
+      "sourceSha256": "6858987188e6e87a24ea6b37d0f3c07921e8f891adafbdbd2c72bb8f7241e8ab",
+      "trimSeconds": 0.001
+    },
+    "951e9869d9779949": {
+      "file": "951e9869d9779949.wav",
+      "root": 61,
+      "style": "sustain",
+      "loop": [
+        0.9,
+        2.7999773
+      ],
+      "repo": "VSCO-2-CE",
+      "path": "Brass/Tenor Trombone/sus/tenortbn_sus_C#3_v2_1.wav",
+      "sha256": "08ebed6645879e2d17f8401e78d8c8400f91c7097606af5b3e925a3d48db3538",
+      "sourceSha256": "2fbbd439a89cde570a6848c41b220d333a95995d0b935fd3973a197beb0f0674",
+      "trimSeconds": 0.0
+    },
+    "953881b209e2779b": {
+      "file": "953881b209e2779b.wav",
+      "root": 63,
+      "style": "sustain",
+      "loop": [
+        0.9,
+        2.7999773
+      ],
+      "repo": "VSCO-2-CE",
+      "path": "Brass/Tenor Trombone/sus/tenortbn_sus_D#3_v2_1.wav",
+      "sha256": "370b36c7fe2e6fb79994aacba17d5d8cb0b0a631a03a6ac2b66008f59143b840",
+      "sourceSha256": "12df341a13615a9f1676a3b04cee91d1853649907243adbdd52675d833594394",
+      "trimSeconds": 0.0
+    },
+    "f68f60836b26b129": {
+      "file": "f68f60836b26b129.wav",
+      "root": 65,
+      "style": "sustain",
+      "loop": [
+        0.9,
+        2.7999773
+      ],
+      "repo": "VSCO-2-CE",
+      "path": "Brass/Tenor Trombone/sus/tenortbn_sus_F3_v2_1.wav",
+      "sha256": "f7d4e621f356ffcfe8aad43e7436cd657bf6d6a56a5b0e9bb288822644e7de79",
+      "sourceSha256": "3ef29a754b2cfcaa8c27b5a8a3c807247d606c8cf95650941cee295e8011cfeb",
+      "trimSeconds": 0.0
+    },
+    "39614d6f49649fc7": {
+      "file": "39614d6f49649fc7.wav",
+      "root": 46,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Brass/Tenor Trombone/stac/tenortbn_stac_A#1_v2_rr1.wav",
+      "sha256": "6d782c9ea8ee315aafafd006016cc44a5f330bb3c28dd545833402f18b0a4407",
+      "sourceSha256": "27aa2fea71633a85858a48e87133bc941518c50301427f2807e54c50cc30a3a0",
+      "trimSeconds": 0.0
+    },
+    "9f38a5579f77be1d": {
+      "file": "9f38a5579f77be1d.wav",
+      "root": 46,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Brass/Tenor Trombone/stac/tenortbn_stac_A#1_v2_rr2.wav",
+      "sha256": "311a3f75e44857738bf7802fbbf9ea64dc61e06eb2646e986d3e4f0a1358da86",
+      "sourceSha256": "adfa3dc25b6c6cae3f6a4ae1f0413188588fab83767f7002079a9baffd9b004f",
+      "trimSeconds": 0.0
+    },
+    "c6d6bc8a8c5182b4": {
+      "file": "c6d6bc8a8c5182b4.wav",
+      "root": 53,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Brass/Tenor Trombone/stac/tenortbn_stac_F2_v2_rr1.wav",
+      "sha256": "036dc8e1535b5c128281cd6009603457ae6f58690089656fa7aa0008781a0522",
+      "sourceSha256": "5113431498bacccaa3cbca023628dfb421ea526b77a578f19a02fc4c36026d13",
+      "trimSeconds": 0.0
+    },
+    "89805180b1592ec5": {
+      "file": "89805180b1592ec5.wav",
+      "root": 53,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Brass/Tenor Trombone/stac/tenortbn_stac_F2_v2_rr2.wav",
+      "sha256": "406338e06240e438ec48b5922f808d1cb2ede4265c25ed3dcbc1683af6956af4",
+      "sourceSha256": "f0e65d7143f8e0c771d9dcbdea8d94ce2b07cfc250b55761f3296392360ad91a",
+      "trimSeconds": 0.0
+    },
+    "0bd75f6e08db9403": {
+      "file": "0bd75f6e08db9403.wav",
+      "root": 58,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Brass/Tenor Trombone/stac/tenortbn_stac_A#2_v2_rr1.wav",
+      "sha256": "80d9bf39aaa34594fc6a9f9bf21e8f90186453410162a7b60b578f73e5efd703",
+      "sourceSha256": "9ebd53b7a360fec26068e06fdefb569b8b9168da52bd073a106dee348237edc6",
+      "trimSeconds": 0.0
+    },
+    "d0369bd10aa0e63d": {
+      "file": "d0369bd10aa0e63d.wav",
+      "root": 58,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Brass/Tenor Trombone/stac/tenortbn_stac_A#2_v2_rr2.wav",
+      "sha256": "742cbc42cb2129d1f823a2738d07dedf392cb9cd993086984d00336faad76b17",
+      "sourceSha256": "4cf54ec007e7cb4fabbeaa66aa06c552e8e25fb07d863ab10c5b3a19d724ab36",
+      "trimSeconds": 0.0
+    },
+    "5fd5dc40e1a468e5": {
+      "file": "5fd5dc40e1a468e5.wav",
+      "root": 62,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Brass/Tenor Trombone/stac/tenortbn_stac_D3_v2_rr1.wav",
+      "sha256": "cb1cb5149dcfded56306bafcfd7bfa5c74448ae780c931e57b94ae270d2aefbf",
+      "sourceSha256": "beca016210ea3c89f2d0ede6ae1b4e9ccb42c39beac478290b63903742af634d",
+      "trimSeconds": 0.0
+    },
+    "cb720d3b5f9039d3": {
+      "file": "cb720d3b5f9039d3.wav",
+      "root": 62,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Brass/Tenor Trombone/stac/tenortbn_stac_D3_v2_rr2.wav",
+      "sha256": "2ef972878712d35ca64c84268317b98c2c81803282dc1593587944b36d9e94ab",
+      "sourceSha256": "67c26974b8796007d4852215ce8193f32116b3a144220ad12995155324fcb2ce",
+      "trimSeconds": 0.0
+    },
+    "06734cb170e3a6e5": {
+      "file": "06734cb170e3a6e5.wav",
+      "root": 65,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Brass/Tenor Trombone/stac/tenortbn_stac_F3_v2_rr1.wav",
+      "sha256": "7d08b69b01aa81a10059b9614a8f4bda3caef30537e7fc8e7b821f0cc5b3fc43",
+      "sourceSha256": "f51c84b25118c1960ce7e23d011b3b0754af8d3d14628262cbd143969cc47f30",
+      "trimSeconds": 0.0
+    },
+    "e395e82ba9eca9d9": {
+      "file": "e395e82ba9eca9d9.wav",
+      "root": 65,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Brass/Tenor Trombone/stac/tenortbn_stac_F3_v2_rr2.wav",
+      "sha256": "728b00e92cf4fdcb663f7a9b699188d490281bf34251586b90fcc198bc4b09d1",
+      "sourceSha256": "84b29a8641d0c430ef675c590ec73576a6a17d8417adcb0d44acee5eeab2af89",
+      "trimSeconds": 0.0
+    },
+    "40e01a2819f4e085": {
+      "file": "40e01a2819f4e085.wav",
+      "root": 34,
+      "style": "sustain",
+      "loop": [
+        0.9,
+        2.7999773
+      ],
+      "repo": "VSCO-2-CE",
+      "path": "Brass/Tenor Trombone/sus/tenortbn_sus_A#0_v2_1.wav",
+      "sha256": "fec1767b301dae39a12c9064ec6492ee3ea7485ab6122dffe2d3fefebfff1cfc",
+      "sourceSha256": "c8192572a34ba0c410cb77a33fe200a5850b334e1763b2ebc91ab5292978a0d4",
+      "trimSeconds": 0.0
+    },
+    "6517cca9b60b5a7b": {
+      "file": "6517cca9b60b5a7b.wav",
+      "root": 37,
+      "style": "sustain",
+      "loop": [
+        0.9,
+        2.7999773
+      ],
+      "repo": "VSCO-2-CE",
+      "path": "Brass/Tenor Trombone/sus/tenortbn_sus_C#1_v2_1.wav",
+      "sha256": "4065198f964930456f8936d953b57b794fc386d7e6521d7fbe31e81205532786",
+      "sourceSha256": "b957256f8057fef478fb8d713dd284ad9a1aa57f720ef9f18a4e0d1d59bbe65e",
+      "trimSeconds": 0.0
+    },
+    "502a0e9622483653": {
+      "file": "502a0e9622483653.wav",
+      "root": 39,
+      "style": "sustain",
+      "loop": [
+        0.9,
+        2.7999773
+      ],
+      "repo": "VSCO-2-CE",
+      "path": "Brass/Tenor Trombone/sus/tenortbn_sus_D#1_v2_1.wav",
+      "sha256": "10253c9fc165d4afa724c13e82a598b27e614526a5c3c674fafe6c079270f048",
+      "sourceSha256": "eecd696f213cda2f402ca84eb1af244d29c6006fd3f4bb7853854ab892eaeaa7",
+      "trimSeconds": 0.0002
+    },
+    "824a06fbf358ce6e": {
+      "file": "824a06fbf358ce6e.wav",
+      "root": 41,
+      "style": "sustain",
+      "loop": [
+        0.9,
+        2.7999773
+      ],
+      "repo": "VSCO-2-CE",
+      "path": "Brass/Tenor Trombone/sus/tenortbn_sus_F1_v2_1.wav",
+      "sha256": "391848b90ae2ecaea9297f30ab50979f63b1c57472ea8e91fb1ff91583e446b0",
+      "sourceSha256": "44939c24af3cc64bb5324830838d23ee2489ca90e4b679592e2535f86ec6418d",
+      "trimSeconds": 0.0
+    },
+    "9217facfc297a1d9": {
+      "file": "9217facfc297a1d9.wav",
+      "root": 34,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Brass/Tenor Trombone/stac/tenortbn_stac_A#0_v2_rr1.wav",
+      "sha256": "9b7a19e7cd95225b1289cbf6852f87248ab4ae6dc6f4fe80f3f53b16067f8f0b",
+      "sourceSha256": "07aabca741ca00b78fd241bb833ef97c45576a629e70fe48ecbfb7e5d377713d",
+      "trimSeconds": 0.0
+    },
+    "98994f7ad692f87c": {
+      "file": "98994f7ad692f87c.wav",
+      "root": 34,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Brass/Tenor Trombone/stac/tenortbn_stac_A#0_v2_rr2.wav",
+      "sha256": "b63ad97fe977cf75ab6b89892cbbf696a3756b3f62350119810296fd377c1e5e",
+      "sourceSha256": "f82414bd98fe13e62a52034769a863da43b9694540f2d97977eceb7b6efdc42e",
+      "trimSeconds": 0.0
+    },
+    "8f36372379bfb719": {
+      "file": "8f36372379bfb719.wav",
+      "root": 41,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Brass/Tenor Trombone/stac/tenortbn_stac_F1_v2_rr1.wav",
+      "sha256": "c183ba6173c9bdd28383a3607ee9fe31b26dbab66a45e040d70334813e63457e",
+      "sourceSha256": "d8ed193a6acb37b13b3374c2a35d46ef9d8beb230970ab3985ed9bc15ae0cb9b",
+      "trimSeconds": 0.0
+    },
+    "44cf7e16bf38d89c": {
+      "file": "44cf7e16bf38d89c.wav",
+      "root": 41,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Brass/Tenor Trombone/stac/tenortbn_stac_F1_v2_rr2.wav",
+      "sha256": "e02036f22d09123c750658881593c99c4e40bea5e10ad37597e5f3d60cffced7",
+      "sourceSha256": "db6d777a499c24f39ca3e7774460c5b855ab1ea5b047e84cb2bf790f5ce449e2",
+      "trimSeconds": 0.0
+    },
+    "c72372afdbf41a12": {
+      "file": "c72372afdbf41a12.wav",
+      "root": 34,
+      "style": "sustain",
+      "loop": [
+        0.9,
+        2.7999773
+      ],
+      "repo": "VSCO-2-CE",
+      "path": "Brass/Tuba/sus/Tuba3_sus_A#0_v2_rr1_Mid.wav",
+      "sha256": "04a018e73a6e9d7d97c58d2f287effc1bab7177527dadc2521620e5caa97ba2e",
+      "sourceSha256": "044f31773953d600c2591b78132e7e839cf064c29fbe41b039241de83efce777",
+      "trimSeconds": 0.0
+    },
+    "49bd1f14b070d6dd": {
+      "file": "49bd1f14b070d6dd.wav",
+      "root": 39,
+      "style": "sustain",
+      "loop": [
+        0.9,
+        2.7999773
+      ],
+      "repo": "VSCO-2-CE",
+      "path": "Brass/Tuba/sus/Tuba3_sus_D#1_v2_rr1_Mid.wav",
+      "sha256": "be2e4f25fffe588b58e60568807ad16f1c32663801b9acda4c0114f719dec3be",
+      "sourceSha256": "f97bec1f3266319482635f19c3717a5d3b8579c7c2c62e3f5f0ea3ed58365744",
+      "trimSeconds": 0.0
+    },
+    "9c7d60bfea120149": {
+      "file": "9c7d60bfea120149.wav",
+      "root": 41,
+      "style": "sustain",
+      "loop": [
+        0.9,
+        2.7999773
+      ],
+      "repo": "VSCO-2-CE",
+      "path": "Brass/Tuba/sus/Tuba3_sus_F1_v2_rr1_Mid.wav",
+      "sha256": "66a0d95f73e4a8fa9d35dc1cdf9e724d89feb5b39e08894f77197787be9ce602",
+      "sourceSha256": "e31fda8c91f586ec2c873406efd4c67b0d052e2d82af154667cc0a17aaf91674",
+      "trimSeconds": 0.0
+    },
+    "da8ff6a91c2f3551": {
+      "file": "da8ff6a91c2f3551.wav",
+      "root": 46,
+      "style": "sustain",
+      "loop": [
+        0.9,
+        2.7999773
+      ],
+      "repo": "VSCO-2-CE",
+      "path": "Brass/Tuba/sus/Tuba3_sus_A#1_v2_rr1_Mid.wav",
+      "sha256": "05557a797ea8d7e20f4b39f514e8eb1b68ba930d56c2dde29e57b7f5bbe6ff21",
+      "sourceSha256": "64fba4c0bcdc36c82e48ec63d6820940b9c7074af096f4dac417147acd8d3a26",
+      "trimSeconds": 0.0039
+    },
+    "fd221b7908120d39": {
+      "file": "fd221b7908120d39.wav",
+      "root": 50,
+      "style": "sustain",
+      "loop": [
+        0.9,
+        2.7999773
+      ],
+      "repo": "VSCO-2-CE",
+      "path": "Brass/Tuba/sus/Tuba3_sus_D2_v2_rr1_Mid.wav",
+      "sha256": "36340ad57de8037c9f6610adbf47af84493f69f3f3a7a5f8296833045a257fb8",
+      "sourceSha256": "005cd575e2d12b54a5a8f305b859cb6ae89cdbc010027b32fa0091aad39fffab",
+      "trimSeconds": 0.0032
+    },
+    "51103602aedc4911": {
+      "file": "51103602aedc4911.wav",
+      "root": 53,
+      "style": "sustain",
+      "loop": [
+        0.9,
+        2.7999773
+      ],
+      "repo": "VSCO-2-CE",
+      "path": "Brass/Tuba/sus/Tuba3_sus_F2_v2_rr1_Mid.wav",
+      "sha256": "fa298a5de8af3d0dce3fb36b52f9f882911391fdc1853ad795261e558b06ab90",
+      "sourceSha256": "b521e56e3a7cdef1c65694b95dd843ea01d0b3cffa0cbcdd43276d71afc01a4a",
+      "trimSeconds": 0.002
+    },
+    "188aad3413489457": {
+      "file": "188aad3413489457.wav",
+      "root": 58,
+      "style": "sustain",
+      "loop": [
+        0.9,
+        2.7999773
+      ],
+      "repo": "VSCO-2-CE",
+      "path": "Brass/Tuba/sus/Tuba3_sus_A#2_v2_rr1_Mid.wav",
+      "sha256": "a67b1aa3d56df1d273366f106c76b735e98ef4d1b1a020e359d87ffbf6545d1d",
+      "sourceSha256": "8821818170c62d1f084104311ff0832e082a66c3899c3af5da1e8fc7a1f6815f",
+      "trimSeconds": 0.0
+    },
+    "99d98e639643c6d9": {
+      "file": "99d98e639643c6d9.wav",
+      "root": 62,
+      "style": "sustain",
+      "loop": [
+        0.9,
+        2.7999773
+      ],
+      "repo": "VSCO-2-CE",
+      "path": "Brass/Tuba/sus/Tuba3_sus_D3_v1_rr1_Mid.wav",
+      "sha256": "27c74302f8374fe3fb43ef170a3990cd73c236494dbac66431a52d09be94d33f",
+      "sourceSha256": "8f2bc8f32c619d25955c397ed9bfa5b2bb78f702688d952ae48764bf6f8f68b1",
+      "trimSeconds": 0.0
+    },
+    "f39f908c0d56ec7c": {
+      "file": "f39f908c0d56ec7c.wav",
+      "root": 34,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Brass/Tuba/stac/Tuba3_stac_A#0_v2_rr1_Sum.wav",
+      "sha256": "f66a1104738664d559b67156841da650f10fc6e56f6179e82e61e28e36892b76",
+      "sourceSha256": "8ffdd2adcb4f77136461d437feda1f093920307fc83ea290c14b3664e0a5064b",
+      "trimSeconds": 0.0
+    },
+    "27c91c283c31a370": {
+      "file": "27c91c283c31a370.wav",
+      "root": 34,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Brass/Tuba/stac/Tuba3_stac_A#0_v2_rr2_Sum.wav",
+      "sha256": "4656ace05f7f9d753dbb48c4471f4a1a3ae6ba2a508601e156412d9841a36da9",
+      "sourceSha256": "011b97d0fc8031334a36d86782084748792d895365015736130bfb417c61cc78",
+      "trimSeconds": 0.0
+    },
+    "cb8374c3912e3890": {
+      "file": "cb8374c3912e3890.wav",
+      "root": 39,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Brass/Tuba/stac/Tuba3_stac_D#1_v2_rr1_Sum.wav",
+      "sha256": "d942305f401e53cde379ff7245096777d823589701118c0ef68bfc6f8acf5fb6",
+      "sourceSha256": "62450773c01a68affba727ae23539e09d43e760a2ecdf7192ba2dd2c3daae636",
+      "trimSeconds": 0.0
+    },
+    "de36dd4e251fec92": {
+      "file": "de36dd4e251fec92.wav",
+      "root": 39,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Brass/Tuba/stac/Tuba3_stac_D#1_v2_rr2_Sum.wav",
+      "sha256": "ea19a5d92569df4863dbab2fc2073e7ce9e8f5bad4c48456b248e15b137be3ec",
+      "sourceSha256": "6e4a95791ac5af718924d5b50f6d8462b072a5557a25d4038721b7baa8095c55",
+      "trimSeconds": 0.0
+    },
+    "2aca2046ab6bc948": {
+      "file": "2aca2046ab6bc948.wav",
+      "root": 41,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Brass/Tuba/stac/Tuba3_stac_F1_v2_rr1_Sum.wav",
+      "sha256": "1f08ab2023cd6f973c37df5886b6615aa04511e0333d2c930b83837c671adc88",
+      "sourceSha256": "d70368b6c3e3ae067f285201637860fc6c9f15fdc85e553feb5cd05e1585b102",
+      "trimSeconds": 0.0
+    },
+    "1c374536198ac319": {
+      "file": "1c374536198ac319.wav",
+      "root": 41,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Brass/Tuba/stac/Tuba3_stac_F1_v2_rr2_Sum.wav",
+      "sha256": "f722da86b9bb6c637ca972de34710e6249ed649eded0c945f15d1d9b75db098a",
+      "sourceSha256": "e7cc81bfa1e421607005cdd927f3573e67612d8ec9b6ca398599b63152b18525",
+      "trimSeconds": 0.0
+    },
+    "fa70f224c0761403": {
+      "file": "fa70f224c0761403.wav",
+      "root": 46,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Brass/Tuba/stac/Tuba3_stac_A#1_v2_rr1_Sum.wav",
+      "sha256": "2aa7a5c6574fabe76af0e0255e2f53e0f1354bf1187c006ec361297eb06ac017",
+      "sourceSha256": "15a09f4ccccd48c69ad6a3771a75e01c16b206fcfbf5bc925432d326c8480168",
+      "trimSeconds": 0.0
+    },
+    "4e6aa9b834ce636f": {
+      "file": "4e6aa9b834ce636f.wav",
+      "root": 46,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Brass/Tuba/stac/Tuba3_stac_A#1_v2_rr2_Sum.wav",
+      "sha256": "219a1785ee0b493f8d10163bfdc4f580889af39dba958092bf19eeedc09d3d45",
+      "sourceSha256": "9caab6e48f267888485fc4d6fd2329966be466b1db5070b7807529f9c5052e5a",
+      "trimSeconds": 0.0
+    },
+    "4c743bc780f9e7db": {
+      "file": "4c743bc780f9e7db.wav",
+      "root": 50,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Brass/Tuba/stac/Tuba3_stac_D2_v2_rr1_Sum.wav",
+      "sha256": "f9497d4f2fb56d9ff34f1bbcca2d4e2676add6ea8eb080d22db99e362fd78684",
+      "sourceSha256": "4ed9b5455e0c8b2532e9cac41e32a9218e96a4260a0104008b0a86083d3b7ce2",
+      "trimSeconds": 0.0
+    },
+    "4a5aec7049ad2d07": {
+      "file": "4a5aec7049ad2d07.wav",
+      "root": 50,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Brass/Tuba/stac/Tuba3_stac_D2_v2_rr2_Sum.wav",
+      "sha256": "75021fc408c1a7de073d3561e7c3ff4c2b7741b532139bffe54a226e55a4ab0b",
+      "sourceSha256": "5d38c8a95b96c3c9924388c74abd3137d78979e6f37193fbbd72a1187be9f37c",
+      "trimSeconds": 0.0
+    },
+    "ce4e9e4a48f5a6be": {
+      "file": "ce4e9e4a48f5a6be.wav",
+      "root": 53,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Brass/Tuba/stac/Tuba3_stac_F2_v2_rr1_Sum.wav",
+      "sha256": "ec1590597bd48d8b9a41604bdab03094f83cf0df8a06a076ce5cd04add3f2833",
+      "sourceSha256": "85b1e4d289417593141ff062262a7ce11f1829db6d018d164d9df3e0fe16d830",
+      "trimSeconds": 0.0011
+    },
+    "c40f6df781553a54": {
+      "file": "c40f6df781553a54.wav",
+      "root": 53,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Brass/Tuba/stac/Tuba3_stac_F2_v2_rr2_Sum.wav",
+      "sha256": "cfe1f61339010a2600e9eabf1d3ce5f47afc68aa54e5a873dd91e57a1c601758",
+      "sourceSha256": "54b7fb533e17bc3d4610d226a4e6f4ce53bf60b532dafecbd14f2a70069c4798",
+      "trimSeconds": 0.0
+    },
+    "b7634c62e157d073": {
+      "file": "b7634c62e157d073.wav",
+      "root": 58,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Brass/Tuba/stac/Tuba3_stac_A#2_v2_rr1_Sum.wav",
+      "sha256": "962d473395051ac15b485149f8c6bbc6e750b80b3ea58775bfaff0b3eec8dd39",
+      "sourceSha256": "ff8a307edd5af7efa2690d66ebf8dde0bb185d31ac3d0552bb90458c2118fc73",
+      "trimSeconds": 0.0
+    },
+    "0b0bf3e497f145c9": {
+      "file": "0b0bf3e497f145c9.wav",
+      "root": 58,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Brass/Tuba/stac/Tuba3_stac_A#2_v2_rr2_Sum.wav",
+      "sha256": "b47735a02853a9d91204a19d4eb5acdd537dcbc4d2e6a02be983bd3e63daec6f",
+      "sourceSha256": "0eb1f9941717a2ba1756302b7f6cecf0f96fa82f692b8cd237ff7bb0f69cb079",
+      "trimSeconds": 0.0
+    },
+    "b16766357aa283b0": {
+      "file": "b16766357aa283b0.wav",
+      "root": 62,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Brass/Tuba/stac/Tuba3_stac_D3_v2_rr1_Sum.wav",
+      "sha256": "b923abfb112a1e334b51792adeb3d995b1a74bd0a167973f0416fe4ce9d0179f",
+      "sourceSha256": "f00c8b0c259e6901e6f84f5151dfce61fce75a18dfc4748eea9b638db7d71041",
+      "trimSeconds": 0.0
+    },
+    "c532506a7778b8e1": {
+      "file": "c532506a7778b8e1.wav",
+      "root": 62,
+      "style": "short",
+      "repo": "VSCO-2-CE",
+      "path": "Brass/Tuba/stac/Tuba3_stac_D3_v2_rr2_Sum.wav",
+      "sha256": "e2298e2e6c601547a4f80b11e671aa582b1742b1134d09172ee26ca5435ad750",
+      "sourceSha256": "9498d7012cbc86acb409464110115f8576b8dacf8a85d443a612f51bbca1881d",
+      "trimSeconds": 0.0
+    },
+    "1d5664ebe7058d13": {
+      "file": "1d5664ebe7058d13.wav",
+      "root": 42,
+      "style": "sustain",
+      "repo": "VSCO-2-CE",
+      "path": "Percussion/Timpani/Timpani1_Hit_v3_rr1_Sum.wav",
+      "sha256": "e92e76e12494c9759de55a6087143f3560051950fb58377615dde1c0c7cfd0c9",
+      "sourceSha256": "8b39a785901d08dee14dd89914bdf2201e16ee418965e4d903fdb8e280a14d24",
+      "trimSeconds": 0.0
+    },
+    "47caa955131c337b": {
+      "file": "47caa955131c337b.wav",
+      "root": 42,
+      "style": "sustain",
+      "repo": "VSCO-2-CE",
+      "path": "Percussion/Timpani/Timpani1_Hit_v3_rr2_Sum.wav",
+      "sha256": "2fbead39b809f698d5927b2ad93f382954b653926106b7db378904eaac494e0c",
+      "sourceSha256": "ac6ae66048e162024d188f1ea01f6b8b6bd9184d35e164258bab6a383eb7ff93",
+      "trimSeconds": 0.0
+    },
+    "30b76c03465f20a1": {
+      "file": "30b76c03465f20a1.wav",
+      "root": 46,
+      "style": "sustain",
+      "repo": "VSCO-2-CE",
+      "path": "Percussion/Timpani/Timpani2_Hit_v3_rr1_Sum.wav",
+      "sha256": "265deb641f13f627d3ddd74767144dfe598abdc2875842d4bb23de6bce0a2ea2",
+      "sourceSha256": "69e5d604effd3f29c86117d22ad2335f73e43f5d47868dc57d8fa593975ee241",
+      "trimSeconds": 0.0
+    },
+    "d077e4b44799cf09": {
+      "file": "d077e4b44799cf09.wav",
+      "root": 46,
+      "style": "sustain",
+      "repo": "VSCO-2-CE",
+      "path": "Percussion/Timpani/Timpani2_Hit_v3_rr2_Sum.wav",
+      "sha256": "9127d3916df82450c502f97d05cc42df6ec1e6def20d69c7caa7615aafd40608",
+      "sourceSha256": "828019517a0475cb9b42d1e40e2cb0a62159f3a9de1d67a5c238f3687e41761e",
+      "trimSeconds": 0.0
+    },
+    "adf27f7f7f0eff13": {
+      "file": "adf27f7f7f0eff13.wav",
+      "root": 49,
+      "style": "sustain",
+      "repo": "VSCO-2-CE",
+      "path": "Percussion/Timpani/Timpani3_Hit_v3_rr1_Sum.wav",
+      "sha256": "bd39b545c0fcd49b82284bf5fe7691f29c52a08152bad84441d11abbbc8b530b",
+      "sourceSha256": "46cd2ba3798f9e3a6be515b13dbc37d2ef65c82afb0d0e9e34121e4524bfcd3a",
+      "trimSeconds": 0.0
+    },
+    "b532f6c16d3de44f": {
+      "file": "b532f6c16d3de44f.wav",
+      "root": 49,
+      "style": "sustain",
+      "repo": "VSCO-2-CE",
+      "path": "Percussion/Timpani/Timpani3_Hit_v3_rr2_Sum.wav",
+      "sha256": "4cf363707e88a89c59e118b1d5bc7262475ae3fd5802574b6824d87dca884d45",
+      "sourceSha256": "8eb961265ed1e07249dd2fc164f20b82f3e544c3e19ab3c9efef43a51e1c9575",
+      "trimSeconds": 0.0
+    },
+    "74c03dac6d7588c1": {
+      "file": "74c03dac6d7588c1.wav",
+      "root": 52,
+      "style": "sustain",
+      "repo": "VSCO-2-CE",
+      "path": "Percussion/Timpani/Timpani4_Hit_v3_rr1_Sum.wav",
+      "sha256": "a288a212309ba1dd6bd1888fd3960e45e63e25ebd84a60245e03dca77a74a5c4",
+      "sourceSha256": "05170757d30297aa680bfbc082c6e438deb1d1d72c5e757610d0b1bbd525968f",
+      "trimSeconds": 0.0
+    },
+    "1b329027ef0500fa": {
+      "file": "1b329027ef0500fa.wav",
+      "root": 52,
+      "style": "sustain",
+      "repo": "VSCO-2-CE",
+      "path": "Percussion/Timpani/Timpani4_Hit_v3_rr2_Sum.wav",
+      "sha256": "6f36b872bc26ea2cb5c86bfdfcfc2ca6656eb6374e3187d55d0f6b7c323986c4",
+      "sourceSha256": "ff4a34bdf6c98489dbe496c92671020bac7b3e92331f310fc8542085fb75d014",
+      "trimSeconds": 0.0
+    },
+    "dd7281cd67b6f1ed": {
+      "file": "dd7281cd67b6f1ed.wav",
+      "root": 54,
+      "style": "sustain",
+      "repo": "VSCO-2-CE",
+      "path": "Percussion/Timpani/Timpani5_Hit_v3_rr1_Sum.wav",
+      "sha256": "d4b2c736a150eb48a15dab32b41b143ad72639072ba41bad2156e2e3db81521e",
+      "sourceSha256": "da8212316bb05e3c06c730d6a67ae4b3c8ed90ca5ec8c52410cb9d0cde1bddb4",
+      "trimSeconds": 0.0
+    },
+    "0e7e07d2224182c9": {
+      "file": "0e7e07d2224182c9.wav",
+      "root": 54,
+      "style": "sustain",
+      "repo": "VSCO-2-CE",
+      "path": "Percussion/Timpani/Timpani5_Hit_v3_rr2_Sum.wav",
+      "sha256": "5556ff2f96b7fa93b315614b02eb62b580d46c632224aac01dc46cc0a83aead8",
+      "sourceSha256": "e1195b473349412495d9c398840dc19b3fb1bf7530b4b85ab78a6d448caa9c40",
+      "trimSeconds": 0.0
+    },
+    "50f93e819f24158b": {
+      "file": "50f93e819f24158b.wav",
+      "root": 60,
+      "style": "sustain",
+      "repo": "VCSL",
+      "path": "Membranophones/Struck Membranophones/Snare Drum, Modern 2/Snare3M_HitSN_v3_rr1_Mid.wav",
+      "sha256": "518a0e1c39a2437b8cd4b75b58f7601d28147bf18bb376bff1de39e779da3611",
+      "sourceSha256": "b642a1f62dff918c1df607b655e728b06f7cf7d93e9c11ad28c40953dc4e4726",
+      "trimSeconds": 0.0054
+    },
+    "581101c593bd07bc": {
+      "file": "581101c593bd07bc.wav",
+      "root": 60,
+      "style": "sustain",
+      "repo": "VCSL",
+      "path": "Membranophones/Struck Membranophones/Snare Drum, Modern 2/Snare3M_HitSN_v3_rr2_Mid.wav",
+      "sha256": "8ac5046db473e21c9f5041ad12ff1b6d2fb922b5604d7466afb657b497997ba9",
+      "sourceSha256": "585ecadb6b06992c1da047ce12a40ae0b1868dfdeaf17d596283c43bb27efc80",
+      "trimSeconds": 0.0054
+    },
+    "5db2e255ed817d7b": {
+      "file": "5db2e255ed817d7b.wav",
+      "root": 60,
+      "style": "sustain",
+      "repo": "VCSL",
+      "path": "Membranophones/Struck Membranophones/Bass Drum 1/BDrumNew_hit_v3_rr1_Sum.wav",
+      "sha256": "a4214ef6007db187af17e94bc845e06c2ef8e98f807d931a8d4c0492147992b1",
+      "sourceSha256": "a2d8829e8b2b59e8afb12fa396b01758827059339c2a84ad066d17b36c82d1ff",
+      "trimSeconds": 0.0
+    },
+    "19af54ec1422c76e": {
+      "file": "19af54ec1422c76e.wav",
+      "root": 60,
+      "style": "sustain",
+      "repo": "VCSL",
+      "path": "Membranophones/Struck Membranophones/Bass Drum 1/BDrumNew_hit_v3_rr2_Sum.wav",
+      "sha256": "78e765d6cbbfa49aeb659cc7e42a1083b39ff1805597ef1b316b11950d86fd84",
+      "sourceSha256": "036c6c5fcfbcca845d92dbcdcef075ee6e0ae01636374a2f7dd1a696a7ba33f8",
+      "trimSeconds": 0.0
+    },
+    "24e847cdaa5483af": {
+      "file": "24e847cdaa5483af.wav",
+      "root": 60,
+      "style": "sustain",
+      "repo": "VCSL",
+      "path": "Idiophones/Struck Idiophones/Clash Cymbals 1/cymbal_crash1_mf1.wav",
+      "sha256": "cd822d6b6709e4bbe5aab49705f618584c352c9da92cf2c4b060c0e36c326fd3",
+      "sourceSha256": "3b4a6ed42627eedca39f6480e9825dedeaab538197fc734f85be13ba655aa6aa",
+      "trimSeconds": 0.0
+    },
+    "df88b0b80ef45bee": {
+      "file": "df88b0b80ef45bee.wav",
+      "root": 60,
+      "style": "sustain",
+      "repo": "VCSL",
+      "path": "Idiophones/Struck Idiophones/Clash Cymbals 1/cymbal_crash1_mf2.wav",
+      "sha256": "507ff8c837289ccd0cff8e2181ca86ff656f6cbc0ea9c531224061e91010b2d6",
+      "sourceSha256": "88534fac7b69522738fa6ae39f305c424a26418c274a18ca5a08a1302e4c60a2",
+      "trimSeconds": 0.0
+    },
+    "b2be8fb1f3ea46dc": {
+      "file": "b2be8fb1f3ea46dc.wav",
+      "root": 60,
+      "style": "sustain",
+      "repo": "VCSL",
+      "path": "Idiophones/Struck Idiophones/Triangles/Triangle1_Hit_v1_rr1_Mid.wav",
+      "sha256": "02ba2ee5834eb7fa47fb3979f49c81a6b97caf3b683af25d8e361d26418d19cc",
+      "sourceSha256": "0397199e59671937bde1e5d29fc2e74946e6c56889cc196e5053f33644f17ff7",
+      "trimSeconds": 0.0056
+    },
+    "c1ccebf8bc75bb9a": {
+      "file": "c1ccebf8bc75bb9a.wav",
+      "root": 60,
+      "style": "sustain",
+      "repo": "VCSL",
+      "path": "Idiophones/Struck Idiophones/Triangles/Triangle1_Hit_v1_rr2_Mid.wav",
+      "sha256": "07273c115a30a4f4bdddbe778bf9b205789e2cbe09f19883d49e292c93b3982e",
+      "sourceSha256": "2a926f7a0619fad3f0deb2082f09a68379e9a331160225573a6dca0045a15bfc",
+      "trimSeconds": 0.0056
+    },
+    "2690ba59decc10de": {
+      "file": "2690ba59decc10de.wav",
+      "root": 84,
+      "style": "sustain",
+      "repo": "VCSL",
+      "path": "Idiophones/Struck Idiophones/Glockenspiel/glock_medium_C5_01.wav",
+      "sha256": "03e01cc02d93f7a1644236c1c3833290542d762d076a07b35a1368b905a686fa",
+      "sourceSha256": "635f898e0bcb6975b96b18efd9c896f6f1b97ff12174a339ada4814e49675660",
+      "trimSeconds": 0.0
+    },
+    "60feaff95006bd3a": {
+      "file": "60feaff95006bd3a.wav",
+      "root": 91,
+      "style": "sustain",
+      "repo": "VCSL",
+      "path": "Idiophones/Struck Idiophones/Glockenspiel/glock_medium_G5_01.wav",
+      "sha256": "43d45bfdb84fbb32b293a8e6699e94990db06d3ea717a831fdfb115b44e8c2de",
+      "sourceSha256": "7045c0ef7260e2f1ad11a64406cf7575ed898d1207a91104d33d78caefac63e4",
+      "trimSeconds": 0.0037
+    },
+    "28c34d5ba3c7ea0f": {
+      "file": "28c34d5ba3c7ea0f.wav",
+      "root": 96,
+      "style": "sustain",
+      "repo": "VCSL",
+      "path": "Idiophones/Struck Idiophones/Glockenspiel/glock_medium_C6_01.wav",
+      "sha256": "4552f59478285e5396ddbac1d87dff1743dcdac077dd2a391cbfb8267ea91e38",
+      "sourceSha256": "e942cbf502cf6731df2925945fe3234c876cb63f047d91007b6929887f9e4904",
+      "trimSeconds": 0.0
+    },
+    "d70e1267abe3b258": {
+      "file": "d70e1267abe3b258.wav",
+      "root": 103,
+      "style": "sustain",
+      "repo": "VCSL",
+      "path": "Idiophones/Struck Idiophones/Glockenspiel/glock_medium_G6_01.wav",
+      "sha256": "ce955d21f5498c4073fe99d2328e0e45086b90ef7aefb29342bb0f4f25a82691",
+      "sourceSha256": "a2ba94e59119cd5272c1161fc8b8fbfb94c7b44de45a9a6cc5973b1c332103af",
+      "trimSeconds": 0.0
+    },
+    "5fe3733a72bf8b09": {
+      "file": "5fe3733a72bf8b09.wav",
+      "root": 108,
+      "style": "sustain",
+      "repo": "VCSL",
+      "path": "Idiophones/Struck Idiophones/Glockenspiel/glock_medium_C7_01.wav",
+      "sha256": "e7521e8a80d532b623c25ea114f18dae2ea9afd7f53bcca014a4aa0b17ed5cd1",
+      "sourceSha256": "b2ecbe0e60c983bbfaa49a1f45f8a11559f7dba27b8c8a032eb2cb7366a36910",
+      "trimSeconds": 0.0037
+    },
+    "25c58e0b0f28253f": {
+      "file": "25c58e0b0f28253f.wav",
+      "root": 59,
+      "style": "sustain",
+      "repo": "VCSL",
+      "path": "Chordophones/Composite Chordophones/Concert Harp/KSHarp_B3_mf1.wav",
+      "sha256": "a1c587c783dea9f7f601cc87ab9bcf2219c3238d95567a98cb38f6a89ac0cb7a",
+      "sourceSha256": "f6f71be8c640822ef48a448b245585659acdfcc7ed5774e10f37be2fc02fcab4",
+      "trimSeconds": 0.028
+    },
+    "986eaee449f7f3f0": {
+      "file": "986eaee449f7f3f0.wav",
+      "root": 62,
+      "style": "sustain",
+      "repo": "VCSL",
+      "path": "Chordophones/Composite Chordophones/Concert Harp/KSHarp_D4_mf1.wav",
+      "sha256": "263625866b58f568b674d96d507929e5fd70e8158b6598635b73030ff62a01c3",
+      "sourceSha256": "ebfde8aab4411019e37e3426f4dd88d6a52a38c2d0261d7f10ec63d8ff584dc7",
+      "trimSeconds": 0.0164
+    },
+    "32e0d01037b4b5c0": {
+      "file": "32e0d01037b4b5c0.wav",
+      "root": 65,
+      "style": "sustain",
+      "repo": "VCSL",
+      "path": "Chordophones/Composite Chordophones/Concert Harp/KSHarp_F4_mf1.wav",
+      "sha256": "4d8d4809a827cc1fa467ef659d439427f0b32de23b6cd1d637f36015c7195730",
+      "sourceSha256": "db27ebbb37334c10e06f2ae63f4d9ff555e4d11704fcc6f0bcf503863867e577",
+      "trimSeconds": 0.0069
+    },
+    "0fc00eaf48d17908": {
+      "file": "0fc00eaf48d17908.wav",
+      "root": 69,
+      "style": "sustain",
+      "repo": "VCSL",
+      "path": "Chordophones/Composite Chordophones/Concert Harp/KSHarp_A4_mf1.wav",
+      "sha256": "fb017976d7c7b70109be65e7f7c3cc00314fd069dd9663820ec4b441ebd7f3b8",
+      "sourceSha256": "3665f3975cad4a33f46784aa4f896f4b4319ba2b7831e892d975bc38c9f09f23",
+      "trimSeconds": 0.0176
+    },
+    "860e507821372ea3": {
+      "file": "860e507821372ea3.wav",
+      "root": 72,
+      "style": "sustain",
+      "repo": "VCSL",
+      "path": "Chordophones/Composite Chordophones/Concert Harp/KSHarp_C5_mf1.wav",
+      "sha256": "e3017cce3f43d58f4f30006a2560d5b1476d9344f332b4d92871c2f4a25fbcf1",
+      "sourceSha256": "7c8b862f6fd3f1442ed87537af976d84bda8c05a5b4900e8907d570b5202a517",
+      "trimSeconds": 0.0198
+    },
+    "0bdd0c3c35c0ecd0": {
+      "file": "0bdd0c3c35c0ecd0.wav",
+      "root": 76,
+      "style": "sustain",
+      "repo": "VCSL",
+      "path": "Chordophones/Composite Chordophones/Concert Harp/KSHarp_E5_mf1.wav",
+      "sha256": "bb05a00d2041363406fccb1453f10e73e0ac86a66339978f94cf8d889b8a696c",
+      "sourceSha256": "95dd9ddb0bd15bee7687906e00f25aafcaa43020cc9501f0e8b6cabf0e9a53ec",
+      "trimSeconds": 0.0187
+    },
+    "9a5b67ad3f1268c6": {
+      "file": "9a5b67ad3f1268c6.wav",
+      "root": 79,
+      "style": "sustain",
+      "repo": "VCSL",
+      "path": "Chordophones/Composite Chordophones/Concert Harp/KSHarp_G5_mf1.wav",
+      "sha256": "1dec4416395d19b6685bd77a6eb512e4f36dddf241201fea05f6e03cb01206f3",
+      "sourceSha256": "f2004dfc617997fbabc6f849add2af06f4f859361c44a8fca0f993dc7f999540",
+      "trimSeconds": 0.0125
+    },
+    "c7a79f603d50303f": {
+      "file": "c7a79f603d50303f.wav",
+      "root": 83,
+      "style": "sustain",
+      "repo": "VCSL",
+      "path": "Chordophones/Composite Chordophones/Concert Harp/KSHarp_B5_mf1.wav",
+      "sha256": "404bd60028d32392dd7c1808a166937dd95849634acd2e2208b55b24629c0507",
+      "sourceSha256": "f2757b674c6b7301bed52e17a1ae3e3d34d628b3f7edc5773ebb25798d2541f7",
+      "trimSeconds": 0.0174
+    },
+    "3d763d90b56e8757": {
+      "file": "3d763d90b56e8757.wav",
+      "root": 86,
+      "style": "sustain",
+      "repo": "VCSL",
+      "path": "Chordophones/Composite Chordophones/Concert Harp/KSHarp_D6_mf1.wav",
+      "sha256": "df0426c3dfe4a174823bd3f7b8217ef32498b29ac195ec9a34bb366eb430bb3f",
+      "sourceSha256": "b040b61fb279efa1a9b9c60dcbd8626a37f57ffb30f3b50747a2123ee4db5bd2",
+      "trimSeconds": 0.0054
+    },
+    "f0d6ab42c8d0338a": {
+      "file": "f0d6ab42c8d0338a.wav",
+      "root": 89,
+      "style": "sustain",
+      "repo": "VCSL",
+      "path": "Chordophones/Composite Chordophones/Concert Harp/KSHarp_F6_mf1.wav",
+      "sha256": "b74b4cb31b054e50b22bd7226d4554c5c9c6b8c8d4beb8e206ecc0d365495a13",
+      "sourceSha256": "7cf4c012542df737be39900af262fdd980681956e734f43af106718184f34213",
+      "trimSeconds": 0.0061
+    },
+    "02744e17a36fcf39": {
+      "file": "02744e17a36fcf39.wav",
+      "root": 93,
+      "style": "sustain",
+      "repo": "VCSL",
+      "path": "Chordophones/Composite Chordophones/Concert Harp/KSHarp_A6_mf1.wav",
+      "sha256": "d41dacff60422331211c4fdac020d9f5bb8acb6c9a6fb331b3c8fe2c85bae77a",
+      "sourceSha256": "4605355d22fae6f58190bf0d033d2ebdd745d63e2e43204d6f41ad27e4f09af0",
+      "trimSeconds": 0.0272
+    },
+    "10fe541a00ab413e": {
+      "file": "10fe541a00ab413e.wav",
+      "root": 45,
+      "style": "sustain",
+      "repo": "VCSL",
+      "path": "Chordophones/Zithers/Grand Piano, Kawai/Sustains/GPiano_sus_A1_v2_rr1_Player.wav",
+      "sha256": "fe944c9a997689b28e93a371adae99aa0666c7a81be827f1dd1f1b025d43257e",
+      "sourceSha256": "3fb2818cbf799cebcd91798f949cacb01e287e12a33158c6520bf381c73f4689",
+      "trimSeconds": 0.0
+    },
+    "e96fd1f686bdc749": {
+      "file": "e96fd1f686bdc749.wav",
+      "root": 48,
+      "style": "sustain",
+      "repo": "VCSL",
+      "path": "Chordophones/Zithers/Grand Piano, Kawai/Sustains/GPiano_sus_C2_v2_rr1_Player.wav",
+      "sha256": "744eeda3ed25e40cabc53d27ebb59916491e6dee6a8d69ef8a37a4ff86d71463",
+      "sourceSha256": "00838dbdbcb0dffd02529c38fa84bc514931634b485fc2ad6ecc62fe98d27a62",
+      "trimSeconds": 0.0
+    },
+    "3e879a4fcb3e792a": {
+      "file": "3e879a4fcb3e792a.wav",
+      "root": 50,
+      "style": "sustain",
+      "repo": "VCSL",
+      "path": "Chordophones/Zithers/Grand Piano, Kawai/Sustains/GPiano_sus_D2_v2_rr1_Player.wav",
+      "sha256": "fa60169751a87df6ea860183a744532aa8460cb834961e82ebe57e7e94aad009",
+      "sourceSha256": "921177c089d77f243e7ca3add1752840345f9c8fb765a6357211dfb5dc410b21",
+      "trimSeconds": 0.0
+    },
+    "54e2bda5810bba63": {
+      "file": "54e2bda5810bba63.wav",
+      "root": 52,
+      "style": "sustain",
+      "repo": "VCSL",
+      "path": "Chordophones/Zithers/Grand Piano, Kawai/Sustains/GPiano_sus_E2_v2_rr1_Player.wav",
+      "sha256": "834fde937278127e268f6ab6ca9c3cf5171b366640b3489b07c61d72648fb119",
+      "sourceSha256": "d6db864de30223e61c90c4d6c77c47590ae8683e3e821cf4cd781ebdc0c084a9",
+      "trimSeconds": 0.0
+    },
+    "9f4f412dcf914f50": {
+      "file": "9f4f412dcf914f50.wav",
+      "root": 54,
+      "style": "sustain",
+      "repo": "VCSL",
+      "path": "Chordophones/Zithers/Grand Piano, Kawai/Sustains/GPiano_sus_F#2_v2_rr1_Player.wav",
+      "sha256": "1721a1b4e7a9229ab44706e9e555437d3433ba8fc441e4856cc6add0803993f9",
+      "sourceSha256": "45be0b87b88a6789550f849da90c2b085bd7976e183850f5f359bbc843c41d64",
+      "trimSeconds": 0.0
+    },
+    "bdd47858d2f037da": {
+      "file": "bdd47858d2f037da.wav",
+      "root": 56,
+      "style": "sustain",
+      "repo": "VCSL",
+      "path": "Chordophones/Zithers/Grand Piano, Kawai/Sustains/GPiano_sus_G#2_v2_rr1_Player.wav",
+      "sha256": "0a5f3509101d016545034ce97d29e8eb637ed5a72310aea8ddd397999fb9f281",
+      "sourceSha256": "f3447b7e8a841de457cc77f68919c9d8005f7859201253f7a76982819c96d4f9",
+      "trimSeconds": 0.0
+    },
+    "d97c466c5ba910ea": {
+      "file": "d97c466c5ba910ea.wav",
+      "root": 58,
+      "style": "sustain",
+      "repo": "VCSL",
+      "path": "Chordophones/Zithers/Grand Piano, Kawai/Sustains/GPiano_sus_A#2_v2_rr1_Player.wav",
+      "sha256": "15d08f573a641a4b73c0e77b59545fc4f92d925202483d70ae0c3ea88b50ac1a",
+      "sourceSha256": "1de35d91b4a5623b13433beab9d137e01ad99e2156cf5369d2800ff6e0c44b78",
+      "trimSeconds": 0.0
+    },
+    "3371aec4d71635df": {
+      "file": "3371aec4d71635df.wav",
+      "root": 60,
+      "style": "sustain",
+      "repo": "VCSL",
+      "path": "Chordophones/Zithers/Grand Piano, Kawai/Sustains/GPiano_sus_C3_v2_rr1_Player.wav",
+      "sha256": "b51c72e3bf700165602a1d5a66db3b8893904912a083539378b4f8c4f6cdfdc0",
+      "sourceSha256": "fce33012fe900309abafd1a4d6d254d142b0cbf33834c7a72c2fd1ada4e746e1",
+      "trimSeconds": 0.0
+    },
+    "b7b920d3ee4c124f": {
+      "file": "b7b920d3ee4c124f.wav",
+      "root": 62,
+      "style": "sustain",
+      "repo": "VCSL",
+      "path": "Chordophones/Zithers/Grand Piano, Kawai/Sustains/GPiano_sus_D3_v2_rr1_Player.wav",
+      "sha256": "e5d9f90898d88e586316af5167fe20e5dbd2d3784a5c0ab62f21169b89113a84",
+      "sourceSha256": "72f04ebb9fe1e05c95f891d1fb3141d459a810e9757ba80ae89d5badb0ddb4b3",
+      "trimSeconds": 0.0005
+    },
+    "50daf7fc81790ef5": {
+      "file": "50daf7fc81790ef5.wav",
+      "root": 64,
+      "style": "sustain",
+      "repo": "VCSL",
+      "path": "Chordophones/Zithers/Grand Piano, Kawai/Sustains/GPiano_sus_E3_v2_rr1_Player.wav",
+      "sha256": "3151435b4592c98bcdfe20f86cbb3c110f9029f78e67f42888542201257522c4",
+      "sourceSha256": "51727d51e9174cd141ea202e25871a56fbd32f799d7f440d7bbeba0f1d29dc7c",
+      "trimSeconds": 0.0
+    },
+    "8313be313787593e": {
+      "file": "8313be313787593e.wav",
+      "root": 66,
+      "style": "sustain",
+      "repo": "VCSL",
+      "path": "Chordophones/Zithers/Grand Piano, Kawai/Sustains/GPiano_sus_F#3_v2_rr1_Player.wav",
+      "sha256": "4034e7437d434a28037baedfc882d7678f25408203630328d723a7d81e9f6c37",
+      "sourceSha256": "85d36c877c730b1a20ac487c598475cf9d50d2a710abef19ab1d9f45ab4c3cae",
+      "trimSeconds": 0.0
+    },
+    "b7af914af105e02b": {
+      "file": "b7af914af105e02b.wav",
+      "root": 68,
+      "style": "sustain",
+      "repo": "VCSL",
+      "path": "Chordophones/Zithers/Grand Piano, Kawai/Sustains/GPiano_sus_G#3_v2_rr1_Player.wav",
+      "sha256": "581694c98acbf6baa48a78917d2ccbb010d954b288c0d5c310bd55df078a62fa",
+      "sourceSha256": "5d2c5634dbed1cbd2f760d756f045247089b2e2962184fa3fcf47cf9c8fd4277",
+      "trimSeconds": 0.0
+    },
+    "ad3c5ffbc2645d07": {
+      "file": "ad3c5ffbc2645d07.wav",
+      "root": 70,
+      "style": "sustain",
+      "repo": "VCSL",
+      "path": "Chordophones/Zithers/Grand Piano, Kawai/Sustains/GPiano_sus_A#3_v2_rr1_Player.wav",
+      "sha256": "9e3257aa51177904f1fa557b792a4a005ca3518dc85b8618bca849533086fecf",
+      "sourceSha256": "3465aff6bcc622a7025fa0a0006d9aa1aeb378a6cd7ccda662225bf748e6e9f0",
+      "trimSeconds": 0.0
+    },
+    "fe12de3f11aca4d5": {
+      "file": "fe12de3f11aca4d5.wav",
+      "root": 72,
+      "style": "sustain",
+      "repo": "VCSL",
+      "path": "Chordophones/Zithers/Grand Piano, Kawai/Sustains/GPiano_sus_C4_v2_rr1_Player.wav",
+      "sha256": "8e6028f5738d498d74d0852f6dcf8df6e6bc7218b5c445fc4f7278f6f42e2652",
+      "sourceSha256": "69845de40a38ed6501746520f9f385ae56200a4372faed48178e64a32a75e58c",
+      "trimSeconds": 0.0
+    },
+    "28450ce2c8522810": {
+      "file": "28450ce2c8522810.wav",
+      "root": 74,
+      "style": "sustain",
+      "repo": "VCSL",
+      "path": "Chordophones/Zithers/Grand Piano, Kawai/Sustains/GPiano_sus_D4_v2_rr1_Player.wav",
+      "sha256": "21e1a0ed0beeeb4e3936d9f6e1a380b8c8d308c0a910c2753b812fa457631143",
+      "sourceSha256": "7eee232754d6e6b6b6f060b52758a971e60c2a0c651bfb1d0164b21fb32aa9ae",
+      "trimSeconds": 0.0
+    },
+    "c76a80d76047b448": {
+      "file": "c76a80d76047b448.wav",
+      "root": 76,
+      "style": "sustain",
+      "repo": "VCSL",
+      "path": "Chordophones/Zithers/Grand Piano, Kawai/Sustains/GPiano_sus_E4_v2_rr1_Player.wav",
+      "sha256": "70c9685e7e6f6d271eefa50159780fe0b0d06ed22db825709d732d6a09db725f",
+      "sourceSha256": "0b3357ea1c4313d196defebd8d1f02291889c6d1484f94652fa68b82768315c8",
+      "trimSeconds": 0.0
+    },
+    "b03c6cb3cd1235a4": {
+      "file": "b03c6cb3cd1235a4.wav",
+      "root": 78,
+      "style": "sustain",
+      "repo": "VCSL",
+      "path": "Chordophones/Zithers/Grand Piano, Kawai/Sustains/GPiano_sus_F#4_v2_rr1_Player.wav",
+      "sha256": "8d23090dde5577cfbaba51b28d363d440a9cc835447d263a8175ea66fc27c7bd",
+      "sourceSha256": "e2a6b1ca1b0919cf04fd3023004f352b588f471ff68543ac546726c134659cb8",
+      "trimSeconds": 0.0
+    },
+    "86dcf748a0eaf904": {
+      "file": "86dcf748a0eaf904.wav",
+      "root": 80,
+      "style": "sustain",
+      "repo": "VCSL",
+      "path": "Chordophones/Zithers/Grand Piano, Kawai/Sustains/GPiano_sus_G#4_v2_rr1_Player.wav",
+      "sha256": "d863b3ed5275b608b5963ef70986ab48609b4b3354e3665add8960e3a9e6e5a4",
+      "sourceSha256": "5a90fad68dbcd5610412bd23838c8c70b2fc1acd268980ae66773d595e9b1aa0",
+      "trimSeconds": 0.0
+    },
+    "8f163b16213281f6": {
+      "file": "8f163b16213281f6.wav",
+      "root": 82,
+      "style": "sustain",
+      "repo": "VCSL",
+      "path": "Chordophones/Zithers/Grand Piano, Kawai/Sustains/GPiano_sus_A#4_v2_rr1_Player.wav",
+      "sha256": "a5c1d8e6f5a6c090afe7050da73fecf9608045c6570c0dcd3c441734372e189c",
+      "sourceSha256": "5fdd61e4eafa7ee90325ac6a7380c87f4115d30d88f722f3f8a0b9fbd39e0b6e",
+      "trimSeconds": 0.0
+    },
+    "b83428e92ae62436": {
+      "file": "b83428e92ae62436.wav",
+      "root": 83,
+      "style": "sustain",
+      "repo": "VCSL",
+      "path": "Chordophones/Zithers/Grand Piano, Kawai/Sustains/GPiano_sus_B4_v3_rr1_Player.wav",
+      "sha256": "f4eadb933da74c5b9b496994a7dbc7b41c1bfc86fbf65b0072318bf95f250d44",
+      "sourceSha256": "00cd9f702d90dc69c366ced45f45fdc2742e7cae636c63b5b0e1958a04bd362d",
+      "trimSeconds": 0.0
+    },
+    "9254e4a35b61484f": {
+      "file": "9254e4a35b61484f.wav",
+      "root": 84,
+      "style": "sustain",
+      "repo": "VCSL",
+      "path": "Chordophones/Zithers/Grand Piano, Kawai/Sustains/GPiano_sus_C5_v2_rr1_Player.wav",
+      "sha256": "640dddb91e691eaf18d6dcd8b0562f5b2b22966df810481f0f14f354af94a5a1",
+      "sourceSha256": "f56e64651eed9bdc88abb53eff3beb9a6e89d787f29fef7758f04b6da09397c9",
+      "trimSeconds": 0.0
+    },
+    "fluid-english_horn-60": {
+      "file": "fluid-english_horn-60.mp3",
+      "root": 60,
+      "style": "sustain",
+      "repo": "FluidR3",
+      "path": "FluidR3_GM/english_horn-mp3.js",
+      "sha256": "eabfe480d465aa29fecc28b8aef0cd5383daae9b9a75603baf27a9af6039a80a",
+      "loop": [
+        0.35,
+        0.8
+      ]
+    },
+    "fluid-english_horn-64": {
+      "file": "fluid-english_horn-64.mp3",
+      "root": 64,
+      "style": "sustain",
+      "repo": "FluidR3",
+      "path": "FluidR3_GM/english_horn-mp3.js",
+      "sha256": "6de28cf5a6efb8a39f1d5be5ac5a9a472d13f0e48041719de771e06d737b7bf2",
+      "loop": [
+        0.35,
+        0.8
+      ]
+    },
+    "fluid-english_horn-68": {
+      "file": "fluid-english_horn-68.mp3",
+      "root": 68,
+      "style": "sustain",
+      "repo": "FluidR3",
+      "path": "FluidR3_GM/english_horn-mp3.js",
+      "sha256": "ef81cbcf1da687674afa41764d8f8c42ff7d489a635eb6009d921a74cdcac445",
+      "loop": [
+        0.35,
+        0.8
+      ]
+    },
+    "fluid-english_horn-72": {
+      "file": "fluid-english_horn-72.mp3",
+      "root": 72,
+      "style": "sustain",
+      "repo": "FluidR3",
+      "path": "FluidR3_GM/english_horn-mp3.js",
+      "sha256": "d0b2157fbebb7972bbbf0eeeb13ad4fbd639eef3c97a59b75cf2f2abc76fb399",
+      "loop": [
+        0.35,
+        0.8
+      ]
+    },
+    "fluid-english_horn-76": {
+      "file": "fluid-english_horn-76.mp3",
+      "root": 76,
+      "style": "sustain",
+      "repo": "FluidR3",
+      "path": "FluidR3_GM/english_horn-mp3.js",
+      "sha256": "d3dc06388f96e45b18affa29eb48dcaea3b2d37779c44f5e2701b4b997b4df8f",
+      "loop": [
+        0.35,
+        0.8
+      ]
+    },
+    "fluid-english_horn-80": {
+      "file": "fluid-english_horn-80.mp3",
+      "root": 80,
+      "style": "sustain",
+      "repo": "FluidR3",
+      "path": "FluidR3_GM/english_horn-mp3.js",
+      "sha256": "9c4ef04d3ec05bd8fb7b1abb502aa6fcd715373916a4c17c9d82f598c7a17074",
+      "loop": [
+        0.35,
+        0.8
+      ]
+    },
+    "fluid-english_horn-84": {
+      "file": "fluid-english_horn-84.mp3",
+      "root": 84,
+      "style": "sustain",
+      "repo": "FluidR3",
+      "path": "FluidR3_GM/english_horn-mp3.js",
+      "sha256": "67da2836b191f40e018aa46dc822f536b9c02e23b58f2395c9405f159d42bcf4",
+      "loop": [
+        0.35,
+        0.8
+      ]
+    },
+    "fluid-english_horn-88": {
+      "file": "fluid-english_horn-88.mp3",
+      "root": 88,
+      "style": "sustain",
+      "repo": "FluidR3",
+      "path": "FluidR3_GM/english_horn-mp3.js",
+      "sha256": "cd20893f17b39244b0141ce4be12243d1d4d57904f430e332adc32307921562d",
+      "loop": [
+        0.35,
+        0.8
+      ]
+    },
+    "fluid-english_horn-92": {
+      "file": "fluid-english_horn-92.mp3",
+      "root": 92,
+      "style": "sustain",
+      "repo": "FluidR3",
+      "path": "FluidR3_GM/english_horn-mp3.js",
+      "sha256": "cd20893f17b39244b0141ce4be12243d1d4d57904f430e332adc32307921562d",
+      "loop": [
+        0.35,
+        0.8
+      ]
+    },
+    "fluid-celesta-72": {
+      "file": "fluid-celesta-72.mp3",
+      "root": 72,
+      "style": "sustain",
+      "repo": "FluidR3",
+      "path": "FluidR3_GM/celesta-mp3.js",
+      "sha256": "687dcb03ae6aaa2ebfa8564425f006617c9dd67be7c54d76f77572e354e1ca0e"
+    },
+    "fluid-celesta-76": {
+      "file": "fluid-celesta-76.mp3",
+      "root": 76,
+      "style": "sustain",
+      "repo": "FluidR3",
+      "path": "FluidR3_GM/celesta-mp3.js",
+      "sha256": "0f65be58f19b0f93c58f743cd4571ebf8e9e90115bebec96d82b8fe212d47e50"
+    },
+    "fluid-celesta-80": {
+      "file": "fluid-celesta-80.mp3",
+      "root": 80,
+      "style": "sustain",
+      "repo": "FluidR3",
+      "path": "FluidR3_GM/celesta-mp3.js",
+      "sha256": "7b948c00466abf1f0282413dd1df527cf6d6ec43132767cab0dd3e66159ef6f0"
+    },
+    "fluid-celesta-84": {
+      "file": "fluid-celesta-84.mp3",
+      "root": 84,
+      "style": "sustain",
+      "repo": "FluidR3",
+      "path": "FluidR3_GM/celesta-mp3.js",
+      "sha256": "097ae20b0df33d4905bdbcc6f9d6676dfadbbdc3c363d25f9750f220412f49f6"
+    },
+    "fluid-celesta-88": {
+      "file": "fluid-celesta-88.mp3",
+      "root": 88,
+      "style": "sustain",
+      "repo": "FluidR3",
+      "path": "FluidR3_GM/celesta-mp3.js",
+      "sha256": "02172d8b7afbcecc2a4d71d13a5119e2244d8e2d66167ae03e308e12f751d989"
+    },
+    "fluid-celesta-92": {
+      "file": "fluid-celesta-92.mp3",
+      "root": 92,
+      "style": "sustain",
+      "repo": "FluidR3",
+      "path": "FluidR3_GM/celesta-mp3.js",
+      "sha256": "bce1a7220cfd167bd72e6c06be15b0ea6b0ec67657649246a8bc1799a3e5e72d"
+    },
+    "fluid-celesta-96": {
+      "file": "fluid-celesta-96.mp3",
+      "root": 96,
+      "style": "sustain",
+      "repo": "FluidR3",
+      "path": "FluidR3_GM/celesta-mp3.js",
+      "sha256": "201aa0d29edcde057fa91c1a39bc148b02b5b8b34cf6763be64ae2cc42e4ad82"
+    },
+    "fluid-celesta-100": {
+      "file": "fluid-celesta-100.mp3",
+      "root": 100,
+      "style": "sustain",
+      "repo": "FluidR3",
+      "path": "FluidR3_GM/celesta-mp3.js",
+      "sha256": "2b97932cb57f2fc98c5cdc64b9e7d567e2e0c2896c8cf685e9ee9adc5c9ddf93"
+    },
+    "fluid-celesta-104": {
+      "file": "fluid-celesta-104.mp3",
+      "root": 104,
+      "style": "sustain",
+      "repo": "FluidR3",
+      "path": "FluidR3_GM/celesta-mp3.js",
+      "sha256": "2ad4cb05c0d343741a26656d3700dcac1a7913a0bb09e8d93a19111f699be8ab"
+    }
+  }
+}

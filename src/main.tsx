@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import { AudioEngine, advanceForm, compose, configureForm, configureHarmony, createOrchestra, evolve, isOpening, isFormEntrance, recordPerformance, seedMusician, type Musician } from './engine';
+import { InstrumentAudition } from './InstrumentAudition';
 import { TonalityControls } from './TonalityControls';
 import { currentKey, homeKey, keyName, degreeName, randomTonality, type Tonality, type Modulation } from './tonality';
 import { FormControls } from './FormControls';
@@ -11,7 +12,7 @@ import type { StartingMotif as Phrase } from './melody';
 import { generateStartingMotif } from './random-motif';
 import { orchestra, isPitched, sections, sectionColors, type Section } from './orchestra';
 import { Mesh } from './network';
-import { DEFAULT_MODEL, LocalBrains, listLocalModels, ollamaDecider, type BrainStatus } from './local-llm';
+import { DEFAULT_MODEL, DEFAULT_BRAIN_OPTIONS, LocalBrains, listLocalModels, ollamaDecider, type BrainStatus } from './local-llm';
 import './style.css';
 
 function PerformanceDial({ running, tempo, count }: { running: boolean; tempo: number; count: number }) {
@@ -86,10 +87,14 @@ function App() {
   const [status, setStatus] = useState('Full orchestra ready');
   const [joined, setJoined] = useState(false);
   const [volume, setVolume] = useState(35);
+  const [soundStatus, setSoundStatus] = useState('Recorded orchestral instruments');
+  const [sampleProgress, setSampleProgress] = useState(0);
   const [logs, setLogs] = useState([`${orchestra.length} independent instrument agents. One shared starting point.`]);
   const [section, setSection] = useState<Section | 'All'>('All');
   const [peerStates, setPeerStates] = useState<Musician[]>([]);
   const [llmEnabled, setLlmEnabled] = useState(true);
+  const [reviewInterval, setReviewInterval] = useState(DEFAULT_BRAIN_OPTIONS.intervalMs);
+  const reviewIntervalRef = useRef(reviewInterval);
   const [model, setModel] = useState(DEFAULT_MODEL);
   const [models, setModels] = useState<string[]>([]);
   const [modelStatus, setModelStatus] = useState('Checking the local model…');
@@ -162,12 +167,12 @@ function App() {
         ? [...remote.current.values()].filter(p => performance.now() - p.time < 4000).map(p => p.state)
         : state.current.filter(p => !split.current || p.group === self.group);
       return { self, reachable };
-    }, (id, status) => setBrainStates(previous => ({ ...previous, [id]: status })));
+    }, (id, status) => setBrainStates(previous => ({ ...previous, [id]: status })), { ...DEFAULT_BRAIN_OPTIONS, intervalMs: reviewIntervalRef.current });
     brains.current = localBrains;
     const timer = setInterval(() => {
       const localAgents = peerMode ? [state.current[instrument]] : state.current;
       localBrains.tick(localAgents.filter(a => a.audible && a.beat > 0 && !isOpening(a) && !isFormEntrance(a)).map(a => a.id));
-    }, 500);
+    }, 200);
     return () => { clearInterval(timer); localBrains.dispose(); if (brains.current === localBrains) brains.current = null; };
   }, [running, llmEnabled, model, peerMode, instrument]);
 
@@ -208,7 +213,7 @@ function App() {
     return () => clearInterval(timer);
   }, [running, peerMode, instrument]);
 
-  useEffect(() => () => { audio.current?.close(); mesh.current?.close(); }, []);
+  useEffect(() => () => { audio.current?.close(); audio.current = null; mesh.current?.close(); }, []);
 
   async function togglePerformance() {
     if (running) {
@@ -220,11 +225,16 @@ function App() {
       return;
     }
     setStarting(true);
+    setSampleProgress(0);
     try {
       const engine = new AudioEngine(); audio.current = engine;
       engine.master.gain.value = volume / 100;
       for (const i of muted.current) engine.setMuted(i, true);
       await engine.resume();
+      const sounds = await engine.prepare(peerMode ? [instrument] : undefined, ({ loaded, total }) => setSampleProgress(Math.round(loaded / total * 100)));
+      if (audio.current !== engine) return;
+      setSoundStatus(sounds.failed.length ? `Some samples unavailable · ${sounds.failed.length} affected voices` : 'Recorded orchestral instruments');
+      if (sounds.failed.length) log(`Sample loading incomplete: ${sounds.failed.join(', ')}. Available recordings play; missing patches use synthesis. Pause and resume to retry.`);
       state.current = state.current.map(a => ({ ...a, audible: !muted.current.has(a.instrument) }));
       setRunning(true);
       log(`${peerMode ? orchestra[instrument].name : `${orchestra.length} instruments`} performing · independent local clocks running`);
@@ -329,8 +339,8 @@ function App() {
       <div className="intro-right">
         <PerformanceDial running={running} tempo={avg} count={active.length} />
         <span className="live"><i className={running ? 'pulse' : ''} />{running ? 'THE ORCHESTRA IS PLAYING' : 'THE ORCHESTRA IS WAITING'}</span>
-        <button className="primary play-button" disabled={starting} onClick={togglePerformance}><span className="play-symbol" aria-hidden="true">{running ? 'Ⅱ' : '▶'}</span><span>{starting ? 'Starting audio…' : running ? 'Pause performance' : hasPerformed ? 'Resume performance' : 'Start performance'}</span><span aria-hidden="true">↗</span></button>
-        <span className="player-footnote">{peerMode ? 'One browser · one instrument' : '26 agents · live synthesized audio'}</span>
+        <button className="primary play-button" disabled={starting} onClick={togglePerformance}><span className="play-symbol" aria-hidden="true">{running ? 'Ⅱ' : '▶'}</span><span>{starting ? `Loading sounds · ${sampleProgress}%` : running ? 'Pause performance' : hasPerformed ? 'Resume performance' : 'Start performance'}</span><span aria-hidden="true">↗</span></button>
+        <span className="player-footnote" role="status">{peerMode ? 'One browser · one instrument' : '26 agents'} · {soundStatus}</span>
       </div>
     </section>
     <div className="metrics">
@@ -354,6 +364,7 @@ function App() {
     </section>
     <section className="instrument-panel" id="instruments" aria-label="Instrument agents">
       <div className="roster-heading"><div><span className="eyebrow">02 — THE PLAYERS</span><h2>Distinct personalities.<br /><em>Shared possibilities.</em></h2></div><p className="roster-note">Every part has its own rhythm, register and memory.<br />Listen to the whole. Or single out a voice.</p></div>
+      <InstrumentAudition disabled={running || starting} />
       <div className="section-filters" role="group" aria-label="Filter orchestral sections">
         {(['All', ...sections] as const).map(s => <button key={s} aria-pressed={section === s} className={section === s ? 'selected' : ''} onClick={() => setSection(s)}>{s} <span>{active.filter(a => s === 'All' || orchestra[a.instrument].section === s).length}</span></button>)}
       </div>
@@ -392,6 +403,10 @@ function App() {
             if (!e.target.checked) state.current = state.current.map(a => ({ ...a, decision: undefined }));
           }} /> Local LLM composition</label>
           <p>Each instrument considers its movement, remembered themes and up to six nearby musicians. It experiments with note lengths, rests and per-note articulation, alongside gestures and melody. New phrases enter on the next bar.</p>
+          <label>Re-evaluation interval<select aria-label="Re-evaluation interval" value={reviewInterval} onChange={e => {
+            const interval = Number(e.target.value); reviewIntervalRef.current = interval; setReviewInterval(interval); brains.current?.setIntervalMs(interval);
+          }}>{[1000, 2000, 4000, 8000, 12000].map(ms => <option key={ms} value={ms}>{ms / 1000} second{ms === 1000 ? '' : 's'}</option>)}</select></label>
+          <p className="review-help">Minimum wait after adopting a phrase. Queue and inference time are additional. Change this while playing; each voice keeps its memory.</p>
           <label>Local model<select aria-label="Local model" value={model} onChange={e => { brains.current?.invalidate(); setModel(e.target.value); }}>
             {[...new Set([DEFAULT_MODEL, model, ...models])].map(name => <option key={name} value={name}>{name}</option>)}
           </select></label>

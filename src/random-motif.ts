@@ -11,17 +11,20 @@ export function generateStartingMotif(previous?: StartingMotif, random = Math.ra
     // Reflect at the register edges instead of jumping an octave when wrapping.
     motif.push(next < 0 ? -next : next > 6 ? 12 - next : next);
   }
-  const available = Array.from({ length: 14 }, (_, i) => i + 1);
+  // Begin with a connected pair rather than an isolated note followed by a random gap.
+  const second = 1 + pick(2);
+  const available = Array.from({ length: 14 - second }, (_, i) => i + second + 1);
   for (let i = available.length - 1; i > 0; i--) {
     const j = pick(i + 1);
     [available[i], available[j]] = [available[j], available[i]];
   }
-  const rhythm = [0, ...available.slice(0, length - 1).sort((a, b) => a - b)];
+  const rhythm = [0, second, ...available.slice(0, length - 2).sort((a, b) => a - b)];
   // A reroll always changes something, including when randomness repeats exactly.
   if (previous && JSON.stringify({ motif, rhythm }) === JSON.stringify({ motif: previous.motif, rhythm: previous.rhythm })) {
     motif[motif.length - 1] = (motif.at(-1)! + 1) % 7;
   }
   const durations = rhythm.map((_, i) => { const values = noteValues.filter(n => n <= onsetGap(rhythm, i)); return values[pick(values.length)]; });
+  durations[0] = second === 1 ? 1 : 2;
   const articulation: Articulation = ['normal', 'legato', 'staccato'][pick(3)] as Articulation;
-  return { motif, ...normalizeRhythm({ rhythm, durations, articulations: rhythm.map((_, i) => i === rhythm.length - 1 ? 'tenuto' : articulation) }) };
+  return { motif, ...normalizeRhythm({ rhythm, durations, articulations: rhythm.map((_, i) => i === 0 ? 'legato' : i === rhythm.length - 1 ? 'tenuto' : articulation) }) };
 }

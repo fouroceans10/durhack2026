@@ -2,7 +2,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { generateStartingMotif } from './random-motif';
 import { validStartingMotif } from './melody';
-import { compose, createOrchestra, seedMusician } from './engine';
+import { compose, createOrchestra, seedMusician, createMusician } from './engine';
 
 test('generated openings vary melody and rhythm while remaining playable', () => {
   let seed = 91;
@@ -24,4 +24,23 @@ test('reroll cannot repeat the previous phrase even with identical random values
   assert.notDeepEqual(second, first);
   assert.deepEqual(first, before);
   assert.ok(validStartingMotif(second));
+});
+
+test('generated openings enter their second note promptly and sustain through the first entrance gap', () => {
+  let seed = 742;
+  const random = () => { seed = (Math.imul(seed, 1664525) + 1013904223) >>> 0; return seed / 2 ** 32; };
+  const shapes = new Set<string>();
+  for (let i = 0; i < 500; i++) {
+    const phrase = generateStartingMotif(undefined, random);
+    assert.ok(phrase.rhythm[1] === 1 || phrase.rhythm[1] === 2);
+    assert.equal(phrase.durations![0], phrase.rhythm[1]); assert.equal(phrase.articulations![0], 'legato');
+    assert.ok(validStartingMotif(phrase)); shapes.add(phrase.rhythm.join());
+    const m = seedMusician(createMusician(0), phrase);
+    assert.ok(compose(m)[0].duration >= phrase.rhythm[1] * 60 / m.tempo / 4);
+    assert.equal(compose({ ...m, beat: phrase.rhythm[1] }).length, 1);
+  }
+  assert.ok(shapes.size > 100, 'Keeping the first pair connected still permits varied rhythms.');
+  const uploaded = { motif: [0, 2], rhythm: [0, 8], durations: [1, 4] as (1 | 4)[], articulations: ['staccato', 'tenuto'] as ('staccato' | 'tenuto')[] };
+  const m = seedMusician(createMusician(0), uploaded);
+  assert.deepEqual(m.rhythm, uploaded.rhythm); assert.deepEqual(m.durations, uploaded.durations);
 });

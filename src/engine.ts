@@ -4,6 +4,7 @@ import { formPosition, makeForm, validForm, type FormSettings, type FormState } 
 import { currentKey, homeKey, DEFAULT_TONALITY, degreePitch, nearestDegree, makeHarmony, validHarmony, sameKey, sectionKey, relatedKey, keyChanges, type HarmonyState, type KeyChange, type Modulation, type Tonality } from './tonality';
 export { instruments } from './orchestra';
 import { articulations, noteValues, normalizeRhythm, onsetGap, soundingDuration, validPhrasing, type Articulation, type NoteValue, type Phrasing } from './phrasing';
+import { SampleBank, type SampleProgress } from './sample-bank';
 
 export type PlayedNote = NoteEvent & { step: number };
 export type Musician = Phrasing & {
@@ -178,8 +179,10 @@ export class AudioEngine {
   master: GainNode;
   private buses: GainNode[];
   private noise: AudioBuffer;
+  private samples: SampleBank;
   constructor() {
     this.context = new AudioContext();
+    this.samples = new SampleBank(this.context);
     this.master = this.context.createGain();
     this.master.gain.value = .35;
     const compressor = this.context.createDynamicsCompressor();
@@ -203,6 +206,9 @@ export class AudioEngine {
     }
   }
   async resume() { await this.context.resume(); }
+  prepare(instruments: readonly number[] = orchestra.map((_, i) => i), progress?: (value: SampleProgress) => void) {
+    return this.samples.load(instruments, progress);
+  }
   setMuted(instrument: number, muted: boolean) {
     this.buses[instrument].gain.setTargetAtTime(muted ? 0 : 1, this.context.currentTime, .015);
   }
@@ -211,6 +217,7 @@ export class AudioEngine {
     for (const note of notes) this.play(profile, m.instrument, note, time + (note.offset ?? 0));
   }
   private play(profile: Instrument, instrument: number, note: NoteEvent, time: number) {
+    if (this.samples.play(instrument, note, time, this.buses[instrument], profile.level)) return;
     const gain = this.context.createGain();
     gain.connect(this.buses[instrument]);
     const frequency = 440 * 2 ** ((note.midi - 69) / 12);
@@ -252,5 +259,5 @@ export class AudioEngine {
     }
     osc.onended = () => { osc.disconnect(); filter.disconnect(); gain.disconnect(); partial?.disconnect(); partialGain?.disconnect(); };
   }
-  close() { void this.context.close(); }
+  close() { this.samples.close(); if (this.context.state !== 'closed') void this.context.close(); }
 }

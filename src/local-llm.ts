@@ -6,10 +6,13 @@ import { strategySchema, validStrategy, validDecision, type MelodyDecision, type
 import { orchestra, isPitched } from './orchestra';
 
 export const DEFAULT_MODEL = 'qwen3:1.7b';
+export const DEFAULT_BRAIN_OPTIONS = { concurrency: 4, intervalMs: 2000, timeoutMs: 20000 };
+export const MAX_CONTEXT_STEPS = 64;
 const API = '/api/local-llm';
 export type ListeningContext = { self: Musician; neighbours: Musician[]; memory: MelodyDecision[] };
 export type BrainStatus = { phase: 'listening' | 'queued' | 'thinking' | 'ready' | 'playing' | 'fallback'; detail: string; heard: string[]; decisions: number };
 export type Decide = (context: ListeningContext, signal: AbortSignal) => Promise<MelodyDecision>;
+export class LocalRuntimeError extends Error {}
 
 // The same seating is used for synthesis and listening. No partition-crossing state
 // is passed here: callers supply only observations available to this musician.
@@ -134,8 +137,8 @@ export function ollamaDecider(model: string): Decide {
       method: 'POST', headers: { 'Content-Type': 'application/json' }, signal,
       body: JSON.stringify({ model, messages: buildMessages(context), stream: false, think: false,
         format: responseSchema(context), keep_alive: '10m', options: { temperature: .65, num_predict: 512, num_ctx: 4096 } }),
-    });
-    if (!response.ok) throw new Error(response.status === 404 ? `Model ${model} is not installed.` : `Local inference failed (${response.status}).`);
+    }).catch(error => { throw new LocalRuntimeError(error instanceof Error ? error.message : 'Local inference is unavailable.'); });
+    if (!response.ok) throw new LocalRuntimeError(response.status === 404 ? `Model ${model} is not installed.` : `Local inference failed (${response.status}).`);
     const result = await response.json();
     const text = result?.message?.content;
     if (typeof text !== 'string' || text.length > 8192) throw new Error('Local model returned an invalid phrase.');
@@ -153,6 +156,7 @@ export function ollamaDecider(model: string): Decide {
 
 type Memory = {
   history: MelodyDecision[]; status: BrainStatus; nextAt: number; failures: number;
+  lastAppliedAt?: number; lastStartedAt?: number;
   formToken?: string;
   pending?: { decision: MelodyDecision; fromBeat: number; heardIds: string[]; formToken: string };
 };
@@ -170,8 +174,16 @@ export class LocalBrains {
     private decide: Decide,
     private observe: (id: string) => { self: Musician; reachable: Musician[] } | undefined,
     private changed: (id: string, status: BrainStatus) => void,
-    private options = { concurrency: 1, intervalMs: 12000, timeoutMs: 20000 },
-  ) {}
+    private options = { ...DEFAULT_BRAIN_OPTIONS },
+  ) { this.options = { ...options }; }
+  setIntervalMs(intervalMs: number) {
+    if (!Number.isFinite(intervalMs) || intervalMs < 0 || intervalMs > 60000) throw new RangeError('Invalid re-evaluation interval.');
+    this.options.intervalMs = intervalMs;
+    for (const memory of this.memories.values()) {
+      // Changing cadence must preserve both musical memory and failure backoff.
+      if (memory.lastAppliedAt !== undefined && memory.failures === 0) memory.nextAt = memory.lastAppliedAt + intervalMs;
+    }
+  }
   private memory(id: string): Memory {
     let memory = this.memories.get(id);
     if (!memory) {
@@ -201,18 +213,24 @@ export class LocalBrains {
   private pump(now: number) {
     if (this.disposed || now < this.retryAt) return;
     while (this.inFlight.size < this.options.concurrency && this.queued.length) {
-      // Let every instrument introduce its first model phrase before refreshing solos.
-      this.queued.sort((a, b) => Number(this.memory(a).status.decisions > 0) - Number(this.memory(b).status.decisions > 0));
+      // Serve the least recently reviewed instrument first, including its first turn.
+      this.queued.sort((a, b) => (this.memory(a).lastStartedAt ?? 0) - (this.memory(b).lastStartedAt ?? 0));
       const id = this.queued.shift()!;
       const observation = this.observe(id);
       if (!observation || !observation.self.audible || isOpening(observation.self) || isFormEntrance(observation.self)) continue;
       // Read current observations when the job starts, never a stale queued snapshot.
       const memory = this.memory(id);
+      if (memory.pending || this.inFlight.has(id)) continue;
+      if (now < memory.nextAt) {
+        this.status(id, { phase: 'listening', detail: 'Holding the phrase until its next review.' });
+        continue;
+      }
       const neighbours = selectNeighbours(observation.self, observation.reachable);
       const context = structuredClone({ self: observation.self, neighbours, memory: memory.history });
       const controller = new AbortController();
       this.inFlight.set(id, controller);
       const generation = this.generation;
+      memory.lastStartedAt = now;
       this.status(id, { phase: 'thinking', detail: 'Composing a response locally.', heard: neighbours.map(p => orchestra[p.instrument].name) });
       void this.run(id, context, controller, generation);
     }
@@ -221,17 +239,17 @@ export class LocalBrains {
     let timer: ReturnType<typeof setTimeout> | undefined;
     try {
       const timeout = new Promise<never>((_, reject) => {
-        timer = setTimeout(() => { controller.abort(); reject(new Error('Local inference timed out.')); }, this.options.timeoutMs);
+        timer = setTimeout(() => { controller.abort(); reject(new LocalRuntimeError('Local inference timed out.')); }, this.options.timeoutMs);
       });
       const decision = await Promise.race([this.decide(context, controller.signal), timeout]);
       if (this.disposed || generation !== this.generation || controller.signal.aborted) return;
       if (!validDecision(decision)) throw new Error('Local model phrase failed musical validation.');
       const current = this.observe(id);
-      if (!current || current.self.beat - context.self.beat > 256) throw new Error('Phrase arrived too late; listening again.');
+      if (!current) return;
       const token = formPosition(context.self.form, context.self.beat).token;
-      if (formPosition(current.self.form, current.self.beat).token !== token) {
+      if (formPosition(current.self.form, current.self.beat).token !== token || current.self.beat - context.self.beat > MAX_CONTEXT_STEPS) {
         this.memory(id).nextAt = 0;
-        this.status(id, { phase: 'listening', detail: 'A new section began; composing for its theme.' });
+        this.status(id, { phase: 'listening', detail: 'The music moved on; listening to the latest phrase.' });
         return;
       }
       this.memory(id).pending = { decision: structuredClone(decision), fromBeat: context.self.beat, heardIds: context.neighbours.map(p => p.id), formToken: token };
@@ -241,8 +259,9 @@ export class LocalBrains {
       const memory = this.memory(id);
       memory.failures++;
       memory.nextAt = Date.now() + Math.min(60000, 5000 * 2 ** Math.min(memory.failures - 1, 4));
-      // Back off the shared runtime too, so 26 agents cannot hammer an absent server.
-      this.retryAt = Date.now() + 3000;
+      // An unavailable runtime needs a shared pause; malformed musical choices only
+      // delay their own musician, allowing the rest of the orchestra to keep thinking.
+      if (error instanceof LocalRuntimeError) this.retryAt = Date.now() + 3000;
       this.status(id, { phase: 'fallback', detail: `${error instanceof Error ? error.message : 'Local inference unavailable.'} Continuing the current phrase.` });
     } finally {
       clearTimeout(timer);
@@ -250,14 +269,14 @@ export class LocalBrains {
       if (generation === this.generation) this.pump(Date.now());
     }
   }
-  atBar(m: Musician): Musician {
+  atBar(m: Musician, now = Date.now()): Musician {
     if (m.beat % 16 !== 0 || isOpening(m) || isFormEntrance(m)) return m;
     const memory = this.memory(m.id), pending = memory.pending;
     if (!pending) return m;
     memory.pending = undefined;
     const current = this.observe(m.id);
     const reachableIds = new Set(current?.reachable.filter(p => p.audible).map(p => p.id));
-    if (formPosition(m.form, m.beat).token !== pending.formToken || m.beat - pending.fromBeat > 256 || pending.heardIds.some(id => !reachableIds.has(id))) {
+    if (formPosition(m.form, m.beat).token !== pending.formToken || m.beat - pending.fromBeat > MAX_CONTEXT_STEPS || pending.heardIds.some(id => !reachableIds.has(id))) {
       memory.nextAt = 0;
       this.status(m.id, { phase: 'listening', detail: 'Section or neighbours changed; listening again.' });
       return m;
@@ -269,7 +288,8 @@ export class LocalBrains {
       return m;
     }
     memory.history = [...memory.history, structuredClone(pending.decision)].slice(-3);
-    memory.nextAt = Date.now() + this.options.intervalMs;
+    memory.lastAppliedAt = now;
+    memory.nextAt = now + this.options.intervalMs;
     memory.failures = 0;
     this.status(m.id, { phase: 'playing', detail: pending.decision.reason, decisions: memory.status.decisions + 1 });
     return updated;

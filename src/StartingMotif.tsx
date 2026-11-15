@@ -52,10 +52,12 @@ export function StartingMotif({ disabled, peerMode, activeName, onApply, randomP
     if (disabled) return;
     original.current?.pause(); setError('');
     const engine = new AudioEngine(); preview.current = engine;
+    setPreviewing(source);
     try {
       await engine.resume();
+      const sounds = await engine.prepare([23]);
       if (preview.current !== engine) return;
-      setPreviewing(source);
+      if (sounds.failed.length) setError('Some harp samples could not load. Preview uses available recordings or synthesized fallback.');
       const musician = seedMusician(configureHarmony(createMusician(23), tonality, 'fixed'), phrase);
       const start = engine.context.currentTime + .05;
       for (let beat = 0; beat < 16; beat++) {
@@ -63,7 +65,7 @@ export function StartingMotif({ disabled, peerMode, activeName, onApply, randomP
         engine.note(at, start + beat * 60 / 112 / 4, compose(at));
       }
       timer.current = setTimeout(stopPreview, (16 * 60 / 112 / 4 + 1) * 1000);
-    } catch { stopPreview(); setError('Preview audio could not start. Please try again.'); }
+    } catch { if (preview.current === engine) { stopPreview(); setError('Preview audio could not start. Please try again.'); } }
   }
 
   return <section className="motif-panel" aria-labelledby="motif-heading">

@@ -105,7 +105,13 @@ To try another installed local model, run `npm run llm:pull -- MODEL_NAME`, clic
 
 ### GPU inference
 
-Ollama automatically offloads inference when the appropriate GPU backend is installed. All 26 agents use that runtime, retaining their independent prompts and musical memory. Start it with the same `npm run llm:serve` command. The launcher now defaults to `OLLAMA_NUM_PARALLEL=4` so the GPU can serve four agents at once; restart an already-running runtime to apply that setting. An explicitly supplied `OLLAMA_NUM_PARALLEL` is respected. Parallel requests allocate additional context memory; see [Ollama’s concurrency settings](https://docs.ollama.com/faq#how-does-ollama-handle-concurrent-requests).
+Start inference with `npm run llm:serve`. On Linux (including WSL) and Windows, the launcher checks `nvidia-smi` and prefers **CUDA** when an NVIDIA GPU is detected, disabling competing ROCm/Vulkan discovery for that process. Ollama chooses the compatible CUDA backend and how many model layers fit in VRAM. If NVIDIA detection is unavailable or fails, the launcher leaves Ollama’s normal hardware detection intact, including **AMD ROCm**, Apple Metal and CPU fallback. All 26 agents use that runtime, retaining their independent prompts and musical memory.
+
+Install the standard [Ollama package](https://docs.ollama.com/linux) and a supported NVIDIA driver for CUDA; `nvidia-smi` should list the GPU. The existing AMD setup still needs the matching ROCm package described below. Detection alone does not prove GPU inference: the backend and driver must work, so verify residency with `npm run test:gpu`.
+
+Explicit GPU settings (`CUDA_VISIBLE_DEVICES`, `ROCR_VISIBLE_DEVICES`, `HIP_VISIBLE_DEVICES`, `GPU_DEVICE_ORDINAL`, `OLLAMA_LLM_LIBRARY`, `OLLAMA_VULKAN` or `GGML_VK_VISIBLE_DEVICES`) bypass the launcher’s preference and are passed through unchanged, including empty values. For example, to use ROCm on a machine that also has NVIDIA hardware, run `CUDA_VISIBLE_DEVICES=-1 npm run llm:serve`. See [Ollama’s GPU selection documentation](https://docs.ollama.com/gpu) for device IDs and compatibility. These settings apply when starting the server; `llm:pull` and `llm:status` do not change an already-running service.
+
+The launcher defaults to `OLLAMA_NUM_PARALLEL=4` so the GPU can serve four agents at once; restart an already-running runtime to apply that setting. An explicitly supplied `OLLAMA_NUM_PARALLEL` is respected. Parallel requests allocate additional context memory; see [Ollama’s concurrency settings](https://docs.ollama.com/faq#how-does-ollama-handle-concurrent-requests).
 
 ```sh
 # Inspect loaded models and their CPU/GPU allocation:
@@ -116,9 +122,9 @@ npm run test:gpu
 
 An empty status table means no model is currently loaded; start the performance or run the check first. `test:gpu` reports GPU memory, resident percentage and generation speed, and fails on CPU-only inference. Partial offloading also passes but is shown as less than 100%; larger models may exceed available VRAM.
 
-This workspace was verified with **AMD Radeon RX 9060 XT (gfx1200), ROCm 7.2 and Ollama 0.40.16**: `qwen3:1.7b` offloads all 29 layers, with about 1.59 GiB resident for one 4096-token context. Four parallel contexts used about 2.96 GiB in the current check. A warm 26-agent pass took 31.41 seconds with serial inference and 17.66 seconds with four parallel requests; both accepted all 26 decisions at 100% GPU residency. These are measured whole-orchestra passes, not per-agent update guarantees; `test:throughput` reports the current allocation and timing. The matching AMD backend is installed under ignored `.local/ollama/lib/ollama/rocm_v7_2/`; these runtime binaries are not part of the repository or installed by npm.
+The original AMD workspace was verified with **AMD Radeon RX 9060 XT (gfx1200), ROCm 7.2 and Ollama 0.40.16**: `qwen3:1.7b` offloads all 29 layers, with about 1.59 GiB resident for one 4096-token context. Four parallel contexts used about 2.96 GiB in the current check. A warm 26-agent pass took 31.41 seconds with serial inference and 17.66 seconds with four parallel requests; both accepted all 26 decisions at 100% GPU residency. These are measured whole-orchestra passes, not per-agent update guarantees; `test:throughput` reports the current allocation and timing. The matching AMD backend is installed under ignored `.local/ollama/lib/ollama/rocm_v7_2/`; these runtime binaries are not part of the repository or installed by npm.
 
-For a fresh Linux AMD setup, follow [Ollama's Linux installation instructions](https://docs.ollama.com/linux) and install the additional `ollama-linux-amd64-rocm.tar.zst` archive alongside the base package. Keep both packages on the same release. For the existing workspace's 0.40.16 base installation, stop the runtime, then install its matching backend with:
+For a fresh Linux AMD setup, follow [Ollama's Linux installation instructions](https://docs.ollama.com/linux) and install the additional `ollama-linux-amd64-rocm.tar.zst` archive alongside the base package. Keep both packages on the same release. For a workspace with the 0.40.16 base installation, stop the runtime, then install its matching backend with:
 
 ```sh
 curl -fL https://github.com/ollama/ollama/releases/download/v0.40.16/ollama-linux-amd64-rocm.tar.zst -o /tmp/symphony-ollama-rocm.tar.zst
@@ -126,7 +132,7 @@ tar --zstd -xf /tmp/symphony-ollama-rocm.tar.zst -C .local/ollama
 npm run llm:serve
 ```
 
-On this machine, the backend's `hipblaslt` directory is also linked to `/opt/rocm/lib/hipblaslt`, supplying its missing optional kernels from the installed ROCm 7.2 package. This resolves the `TensileLibrary_lazy_gfx1200.dat` startup warning. That machine-specific link is inside ignored `.local/`; reassess it if upgrading ROCm. GPU drivers and device permissions must also work; see [Ollama GPU support](https://docs.ollama.com/gpu).
+In that AMD setup, the backend's `hipblaslt` directory is also linked to `/opt/rocm/lib/hipblaslt`, supplying its missing optional kernels from the installed ROCm 7.2 package. This resolves the `TensileLibrary_lazy_gfx1200.dat` startup warning. That machine-specific link is inside ignored `.local/`; reassess it if upgrading ROCm. GPU drivers and device permissions must also work; see [Ollama GPU support](https://docs.ollama.com/gpu).
 
 ### What each agent hears and decides
 

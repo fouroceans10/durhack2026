@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { createRoot } from 'react-dom/client';
-import { AudioEngine, advanceForm, compose, configureForm, configureHarmony, createOrchestra, evolve, isOpening, isFormEntrance, recordPerformance, seedMusician, type Musician } from './engine';
+import { AudioEngine, advanceForm, compose, configureForm, configureHarmony, createOrchestra, evolve, isOpening, isFormEntrance, recordPerformance, seedMusician, musicianPhrasing, type Musician } from './engine';
+import { enableEnsemble, partitionEnsemble, prepareEnsemble } from './ensemble';
 import { InstrumentAudition } from './InstrumentAudition';
 import { TonalityControls } from './TonalityControls';
 import { currentKey, homeKey, keyName, degreeName, randomTonality, type Tonality, type Modulation } from './tonality';
@@ -13,7 +14,7 @@ import { generateStartingMotif } from './random-motif';
 import { orchestra, isPitched, sections, sectionColors, type Section } from './orchestra';
 import { Mesh } from './network';
 import { PartitionControls } from './PartitionControls';
-import { assignPartition, canExchange, groupLetter, partitionDescription, partitionGroup, reachableMusicians, validPartition, type PartitionPlan } from './partitions';
+import { canExchange, groupLetter, partitionDescription, partitionGroup, reachableMusicians, validPartition, type PartitionPlan } from './partitions';
 import { DEFAULT_MODEL, DEFAULT_BRAIN_OPTIONS, LocalBrains, listLocalModels, ollamaDecider, type BrainStatus } from './local-llm';
 import './style.css';
 
@@ -61,7 +62,7 @@ function OrchestraMap({ musicians, running, partition, peerMode, localId }: {
       {running && <line className="score-playhead" x1={105 + ((musicians[0]?.beat ?? 0) % 16) / 16 * 720} x2={105 + ((musicians[0]?.beat ?? 0) % 16) / 16 * 720} y1="46" y2="510" />}
       {nodes.map(({ m, x, y }) => {
         const profile = orchestra[m.instrument];
-        return <g key={m.id} className={`score-agent ${running && m.rhythm.includes(m.beat % 16) ? 'is-sounding' : ''}`} style={{ '--accent': sectionColors[profile.section] } as React.CSSProperties}>
+        return <g key={m.id} className={`score-agent ${running && musicianPhrasing(m).rhythm.includes(m.beat % 16) ? 'is-sounding' : ''}`} style={{ '--accent': sectionColors[profile.section] } as React.CSSProperties}>
           <title>{profile.name}: {profile.role}, {m.tempo.toFixed(1)} BPM{partition ? `, group ${groupLetter(partitionGroup(partition, m.instrument))}` : ', connected'}</title>
           <line className="note-stem" x1={x + 15} y1={y} x2={x + 15} y2={y - 36} />
           <ellipse className="note-head" cx={x} cy={y} rx="19" ry="15" transform={`rotate(-15 ${x} ${y})`} />
@@ -77,7 +78,7 @@ function OrchestraMap({ musicians, running, partition, peerMode, localId }: {
 function App() {
   const [initialTonality] = useState(randomTonality);
   const [randomPhrase, setRandomPhrase] = useState(generateStartingMotif);
-  const [agents, setAgents] = useState(() => createOrchestra().map(m => configureForm(seedMusician(configureHarmony(m, initialTonality, 'form'), randomPhrase), { choice: 'auto', bars: 8, expression: 'auto' })));
+  const [agents, setAgents] = useState(() => createOrchestra().map(m => configureForm(seedMusician(configureHarmony(m, initialTonality, 'form'), randomPhrase), { choice: 'auto', bars: 8, expression: 'auto' })).map(enableEnsemble));
   const state = useRef(agents);
   const [running, setRunning] = useState(false);
   const [starting, setStarting] = useState(false);
@@ -174,7 +175,7 @@ function App() {
     brains.current = localBrains;
     const timer = setInterval(() => {
       const localAgents = peerMode ? [state.current[instrument]] : state.current;
-      localBrains.tick(localAgents.filter(a => a.audible && a.beat > 0 && !isOpening(a) && !isFormEntrance(a)).map(a => a.id));
+      localBrains.tick(localAgents.filter(a => a.audible && a.beat > 0 && a.ensemble?.mode !== 'bridging' && !isOpening(a) && !isFormEntrance(a)).map(a => a.id));
     }, 200);
     return () => { clearInterval(timer); localBrains.dispose(); if (brains.current === localBrains) brains.current = null; };
   }, [running, llmEnabled, model, peerMode, instrument]);
@@ -196,6 +197,7 @@ function App() {
           : snapshot;
         const peers = reachableMusicians(m, candidates, split.current);
         while (next[i] < now + .12) {
+          updated = prepareEnsemble(updated, peers);
           updated = advanceForm(updated);
           // LLM work runs asynchronously. Only validated, ready phrases enter here.
           updated = brains.current?.atBar(updated) ?? updated;
@@ -247,25 +249,35 @@ function App() {
     } finally { setStarting(false); }
   }
 
-  function changePartition(plan: PartitionPlan | null) {
-    if (plan && !validPartition(plan)) return;
+  function applyPartition(plan: PartitionPlan | null, snapshot: Musician[]) {
     brains.current?.invalidate();
     const applied = plan ? structuredClone(plan) : null;
     split.current = applied; setPartition(applied);
-    mesh.current?.setPartition(applied);
-    // Drop cached observations as well as in-flight decisions. Healing waits for
-    // fresh packets rather than replaying a blocked neighbour's old intentions.
     remote.current.clear(); setPeerStates([]);
-    state.current = assignPartition(state.current, applied);
+    const players = peerMode ? [state.current[instrument]] : state.current;
+    const changed = partitionEnsemble(players, applied, snapshot);
+    state.current = peerMode ? state.current.map((m, i) => i === instrument ? changed[0] : m) : changed;
     setAgents([...state.current]);
-    log(applied ? `${peerMode ? 'Local connections: ' : ''}${peerMode && applied.kind === 'solo' ? 'This browser isolated' : partitionDescription(applied)} · musical memories retained`
-      : 'Communication restored · agents listen again and compose new responses');
+    log(applied ? `${partitionDescription(applied)} · groups develop their own tempo, key and motifs`
+      : 'Reconnecting · four-bar pivot-chord bridge to a shared tempo and key');
+  }
+
+  function changePartition(plan: PartitionPlan | null) {
+    if (plan && !validPartition(plan)) return;
+    if (peerMode && mesh.current) mesh.current.requestPartition(plan);
+    else applyPartition(plan, peerMode ? [state.current[instrument]] : state.current);
   }
 
   function setOpening(phrase: Phrase | null, name: string | null) {
     if (running || starting) return;
     brains.current?.dispose(); brains.current = null; setBrainStates({});
     state.current = state.current.map((m, i) => peerMode && i !== instrument ? m : seedMusician(m, phrase));
+    if (split.current) {
+      const players = peerMode ? [state.current[instrument]] : state.current;
+      const snapshot = peerMode ? [...players, ...[...remote.current.values()].map(p => p.state)] : players;
+      const changed = partitionEnsemble(players, split.current, snapshot);
+      state.current = peerMode ? state.current.map((m, i) => i === instrument ? changed[0] : m) : changed;
+    }
     setAgents([...state.current]);
     setOpeningNames(previous => {
       const names = { ...previous };
@@ -322,7 +334,9 @@ function App() {
     }
     try {
       if (!/^[a-zA-Z0-9-]{1,48}$/.test(room)) throw Error('Invalid room');
-      mesh.current = new Mesh(url, room, m => remote.current.set(m.id, { state: m, time: performance.now() }), setStatus, instrument);
+      mesh.current = new Mesh(url, room, m => remote.current.set(m.id, { state: m, time: performance.now() }), setStatus, instrument, {
+        snapshot: () => state.current[instrument], apply: applyPartition,
+      });
       mesh.current.setPartition(split.current);
       state.current = state.current.map((m, i) => i === instrument ? { ...m, id: mesh.current!.id } : m);
       setAgents([...state.current]); setJoined(true);
@@ -353,7 +367,7 @@ function App() {
       <div><small>ENSEMBLE TEMPO</small><strong>{avg.toFixed(1)} <span>BPM</span></strong></div>
       <div><small>TONAL CENTRE</small><strong>{activeKeys.size > 1 ? 'Mixed keys' : [...activeKeys][0] ?? 'Unpitched'}{activeKeys.size > 1 && <span> / {keyName(currentKey(reference))}</span>}</strong></div>
       <div><small>{peerMode ? 'VISIBLE MUSICIANS' : 'INSTRUMENT AGENTS'}</small><strong>{String(active.length).padStart(2, '0')} <span>{peerMode ? 'local + recently heard peers' : `${sections.length} orchestral sections`}</span></strong></div>
-      <div><small>{peerMode ? 'LOCAL COMMUNICATION' : 'SIMULATED NETWORK'}</small><strong className={partition ? 'amber' : 'green'}>{partition ? 'Partitioned' : peerMode ? joined ? 'Room joined' : 'Local only' : 'Connected'} <span>●</span></strong></div>
+      <div><small>{peerMode ? 'LOCAL COMMUNICATION' : 'SIMULATED NETWORK'}</small><strong className={partition ? 'amber' : 'green'}>{partition ? 'Partitioned' : active.some(a => a.ensemble?.mode === 'bridging') ? 'Reuniting' : peerMode ? joined ? 'Room joined' : 'Local only' : 'Connected'} <span>●</span></strong></div>
     </div>
     <TonalityControls musician={reference} disabled={running || starting} peerMode={peerMode} onChange={changeTonality} />
     <StartingMotif disabled={running || starting} peerMode={peerMode} activeName={openingName} onApply={setOpening} randomPhrase={randomPhrase} onGenerate={generateOpening} tonality={homeKey(reference)} />
@@ -377,11 +391,12 @@ function App() {
         const profile = orchestra[a.instrument], isLocal = !peerMode || a.id === local.id;
         const mutedHere = isLocal && mutes.includes(a.instrument);
         const mind = brainStates[a.id];
+        const phrasing = musicianPhrasing(a);
         const brainLabel = isOpening(a) ? 'Opening motif / two bars' : isFormEntrance(a) ? (formPosition(a.form, a.beat).returning ? 'Remembered theme / return' : 'New section / theme') : !isLocal ? (a.decision ? 'Peer / local LLM' : 'Peer / musical rules') : !llmEnabled ? 'Musical rules' : !running ? 'Local LLM / paused' : mind ? ({ listening: 'Listening', queued: 'Queued locally', thinking: 'Thinking locally', ready: 'Phrase ready', playing: 'Playing / local LLM', fallback: 'Inference unavailable' }[mind.phase]) : 'Listening';
         return <article key={a.id} className={`instrument-part ${mutedHere ? 'is-muted' : ''}`} style={{ '--accent': sectionColors[profile.section] } as React.CSSProperties}>
           <span className="part-number">{String(a.instrument + 1).padStart(2, '0')}</span>
           <div className="part-identity"><h3>{profile.name}</h3><p>{profile.role}</p><small className="section-name">{profile.section} / {partition ? `Group ${groupLetter(partitionGroup(partition, a.instrument))}` : 'Connected'}</small></div>
-          <div className="part-notation" aria-hidden="true">{Array.from({ length: 16 }, (_, j) => <i key={j} className={`${a.rhythm.includes(j) ? 'has-note' : ''} ${(isLocal ? running && !mutedHere : true) && a.beat % 16 === j ? 'current-note' : ''}`} style={{ '--note-position': `${(a.motif[j % a.motif.length] - 3) * 3}px` } as React.CSSProperties} />)}</div>
+          <div className="part-notation" aria-hidden="true">{Array.from({ length: 16 }, (_, j) => <i key={j} className={`${phrasing.rhythm.includes(j) ? 'has-note' : ''} ${(isLocal ? running && !mutedHere : true) && a.beat % 16 === j ? 'current-note' : ''}`} style={{ '--note-position': `${(a.motif[j % a.motif.length] - 3) * 3}px` } as React.CSSProperties} />)}</div>
           <div className="part-state"><strong>{a.tempo.toFixed(0)}<small>BPM</small></strong><span>{Math.round(a.energy * 100)}% energy</span><span>Step {a.beat}</span></div>
           {isLocal ? <button className="part-mute" aria-label={`${mutedHere ? 'Unmute' : 'Mute'} ${profile.name}`} aria-pressed={mutedHere} onClick={() => setMute([a.instrument], !muted.current.has(a.instrument))}><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M4 9H8L13 5V19L8 15H4Z" />{mutedHere ? <path d="M17 9L22 15M22 9L17 15" /> : <><path d="M16 8Q21 12 16 16" /><path d="M19 5Q26 12 19 19" /></>}</svg><span>{mutedHere ? 'Muted' : 'Sound on'}</span></button> : <span className="remote-label">Remote ↗</span>}
           <details className="agent-mind" data-phase={mind?.phase ?? 'listening'}>
@@ -389,7 +404,7 @@ function App() {
             <p>{isFormEntrance(a) ? `Establishing the ${formPosition(a.form, a.beat).label} theme for one bar before developing it.` : isLocal ? mind?.detail ?? 'This instrument listens to nearby players before choosing its next phrase.' : a.decision?.reason ?? 'This musician makes decisions on its own device.'}</p>
             {isLocal && <p>Hearing: {mind?.heard.length ? mind.heard.join(', ') : 'its own musical memory'}. Accepted phrases: {mind?.decisions ?? 0}.</p>}
             {a.form && <p className="agent-form">Form: {a.form.selected ?? 'agent choosing'} · {formPosition(a.form, a.beat).movementName} · {formPosition(a.form, a.beat).label} · bar {formPosition(a.form, a.beat).bar}/{a.form.bars}<br />Gesture: {a.decision?.gesture ?? a.form.gesture} · Theme: {a.decision?.themeAction ?? (formPosition(a.form, a.beat).returning ? 'recall' : 'establish')}</p>}
-            <p>{isPitched(a.instrument) ? <>Key: {keyName(currentKey(a))} · Home: {keyName(homeKey(a))}<br />Melody: {a.motif.map(n => degreeName(n, currentKey(a))).join(' · ')}<br /></> : <>Unpitched percussion<br /></>}Entrances: {a.rhythm.join(', ')} / 16 steps</p>
+            <p>{isPitched(a.instrument) ? <>Key: {keyName(currentKey(a))} · Home: {keyName(homeKey(a))}<br />Melody: {a.motif.map(n => degreeName(n, currentKey(a))).join(' · ')}<br /></> : <>Unpitched percussion<br /></>}Entrances: {phrasing.rhythm.join(', ')} / 16 steps</p>
             <PhraseNotation musician={a} />
           </details>
         </article>;

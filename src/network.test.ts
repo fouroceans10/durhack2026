@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import { test, type TestContext } from 'node:test';
 import { Mesh } from './network';
 import { createMusician, type Musician } from './engine';
+import { enableEnsemble, partitionEnsemble } from './ensemble';
 
 class Channel {
   readyState = 'open'; bufferedAmount = 0;
@@ -93,4 +94,59 @@ test('invalid role announcements, spoofed identities and buffered channels canno
   assert.equal(musicalMessages(ch).length, 0);
   ch.bufferedAmount = 0; mesh.broadcast(createMusician(0));
   assert.equal(musicalMessages(ch).length, 1);
+});
+
+test('shared partition and heal commands bypass blocked links and agree on the same reunion plan', async t => {
+  fakeNetwork(t);
+  let aState = enableEnsemble(createMusician(19)), bState = enableEnsemble(createMusician(0));
+  const heardA: Musician[] = [], heardB: Musician[] = [];
+  const a = new Mesh('ws://test', 'room', m => heardA.push(m), () => {}, 19, {
+    snapshot: () => aState, apply: (plan, states) => { aState = partitionEnsemble([aState], plan, states)[0]; },
+  });
+  const b = new Mesh('ws://test', 'room', m => heardB.push(m), () => {}, 0, {
+    snapshot: () => bState, apply: (plan, states) => { bState = partitionEnsemble([bState], plan, states)[0]; },
+  });
+  aState.id = a.id; bState.id = b.id;
+  t.after(() => { a.close(); b.close(); });
+  await a.connect(b.id, true); await b.connect(a.id, true);
+  const ab = channel(a, b.id), ba = channel(b, a.id);
+  ab.forward = data => ba.onmessage?.({ data }); ba.forward = data => ab.onmessage?.({ data });
+  ab.onopen?.(); ba.onopen?.();
+  a.requestPartition({ kind: 'roles' });
+  assert.equal(aState.tempo, 128); assert.equal(bState.tempo, 108);
+  assert.equal(aState.ensemble!.mode, 'partitioned'); assert.equal(bState.ensemble!.mode, 'partitioned');
+  a.broadcast(aState); b.broadcast(bState);
+  assert.equal(heardA.length + heardB.length, 0, 'Music is still blocked in both directions');
+  b.requestPartition(null);
+  assert.equal(aState.ensemble!.mode, 'bridging'); assert.equal(bState.ensemble!.mode, 'bridging');
+  assert.deepEqual(aState.ensemble!.bridge!.plan, bState.ensemble!.bridge!.plan);
+  assert.equal(aState.ensemble!.bridge!.plan.targetBpm, 118);
+  a.broadcast(aState); b.broadcast(bState);
+  assert.equal(heardA.length, 1); assert.equal(heardB.length, 1);
+  const prior = aState;
+  const commit = ba.sent.map(s => JSON.parse(s)).find(m => m.type === 'partition-commit');
+  ab.deliver(commit);
+  assert.equal(aState, prior, 'Duplicate commands must not restart the bridge');
+  ab.deliver({ ...commit, order: commit.order + 1, command: 'bad', states: [{ id: 'invalid' }] });
+  assert.equal(aState, prior, 'Invalid snapshots cannot enter playback');
+});
+
+test('large shared snapshots are chunked and reassembled before applying once', async t => {
+  fakeNetwork(t);
+  const local = enableEnsemble(createMusician(0));
+  let applied = 0;
+  const mesh = new Mesh('ws://test', 'room', () => {}, () => {}, 0, {
+    snapshot: () => local, apply: () => { applied++; },
+  });
+  t.after(() => mesh.close());
+  await mesh.connect('peer', true);
+  const ch = channel(mesh, 'peer');
+  const message = JSON.stringify({ type: 'partition-commit', id: 'peer', command: 'large', order: 1, plan: { kind: 'roles' },
+    states: partitionEnsemble(Array.from({ length: 26 }, (_, i) => enableEnsemble(createMusician(i))), { kind: 'roles' }) });
+  assert.ok(message.length > 12000);
+  const count = Math.ceil(message.length / 12000);
+  for (let index = count - 1; index >= 0; index--) {
+    ch.deliver({ type: 'partition-chunk', id: 'peer', transfer: 'large', count, index, data: message.slice(index * 12000, (index + 1) * 12000) });
+    assert.equal(applied, index === 0 ? 1 : 0);
+  }
 });

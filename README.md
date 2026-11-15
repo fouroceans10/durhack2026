@@ -2,7 +2,7 @@
 
 **Twenty-six voices. Zero conductors.**
 
-A browser orchestra in which every instrument has its own musical memory, rhythm, tempo and local AI decisions. Give it a generated phrase, upload a melody, or sing an opening motif. Listen as the players develop it, separate them into independent groups, then reconnect them and hear their ideas meet again.
+A browser orchestra with **26 sampled instruments arranged into four musical roles: drums, bass, harmony and melody**. Each instrument retains its own musical memory and local AI decisions. Generate an opening, upload a melody, or sing a motif with a live recording waveform. Split the ensemble to hear groups develop different tempos, keys and motifs, then reconnect them through a four-bar musical reunion.
 
 Built with **React, TypeScript, Vite, Web Audio, WebRTC and Ollama**. Run the whole orchestra on one computer, or give each browser its own instrument. Local composition needs no cloud API key, and musical rules keep playback going without an LLM.
 
@@ -17,10 +17,10 @@ Built with **React, TypeScript, Vite, Web Audio, WebRTC and Ollama**. Run the wh
 | **Sing the starting motif** | Record your voice with a live waveform and timer; preview the extracted melody before applying it. |
 | **Upload or generate an opening** | Drop a short audio clip or generate a new 4–8-note phrase. The orchestra establishes it for two bars before developing it. |
 | **Melodies that develop** | Agents echo, oppose, support, contrast or develop nearby phrases; sequences, inversion, reversal, neighbour notes and repeat checks vary the contour. |
-| **Changing rhythm and phrasing** | Mix short runs, held notes, dotted values, rests and per-note articulation. Held rhythms also evolve while inference is delayed or unavailable. |
-| **Harmony and accompaniment** | Choose among 12 tonics and eight scales; hear chord progressions, bass roots/fifths, piano voice leading, seventh chords and phrase resolution. |
+| **Changing rhythm and phrasing** | Mix short runs, held notes, dotted values, rests and per-note articulation. Drum energy changes accompaniment density while melodic LLM phrases vary entrances and lengths. |
+| **Harmony and accompaniment** | Choose among 12 tonics and eight scales; hear chord progressions, bass roots/fifths, brighter chord voicings, seventh chords and pivot-chord reunions. |
 | **Musical forms** | Use ABA, ABB, pop sections, four classical-inspired movements, free development, or let each agent choose. Remembered themes return. |
-| **Live partition experiments** | Isolate one instrument, separate a section, split by all five sections, make 26 soloists, or build a custom two-group split. Reconnect without resetting the music. |
+| **Live partition experiments** | Split rhythm from harmony, isolate melodic voices or one instrument, separate sections, make soloists, or choose custom groups. Reconnect through a four-bar musical bridge. |
 | **Local AI with GPU support** | Ollama runs the default Qwen3 model locally. The launcher prefers NVIDIA CUDA when detected and preserves ROCm support and CPU fallback. |
 | **A view into every agent** | Inspect listening partners, decisions, inference state, key, form, melody, note values, articulation and rests. Filter/mute players or sections and adjust volume. |
 | **Multiple computers** | Exchange symbolic musical intentions over WebRTC; each browser plays and thinks locally. A small signalling server introduces the peers. |
@@ -35,7 +35,7 @@ Built with **React, TypeScript, Vite, Web Audio, WebRTC and Ollama**. Run the wh
 - [Recorded instruments](#recorded-instrument-sounds) · [Opening motifs and voice recording](#choose-the-opening)
 - [Forms and gestures](#movements-forms-and-gestures) · [Rhythm and phrasing](#note-lengths-and-phrasing) · [Keys and modulation](#keys-modes-and-modulation)
 - [Local musical intelligence](#local-musical-intelligence) · [Harmonic accompaniment](#harmonic-accompaniment-and-responsive-rhythm)
-- [Instrument roster](#one-agent-for-each-instrument) · [Partition experiments](#partition-experiments) · [Multiple computers](#multiple-computers)
+- [Instrument roster](#one-agent-for-each-instrument) · [Partition experiments](#partition-experiments) · [Try a complete split and reunion](#try-a-complete-split-and-reunion) · [Multiple computers](#multiple-computers)
 - [GPU setup](#gpu-setup) · [Configuration](#configuration) · [Troubleshooting](#troubleshooting)
 - [Development and checks](#development-and-checks) · [Architecture](#architecture) · [Limits and data handling](#limits-and-data-handling) · [Credits](#credits)
 
@@ -309,7 +309,7 @@ For peer mode, run `npm run signal` in a third project terminal. Open the Vite U
 2. **Choose a musical setting while paused.** Set the home key, scale and modulation policy. Pick a form, bars per section and an optional gesture focus. A four-bar ABA section is useful for hearing a departure and return quickly.
 3. **Start performance.** The sound bank loads first. Pitched players establish the opening for two bars, then begin responding independently. With AI enabled, responses arrive as model capacity becomes available.
 4. **Inspect a musician.** In **The players**, expand its decision row to see who it hears, its current strategy, form, key, entrances and notation. Filter by section, mute voices or adjust master volume to hear the arrangement more clearly.
-5. **Try an interruption.** Select **Isolate an instrument → Flute → Apply partition**. The flute still sounds, but no longer exchanges musical ideas with the other 25. Try a section split or custom group, then **Reconnect musicians**.
+5. **Try an interruption.** Apply the default **Rhythm vs harmony** split: 12 drum/bass instruments separate from 14 harmony/melody instruments. Hear the groups diverge, then choose **Reconnect musicians** and let the four-bar reunion finish. To isolate one voice instead, choose **Isolate an instrument → Flute → Apply partition**; the flute keeps sounding while composing separately.
 6. **Compare the approaches.** Turn **Local LLM composition** off to hear the deterministic rules. Turn it back on to resume model-driven responses; adjust **Re-evaluation interval** to change how often an accepted phrase becomes eligible for review.
 7. **Pause or start fresh.** Pause/resume keeps the performance's memory. To replace the opening, pause and generate/apply a new motif; this resets the affected players. Reloading starts a fresh session.
 
@@ -333,7 +333,7 @@ VSCO/VCSL assets are CC0; the FluidR3 renders are distributed as CC BY 3.0 US. S
 
 ## Choose the opening
 
-Each page load prepares a fresh **random motif** for the orchestra: 4–8 scale degrees in the chosen home key with a new rhythm. Click **Hear random motif** to preview it, or **Generate a new motif** to choose another and reset the performance. The generator varies melodic direction, entrances, written lengths and articulation, keeps intervals small, and prevents an identical reroll. The first two notes are at most half a beat apart, with a connected first note; later notes can still leave breathing spaces. It runs locally without waiting for inference; the individual LLM agents take over after the two-bar opening.
+Each page load prepares a fresh **random motif** for the orchestra: 4–8 scale degrees in the chosen home key with a new rhythm. Click **Hear random motif** to preview it, or **Generate a new motif** to choose another and reset the performance. The generator varies melodic direction, entrances, written lengths and articulation, keeps intervals small, and prevents an identical reroll. The first two notes are at most half a beat apart, with a connected first note; later notes can still leave breathing spaces. It runs locally without waiting for inference. After the two-bar opening, the four-role arrangement takes over and individual LLM agents become eligible to contribute decisions.
 
 **Pause / Resume performance** retains the current musical state. To begin a new performance with a different opening, pause and use **Generate a new motif**, then **Start performance**. In peer mode, generating a new motif resets only the selected local instrument.
 
@@ -347,9 +347,9 @@ Microphone capture requires localhost or HTTPS and a browser with microphone rec
 
 1. Listen to the original recording and click **Hear the motif** to preview the extracted phrase.
 2. Click **Use as opening**, then **Start performance**. The pitched instruments play the phrase in their own registers for two bars; unpitched percussion keeps its own rhythmic pattern.
-3. After the opening, the existing local LLM agents start developing it from the actual notes their neighbours play. If inference is unavailable, the rule-based fallback develops it instead.
+3. After the opening, local LLM agents can develop responses from the actual notes their neighbours play. Without inference, the four-role engine plays deterministic accompaniment and fallback motifs; it does not continuously improvise a new model phrase.
 
-The first 12 stable notes are reduced to a single 16-step bar at the starting tempo of 112 BPM. Entrances and detected note lengths are quantized, duplicate entrances removed, octaves folded, and chromatic notes fitted to the nearest note in the selected home key and mode. The original key is not inferred automatically; choose a home key before applying the phrase. Changing that selection remaps the preview from the original detected MIDI notes without decoding again. Original duration, key, articulation and octave contour are not reproduced exactly. The preview and displayed notes show the adapted phrase before you apply it.
+The first 12 stable notes are reduced to a single 16-step bar using a **112 BPM extraction/preview tempo**. A fresh orchestra performance starts at **120 BPM**, so playback scales the extracted timing to the performance tempo. Entrances and detected note lengths are quantized, duplicate entrances removed, octaves folded, and chromatic notes fitted to the nearest note in the selected home key and mode. The original key is not inferred automatically; choose a home key before applying the phrase. Changing that selection remaps the preview from the original detected MIDI notes without decoding again. Original duration, key, articulation and octave contour are not reproduced exactly. The preview and displayed notes show the adapted phrase before you apply it.
 
 Pause to replace or reapply a motif; doing so begins a fresh performance and clears the affected agents' previous phrases/history. **Generate a new motif** switches back from an uploaded phrase to a newly generated opening. In peer mode, an upload seeds only the selected local instrument; remote musicians learn about it through normal played-note messages.
 
@@ -370,15 +370,15 @@ The **A theme. A departure. A way home.** panel controls musical form, section l
 
 Forms advance on **each musician's own step counter**, with no global conductor or model call controlling the ensemble. The main timeline follows the violin in demo mode and the local player in peer mode; each instrument's expanded decision row shows its own form, movement, section, gesture and theme action. Agent-selected forms may differ between players, and local clocks can drift. Presets give players the same route, not sample-accurate synchronization. Forms loop rather than ending the performance automatically.
 
-Each agent keeps its own bounded theme library. On a section boundary, its remembered theme is introduced for one bar before new model decisions can replace it. A new contrasting theme is derived from that agent's opening when no theme has yet been remembered. Subsequent returns restore that theme. The model receives the section's intention, movement, current bar, cadence cue, remembered theme, and reachable neighbours' sections and actual played notes. It chooses whether to **develop, contrast or recall**, alongside its listening partner and musical strategy. Replies from an earlier section are discarded. Preset forms and remembered returns continue when inference is unavailable; Agent choice stays in free development until a model chooses a form.
+Forms apply while unified; split and reunion rules temporarily take precedence. Each agent keeps its own bounded theme library. On a section boundary, its remembered theme is introduced for one bar before new model decisions can replace it. A new contrasting theme is derived from that agent's opening when no theme has yet been remembered. Subsequent returns restore that theme. The model receives the section's intention, movement, current bar, cadence cue, remembered theme, and reachable neighbours' sections and actual played notes. It chooses whether to **develop, contrast or recall**, alongside its listening partner and musical strategy. Replies from an earlier section are discarded. Preset forms and remembered returns continue when inference is unavailable; Agent choice stays in free development until a model chooses a form.
 
-Gestures affect actual synthesis: **arpeggios** break a triad into three timed notes; **mordents** play the main note, lower diatonic neighbour, then main note; **trills** alternate with the upper neighbour; **ostinatos** repeat a short cell; **legato/staccato** lengthen/shorten articulation. The model can choose freely, or you can select a gesture focus. Pitched ornaments are omitted for unpitched percussion. Sub-note offsets are recorded with performed notes so neighbouring agents can observe the ornamentation.
+On melodic roles, gestures affect actual synthesis: **arpeggios** break a triad into three timed notes; **mordents** play the main note, lower diatonic neighbour, then main note; **trills** alternate with the upper neighbour; **ostinatos** repeat a short cell; **legato/staccato** lengthen/shorten articulation. The model can choose freely, or you can select a gesture focus. Pitched ornaments are omitted for unpitched percussion. Sub-note offsets are recorded with performed notes so neighbouring agents can observe the ornamentation.
 
-The classical preset changes target tempo, energy and default articulation across its four movements. It is a **classical-inspired arrangement**, not a complete sonata-form composition system: form-led modulation supplies related keys and a home-key recapitulation, but there is no pivot-chord planning or full harmonic analysis. All sections retain the 16-step 4/4 grid, including the scherzo. Pop forms likewise describe instrumental section roles rather than lyrics or vocals. See [Open Music Theory on formal sections](https://viva.pressbooks.pub/openmusictheory/chapter/formal-sections-in-general/) and [rondo form](https://viva.pressbooks.pub/openmusictheory/chapter/rondo/) for the distinctions behind these presets.
+The classical preset supplies movement context, energy, melodic themes and default articulation. Tempo is governed by the ensemble split/reunion algorithm. It is a **classical-inspired arrangement**, not a complete sonata-form composition system: form-led modulation supplies related keys and a home-key recapitulation, while the separate reunion algorithm supplies pivot chords; full harmonic analysis is not implemented. All sections retain the 16-step 4/4 grid, including the scherzo. Pop forms likewise describe instrumental section roles rather than lyrics or vocals. See [Open Music Theory on formal sections](https://viva.pressbooks.pub/openmusictheory/chapter/formal-sections-in-general/) and [rondo form](https://viva.pressbooks.pub/openmusictheory/chapter/rondo/) for the distinctions behind these presets.
 
 ## Note lengths and phrasing
 
-Agents choose **written duration and articulation for each entrance**, independently of melody and ornaments. The 4/4 bar supports semiquavers (¼ beat), quavers (½), crotchets (1), minims (2), semibreves (4), and dotted quavers/crotchets/minims. These values scale with each agent's tempo. A phrase can contain up to 16 entrances; shorter notes followed by a gap create actual rests. [Open Music Theory explains the note-value relationships](https://viva.pressbooks.pub/openmusictheory/chapter/notating-rhythm/).
+Melodic agents choose **written duration and articulation for each entrance**, independently of melody and ornaments. The 4/4 bar supports semiquavers (¼ beat), quavers (½), crotchets (1), minims (2), semibreves (4), and dotted quavers/crotchets/minims. These values scale with each agent's tempo. A phrase can contain up to 16 entrances; shorter notes followed by a gap create actual rests. [Open Music Theory explains the note-value relationships](https://viva.pressbooks.pub/openmusictheory/chapter/notating-rhythm/).
 
 The local model receives neighbours' sounding lengths and articulation, its recent choices, movement context, and rotating rhythmic suggestions. Suggestions exclude its current/recent patterns and vary by instrument and local bar; the model can choose, combine or invent an alternative. This helps the small model explore short runs, held responses, dotted rhythms and breathing spaces instead of copying an unchanging quaver stream. Theme recall preserves the remembered note lengths.
 
@@ -419,17 +419,26 @@ Replace `MODEL_NAME` with an Ollama model tag, then click **Check local model** 
 - Its prompt contains those observations, its instrument's role and register, its current phrase, structural context, remembered theme and last few accepted decisions. The model chooses a listening partner, response type (echo, counterpoint, support, contrast or development), interval, entrances, per-note written durations and articulations, energy, form, gesture, theme action and an allowed key change. A deterministic realization grounds new phrases in the selected partner's recent notes; a theme recall restores its saved motif, rhythm and note values, including short uploaded motifs. Unpitched percussion contributes rhythm/dynamics rather than fictitious pitches.
 - [Structured output](https://docs.ollama.com/capabilities/structured-outputs) is validated: notes stay in the agent's current scale and instrument register, rhythm stays within the bar, and decisions cannot reference unheard players. Repeated rhythmic entrances are deduplicated together with their attached durations/articulations. Arrays must have one entry per onset. Notes that exceed the next onset or bar line shorten to the largest supported value that fits. The model also chooses a melodic transformation: keep the contour, develop a short cell as a sequence, invert it, reverse it, or add neighbouring-note turns. A repeat check compares the first bar’s audible pitches with the current motif and three recent decisions; near-repeats receive a related contour variation instead of changing only a potentially unplayed final note. Free development and new sections develop or contrast their material; exact theme recall remains available on structured returns. All variations stay within the selected scale and instrument register. Repeated rhythms are checked against current and recent entrances: the engine splits held notes, merges pairs, or displaces entrances with breathing spaces while keeping durations and articulation aligned. Responses are data, never executed code.
 - Each agent's accepted phrase enters at its **next local bar boundary**. The audio scheduler never waits for inference. A fair queue runs up to four independent requests concurrently and serves the least recently reviewed agent first. Agents become eligible again **2 seconds** after adopting a phrase, checked every 200 ms. The **Re-evaluation interval** control offers 1, 2, 4, 8 or 12 seconds and can change during playback without clearing history. This is a minimum wait: model inference, the shared queue and the next bar add latency, so 26 agents do not each update every two seconds. One-instrument-per-laptop mode distributes that work.
-- A request times out after 20 seconds. Replies based on observations more than four local bars old are discarded and immediately become eligible for a fresh attempt. Section changes also invalidate stale context. Malformed musical replies back off only their own agent; network/runtime errors and timeouts also pause the shared queue briefly. Failure backoff remains in place when the re-evaluation interval changes. The last accepted pitches keep playing. After two complete bars without a new decision, the engine varies the held rhythm at a bar boundary; ostinato hooks get four bars. This also works with inference disabled or unavailable. Openings, section entrances and explicit theme recalls retain their timing. Agents without a model phrase also use deterministic pitch rules that react to heard notes. The UI distinguishes thinking, ready, playing and inference-unavailable states.
+- A request times out after 20 seconds. Replies based on observations more than four local bars old are discarded and immediately become eligible for a fresh attempt. Section changes also invalidate stale context. Malformed musical replies back off only their own agent; network/runtime errors and timeouts also pause the shared queue briefly. Failure backoff remains in place when the re-evaluation interval changes. The last accepted pitches keep playing. The four-role engine supplies deterministic accompaniment and fallback motifs while inference is disabled or unavailable. Melodic model phrases retain their timing until a new decision, form entrance or partition replaces them. The UI distinguishes thinking, ready, playing and inference-unavailable states.
 
-Partitioning cancels pending and in-flight decisions, preserves each agent's musical memory, and restricts subsequent context to the remaining reachable group. Reconnection starts fresh listening; a model does not receive hidden information from an isolated group.
+Partitioning cancels pending and in-flight decisions, preserves each agent's musical memory, and restricts subsequent context to the remaining reachable group. Reconnection deliberately exchanges pre-heal motifs for the four-bar bridge; subsequent model decisions use fresh reachable observations.
 
 ### Harmonic accompaniment and responsive rhythm
 
-Accompaniment follows repeating, mode-specific four-bar chord progressions. Structured sections approach their ending through a dominant chord and resolve to the tonic; the middle of a phrase can introduce a diatonic seventh. Each musician computes this from its own key, form and bar position. Musicians with matching clocks/forms therefore share a progression without a central conductor; independent forms or drifting clocks can still produce different chords.
+The 26 sampled instruments share four arranging roles. Their timbres, registers, stereo positions and individual local LLMs remain distinct:
 
-Low pitched instruments anchor chord roots and fifths. Piano plays the current chord with an inversion chosen to reduce movement from its actual previous notes, including across key changes. Melodic voices retain their chosen contours. The two-bar recorded/random opening, the first bar of a section and explicit theme recalls bypass this accompaniment treatment to preserve the original phrase. Model-written onsets, rests, durations and articulation remain intact. Local-model prompts include the chord tones, tension and audible percussion energy so musical choices can take the accompaniment into account.
+| Musical role | Instruments | Behaviour |
+| --- | --- | --- |
+| Drums | Snare drum, bass drum, cymbals, triangle | Kick/backbeat anchors, quieter ghost snares, eighth-note hats expanding to sixteenths at high energy; cymbals/triangle play the hat patterns. |
+| Bass | Cello, double bass, bass clarinet, bassoon, contrabassoon, bass trombone, tuba, timpani | Chord roots/fifths, octave displacement and passing notes; 4, 6 or 12 entrances per bar as drum energy increases. |
+| Piano / harmony | Viola, French horn, trombone, harp, piano, celesta | Chord accompaniment at steps 0/8, expanding to 0/3/6/8/11/14 and a higher register with energetic drums. |
+| Lead / melody | Violin, piccolo, flute, oboe, English horn, clarinet, trumpet, glockenspiel | Rhythmic or lyrical motifs with octave-crossing contours; high tension adds extensions, high energy adds pickups. Accepted LLM phrases supply melodic entrances, durations, articulations and gestures. |
 
-Without an accepted model phrase, rhythms develop every two bars (four for ostinatos): energetic reachable percussion encourages syncopated bass/keyboard parts and busier melodic replies, while no drums permits more lyrical spacing. Kick/snare anchors remain recognizable, and snare ghost notes play more softly than the backbeat. Muted or stale voices do not contribute rhythmic drive or energy. Solo melodic agents also develop their own contour every two bars, so fallback playback does not depend on another player or a running model. Pitch and rhythm updates enter before the first note of the new bar. An already accepted model melody remains intact while its held rhythm develops through the existing variation rules.
+Major, natural minor and Dorian use tension-dependent four-bar progressions, with seventh chords at tension 0.55 and above. For example, low-tension major plays I–V–vi–IV. The other selectable modes retain their melodic scales and use the nearest major/minor accompaniment family. Reachable bass-drum energy drives rhythmic density; piano tension drives harmonic colour. If those instruments are absent, another audible representative of the corresponding role is used, then the player's own parameters. Piano-role model energy also sets its tension.
+
+In a connected ensemble, the generated/uploaded/recorded opening keeps its original phrasing for two bars. Applying a partition takes precedence immediately, including during the opening. Afterwards, accompaniment follows the role algorithm. Model motifs from every role remain available for exchange during reunion; accompaniment roles use model energy while their sounding notes follow the role patterns. The existing local inference queue, validation, musical memory, model selection and CUDA/ROCm runtime support remain in use. There is no second model backend.
+
+Partitioning generates a contrasting motif immediately. Without new model decisions, deterministic motifs remain recognizable while the role rhythms respond to energy/tension. Melody-role LLM decisions can introduce new contours, rests, note values and ornaments. The score and phrasing display show the role's actual entrances.
 
 Vite development and preview servers proxy only `/api/local-llm/chat` and `/api/local-llm/tags` to Ollama on this computer. `SYMPHONY_OLLAMA_URL` can change the loopback port. In peer mode, **run Ollama and the app server on each laptop** and open that laptop's localhost URL, then share only the signalling URL/room. Serving one app instance to every laptop would share that server's inference runtime instead.
 
@@ -449,6 +458,8 @@ An agent represents an instrument type, rather than every individual player in a
 
 Use **What if the network breaks? → Partition preset** to preview a split, then **Apply partition**. You can change it during playback with **Update partition**, or restore communication with **Reconnect musicians**:
 
+- **Rhythm vs harmony (default):** drums/bass against piano/lead: 12 instruments in group A and 14 in group B in the full demo.
+- **Isolate melodic voices:** eight lead-role instruments against the other 18 drums/bass/piano instruments in the full demo.
 - **Two mixed groups:** the original 13/13 split, with every section represented in both groups.
 - **Isolate an instrument:** choose any of the 26 voices; it develops alone while the other 25 keep communicating.
 - **Separate one section:** put strings, woodwinds, brass, percussion or harp/keyboards in their own group.
@@ -456,7 +467,24 @@ Use **What if the network breaks? → Partition preset** to preview a split, the
 - **Every instrument on its own:** 26 solo agents with no shared musical ideas.
 - **Choose two groups:** check instruments for group A; the remaining instruments form group B. Both groups must contain at least one instrument.
 
-Partitioning changes communication, not volume: every musician keeps its phrase, tempo, clock and memory. The same group rules filter both the deterministic music engine and local-model observations. Applying or replacing a partition cancels pending inference and removes cached peer observations. Reconnection exposes fresh note histories so agents can answer each other's developments while tempo gradually converges. The map and player labels show the applied groups; the controls can preview a different split without applying it. The map draws selected links for readability; each musical prompt uses the closest six audible, reachable neighbours.
+A split changes both communication and musical development. Groups containing a drum-role instrument start **8 BPM faster**, move one clockwise fifth and play in major. Groups without drums start **12 BPM slower**, move three clockwise fifths and play in minor. From C major at 120 BPM, that means G major at 128 BPM versus A minor at 108 BPM. At each subsequent bar boundary, groups with drums gain another 2 BPM up to baseline +12; groups without drums lose 1 BPM down to baseline −14. Tempo stays within 60–220 BPM. Updating a split retains that baseline. Split rules take precedence over form-led or agent-led key changes until reunion completes.
+
+**Reconnect musicians** calculates a shared target tempo with equal weight per group, a circle-of-fifths midpoint key, and a shared pivot chord. Different source modes reconcile to Dorian. A **four-bar bridge** ramps tempo and tension: the first two bars use the pivot chord; the last two resolve to the new tonic and exchange motifs from contrasting roles. The interface displays **Reuniting** during the bridge. Pausing also pauses its progress. LLM adoption and form changes wait until the bridge finishes; each agent's inference memory remains intact.
+
+Every musician keeps sounding unless you use the separate mute controls. The same group rules filter received music and model observations. A partition change cancels pending inference and clears cached peer observations. The map and player labels show applied groups; previewing a different split does not apply it. Each musical prompt still uses at most six audible, reachable neighbours.
+
+### Try a complete split and reunion
+
+This short demo makes the musical changes easy to hear without waiting for model inference:
+
+1. Start with a fresh page in **Full orchestra demo** and turn off **Local LLM composition**. While paused, select **C major**, **Stay in the home key**, and **Free development**. A fresh performance starts at 120 BPM.
+2. Start playback and let the two-bar opening finish. Leave the instruments unmuted so both groups remain audible.
+3. Choose **Rhythm vs harmony → Apply partition**. The drum/bass group moves to **G major at 128 BPM**; the harmony/melody group moves to **A minor at 108 BPM**. After two further bar boundaries in each group, their tempos settle at **132 and 106 BPM**.
+4. Click **Reconnect musicians**. Both groups head toward **D Dorian**. Reconnecting immediately targets **118 BPM**; reconnecting after the drift settles targets **119 BPM**. Each group has equal weight despite the 12/14 difference in player count.
+5. Keep playback running while **Reuniting** is displayed. For two bars, accompaniment uses a shared pivot chord; over the next two, it resolves to the new tonic and adopts exchanged motifs. After all 64 steps, normal composition resumes. Turn local AI back on to hear new responses.
+
+The fixed home-key setting governs normal composition; explicit partition/reunion actions can move away from it. Other starting keys produce corresponding transpositions. Reconnecting at different points in the tempo drift can produce an intermediate target tempo. This aligns the groups' musical destination, not their devices' audio clocks.
+
 
 ## Multiple computers
 
@@ -467,13 +495,15 @@ For multiple laptops:
 1. Install/run the app and Ollama on **each** laptop and download its local model. Open that laptop's own localhost app URL.
 2. Start **one** reachable signalling server for the group. Use its address in every browser; `localhost` in each browser refers to that laptop, not to the host of the shared room.
 3. Choose an instrument per browser, enter the same room, join and start playing. Each instrument's audio comes from its own device; hearing the full ensemble requires listening to those outputs together.
-4. Apply matching partitions on all participating browsers for a room-wide split. A partition changed on one browser affects only links to that browser.
+4. Apply a partition on any connected browser. The command propagates across the room; reconnect from any browser to begin the shared reunion.
 
 On a trusted LAN, an HTTP localhost app can use a reachable `ws://SIGNALLING_HOST:8787`; substitute the actual host address. For an HTTPS-served app, use `wss://`. WSL-hosted signalling may require additional LAN routing/firewall configuration; Windows localhost forwarding alone is not a multi-laptop hosting setup. See [Microsoft's WSL networking guide](https://learn.microsoft.com/en-us/windows/wsl/networking).
 
 This mode runs **one local instrument agent per browser**; recently heard remote agents appear in the map and roster. Use HTTPS for an app served from a non-localhost address, and a WSS reverse proxy for remote signalling. Remote audio plays on its originating device.
 
-Existing data channels survive signalling-server shutdown. In peer mode, **Isolate this browser** blocks all musical exchanges with the local player. The other presets selectively allow only peers whose instruments share its group. These are **local connection controls**: they do not change communication between other browsers. Apply the same preset on every browser to create a matching room-wide split. Incoming and outgoing intentions are both filtered, while an instrument-identity handshake continues so peers can discover their roles even when joining with a partition already active. Musical notes, tempo and memory are not included in that handshake. Changing the partition immediately clears local cached observations; other devices' old observations expire after four seconds. Audio keeps running locally. Switching between demo and peer mode restores connectivity and resets the partition controls. Rooms are ephemeral and support up to 64 peers, enough for all 26 instruments. The signalling server only introduces peers and relays WebRTC negotiation, with no musical authority. This prototype has no room authentication: use a trusted demo network.
+Existing data channels survive signalling-server shutdown. Partition controls are shared across connected browsers. Musical packets are filtered in both directions, but identity and partition-control packets continue across blocked links. Before applying a change, the initiating browser collects current musical snapshots (up to 500 ms), then distributes one common snapshot set so participants calculate the same reunion target. Unavailable snapshots are reported and omitted. Control messages are validated, deduplicated and chunked for larger ensembles. A joining peer receives the latest applied partition. This is a cooperative demo protocol, not consensus under device failure or simultaneous conflicting commands.
+
+The snapshot exchange contains symbolic musical state, including motifs; audio is never sent. Ordinary musical observations remain limited to reachable peers. Rooms support up to 64 peers and have no authentication: use a trusted demo network. The signalling server introduces peers and relays WebRTC negotiation. Audio continues locally during partition changes.
 
 A public STUN server assists discovery; restrictive NATs need a TURN service configured in `src/network.ts`. Keep tabs foregrounded: browser background throttling can interrupt scheduling. No audio is transmitted. Full-mesh networking has quadratic connection growth, so the room limit is not a claim of tested 64-device performance.
 
@@ -608,7 +638,11 @@ These are shell environment settings. No `.env` file is required, and the launch
 | Cannot record / microphone permission denied | Use localhost or HTTPS, allow the site in browser permissions and enable microphone access for your browser in OS settings. In WSL, use the Windows browser. A plain LAN-IP HTTP URL may not be a secure context. |
 | Flat live waveform or no notes extracted | Check the selected/default microphone and input level. Try a short, clear hum/whistle or solo instrument. Silence, speech-heavy audio and dense mixes may not yield a reliable motif. |
 | Upload rejected | Use a browser-decodable audio clip of 0.25–30 seconds and at most 15 MiB. Re-export as WAV/MP3 if decoding fails. |
-| Melody/rhythm seems held | The opening lasts two bars, section entrances get one bar, and explicit theme recalls preserve their material. New model phrases wait for bar boundaries and inference capacity. Inspect the agent row and try free development to compare. |
+| Melody/rhythm seems held | Deterministic motifs can repeat while inference is disabled or unavailable. Drum energy controls accompaniment density; accepted melodic LLM phrases change at bar boundaries. Inspect the agent row, enable local AI, or apply a partition to generate contrasting material. |
+| Model rhythm differs from the accompaniment | Drum, bass and harmony roles follow the four-role arrangement. Model energy affects their musical behaviour, and their motifs can be exchanged during reunion. Lead roles use accepted melodic rhythm, durations and gestures directly. |
+| Key changed despite a fixed home key | Explicit split/reunion rules take precedence over the normal modulation policy. Reconnection chooses a shared destination; it does not simply restore the original key. |
+| Reuniting stays on screen while paused | The bridge advances with playback, over 64 sixteenth-note steps. Resume each participating player to finish its bridge. |
+| One browser changes everyone’s partition | Expected: partition controls are shared across connected peers. Apply or reconnect once from any participating browser. |
 | Isolated instrument is still audible | Expected: partitioning blocks musical communication. Use mute controls separately to change what comes through the speakers. |
 | Partition preview differs from the score | The preview is a draft until you click **Apply partition** or **Update partition**. The score and active status show the applied split. |
 | Peer not visible or not responding | Check room, signalling URL, each player's Start button and partition settings. The UI shows recently received musical state; blocked devices or devices that are not broadcasting may not appear. Remote state expires after four seconds. |
@@ -663,7 +697,15 @@ All npm commands below run from the repository root. On PowerShell, use `npm.cmd
 
 The real-model checks require Ollama on **127.0.0.1:11434** with **qwen3:1.7b** installed. They make actual inference requests and can take longer than the unit suite. Their results depend on the machine and model responses; they are not guarantees of per-agent update latency.
 
-The automated suite covers instruments and valid pitch ranges across all 96 key/mode combinations; melody and rhythm variation; note values, articulation and rests; forms, cadences and theme memory; harmony/voice leading; actual PCM motif extraction; recorder permissions/cancellation/cleanup; inference fairness and stale-response handling; GPU detection; all partition presets; incoming/outgoing peer filters and identity discovery; and signalling-room capacity. Browser checks during development have also exercised live recording waveforms, playback during partition changes, responsive controls and three-browser WebRTC partition/reconnect scenarios.
+The automated suite covers instruments and valid pitch ranges across all 96 key/mode combinations; melody and rhythm variation; note values, articulation and rests; forms and theme memory; PCM motif extraction; recorder lifecycle; inference fairness and stale-response handling; GPU detection; and signalling-room capacity. Ensemble checks cover the four-role onset patterns, octave-crossing motifs, split tempo limits, equal weighting of reconnecting groups, the 64-step bridge, preserved opening phrases, LLM adoption, shared WebRTC commands, duplicate rejection and chunked snapshots.
+
+To run just the role-engine and peer-control checks:
+
+```sh
+node --import tsx --test src/ensemble-reference.test.ts src/network.test.ts
+```
+
+The latest implementation validation passed **157 automated tests** and a production build. Browser checks also exercised live partition changes, completed reunions, responsive controls and **four real WebRTC peers** agreeing on the same reunion plan. A live local **qwen3:1.7b** response was accepted by the role engine and played its requested melodic rhythm. These browser and live-model checks are separate from `npm test`.
 
 For a local production-build check:
 
@@ -687,8 +729,12 @@ flowchart LR
     Ollama --> Validate["Validate musical response"]
     Validate --> Bar["Adopt at local bar boundary"]
     Bar --> Agents
-    Agents --> Sound["Web Audio and recorded samples"]
+    Agents --> Roles["Four-role arrangement and local step scheduler"]
+    Roles --> Sound["Web Audio and recorded samples"]
+    Controls["Shared split / reconnect controls"] --> Reconcile["Group snapshots and four-bar reunion"]
+    Reconcile --> Agents
     Agents <-->|"Reachable symbolic intentions"| Mesh["WebRTC peers"]
+    Controls <-->|"Control packets cross partitions"| Mesh
     Signal["Signalling: introductions only"] -.-> Mesh
 ```
 
@@ -704,21 +750,22 @@ flowchart LR
 - `src/phrasing.ts`, `src/PhraseNotation.tsx`: written note values, articulation, rhythmic suggestions, event normalization and live phrasing notation.
 - `src/random-motif.ts`: bounded random melody/rhythm generation, shared as the initial idea before independent agent evolution.
 - `src/tonality.ts`, `src/TonalityControls.tsx`: scales, note spelling, related keys, modulation policy and tonal controls.
-- `src/harmonic-motion.ts`, `src/ensemble-rhythm.ts`: mode-specific chord progressions, piano voice leading and percussion-responsive fallback phrasing.
+- `src/ensemble.ts`, `src/music-roles.ts`, `src/music-core/`: four-role scheduling, deterministic motifs, chord theory, circle-of-fifths reconciliation and the four-bar reunion.
+- `src/harmonic-motion.ts`, `src/ensemble-rhythm.ts`: compatibility helpers for the original phrase engine and listening-context descriptions.
 - `src/forms.ts`, `src/FormControls.tsx`: musical routes, movement/section context, bounded per-agent theme state, controls and local timeline.
 - `src/motif-upload.ts`, `src/motif.worker.ts`, `src/motif-extraction.ts`: bounded audio decoding, worker lifecycle, pitch segmentation and starting-phrase extraction.
 - `scripts/local-llm.mjs`: local runtime/model launcher; `vite.config.ts` supplies the loopback-only inference proxy.
 - `src/main.tsx`: local look-ahead scheduling, section controls, notation-style orchestra map, partition demo and peer session UI.
 - `src/style.css`: concert-programme visual design with paper grain, blue accents, staggered entrance motion and reduced-motion support.
 - `public/fonts/`: locally bundled Bodoni Moda, Barlow Condensed and IBM Plex Mono with their OFL licenses; no runtime font service is required.
-- `src/network.ts`: validated intention messages over WebRTC DataChannels, sent four times per second.
+- `src/network.ts`: validated musical observations over WebRTC DataChannels, sent four times per second; shared partition commands, snapshot collection, deduplication and chunked control messages.
 - `src/partitions.ts`, `src/PartitionControls.tsx`: shared communication rules, preset/custom group previews and live partition controls.
 - `server/signalling.mjs`: room discovery and connection negotiation, with room capacity for the orchestra.
 
 ## Limits and data handling
 
 - **Independent clocks:** tempos converge, but phase/clock-offset synchronization is not implemented. Start devices together for demonstrations. Agent-selected forms and keys can differ, so temporary harmonic disagreement is possible.
-- **A constrained musical vocabulary:** all phrases use a 16-step 4/4 grid. There are no changing metres, explicit tuplets, cross-bar ties or complete harmonic-analysis/pivot-chord planning. Piano voice leading and chord progressions are present; the system is not a full composition/arrangement engine.
+- **A constrained musical vocabulary:** all phrases use a 16-step 4/4 grid. There are no changing metres, explicit tuplets, cross-bar ties or complete harmonic analysis. Tension-dependent chord progressions and reunion pivot chords are present; the system is not a full composition/arrangement engine.
 - **Approximate motif extraction:** the opening is reduced to scale degrees, quantized timing and at most 12 notes. Polyphonic transcription, exact octave contour and automatic source-key detection are not implemented. The user chooses the home key.
 - **Local audio:** uploaded clips and microphone recordings are decoded/analyzed in the browser. Ollama receives musical data, not audio. WebRTC sends validated symbolic musical state, never the audio stream; each device plays its own instrument.
 - **Local model inference:** the UI excludes cloud models, and the bundled server launcher disables Ollama's cloud features. Models are not trained or fine-tuned by this application. An independently managed Ollama service keeps its own configuration.
@@ -731,5 +778,3 @@ flowchart LR
 The orchestral recordings come from **VSCO 2 Community Edition**, **VCSL** and **FluidR3 renders**. VSCO/VCSL assets are CC0; the included FluidR3 renders use CC BY 3.0 US. See [sound credits](public/samples/CREDITS.txt), the license files in `public/samples/`, and [per-file provenance](public/samples/provenance.json) for attribution and source details.
 
 The interface uses locally bundled **Bodoni Moda**, **Barlow Condensed** and **IBM Plex Mono**, with their included OFL license texts. Melody extraction uses [Pitchy](https://github.com/ianprime0509/pitchy). Local inference uses [Ollama](https://ollama.com/) and the selected model under their respective licenses.
-
-The chord-progressions, instrumental-role and percussion-responsive ideas were adapted from the project's `tarik` branch (`67f97ed`) while retaining this application's 26-agent architecture, recorded instruments and motif controls.

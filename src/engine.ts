@@ -8,6 +8,7 @@ import { SampleBank, type SampleProgress } from './sample-bank';
 import { harmonicMotion, voiceChord } from './harmonic-motion';
 import { ensembleRhythm } from './ensemble-rhythm';
 import { avoidMelodicRepeat } from './melodic-variation';
+import { composeEnsemble, ensemblePhrasing, evolveEnsemble, enableEnsemble, rememberEnsemble, validEnsemble, type EnsembleState } from './ensemble';
 
 export type PlayedNote = NoteEvent & { step: number };
 export type Musician = Phrasing & {
@@ -17,6 +18,7 @@ export type Musician = Phrasing & {
   form?: FormState;
   harmony?: HarmonyState;
   decision?: MelodyDecision & { appliedAt: number };
+  ensemble?: EnsembleState;
 };
 export function createMusician(instrument: number, id = String(instrument)): Musician {
   if (!orchestra[instrument] || !Number.isInteger(instrument)) throw new RangeError('Unknown orchestral instrument');
@@ -26,12 +28,13 @@ export const createOrchestra = (): Musician[] => orchestra.map((_, i) => createM
 
 export const isOpening = (m: Musician) => m.seeded === true && m.beat < 32;
 export const isFormEntrance = (m: Musician) => !!m.form && ((m.form.enteredAt !== undefined && m.beat < m.form.enteredAt + 16) || (!!m.form.selected && m.beat < m.form.startBeat));
-export const musicianPhrasing = (m: Musician) => normalizeRhythm(m, isOpening(m) ? 'plain' : m.form?.expression && m.form.expression !== 'auto' ? m.form.expression : m.decision?.gesture ?? m.form?.gesture);
+export const musicianPhrasing = (m: Musician) => m.ensemble && !isOpening(m) ? ensemblePhrasing(m) : normalizeRhythm(m, isOpening(m) ? 'plain' : m.form?.expression && m.form.expression !== 'auto' ? m.form.expression : m.decision?.gesture ?? m.form?.gesture);
 export function harmonyWindow(m: Musician): string {
   const position = formPosition(m.form, m.beat);
   return position.form !== 'free' && !position.waiting ? position.token : `phrase:${Math.floor(m.beat / 64)}`;
 }
 export function allowedKeyChanges(m: Musician): readonly KeyChange[] {
+  if (m.ensemble && m.ensemble.mode !== 'unified') return ['stay'];
   if (m.harmony?.modulation !== 'agent' || !isPitched(m.instrument) || isOpening(m) || isFormEntrance(m)
     || formPosition(m.form, m.beat).returning || m.harmony.changedIn === harmonyWindow(m)) return ['stay'];
   return keyChanges;
@@ -49,6 +52,7 @@ export function configureForm(m: Musician, settings: FormSettings): Musician {
   return { ...m, decision: undefined, form: makeForm(settings, { motif: m.motif, ...musicianPhrasing(m), energy: m.energy, tonality: { ...currentKey(m) } }, isOpening(m) ? 32 : Math.ceil(m.beat / 16) * 16) };
 }
 export function advanceForm(m: Musician): Musician {
+  if (m.ensemble && m.ensemble.mode !== 'unified') return m;
   if (!m.form || m.beat % 16 !== 0) return m;
   const position = formPosition(m.form, m.beat);
   if (position.waiting || position.form === 'free' || m.form.token === position.token) return m;
@@ -62,10 +66,10 @@ export function advanceForm(m: Musician): Musician {
     : m.harmony?.modulation === 'agent' ? remembered?.tonality ?? currentKey(m) : homeKey(m);
   const initialPhrasing = position.theme === 'A' ? normalizeRhythm(home) : normalizeRhythm({ rhythm });
   const theme = remembered ?? { motif, ...initialPhrasing, energy: position.energy, tonality: { ...tonality } };
-  return { ...m, motif: [...theme.motif], ...normalizeRhythm(theme), energy: position.energy, decision: undefined, seeded: undefined,
+  return rememberEnsemble({ ...m, motif: [...theme.motif], ...normalizeRhythm(theme), energy: position.energy, decision: undefined, seeded: undefined,
     harmony: m.harmony ? { ...m.harmony, current: { ...tonality }, changedIn: undefined } : undefined,
     form: { ...m.form, token: position.token, enteredAt: m.beat, gesture: m.form.expression && m.form.expression !== 'auto' ? m.form.expression : position.gesture,
-      themes: { ...m.form.themes, [position.themeKey]: structuredClone(theme) } } };
+      themes: { ...m.form.themes, [position.themeKey]: structuredClone(theme) } } });
 }
 export function seedMusician(m: Musician, phrase: StartingMotif | null): Musician {
   if (phrase && !validStartingMotif(phrase)) throw new Error('Invalid starting motif.');
@@ -74,7 +78,8 @@ export function seedMusician(m: Musician, phrase: StartingMotif | null): Musicia
     harmony: m.harmony || phrase?.tonality ? makeHarmony(phrase?.tonality ?? homeKey(m), m.harmony?.modulation ?? 'fixed') : undefined, ...(phrase ? {
     motif: [...phrase.motif], ...normalizeRhythm(isPitched(m.instrument) ? phrase : fresh), seeded: true,
   } : {}) };
-  return m.form ? configureForm(seeded, m.form) : seeded;
+  const result = m.form ? configureForm(seeded, m.form) : seeded;
+  return m.ensemble ? enableEnsemble(result) : result;
 }
 
 function advanceRhythm(m: Musician, peers: Musician[]): Musician {
@@ -91,6 +96,7 @@ function advanceRhythm(m: Musician, peers: Musician[]): Musician {
 }
 
 export function evolve(self: Musician, peers: Musician[]): Musician {
+  if (self.ensemble) return evolveEnsemble(self);
   const valid = peers.filter(p => p.id !== self.id).sort((a, b) => a.id.localeCompare(b.id));
   const peerTempo = valid.length ? valid.reduce((s, p) => s + p.tempo, 0) / valid.length : 112;
   const position = formPosition(self.form, self.beat);
@@ -122,10 +128,11 @@ export function evolve(self: Musician, peers: Musician[]): Musician {
 export function validState(p: unknown): p is Musician {
   if (!p || typeof p !== 'object') return false;
   const s = p as Musician;
-  return typeof s.id === 'string' && s.id.length > 0 && s.id.length < 100 && Number.isInteger(s.instrument) && s.instrument >= 0 && s.instrument < orchestra.length && Number.isFinite(s.tempo) && s.tempo >= 60 && s.tempo <= 180 && Number.isFinite(s.energy) && s.energy >= 0 && s.energy <= 1 && Number.isSafeInteger(s.beat) && s.beat >= 0 && Number.isInteger(s.group) && s.group >= 0 && s.group < orchestra.length && Array.isArray(s.motif) && s.motif.length > 0 && s.motif.length <= 16 && s.motif.every(n => Number.isInteger(n) && n >= 0 && n < 7)
+  return typeof s.id === 'string' && s.id.length > 0 && s.id.length < 100 && Number.isInteger(s.instrument) && s.instrument >= 0 && s.instrument < orchestra.length && Number.isFinite(s.tempo) && s.tempo >= 60 && s.tempo <= (s.ensemble ? 220 : 180) && Number.isFinite(s.energy) && s.energy >= 0 && s.energy <= 1 && Number.isSafeInteger(s.beat) && s.beat >= 0 && Number.isInteger(s.group) && s.group >= 0 && s.group < orchestra.length && Array.isArray(s.motif) && s.motif.length > 0 && s.motif.length <= 16 && s.motif.every(n => Number.isInteger(n) && n >= 0 && n < 7)
     && typeof s.audible === 'boolean' && Array.isArray(s.rhythm) && s.rhythm.length > 0 && s.rhythm.length <= 16 && new Set(s.rhythm).size === s.rhythm.length && s.rhythm.every(n => Number.isInteger(n) && n >= 0 && n < 16)
     && validPhrasing(s, s.rhythm.length)
     && Array.isArray(s.recentNotes) && s.recentNotes.length <= 24 && s.recentNotes.every(n => n && Number.isSafeInteger(n.step) && n.step >= 0 && n.step <= s.beat && Number.isInteger(n.midi) && n.midi >= 12 && n.midi <= 120 && Number.isFinite(n.duration) && n.duration > 0 && n.duration <= 5 && Number.isFinite(n.velocity) && n.velocity >= 0 && n.velocity <= 1)
+    && (s.ensemble === undefined || validEnsemble(s.ensemble))
     && (s.seeded === undefined || typeof s.seeded === 'boolean')
     && s.recentNotes.every(n => n.offset === undefined || Number.isFinite(n.offset) && n.offset >= 0 && n.offset <= 4)
     && s.recentNotes.every(n => (n.noteValue === undefined || noteValues.includes(n.noteValue)) && (n.articulation === undefined || articulations.includes(n.articulation)))
@@ -138,6 +145,7 @@ export type NoteEvent = { midi: number; duration: number; velocity: number; offs
 
 // Each agent derives notes from its own history, harmonic role and received energy.
 export function compose(m: Musician): NoteEvent[] {
+  if (m.ensemble && !(m.ensemble.mode === 'unified' && isOpening(m))) return composeEnsemble(m);
   const profile = orchestra[m.instrument];
   const key = isPitched(m.instrument) ? currentKey(m) : DEFAULT_TONALITY;
   const pitch = (base: number, degree: number) => degreePitch(base, degree, key);
@@ -192,6 +200,7 @@ export function recordPerformance(m: Musician, notes: NoteEvent[], audible: bool
 }
 
 export function applyDecision(m: Musician, decision: MelodyDecision): Musician {
+  if (m.ensemble?.mode === 'bridging') return m;
   if (isOpening(m) || isFormEntrance(m) || m.beat % 16 !== 0 || !validDecision(decision)) return m;
   if (!allowedKeyChanges(m).includes(decision.keyChange ?? 'stay')) return m;
   if (decision.tonality && !sameKey(decision.tonality, decisionKey(m, decision.keyChange))) return m;
@@ -201,7 +210,7 @@ export function applyDecision(m: Musician, decision: MelodyDecision): Musician {
     ? { ...m.form, selected: plan.form, startBeat: m.beat + 16 } : m.form;
   const key = decisionKey(m, plan.keyChange);
   const harmony = m.harmony && !sameKey(currentKey(m), key) ? { ...m.harmony, current: { ...key }, changedIn: harmonyWindow(m) } : m.harmony;
-  return { ...m, form, harmony, seeded: undefined, motif: [...plan.motif], ...normalizeRhythm(plan), energy: plan.energy, decision: { ...plan, appliedAt: m.beat } };
+  return rememberEnsemble({ ...m, form, harmony, seeded: undefined, motif: [...plan.motif], ...normalizeRhythm(plan), energy: plan.energy, decision: { ...plan, appliedAt: m.beat } });
 }
 
 export class AudioEngine {

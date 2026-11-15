@@ -6,6 +6,9 @@ import { strategySchema, validStrategy, validDecision, type MelodyDecision, type
 import { orchestra, isPitched } from './orchestra';
 import { avoidMelodicRepeat, melodicVariations, transformMelody } from './melodic-variation';
 import { harmonicMotion } from './harmonic-motion';
+import { ensembleChord } from './ensemble';
+import { musicRole } from './music-roles';
+import { parseChordSymbol } from './music-core/musicTheory';
 import { rhythmicDrive } from './ensemble-rhythm';
 
 export const DEFAULT_MODEL = 'qwen3:1.7b';
@@ -34,6 +37,7 @@ function describe(m: Musician, self = false) {
     instrument: profile.name,
     ...(self ? { role: profile.role, register: profile.base, tempo: Math.round(m.tempo), motif: m.motif, ...musicianPhrasing(m) } : {}),
     energy: Number(m.energy.toFixed(2)), pitched: isPitched(m.instrument),
+    ...(m.ensemble ? { arrangingRole: musicRole(m.instrument), networkMode: m.ensemble.mode, tension: m.ensemble.tension } : {}),
     key: isPitched(m.instrument) ? keyName(currentKey(m)) : 'unpitched',
     section: m.form ? { form: m.form.selected ?? 'choosing', movement: formPosition(m.form, m.beat).movementName, section: formPosition(m.form, m.beat).label, gesture: m.decision?.gesture ?? m.form.gesture } : undefined,
     // Compact event tuples keep CPU inference practical across a whole orchestra.
@@ -47,7 +51,9 @@ export function buildMessages(context: ListeningContext) {
   const chord = harmonicMotion(context.self);
   const harmony = { current: keyName(key), home: keyName(homeKey(context.self)), modulation: context.self.harmony?.modulation ?? 'fixed',
     notes: modes[key.mode].map((_, i) => degreeName(i, key)),
-    accompaniment: { root: chord.root, degrees: chord.degrees.map(n => n % 7), notes: chord.degrees.map(n => degreeName(n, key)), tension: chord.tension },
+    accompaniment: context.self.ensemble
+      ? { symbol: ensembleChord(context.self), notes: parseChordSymbol(ensembleChord(context.self)).pitchClasses, tension: context.self.ensemble.pianoTension }
+      : { root: chord.root, degrees: chord.degrees.map(n => n % 7), notes: chord.degrees.map(n => degreeName(n, key)), tension: chord.tension },
     destinations: Object.fromEntries(allowedKeyChanges(context.self).map(change => [change, keyName(decisionKey(context.self, change))])) };
   const structure = form ? {
     choice: formNames[form.choice], selected: form.selected ?? 'choose once now',
@@ -65,7 +71,7 @@ Consider structure over multiple sections. Choose form once if not selected: aba
 Choose themeAction: recall reuses the remembered section theme and rhythm exactly (only on structured returns); contrast creates a different contour; develop responds to nearby notes. Free development and new sections must develop or contrast, not keep recalling the opening. In the last bar, aim for resolution. Consider neighbours' sections but follow your own form.
 Choose gesture for your instrument and movement: plain; arpeggio (broken triad); mordent (main/lower neighbour/main); trill (quick upper-neighbour alternation); ostinato (repeat a short cell). Choose legato/staccato separately in each note's articulations array. Only a manual gesture focus may require a uniform legato/staccato gesture. Use legato articulation and space for Adagio, light ornaments for Scherzo, hooks for choruses, contrast for bridges. Unpitched percussion keeps rhythmic onsets without pitched ornaments.
 Respect harmony: degrees 0..6 refer to the CURRENT key/mode, never assume C major. Played MIDI pitches are absolute; their degree is approximated in that player's displayed key. Listen across different keys using actual pitches. Choose keyChange only from harmony.destinations. 'stay' keeps the current key; other destinations are relative to the HOME key. Modulation happens at a bar boundary, at most once per section (four bars in free development); returning themes preserve their key. Avoid unnecessary modulation when neighbours already agree. Cadences resolve to the current tonic.
-Harmony.accompaniment describes the local chord progression. Bass instruments anchor its roots/fifths and piano voices its chords; your motif still supplies melodic contour and ornaments. Shape melody around chord tones on strong beats, leaving passing tones between them. rhythmicDrive reports audible nearby percussion: energetic drums invite syncopation, while absent or quiet drums leave room for sustained lyrical replies. Preserve your own role instead of making every part equally busy.
+Harmony.accompaniment describes the sounding chord. When self.arrangingRole is present, lead uses your melody and phrasing; drums, bass and piano use the ensemble's role patterns and harmony. Your energy shapes drum activity; piano-role energy also sets harmonic tension. All roles retain your motifs for exchange during reunion. During a partition, keep the group's key; a reunion temporarily handles tempo and harmony before model phrases resume. Shape melody around chord tones on strong beats, leaving passing tones between them. rhythmicDrive reports audible nearby percussion. Preserve your own role instead of making every part equally busy.
 Choose rhythm: 1..16 ascending unique onsets, integers 0..15, in a 16-step bar. Choose durations and articulations with EXACTLY one entry per onset, in the same order. Durations are WRITTEN lengths in sixteenth steps: 1=semiquaver, 2=quaver, 3=dotted quaver, 4=crotchet, 6=dotted crotchet, 8=minim, 12=dotted minim, 16=semibreve. Fit each duration before the next onset and the bar end. A shorter value leaves a rest. Examples: rhythm [0,1,3,6,10], durations [1,2,3,4,6]; or rhythm [0,8], durations [8,8].
 Experiment with coherent rhythmic cells: mix short runs with held notes and breathing spaces; vary your previous durations rather than endlessly repeating one size. Answer a busy neighbour with space, or animate a sustained line with quavers/semiquavers. Slower movements favour longer values; scherzos favour short gestures. Choose per-note articulation: normal, legato (connected), staccato (detached), tenuto (full value), accent (strong attack). Shape groups of connected notes with detached endings; do not randomly switch every note. Articulation is independent of written length and ornaments, so an arpeggio can be staccato or legato. A legato/staccato gesture focus overrides every note's articulation. Recall restores the remembered theme's rhythm and note values. energy: 0.2..0.9. Give ONE short reason under 100 characters naming your partner and rhythmic/phrasing intention. Return ONLY JSON matching ${JSON.stringify(strategySchema)}` },
     { role: 'user', content: JSON.stringify({ self: describe(context.self, true), harmony, structure, rhythmicDrive: rhythmicDrive(context.self, context.neighbours), neighbours: context.neighbours.map(m => describe(m)), previousDecisions: context.memory.slice(-3).map(d => ({ motif: d.motif, rhythm: d.rhythm, durations: d.durations, articulations: d.articulations, respondTo: d.respondTo, approach: d.approach, interval: d.interval, variation: d.variation ?? 'keep', gesture: d.gesture, themeAction: d.themeAction, key: d.tonality ? keyName(d.tonality) : undefined })),

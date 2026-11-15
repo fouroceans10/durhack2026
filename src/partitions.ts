@@ -1,28 +1,32 @@
+import { musicRole } from './music-roles';
 import type { Musician } from './engine';
 import { orchestra, sections, type Section } from './orchestra';
 
 export type PartitionPlan =
-  | { kind: 'mixed' | 'sections' | 'solo' }
+  | { kind: 'roles' | 'lead' | 'mixed' | 'sections' | 'solo' }
   | { kind: 'instrument'; instrument: number }
   | { kind: 'section'; section: Section }
   | { kind: 'custom'; instruments: number[] };
 export const partitionNames: Record<PartitionPlan['kind'], string> = {
-  mixed: 'Two mixed groups', instrument: 'Isolate an instrument', section: 'Separate one section',
+  roles: 'Rhythm vs harmony', lead: 'Isolate melodic voices', mixed: 'Two mixed groups', instrument: 'Isolate an instrument', section: 'Separate one section',
   sections: 'Each section on its own', solo: 'Every instrument on its own', custom: 'Choose two groups',
 };
 const validInstrument = (n: number) => Number.isInteger(n) && n >= 0 && n < orchestra.length;
 export function validPartition(plan: PartitionPlan): boolean {
+  if (!plan || typeof plan !== 'object') return false;
   switch (plan.kind) {
-    case 'mixed': case 'sections': case 'solo': return true;
+    case 'roles': case 'lead': case 'mixed': case 'sections': case 'solo': return true;
     case 'instrument': return validInstrument(plan.instrument);
     case 'section': return sections.includes(plan.section);
-    case 'custom': return plan.instruments.length > 0 && plan.instruments.length < orchestra.length
+    case 'custom': return Array.isArray(plan.instruments) && plan.instruments.length > 0 && plan.instruments.length < orchestra.length
       && plan.instruments.every(validInstrument) && new Set(plan.instruments).size === plan.instruments.length;
     default: return false;
   }
 }
 export function partitionGroup(plan: PartitionPlan | null, instrument: number): number {
   switch (plan?.kind) {
+    case 'roles': return ['drums', 'bass'].includes(musicRole(instrument)) ? 0 : 1;
+    case 'lead': return musicRole(instrument) === 'lead' ? 0 : 1;
     case 'instrument': return instrument === plan.instrument ? 0 : 1;
     case 'section': return orchestra[instrument].section === plan.section ? 0 : 1;
     case 'sections': return sections.indexOf(orchestra[instrument].section);

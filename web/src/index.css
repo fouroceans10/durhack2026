@@ -1,1 +1,337 @@
 @import "tailwindcss";
+@import "./fonts.css";
+
+:root {
+  --paper: #f1ecdf;
+  --paper-light: #faf6eb;
+  --ink: #27251f;
+  --muted: #706b5e;
+  --rule: #c7c0af;
+  --red: #bc3824;
+  --red-deep: #922c1d;
+  --strings: #ad3c25;
+  --woodwinds: #3d6658;
+  --brass: #806022;
+  --percussion: #3c5c77;
+  --keys: #725640;
+  --display: 'Bodoni Moda', 'Times New Roman', serif;
+  --body: 'Barlow Condensed', 'Trebuchet MS', sans-serif;
+  --mono: 'IBM Plex Mono', 'Courier New', monospace;
+  font-family: var(--body);
+  color: var(--ink);
+  background: var(--paper);
+  font-synthesis: none;
+  font-weight: 400;
+  scroll-behavior: smooth;
+  scroll-padding-top: 28px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  color: var(--ink);
+  font-family: var(--body);
+  background: radial-gradient(ellipse at 12% 5%, #e4d7bf66, transparent 45%), var(--paper);
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  pointer-events: none;
+  opacity: 0.045;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.86' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Cpath fill='%23000' filter='url(%23n)' opacity='.7' d='M0 0h180v180H0z'/%3E%3C/svg%3E");
+}
+
+::selection {
+  background: var(--red);
+  color: var(--paper-light);
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--red);
+  outline-offset: 4px;
+}
+
+.font-display {
+  font-family: var(--display);
+}
+
+.font-body {
+  font-family: var(--body);
+}
+
+.font-mono {
+  font-family: var(--mono);
+}
+
+.eyebrow {
+  display: block;
+  font-family: var(--mono);
+  font-size: 10px;
+  line-height: 1.5;
+  letter-spacing: 1px;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.editorial-btn {
+  cursor: pointer;
+  border-radius: 0;
+  color: var(--ink);
+  border: 1px solid var(--ink);
+  background: transparent;
+  padding: 10px 16px;
+  font-family: var(--body);
+  font-size: 17px;
+  transition: background 0.18s, color 0.18s, border-color 0.18s, transform 0.18s;
+}
+
+.editorial-btn:hover:not(:disabled) {
+  background: var(--ink);
+  color: var(--paper-light);
+}
+
+.editorial-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.editorial-btn-primary {
+  cursor: pointer;
+  border-radius: 0;
+  background: var(--red);
+  border: 1px solid var(--red);
+  color: var(--paper-light);
+  padding: 12px 18px;
+  font-family: var(--body);
+  font-size: 18px;
+  transition: background 0.18s, border-color 0.18s, transform 0.18s;
+}
+
+.editorial-btn-primary:hover:not(:disabled) {
+  background: var(--red-deep);
+  border-color: var(--red-deep);
+}
+
+.editorial-btn-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Performance Dial from main branch */
+.performance-dial {
+  position: relative;
+  width: 196px;
+}
+
+.performance-dial svg {
+  display: block;
+  width: 100%;
+  overflow: visible;
+}
+
+.dial-outer {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 0.75;
+}
+
+.dial-inner {
+  fill: none;
+  stroke: var(--rule);
+  stroke-width: 0.65;
+  stroke-dasharray: 2 4;
+}
+
+.dial-tick {
+  stroke: var(--ink);
+  stroke-width: 1;
+}
+
+.dial-dot {
+  fill: var(--ink);
+}
+
+.dial-count {
+  font-family: var(--display);
+  font-size: 54px;
+  font-style: italic;
+  fill: var(--ink);
+  letter-spacing: -3px;
+}
+
+.dial-caption {
+  font-family: var(--mono);
+  font-size: 7px;
+  letter-spacing: 0.8px;
+  fill: var(--muted);
+}
+
+.dial-hand {
+  transform-origin: 130px 130px;
+  transform: rotate(-42deg);
+}
+
+.dial-hand path {
+  stroke: var(--red);
+  stroke-width: 1.2;
+}
+
+.dial-hand circle {
+  fill: var(--red);
+}
+
+.is-playing .dial-hand {
+  animation: revolve var(--revolution, 2s) linear infinite;
+}
+
+.dial-note {
+  display: block;
+  font-family: var(--display);
+  font-size: 14px;
+  font-style: italic;
+  text-align: center;
+  margin-top: 4px;
+  color: var(--muted);
+  transform: rotate(-4deg);
+}
+
+/* Staff line background patterns from main branch */
+.staff-lines-bg {
+  background: repeating-linear-gradient(
+      to bottom,
+      transparent 0 8px,
+      var(--rule) 8px 9px
+    )
+    0 6px / 100% 37px no-repeat;
+}
+
+.motif-score-staff {
+  height: 82px;
+  display: grid;
+  grid-template-columns: repeat(16, minmax(0, 1fr));
+  padding-top: 12px;
+  background: repeating-linear-gradient(
+      to bottom,
+      transparent 0 9px,
+      var(--rule) 9px 10px
+    )
+    0 12px / 100% 41px no-repeat;
+  border-inline: 1px solid var(--rule);
+}
+
+.motif-score-staff > div {
+  position: relative;
+  text-align: center;
+}
+
+.motif-score-staff i {
+  position: absolute;
+  top: var(--pitch-height, 15px);
+  left: calc(50% - 5px);
+  width: 10px;
+  height: 7px;
+  border-radius: 50%;
+  transform: rotate(-18deg);
+  background: var(--red);
+}
+
+.motif-score-staff i::after {
+  content: '';
+  position: absolute;
+  width: 1px;
+  height: 19px;
+  background: var(--red);
+  right: 0;
+  bottom: 1px;
+  transform: rotate(18deg);
+  transform-origin: bottom;
+}
+
+.motif-score-staff span {
+  position: absolute;
+  top: 45px;
+  left: 0;
+  width: 100%;
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--red);
+}
+
+.motif-score-staff small {
+  position: absolute;
+  top: 60px;
+  left: 0;
+  width: 100%;
+  font-family: var(--mono);
+  font-size: 7px;
+  color: var(--muted);
+}
+
+/* Agent Mind expandable status from main branch */
+.agent-mind {
+  border-top: 1px dotted var(--rule);
+  padding-top: 7px;
+  min-width: 0;
+}
+
+.agent-mind summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  cursor: pointer;
+  font-family: var(--mono);
+  font-size: 10px;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+.agent-mind summary > span:first-child::before {
+  content: '·';
+  margin-right: 6px;
+}
+
+.agent-mind[data-phase='thinking'] summary > span:first-child {
+  color: var(--red);
+}
+
+.agent-mind[data-phase='playing'] summary > span:first-child {
+  color: var(--woodwinds);
+}
+
+.agent-mind[data-phase='fallback'] summary > span:first-child {
+  color: var(--red-deep);
+}
+
+.agent-mind p {
+  font-family: var(--mono);
+  font-size: 10px;
+  line-height: 1.7;
+  margin: 8px 0 0;
+  color: var(--ink);
+  overflow-wrap: anywhere;
+}
+
+@keyframes revolve {
+  to {
+    transform: rotate(318deg);
+  }
+}
+
+@keyframes breathe {
+  50% {
+    opacity: 0.35;
+  }
+}

@@ -8,12 +8,19 @@ import {
   type SignallingStatus,
   type TransportMode,
 } from "../../shared/types";
+import {
+  DEFAULT_MODEL,
+  DEFAULT_REVIEW_INTERVAL_MS,
+  type BrainStatus,
+} from "./ai/strategist";
 import { BeatPhaseRing } from "./components/BeatPhaseRing";
 import { CircleOfFifthsRadar } from "./components/CircleOfFifthsRadar";
 import { DemoControlBar } from "./components/DemoControlBar";
 import { HeaderBar } from "./components/HeaderBar";
+import { LocalIntelligencePanel } from "./components/LocalIntelligencePanel";
 import { MeshTopologyGraph } from "./components/MeshTopologyGraph";
 import { MotifProvenancePanel } from "./components/MotifProvenancePanel";
+import { StartingMotifPanel } from "./components/StartingMotifPanel";
 import {
   buildIntentPacketFromTelemetry,
   type InstrumentNodeTelemetry,
@@ -65,26 +72,70 @@ function hasExplicitSingleRoleQuery(): boolean {
   );
 }
 
+const INITIAL_BRAIN_STATUSES: Record<InstrumentRole, BrainStatus> = {
+  drums: {
+    phase: "listening",
+    detail: "Listening to nearby instruments before choosing the next phrase.",
+    heard: ["bass", "piano", "lead"],
+    decisions: 0,
+    approach: "develop",
+    gesture: "ostinato",
+    model: DEFAULT_MODEL,
+  },
+  bass: {
+    phase: "listening",
+    detail: "Listening to nearby instruments before choosing the next phrase.",
+    heard: ["drums", "piano", "lead"],
+    decisions: 0,
+    approach: "support",
+    gesture: "plain",
+    model: DEFAULT_MODEL,
+  },
+  piano: {
+    phase: "listening",
+    detail: "Listening to nearby instruments before choosing the next phrase.",
+    heard: ["drums", "bass", "lead"],
+    decisions: 0,
+    approach: "counterpoint",
+    gesture: "arpeggio",
+    model: DEFAULT_MODEL,
+  },
+  lead: {
+    phase: "listening",
+    detail: "Listening to nearby instruments before choosing the next phrase.",
+    heard: ["drums", "bass", "piano"],
+    decisions: 0,
+    approach: "echo",
+    gesture: "mordent",
+    model: DEFAULT_MODEL,
+  },
+};
+
 export function App(): React.ReactElement {
   const initialViewRole = useMemo(() => resolveInitialViewRole(), []);
   const initialTransport = useMemo(() => resolveInitialTransportMode(), []);
 
   const [viewRole, setViewRole] = useState<ViewRole>(initialViewRole);
   const [monitorMode, setMonitorMode] = useState<AudioMonitorMode>(
-    hasExplicitSingleRoleQuery() ? "my-instrument" : "observatory-mix"
+    hasExplicitSingleRoleQuery() ? "my-instrument" : "observatory-mix",
   );
   const [transportMode, setTransportMode] =
     useState<TransportMode>(initialTransport);
   const [companionPeersEnabled, setCompanionPeersEnabled] = useState<boolean>(
-    !hasExplicitSingleRoleQuery()
+    !hasExplicitSingleRoleQuery(),
   );
   const [signallingStatus, setSignallingStatus] =
     useState<SignallingStatus>("offline");
   const [recentPulses, setRecentPulses] = useState<PacketEdgePulseEvent[]>([]);
   const [aiEnabled, setAiEnabled] = useState<boolean>(false);
-  const [aiEndpointUrl, setAiEndpointUrl] = useState<string>(
-    "http://localhost:11434"
+  const [aiEndpointUrl, setAiEndpointUrl] = useState<string>("/api/local-llm");
+  const [aiModel, setAiModel] = useState<string>(DEFAULT_MODEL);
+  const [reviewIntervalMs, setReviewIntervalMs] = useState<number>(
+    DEFAULT_REVIEW_INTERVAL_MS,
   );
+  const [brainStatuses, setBrainStatuses] = useState<
+    Record<InstrumentRole, BrainStatus>
+  >(INITIAL_BRAIN_STATUSES);
   const [guidedDemoActive, setGuidedDemoActive] = useState<boolean>(false);
   const [guidedDemoStage, setGuidedDemoStage] = useState<number>(0);
 
@@ -131,10 +182,18 @@ export function App(): React.ReactElement {
       setRecentPulses((prev) => [...prev.slice(-18), pulse]);
     });
 
+    const unsubBrain = engine.strategist.onStatusChange((statuses) => {
+      setBrainStatuses((prev) => ({
+        ...prev,
+        [activeLocalRole]: statuses[activeLocalRole],
+      }));
+    });
+
     return () => {
       unsubSnap();
       unsubSig();
       unsubPulse();
+      unsubBrain();
       engine.dispose();
       primaryMesh.destroy();
       primaryEngineRef.current = null;
@@ -167,8 +226,6 @@ export function App(): React.ReactElement {
         broadcastChannelName: "symphony-mesh",
       });
 
-      // Companion uses non-duplicating RecordingSynthAdapter while primary SynthRack
-      // handles audio output in "observatory-mix" mode
       const silentAdapter = new RecordingSynthAdapter(role, "my-instrument");
       const compEngine = new OrchestraEngine({
         peerMesh: compMesh,
@@ -186,8 +243,16 @@ export function App(): React.ReactElement {
         }));
       });
 
+      const unsubBrain = compEngine.strategist.onStatusChange((statuses) => {
+        setBrainStatuses((prev) => ({
+          ...prev,
+          [role]: statuses[role],
+        }));
+      });
+
       unsubs.push(() => {
         unsub();
+        unsubBrain();
         compEngine.dispose();
         compMesh.destroy();
       });
@@ -211,7 +276,7 @@ export function App(): React.ReactElement {
     };
   }, [activeLocalRole, companionPeersEnabled, transportMode]);
 
-  // Guided 90s Auto-Demo Choreography Controller (strictly dispatches high-level engine commands)
+  // Guided 90s Auto-Demo Choreography Controller
   useEffect(() => {
     if (!guidedDemoActive) {
       setGuidedDemoStage(0);
@@ -291,6 +356,13 @@ export function App(): React.ReactElement {
     companionEnginesRef.current.lead?.improviseNewMotif();
   }, []);
 
+  const handleApplyOpeningMotif = useCallback(
+    (motif: MotifRecord, label: string) => {
+      primaryEngineRef.current?.seedOpeningMotif(motif, label);
+    },
+    [],
+  );
+
   const handleApplyPreset = useCallback((preset: PartitionPreset) => {
     primaryEngineRef.current?.applyPartitionPreset(preset);
   }, []);
@@ -303,14 +375,14 @@ export function App(): React.ReactElement {
       }
       engine.peerMesh.toggleEdgeBlock(roleA, roleB, true);
     },
-    []
+    [],
   );
 
   const handleSelectKeyAndMode = useCallback(
     (keyRoot: string, mode: MusicalMode) => {
       primaryEngineRef.current?.setKeyAndMode(keyRoot, mode);
     },
-    []
+    [],
   );
 
   const handleToggleAi = useCallback((enabled: boolean) => {
@@ -326,6 +398,26 @@ export function App(): React.ReactElement {
     primaryEngineRef.current?.strategist.setEndpointUrl(url);
     for (const comp of Object.values(companionEnginesRef.current)) {
       comp?.strategist.setEndpointUrl(url);
+    }
+  }, []);
+
+  const handleChangeAiModel = useCallback((nextModel: string) => {
+    setAiModel(nextModel);
+    try {
+      primaryEngineRef.current?.strategist.setModel(nextModel);
+      for (const comp of Object.values(companionEnginesRef.current)) {
+        comp?.strategist.setModel(nextModel);
+      }
+    } catch {
+      // Ignore invalid model strings
+    }
+  }, []);
+
+  const handleChangeReviewIntervalMs = useCallback((ms: number) => {
+    setReviewIntervalMs(ms);
+    primaryEngineRef.current?.strategist.setReviewIntervalMs(ms);
+    for (const comp of Object.values(companionEnginesRef.current)) {
+      comp?.strategist.setReviewIntervalMs(ms);
     }
   }, []);
 
@@ -359,7 +451,6 @@ export function App(): React.ReactElement {
           continue;
         }
 
-        // Check if we have a live companion snapshot (gives full observatory visibility even when partitioned!)
         const compSnap = companionSnapshots[role];
         if (compSnap) {
           result[role] = {
@@ -385,7 +476,6 @@ export function App(): React.ReactElement {
           continue;
         }
 
-        // Otherwise check reachable remote peer intents
         const remotePkt = snap
           ? Object.values(snap.peerIntents).find((p) => p.role === role)
           : undefined;
@@ -413,7 +503,6 @@ export function App(): React.ReactElement {
           continue;
         }
 
-        // Default placeholder when role is offline/unoccupied
         result[role] = {
           peerId: `peer-${role}`,
           role,
@@ -438,7 +527,6 @@ export function App(): React.ReactElement {
       return result;
     }, [primarySnapshot, companionSnapshots]);
 
-  // Combine isolation & adopted motifs across all 4 nodes for the provenance panel
   const combinedIsolationMotifs = useMemo(() => {
     const map = new Map<string, MotifRecord>();
     for (const role of INSTRUMENT_ROLES) {
@@ -457,7 +545,10 @@ export function App(): React.ReactElement {
   const reconcilePlan = primarySnapshot?.reconcilePlan ?? null;
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col">
+    <div
+      id="top-overture"
+      className="min-h-screen bg-[var(--paper)] text-[var(--ink)] flex flex-col"
+    >
       <HeaderBar
         viewRole={viewRole}
         onSelectViewRole={setViewRole}
@@ -479,9 +570,24 @@ export function App(): React.ReactElement {
         chordSymbol={primarySnapshot?.chordSymbol ?? "C"}
       />
 
-      <main className="mx-auto w-full max-w-[1600px] flex-1 p-4 space-y-4">
-        {/* Top Row: P2P Mesh Topology Graph + Beat-Phase Alignment Ring + Circle-of-Fifths Radar */}
-        <div className="grid grid-cols-1 xl:grid-cols-12 gap-4">
+      <main className="mx-auto w-full max-w-[1600px] flex-1 px-4 sm:px-8 space-y-6">
+        {/* Prelude: Voice Recording, Audio Drop & Random Starting Motif */}
+        <StartingMotifPanel
+          keyRoot={primarySnapshot?.keyRoot ?? "C"}
+          mode={primarySnapshot?.mode ?? "major"}
+          bpm={primarySnapshot?.bpm ?? 120}
+          role={activeLocalRole}
+          partitionGroupId={
+            primarySnapshot?.partitionGroupId ?? "part:bass-drums-lead-piano"
+          }
+          activeMotifName={
+            primarySnapshot?.openingMotifName ?? "Generated motif"
+          }
+          onApplyMotif={handleApplyOpeningMotif}
+        />
+
+        {/* 01 — The Living Score: P2P Mesh Topology + Beat-Phase Ring + Circle-of-Fifths Radar */}
+        <div className="grid grid-cols-1 xl:grid-cols-12 gap-5 pt-2">
           <div className="xl:col-span-5">
             <MeshTopologyGraph
               nodes={nodesTelemetry}
@@ -512,22 +618,7 @@ export function App(): React.ReactElement {
           </div>
         </div>
 
-        {/* Middle Row: Motif Provenance Cards & Live Telemetry */}
-        <MotifProvenancePanel
-          modeState={modeState}
-          isolationMotifs={combinedIsolationMotifs}
-          adoptedMotifs={primarySnapshot?.adoptedMotifs ?? []}
-          activeMotif={primarySnapshot?.activeMotif ?? null}
-          latestIntentPacket={buildIntentPacketFromTelemetry(
-            nodesTelemetry[activeLocalRole]
-          )}
-          aiEnabled={aiEnabled}
-          aiEndpointUrl={aiEndpointUrl}
-          onToggleAi={handleToggleAi}
-          onChangeAiEndpoint={handleChangeAiEndpoint}
-        />
-
-        {/* Bottom Row: Interactive Performance & Guided 90s Auto-Demo Bar */}
+        {/* Interactive Partition Matrix & Guided 90s Auto-Demo Bar */}
         <DemoControlBar
           energy={primarySnapshot?.energy ?? 0.6}
           tension={primarySnapshot?.tension ?? 0.25}
@@ -540,6 +631,61 @@ export function App(): React.ReactElement {
           guidedDemoStage={guidedDemoStage}
           onToggleGuidedDemo={() => setGuidedDemoActive((prev) => !prev)}
         />
+
+        {/* 02 — Motif Provenance Cards & Live Telemetry */}
+        <MotifProvenancePanel
+          modeState={modeState}
+          isolationMotifs={combinedIsolationMotifs}
+          adoptedMotifs={primarySnapshot?.adoptedMotifs ?? []}
+          activeMotif={primarySnapshot?.activeMotif ?? null}
+          latestIntentPacket={buildIntentPacketFromTelemetry(
+            nodesTelemetry[activeLocalRole],
+          )}
+          aiEnabled={aiEnabled}
+          aiEndpointUrl={aiEndpointUrl}
+          onToggleAi={handleToggleAi}
+          onChangeAiEndpoint={handleChangeAiEndpoint}
+        />
+
+        {/* 03 — Local LLM Composition (Ollama qwen3:1.7b) */}
+        <LocalIntelligencePanel
+          aiEnabled={aiEnabled}
+          onToggleAi={handleToggleAi}
+          model={aiModel}
+          onChangeModel={handleChangeAiModel}
+          reviewIntervalMs={reviewIntervalMs}
+          onChangeReviewIntervalMs={handleChangeReviewIntervalMs}
+          brainStatuses={brainStatuses}
+        />
+
+        {/* Editorial Colophon Footer from main branch */}
+        <footer className="border-t border-[var(--ink)] pt-7 pb-6">
+          <a
+            href="#top-overture"
+            className="font-display text-[clamp(64px,12vw,160px)] leading-[1.05] tracking-[-0.07em] text-[var(--red)] flex justify-between items-center pb-6"
+          >
+            Symphony
+            <span className="font-body text-[0.65em] font-normal mr-3">↗</span>
+          </a>
+          <div className="border-t border-[var(--rule)] flex flex-wrap justify-between gap-6 py-5 font-mono text-[9px] leading-relaxed text-[var(--muted)]">
+            <span>
+              WITHOUT A CONDUCTOR.
+              <br />
+              WITHOUT A FINAL NOTE.
+            </span>
+            <span>
+              A DISTRIBUTED MUSIC EXPERIMENT
+              <br />
+              DURHACK / 2026
+            </span>
+            <a
+              href="#top-overture"
+              className="hover:text-[var(--red)] transition"
+            >
+              BACK TO THE OVERTURE ↑
+            </a>
+          </div>
+        </footer>
       </main>
     </div>
   );

@@ -58,28 +58,31 @@ export const MeshTopologyGraph: React.FC<MeshTopologyGraphProps> = ({
     return recentPulses.some(
       (p) =>
         (p.fromPeerId === idA && p.toPeerId === idB) ||
-        (p.fromPeerId === idB && p.toPeerId === idA)
+        (p.fromPeerId === idB && p.toPeerId === idA),
     );
   };
 
   return (
     <section
       data-testid="mesh-topology-graph"
-      className="rounded-xl border border-slate-800/90 bg-slate-900/60 p-4 flex flex-col justify-between"
+      className="border border-[var(--ink)] bg-[var(--paper-light)] p-5 flex flex-col justify-between"
     >
-      <div className="flex items-center justify-between mb-2">
-        <div className="flex items-center gap-2">
-          <Network className="h-4 w-4 text-cyan-400" />
-          <h2 className="text-sm font-semibold text-slate-100">
+      <div className="flex flex-wrap items-baseline justify-between gap-2 mb-3 pb-2.5 border-b border-[var(--rule)]">
+        <div>
+          <span className="eyebrow text-[var(--red)]">
+            01 — THE LIVING SCORE &amp; P2P MESH
+          </span>
+          <h2 className="font-display text-2xl font-medium text-[var(--ink)] mt-1 mb-0 flex items-center gap-2">
+            <Network className="h-4 w-4 text-[var(--red)]" />
             Live P2P Mesh Topology &amp; Subgroup Clusters
           </h2>
         </div>
-        <span className="text-[11px] text-slate-400">
-          Click any link to sever/heal individual P2P edge
+        <span className="font-mono text-[9px] tracking-wider uppercase border border-[var(--rule)] bg-[var(--paper)] px-2.5 py-1 text-[var(--muted)]">
+          Click any link to sever / heal individual P2P edge
         </span>
       </div>
 
-      <div className="relative w-full overflow-hidden rounded-lg bg-slate-950/90 border border-slate-800/70">
+      <div className="relative w-full overflow-hidden bg-[var(--paper)] border border-[var(--rule)]">
         <svg
           viewBox="0 0 600 360"
           className="w-full h-[290px] select-none"
@@ -88,18 +91,35 @@ export const MeshTopologyGraph: React.FC<MeshTopologyGraphProps> = ({
         >
           <defs>
             <radialGradient id="haloGroupA" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stopColor="#06b6d4" stopOpacity="0.22" />
-              <stop offset="100%" stopColor="#06b6d4" stopOpacity="0" />
+              <stop offset="0%" stopColor="#3c5c77" stopOpacity="0.16" />
+              <stop offset="100%" stopColor="#3c5c77" stopOpacity="0" />
             </radialGradient>
             <radialGradient id="haloGroupB" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stopColor="#a855f7" stopOpacity="0.22" />
-              <stop offset="100%" stopColor="#a855f7" stopOpacity="0" />
+              <stop offset="0%" stopColor="#ad3c25" stopOpacity="0.16" />
+              <stop offset="100%" stopColor="#ad3c25" stopOpacity="0" />
             </radialGradient>
             <radialGradient id="haloBridge" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stopColor="#f59e0b" stopOpacity="0.28" />
-              <stop offset="100%" stopColor="#f59e0b" stopOpacity="0" />
+              <stop offset="0%" stopColor="#806022" stopOpacity="0.20" />
+              <stop offset="100%" stopColor="#806022" stopOpacity="0" />
             </radialGradient>
           </defs>
+
+          {/* Subtle Classical 5-Line Staves across upper and lower systems */}
+          {[75, 245].map((baseY, row) => (
+            <g key={row} opacity="0.45">
+              {Array.from({ length: 5 }, (_, l) => (
+                <line
+                  key={l}
+                  x1="20"
+                  x2="580"
+                  y1={baseY + l * 9}
+                  y2={baseY + l * 9}
+                  stroke="#c7c0af"
+                  strokeWidth="0.7"
+                />
+              ))}
+            </g>
+          ))}
 
           {/* Partitioned Subgroup Cluster Halos */}
           {modeState === "partitioned" && (
@@ -107,22 +127,22 @@ export const MeshTopologyGraph: React.FC<MeshTopologyGraphProps> = ({
               <ellipse
                 cx="145"
                 cy="180"
-                rx="115"
+                rx="118"
                 ry="145"
                 fill="url(#haloGroupA)"
-                stroke="#06b6d4"
-                strokeOpacity="0.35"
-                strokeDasharray="6 4"
+                stroke="#3c5c77"
+                strokeOpacity="0.5"
+                strokeDasharray="5 4"
               />
               <ellipse
                 cx="455"
                 cy="180"
-                rx="115"
+                rx="118"
                 ry="145"
                 fill="url(#haloGroupB)"
-                stroke="#a855f7"
-                strokeOpacity="0.35"
-                strokeDasharray="6 4"
+                stroke="#ad3c25"
+                strokeOpacity="0.5"
+                strokeDasharray="5 4"
               />
             </>
           )}
@@ -136,23 +156,23 @@ export const MeshTopologyGraph: React.FC<MeshTopologyGraphProps> = ({
                 rx="250"
                 ry="150"
                 fill="url(#haloBridge)"
-                stroke="#f59e0b"
-                strokeOpacity="0.5"
+                stroke="#806022"
+                strokeOpacity="0.55"
                 strokeWidth="1.5"
               />
               <path
                 d="M 145 95 Q 300 20 455 95"
                 fill="none"
-                stroke="#fbbf24"
-                strokeWidth="2.5"
-                strokeDasharray="8 4"
+                stroke="#806022"
+                strokeWidth="2.2"
+                strokeDasharray="7 4"
               />
               <path
                 d="M 145 265 Q 300 340 455 265"
                 fill="none"
-                stroke="#fbbf24"
-                strokeWidth="2.5"
-                strokeDasharray="8 4"
+                stroke="#806022"
+                strokeWidth="2.2"
+                strokeDasharray="7 4"
               />
             </>
           )}
@@ -180,16 +200,16 @@ export const MeshTopologyGraph: React.FC<MeshTopologyGraphProps> = ({
                   y2={pB.y}
                   stroke={
                     blocked
-                      ? "#f43f5e"
+                      ? "#bc3824"
                       : modeState === "bridging"
-                      ? "#fbbf24"
+                      ? "#806022"
                       : pulsing
-                      ? "#38bdf8"
-                      : "#334155"
+                      ? "#3d6658"
+                      : "#27251f"
                   }
-                  strokeWidth={blocked ? 1.5 : pulsing ? 3 : 2}
-                  strokeDasharray={blocked ? "5 6" : undefined}
-                  strokeOpacity={blocked ? 0.45 : 0.85}
+                  strokeWidth={blocked ? 1.4 : pulsing ? 2.6 : 1.3}
+                  strokeDasharray={blocked ? "3 8" : "3 4"}
+                  strokeOpacity={blocked ? 0.55 : pulsing ? 0.9 : 0.45}
                 />
 
                 {/* Animated Packet Pulse Orb on Active Unblocked Edges */}
@@ -198,8 +218,8 @@ export const MeshTopologyGraph: React.FC<MeshTopologyGraphProps> = ({
                     cx={midX}
                     cy={midY}
                     r={pulsing ? 5 : 3}
-                    fill={modeState === "bridging" ? "#fbbf24" : "#38bdf8"}
-                    opacity={pulsing ? 0.95 : 0.45}
+                    fill={modeState === "bridging" ? "#806022" : "#3d6658"}
+                    opacity={pulsing ? 0.95 : 0.55}
                   />
                 )}
 
@@ -209,17 +229,16 @@ export const MeshTopologyGraph: React.FC<MeshTopologyGraphProps> = ({
                     <rect
                       width="18"
                       height="18"
-                      rx="9"
-                      fill="#0f172a"
-                      stroke="#f43f5e"
+                      fill="#faf6eb"
+                      stroke="#bc3824"
                       strokeWidth="1.2"
                     />
                     <text
                       x="9"
-                      y="12.5"
+                      y="13"
                       textAnchor="middle"
-                      fill="#fb7185"
-                      fontSize="10"
+                      fill="#bc3824"
+                      fontSize="11"
                       fontWeight="bold"
                     >
                       ×
@@ -234,21 +253,21 @@ export const MeshTopologyGraph: React.FC<MeshTopologyGraphProps> = ({
           {modeState === "bridging" && reconcilePlan && (
             <g transform="translate(300, 180)">
               <rect
-                x="-82"
+                x="-88"
                 y="-28"
-                width="164"
+                width="176"
                 height="56"
-                rx="12"
-                fill="#1e1b4b"
-                stroke="#fbbf24"
+                fill="#faf6eb"
+                stroke="#806022"
                 strokeWidth="2"
               />
               <text
                 x="0"
-                y="-6"
+                y="-7"
                 textAnchor="middle"
-                fill="#fde68a"
-                fontSize="10"
+                fill="#806022"
+                fontSize="9"
+                fontFamily="IBM Plex Mono, monospace"
                 fontWeight="600"
               >
                 PIVOT CHORD BRIDGE
@@ -257,7 +276,7 @@ export const MeshTopologyGraph: React.FC<MeshTopologyGraphProps> = ({
                 x="0"
                 y="14"
                 textAnchor="middle"
-                fill="#ffffff"
+                fill="#27251f"
                 fontSize="13"
                 fontWeight="bold"
               >
@@ -284,20 +303,29 @@ export const MeshTopologyGraph: React.FC<MeshTopologyGraphProps> = ({
                   y="-46"
                   width="224"
                   height="92"
-                  rx="14"
-                  fill="#0f172a"
+                  fill="#faf6eb"
                   stroke={meta.colorHex}
-                  strokeWidth={node.isLeader ? "2.4" : "1.5"}
+                  strokeWidth={node.isLeader ? "2.2" : "1.2"}
+                />
+
+                {/* Top accent bar */}
+                <line
+                  x1="-112"
+                  y1="-46"
+                  x2="112"
+                  y2="-46"
+                  stroke={meta.colorHex}
+                  strokeWidth="3.5"
                 />
 
                 {/* Role Title & Subgroup Leader Crown */}
-                <circle cx="-88" cy="-22" r="7" fill={meta.colorHex} />
+                <circle cx="-88" cy="-22" r="6" fill={meta.colorHex} />
                 <text
                   x="-74"
                   y="-18"
-                  fill="#f8fafc"
-                  fontSize="13"
-                  fontWeight="bold"
+                  fill="#27251f"
+                  fontSize="14"
+                  fontWeight="600"
                 >
                   {meta.label.toUpperCase()}
                 </text>
@@ -307,8 +335,9 @@ export const MeshTopologyGraph: React.FC<MeshTopologyGraphProps> = ({
                     x="96"
                     y="-18"
                     textAnchor="end"
-                    fill="#fbbf24"
-                    fontSize="10"
+                    fill="#bc3824"
+                    fontSize="9"
+                    fontFamily="IBM Plex Mono, monospace"
                     fontWeight="600"
                   >
                     ★ LEADER
@@ -319,9 +348,9 @@ export const MeshTopologyGraph: React.FC<MeshTopologyGraphProps> = ({
                 <text
                   x="-96"
                   y="5"
-                  fill="#e2e8f0"
-                  fontSize="12"
-                  fontFamily="monospace"
+                  fill="#27251f"
+                  fontSize="11.5"
+                  fontFamily="IBM Plex Mono, monospace"
                   fontWeight="600"
                 >
                   {node.bpm.toFixed(1)} BPM | {node.keyRoot} {node.mode} |{" "}
@@ -332,9 +361,9 @@ export const MeshTopologyGraph: React.FC<MeshTopologyGraphProps> = ({
                 <text
                   x="-96"
                   y="26"
-                  fill="#94a3b8"
-                  fontSize="10"
-                  fontFamily="monospace"
+                  fill="#706b5e"
+                  fontSize="9.5"
+                  fontFamily="IBM Plex Mono, monospace"
                 >
                   {node.partitionGroupId.slice(0, 28)}
                 </text>
@@ -345,24 +374,24 @@ export const MeshTopologyGraph: React.FC<MeshTopologyGraphProps> = ({
       </div>
 
       {/* Bottom Legend */}
-      <div className="mt-2.5 flex flex-wrap items-center justify-between gap-2 text-xs text-slate-400">
-        <div className="flex items-center gap-3">
-          <span className="inline-flex items-center gap-1 text-cyan-300">
-            <span className="h-2 w-2 rounded-full bg-cyan-400" />
+      <div className="mt-3 pt-2.5 border-t border-[var(--rule)] flex flex-wrap items-center justify-between gap-2 font-mono text-[10px] text-[var(--muted)]">
+        <div className="flex flex-wrap items-center gap-4">
+          <span className="inline-flex items-center gap-1.5 text-[var(--woodwinds)]">
+            <span className="h-2 w-2 rounded-full bg-[var(--woodwinds)]" />
             Active P2P DataChannel
           </span>
-          <span className="inline-flex items-center gap-1 text-rose-300">
-            <Scissors className="h-3.5 w-3.5 text-rose-400" />
+          <span className="inline-flex items-center gap-1.5 text-[var(--red)]">
+            <Scissors className="h-3.5 w-3.5 text-[var(--red)]" />
             Severed Edge ({blockedEdges.length} blocked)
           </span>
-          <span className="inline-flex items-center gap-1 text-amber-300">
-            <Crown className="h-3.5 w-3.5 text-amber-400" />
+          <span className="inline-flex items-center gap-1.5 text-[var(--ink)]">
+            <Crown className="h-3.5 w-3.5 text-[var(--red)]" />
             Deterministic Subgroup Leader
           </span>
         </div>
 
         {modeState === "bridging" && reconcilePlan && (
-          <div className="inline-flex items-center gap-1.5 text-amber-300 font-medium">
+          <div className="inline-flex items-center gap-1.5 text-[var(--brass)] font-semibold">
             <GitMerge className="h-3.5 w-3.5" />
             Reconciling via Pivot {reconcilePlan.pivotChord} →{" "}
             {reconcilePlan.targetKeyRoot} {reconcilePlan.targetMode}

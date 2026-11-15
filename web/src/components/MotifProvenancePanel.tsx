@@ -34,7 +34,6 @@ export const MotifProvenancePanel: React.FC<MotifProvenancePanelProps> = ({
 
   const adoptedIds = new Set(adoptedMotifs.map((m) => m.id));
 
-  // Combine unique motifs for provenance display
   const motifMap = new Map<string, MotifRecord>();
   for (const m of adoptedMotifs) {
     motifMap.set(m.id, m);
@@ -56,14 +55,14 @@ export const MotifProvenancePanel: React.FC<MotifProvenancePanelProps> = ({
       return {
         label: "ADOPTED IN BRIDGE",
         className:
-          "bg-amber-500/20 border-amber-400/50 text-amber-200",
+          "bg-[#80602218] border-[var(--brass)] text-[var(--brass)]",
       };
     }
     if (modeState === "unified" && isAdopted) {
       return {
         label: "WOVEN INTO UNIFIED GROOVE",
         className:
-          "bg-emerald-500/20 border-emerald-400/50 text-emerald-200",
+          "bg-[#3d665818] border-[var(--woodwinds)] text-[var(--woodwinds)]",
       };
     }
     if (
@@ -72,25 +71,28 @@ export const MotifProvenancePanel: React.FC<MotifProvenancePanelProps> = ({
     ) {
       return {
         label: "INVENTED IN ISOLATION",
-        className: "bg-rose-500/20 border-rose-400/50 text-rose-200",
+        className: "bg-[#bc382418] border-[var(--red)] text-[var(--red)]",
       };
     }
     return {
       label: "ACTIVE ENSEMBLE MOTIF",
-      className: "bg-indigo-500/20 border-indigo-400/40 text-indigo-200",
+      className: "bg-[var(--paper)] border-[var(--rule)] text-[var(--ink)]",
     };
   };
 
   return (
     <section
       data-testid="motif-provenance-panel"
-      className="rounded-xl border border-slate-800/90 bg-slate-900/60 p-4 flex flex-col justify-between gap-3"
+      className="border border-[var(--ink)] bg-[var(--paper-light)] p-5 flex flex-col justify-between gap-3"
     >
       {/* Header & Optional AI Strategist Toggle */}
-      <div className="flex flex-wrap items-center justify-between gap-2">
-        <div className="flex items-center gap-2">
-          <Music2 className="h-4 w-4 text-amber-400" />
-          <h2 className="text-sm font-semibold text-slate-100">
+      <div className="flex flex-wrap items-baseline justify-between gap-2 pb-2.5 border-b border-[var(--rule)]">
+        <div>
+          <span className="eyebrow text-[var(--red)]">
+            02 — MUSICAL MEMORY &amp; ISOLATION PROVENANCE
+          </span>
+          <h2 className="font-display text-2xl font-medium text-[var(--ink)] mt-1 mb-0 flex items-center gap-2">
+            <Music2 className="h-4 w-4 text-[var(--red)]" />
             Motif Provenance &amp; Live Intent Telemetry
           </h2>
         </div>
@@ -100,10 +102,10 @@ export const MotifProvenancePanel: React.FC<MotifProvenancePanelProps> = ({
             type="button"
             data-testid="toggle-ai-strategist-btn"
             onClick={() => onToggleAi(!aiEnabled)}
-            className={`inline-flex items-center gap-1.5 rounded-lg border px-2.5 py-1 text-xs font-medium transition cursor-pointer ${
+            className={`inline-flex items-center gap-1.5 border px-2.5 py-1 font-mono text-[10px] transition cursor-pointer ${
               aiEnabled
-                ? "bg-purple-500/20 border-purple-400/50 text-purple-200"
-                : "bg-slate-950 border-slate-800 text-slate-400 hover:text-slate-200"
+                ? "bg-[var(--red)] border-[var(--red)] text-[var(--paper-light)]"
+                : "bg-[var(--paper)] border-[var(--ink)] text-[var(--ink)] hover:bg-[var(--ink)] hover:text-[var(--paper-light)]"
             }`}
             title="Optional non-blocking Ollama AI Strategist (1500ms timeout, instant deterministic fallback)"
           >
@@ -115,25 +117,25 @@ export const MotifProvenancePanel: React.FC<MotifProvenancePanelProps> = ({
           <button
             type="button"
             onClick={() => setShowRawIntent(!showRawIntent)}
-            className="inline-flex items-center gap-1 rounded-lg bg-slate-950 hover:bg-slate-800 border border-slate-800 px-2.5 py-1 text-xs font-medium text-slate-300 transition cursor-pointer"
+            className="inline-flex items-center gap-1 border border-[var(--ink)] bg-[var(--paper)] hover:bg-[var(--ink)] hover:text-[var(--paper-light)] px-2.5 py-1 font-mono text-[10px] text-[var(--ink)] transition cursor-pointer"
           >
-            <Code2 className="h-3.5 w-3.5 text-cyan-400" />
+            <Code2 className="h-3.5 w-3.5 text-[var(--red)]" />
             {showRawIntent ? "Show Motif Cards" : "Inspect IntentPacket JSON"}
           </button>
         </div>
       </div>
 
       {aiEnabled && (
-        <div className="flex flex-wrap items-center justify-between gap-2 rounded-lg bg-purple-950/30 border border-purple-500/30 px-3 py-1.5 text-xs">
-          <span className="text-purple-200 flex items-center gap-1.5">
-            <Sparkles className="h-3.5 w-3.5 text-purple-400" />
-            Local Ollama Endpoint (Non-blocking 1500ms AbortController fallback):
+        <div className="flex flex-wrap items-center justify-between gap-2 bg-[var(--paper)] border border-[var(--rule)] px-3 py-1.5 font-mono text-[10px]">
+          <span className="text-[var(--ink)] flex items-center gap-1.5">
+            <Sparkles className="h-3.5 w-3.5 text-[var(--red)]" />
+            Local Ollama Endpoint (Non-blocking AbortController fallback):
           </span>
           <input
             type="text"
             value={aiEndpointUrl}
             onChange={(e) => onChangeAiEndpoint(e.target.value)}
-            className="rounded bg-slate-950 border border-slate-700 px-2 py-0.5 text-xs font-mono text-slate-200 w-56"
+            className="bg-[var(--paper-light)] border border-[var(--ink)] px-2 py-0.5 text-[10px] font-mono text-[var(--ink)] w-56"
             aria-label="Ollama Endpoint URL"
           />
         </div>
@@ -142,12 +144,12 @@ export const MotifProvenancePanel: React.FC<MotifProvenancePanelProps> = ({
       {showRawIntent ? (
         <pre
           data-testid="intent-packet-inspector"
-          className="max-h-[210px] overflow-auto rounded-lg bg-slate-950 border border-slate-800 p-3 text-[11px] font-mono text-cyan-300"
+          className="max-h-[210px] overflow-auto bg-[var(--paper)] border border-[var(--rule)] p-3 text-[11px] font-mono text-[var(--ink)]"
         >
           {JSON.stringify(latestIntentPacket, null, 2)}
         </pre>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5 max-h-[220px] overflow-y-auto pr-1">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3 max-h-[225px] overflow-y-auto pr-1">
           {displayMotifs.map((motif) => {
             const meta = ROLE_META[motif.authorRole];
             const badge = getProvenanceBadge(motif);
@@ -157,29 +159,29 @@ export const MotifProvenancePanel: React.FC<MotifProvenancePanelProps> = ({
               <div
                 key={motif.id}
                 data-testid="motif-provenance-card"
-                className={`rounded-lg bg-slate-950/90 border ${meta.borderClass} p-2.5 flex flex-col justify-between gap-2`}
+                className="bg-[var(--paper)] border border-[var(--rule)] p-3 flex flex-col justify-between gap-2"
               >
                 <div className="flex items-center justify-between gap-1">
                   <div className="flex items-center gap-1.5">
                     <span
-                      className={`rounded px-1.5 py-0.5 text-[10px] font-bold uppercase ${meta.badgeBg} ${meta.badgeText}`}
+                      className={`px-1.5 py-0.5 font-mono text-[9px] font-bold uppercase ${meta.badgeBg} ${meta.badgeText}`}
                     >
                       {meta.label}
                     </span>
-                    <span className="text-xs font-mono font-semibold text-slate-200">
+                    <span className="text-xs font-mono font-semibold text-[var(--ink)]">
                       {motif.keyRoot} {motif.mode} · {motif.bpm.toFixed(0)} BPM
                     </span>
                   </div>
 
                   <span
-                    className={`rounded-full border px-2 py-0.5 text-[10px] font-semibold tracking-wide ${badge.className}`}
+                    className={`border px-2 py-0.5 font-mono text-[9px] tracking-wide ${badge.className}`}
                   >
                     {badge.label}
                   </span>
                 </div>
 
-                {/* Mini 16-Step Pitch-Contour Visualizer */}
-                <div className="grid grid-cols-16 gap-0.5 items-end h-8 bg-slate-900/90 rounded px-1.5 py-1 border border-slate-800/80">
+                {/* Mini 16-Step Staff Pitch-Contour Visualizer */}
+                <div className="grid grid-cols-16 gap-0.5 items-end h-8 staff-lines-bg bg-[var(--paper-light)] px-1.5 py-1 border border-[var(--rule)]">
                   {Array.from({ length: 16 }).map((_, stepIdx) => {
                     const noteIdx = motif.rhythmSteps.indexOf(stepIdx);
                     const active = stepSet.has(stepIdx) && noteIdx >= 0;
@@ -189,17 +191,17 @@ export const MotifProvenancePanel: React.FC<MotifProvenancePanelProps> = ({
                         ] ?? 0
                       : 0;
                     const heightPct = active
-                      ? Math.max(25, Math.min(100, 35 + degree * 8))
+                      ? Math.max(28, Math.min(100, 38 + degree * 8))
                       : 12;
 
                     return (
                       <div
                         key={stepIdx}
-                        className="w-full rounded-xs transition-all"
+                        className="w-full transition-all"
                         style={{
                           height: `${heightPct}%`,
-                          backgroundColor: active ? meta.colorHex : "#1e293b",
-                          opacity: active ? 0.95 : 0.4,
+                          backgroundColor: active ? meta.colorHex : "#c7c0af",
+                          opacity: active ? 0.95 : 0.35,
                         }}
                         title={
                           active
@@ -211,7 +213,7 @@ export const MotifProvenancePanel: React.FC<MotifProvenancePanelProps> = ({
                   })}
                 </div>
 
-                <div className="flex items-center justify-between text-[10px] font-mono text-slate-400">
+                <div className="flex items-center justify-between text-[9px] font-mono text-[var(--muted)]">
                   <span>Degrees: [{motif.scaleDegrees.join(", ")}]</span>
                   <span>
                     Origin: {motif.createdDuringPartitionId.slice(0, 18)}

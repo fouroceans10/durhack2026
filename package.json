@@ -13,10 +13,14 @@
     "dev": "concurrently -n SIG,WEB -c cyan,magenta \"npm run dev:signalling\" \"npm run dev:web\"",
     "typecheck": "tsc -p tsconfig.json --noEmit && tsc -p signalling/tsconfig.json --noEmit && tsc -p web/tsconfig.json --noEmit",
     "test": "vitest run",
-    "build": "tsc -p signalling/tsconfig.json --noEmit && tsc -p web/tsconfig.json --noEmit && vite build --config web/vite.config.ts"
+    "build": "tsc -p signalling/tsconfig.json --noEmit && tsc -p web/tsconfig.json --noEmit && vite build --config web/vite.config.ts",
+    "llm:serve": "node scripts/local-llm.mjs serve",
+    "llm:pull": "node scripts/local-llm.mjs pull",
+    "llm:status": "node scripts/local-llm.mjs ps"
   },
   "dependencies": {
     "lucide-react": "^0.468.0",
+    "pitchy": "^4.1.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "tone": "^15.0.4",

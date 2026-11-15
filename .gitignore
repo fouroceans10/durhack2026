@@ -13,7 +13,8 @@ signalling/dist/
 npm-debug.log*
 .DS_Store
 
-# Environment files
+# Environment & local LLM runtime
+.local/
 .env
 .env.*
 !.env.example

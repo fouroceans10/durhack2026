@@ -32,6 +32,7 @@ export const ROLE_META: Record<
   InstrumentRole,
   {
     label: string;
+    section: string;
     colorHex: string;
     badgeBg: string;
     badgeText: string;
@@ -40,36 +41,40 @@ export const ROLE_META: Record<
 > = {
   drums: {
     label: "Drums",
-    colorHex: "#f43f5e", // rose-500
-    badgeBg: "bg-rose-500/15",
-    badgeText: "text-rose-300",
-    borderClass: "border-rose-500/40",
+    section: "PERCUSSION",
+    colorHex: "#3c5c77", // --percussion
+    badgeBg: "bg-[#3c5c77]/12",
+    badgeText: "text-[#3c5c77]",
+    borderClass: "border-[#3c5c77]/45",
   },
   bass: {
     label: "Bass",
-    colorHex: "#06b6d4", // cyan-500
-    badgeBg: "bg-cyan-500/15",
-    badgeText: "text-cyan-300",
-    borderClass: "border-cyan-500/40",
+    section: "BASS / CONTINUO",
+    colorHex: "#3d6658", // --woodwinds
+    badgeBg: "bg-[#3d6658]/12",
+    badgeText: "text-[#3d6658]",
+    borderClass: "border-[#3d6658]/45",
   },
   piano: {
     label: "Piano",
-    colorHex: "#a855f7", // purple-500
-    badgeBg: "bg-purple-500/15",
-    badgeText: "text-purple-300",
-    borderClass: "border-purple-500/40",
+    section: "KEYS / HARMONY",
+    colorHex: "#806022", // --brass
+    badgeBg: "bg-[#806022]/12",
+    badgeText: "text-[#806022]",
+    borderClass: "border-[#806022]/45",
   },
   lead: {
     label: "Lead",
-    colorHex: "#f59e0b", // amber-500
-    badgeBg: "bg-amber-500/15",
-    badgeText: "text-amber-300",
-    borderClass: "border-amber-500/40",
+    section: "SOLO STRINGS",
+    colorHex: "#ad3c25", // --strings / --red
+    badgeBg: "bg-[#ad3c25]/12",
+    badgeText: "text-[#ad3c25]",
+    borderClass: "border-[#ad3c25]/45",
   },
 };
 
 export function buildIntentPacketFromTelemetry(
-  node: InstrumentNodeTelemetry
+  node: InstrumentNodeTelemetry,
 ): IntentPacket {
   return {
     peerId: node.peerId,

@@ -68,6 +68,7 @@ export interface EngineMutableState {
   effectiveDrumsEnergy: number;
   effectivePianoTension: number;
   phaseErrorMs: number;
+  openingMotifName: string;
   activeMotif: MotifRecord | null;
   isolationMotifHistory: MotifRecord[];
   adoptedMotifs: MotifRecord[];
@@ -118,6 +119,7 @@ export class OrchestraEngine {
   private transportRepeatId: number | null = null;
   private snapshotListeners = new Set<(snapshot: EngineSnapshot) => void>();
   private lastSnapshotEmitMs = 0;
+  private lastStrategistPollMs = 0;
 
   /**
    * Stores the latest partitioned IntentPackets from each peer prior to/during
@@ -172,6 +174,7 @@ export class OrchestraEngine {
       effectiveDrumsEnergy: initialEnergy,
       effectivePianoTension: initialTension,
       phaseErrorMs: 0,
+      openingMotifName: "Generated motif",
       activeMotif: null,
       isolationMotifHistory: [],
       adoptedMotifs: [],
@@ -366,6 +369,43 @@ export class OrchestraEngine {
   }
 
   /**
+   * Seeds the orchestra (and any active virtual companion peers) with a user-recorded
+   * voice motif, uploaded audio snippet, or freshly generated opening motif.
+   */
+  public seedOpeningMotif(motif: MotifRecord, label = "Custom opening motif"): void {
+    const s = this.stateRef.current;
+    const adapted: MotifRecord = {
+      ...motif,
+      keyRoot: s.keyRoot,
+      mode: s.mode,
+      bpm: s.bpm,
+      scaleDegrees: [...motif.scaleDegrees],
+      rhythmSteps: [...motif.rhythmSteps],
+    };
+    s.activeMotif = adapted;
+    s.openingMotifName = label;
+    if (s.modeState === "partitioned") {
+      s.isolationMotifHistory.push(adapted);
+    }
+    s.lamportClock += 1;
+    this.broadcastCurrentIntent();
+
+    for (const comp of this.companionEngines) {
+      const compState = comp.getMutableStateRef().current;
+      compState.activeMotif = {
+        ...adapted,
+        id: `${adapted.id}-${compState.role}`,
+        authorRole: compState.role,
+      };
+      compState.openingMotifName = label;
+      compState.lamportClock += 1;
+      comp.broadcastCurrentIntent();
+    }
+
+    this.emitSnapshot(true);
+  }
+
+  /**
    * Manually or autonomously generates a fresh MotifRecord for the current harmonic context.
    */
   public improviseNewMotif(): MotifRecord {
@@ -466,8 +506,14 @@ export class OrchestraEngine {
         }
         this.updateCurrentChordForBar();
 
-        // Trigger non-blocking AI Strategist check on 8-bar boundaries
-        if (s.barNumber > 0 && s.barNumber % 8 === 0) {
+        // Trigger non-blocking AI Strategist check on bar boundaries respecting reviewIntervalMs
+        if (
+          s.barNumber > 0 &&
+          (s.barNumber % 8 === 0 ||
+            epochMs - this.lastStrategistPollMs >=
+              this.strategist.getReviewIntervalMs())
+        ) {
+          this.lastStrategistPollMs = epochMs;
           this.triggerNonBlockingStrategistPoll();
         }
       }
@@ -1121,6 +1167,10 @@ export class OrchestraEngine {
       return;
     }
     const s = this.stateRef.current;
+    const neighbourMotif = Object.values(s.peerIntents).find(
+      (p) => p.role !== s.role && p.activeMotif?.scaleDegrees.length,
+    )?.activeMotif?.scaleDegrees;
+
     const ctx: AIStrategyContext = {
       role: s.role,
       partitionGroupId: s.partitionGroupId,
@@ -1132,6 +1182,8 @@ export class OrchestraEngine {
       tension: s.tension,
       barNumber: s.barNumber,
       hasDrumsInGroup: s.reachableRoles.includes("drums"),
+      reachableRoles: s.reachableRoles,
+      neighbourMotifDegrees: neighbourMotif,
     };
 
     void this.strategist.requestSuggestion(ctx).then((suggestion) => {

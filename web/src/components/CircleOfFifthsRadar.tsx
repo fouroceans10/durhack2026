@@ -49,7 +49,6 @@ export const CircleOfFifthsRadar: React.FC<CircleOfFifthsRadarProps> = ({
   const outerR = 104;
   const innerR = 66;
 
-  // Map each key+mode to the roles currently occupying it
   const activeOuterRoles = new Map<number, InstrumentRole[]>();
   const activeInnerRoles = new Map<number, InstrumentRole[]>();
 
@@ -77,12 +76,15 @@ export const CircleOfFifthsRadar: React.FC<CircleOfFifthsRadarProps> = ({
   return (
     <section
       data-testid="circle-of-fifths-radar"
-      className="rounded-xl border border-slate-800/90 bg-slate-900/60 p-4 flex flex-col justify-between"
+      className="border border-[var(--ink)] bg-[var(--paper-light)] p-5 flex flex-col justify-between"
     >
-      <div className="flex items-center justify-between mb-2">
-        <div className="flex items-center gap-2">
-          <Compass className="h-4 w-4 text-indigo-400" />
-          <h2 className="text-sm font-semibold text-slate-100">
+      <div className="flex flex-wrap items-baseline justify-between gap-2 mb-3 pb-2.5 border-b border-[var(--rule)]">
+        <div>
+          <span className="eyebrow text-[var(--red)]">
+            HARMONIC MODULATION &amp; PIVOT CONSENSUS
+          </span>
+          <h2 className="font-display text-2xl font-medium text-[var(--ink)] mt-1 mb-0 flex items-center gap-2">
+            <Compass className="h-4 w-4 text-[var(--red)]" />
             Circle-of-Fifths Harmonic Radar
           </h2>
         </div>
@@ -90,20 +92,20 @@ export const CircleOfFifthsRadar: React.FC<CircleOfFifthsRadarProps> = ({
         {reconcilePlan ? (
           <span
             data-testid="pivot-chord-pill"
-            className="inline-flex items-center gap-1 rounded-full bg-amber-500/20 border border-amber-400/50 px-2.5 py-0.5 text-[11px] font-semibold text-amber-200"
+            className="inline-flex items-center gap-1 border border-[var(--brass)] bg-[#80602218] px-2.5 py-1 font-mono text-[10px] font-semibold text-[var(--brass)]"
           >
-            <Sparkles className="h-3 w-3 text-amber-300" />
+            <Sparkles className="h-3 w-3 text-[var(--brass)]" />
             Pivot: {reconcilePlan.pivotChord} → {reconcilePlan.targetKeyRoot}{" "}
             {reconcilePlan.targetMode}
           </span>
         ) : (
-          <span className="text-[11px] text-slate-400">
+          <span className="font-mono text-[9px] uppercase tracking-wider text-[var(--muted)]">
             Outer: Major · Inner: Minor / Dorian
           </span>
         )}
       </div>
 
-      <div className="flex flex-col sm:flex-row items-center justify-around gap-3 bg-slate-950/90 rounded-lg border border-slate-800/70 p-3">
+      <div className="flex flex-col sm:flex-row items-center justify-around gap-3 bg-[var(--paper)] border border-[var(--rule)] p-3">
         <svg
           viewBox="0 0 290 290"
           className="w-[225px] h-[225px] select-none"
@@ -116,16 +118,16 @@ export const CircleOfFifthsRadar: React.FC<CircleOfFifthsRadarProps> = ({
             cy={cy}
             r={outerR}
             fill="none"
-            stroke="#1e293b"
-            strokeWidth="2"
+            stroke="#27251f"
+            strokeWidth="0.9"
           />
           <circle
             cx={cx}
             cy={cy}
             r={innerR}
             fill="none"
-            stroke="#1e293b"
-            strokeWidth="1.5"
+            stroke="#c7c0af"
+            strokeWidth="1"
             strokeDasharray="3 3"
           />
 
@@ -154,15 +156,15 @@ export const CircleOfFifthsRadar: React.FC<CircleOfFifthsRadarProps> = ({
               majRoles.length > 0
                 ? ROLE_META[majRoles[0]].colorHex
                 : isTargetMajor
-                ? "#fbbf24"
-                : "#334155";
+                ? "#806022"
+                : "#c7c0af";
 
             const minStroke =
               minRoles.length > 0
                 ? ROLE_META[minRoles[0]].colorHex
                 : isTargetMinor
-                ? "#fbbf24"
-                : "#334155";
+                ? "#806022"
+                : "#c7c0af";
 
             return (
               <g key={majorKey}>
@@ -171,8 +173,8 @@ export const CircleOfFifthsRadar: React.FC<CircleOfFifthsRadarProps> = ({
                   y1={cy}
                   x2={xMaj}
                   y2={yMaj}
-                  stroke="#1e293b"
-                  strokeWidth="1"
+                  stroke="#c7c0af"
+                  strokeWidth="0.7"
                 />
 
                 {/* Outer Spoke Node: Major Key */}
@@ -186,19 +188,25 @@ export const CircleOfFifthsRadar: React.FC<CircleOfFifthsRadarProps> = ({
                     r={majRoles.length > 0 || isTargetMajor ? 15 : 12}
                     fill={
                       majRoles.length > 0
-                        ? "#1e1b4b"
+                        ? "#bc3824"
                         : isTargetMajor
-                        ? "#451a03"
-                        : "#0f172a"
+                        ? "#806022"
+                        : "#faf6eb"
                     }
                     stroke={majStroke}
-                    strokeWidth={majRoles.length > 0 || isTargetMajor ? 2.5 : 1.2}
+                    strokeWidth={
+                      majRoles.length > 0 || isTargetMajor ? 2.2 : 1.1
+                    }
                   />
                   <text
                     x={xMaj}
                     y={yMaj + 4}
                     textAnchor="middle"
-                    fill={majRoles.length > 0 ? "#ffffff" : "#cbd5e1"}
+                    fill={
+                      majRoles.length > 0 || isTargetMajor
+                        ? "#faf6eb"
+                        : "#27251f"
+                    }
                     fontSize="10"
                     fontWeight="bold"
                   >
@@ -217,19 +225,25 @@ export const CircleOfFifthsRadar: React.FC<CircleOfFifthsRadarProps> = ({
                     r={minRoles.length > 0 || isTargetMinor ? 13 : 10}
                     fill={
                       minRoles.length > 0
-                        ? "#2e1065"
+                        ? "#3c5c77"
                         : isTargetMinor
-                        ? "#451a03"
-                        : "#0f172a"
+                        ? "#806022"
+                        : "#faf6eb"
                     }
                     stroke={minStroke}
-                    strokeWidth={minRoles.length > 0 || isTargetMinor ? 2.2 : 1}
+                    strokeWidth={
+                      minRoles.length > 0 || isTargetMinor ? 2.0 : 1.0
+                    }
                   />
                   <text
                     x={xMin}
                     y={yMin + 3}
                     textAnchor="middle"
-                    fill={minRoles.length > 0 ? "#f3e8ff" : "#94a3b8"}
+                    fill={
+                      minRoles.length > 0 || isTargetMinor
+                        ? "#faf6eb"
+                        : "#706b5e"
+                    }
                     fontSize="8.5"
                     fontWeight="600"
                   >
@@ -245,28 +259,28 @@ export const CircleOfFifthsRadar: React.FC<CircleOfFifthsRadarProps> = ({
             cx={cx}
             cy={cy}
             r="34"
-            fill="#0f172a"
-            stroke={modeState === "bridging" ? "#fbbf24" : "#334155"}
-            strokeWidth="1.8"
+            fill="#faf6eb"
+            stroke={modeState === "bridging" ? "#806022" : "#27251f"}
+            strokeWidth="1.5"
           />
           <text
             x={cx}
             y={cy - 5}
             textAnchor="middle"
-            fill="#94a3b8"
-            fontSize="8.5"
-            fontWeight="600"
+            fill="#706b5e"
+            fontSize="8"
+            fontFamily="IBM Plex Mono, monospace"
           >
             {modeState === "bridging" ? "PIVOT" : "CHORD"}
           </text>
           <text
             x={cx}
-            y={cy + 11}
+            y={cy + 13}
             textAnchor="middle"
-            fill="#fbbf24"
-            fontSize="13"
-            fontWeight="bold"
-            fontFamily="monospace"
+            fill="#bc3824"
+            fontSize="15"
+            fontStyle="italic"
+            fontFamily="Bodoni Moda, serif"
           >
             {modeState === "bridging" && reconcilePlan
               ? reconcilePlan.pivotChord
@@ -282,22 +296,22 @@ export const CircleOfFifthsRadar: React.FC<CircleOfFifthsRadarProps> = ({
             return (
               <div
                 key={role}
-                className="flex items-center justify-between gap-4 rounded-lg bg-slate-900/90 border border-slate-800 px-3 py-1.5"
+                className="flex items-center justify-between gap-4 bg-[var(--paper-light)] border border-[var(--rule)] px-3 py-1.5"
               >
                 <div className="flex items-center gap-2">
                   <span
                     className="h-2.5 w-2.5 rounded-full"
                     style={{ backgroundColor: meta.colorHex }}
                   />
-                  <span className="font-semibold text-slate-200">
+                  <span className="font-medium text-base text-[var(--ink)]">
                     {meta.label}
                   </span>
                 </div>
-                <div className="font-mono text-slate-300">
-                  <span className="text-indigo-300 font-semibold">
+                <div className="font-mono text-[10px] text-[var(--muted)]">
+                  <span className="text-[var(--ink)] font-semibold">
                     {node.keyRoot} {node.mode}
                   </span>{" "}
-                  · <span className="text-amber-300">{node.chordSymbol}</span>
+                  · <span className="text-[var(--red)]">{node.chordSymbol}</span>
                 </div>
               </div>
             );

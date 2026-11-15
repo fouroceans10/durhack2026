@@ -40,12 +40,15 @@ export const BeatPhaseRing: React.FC<BeatPhaseRingProps> = ({
   return (
     <section
       data-testid="beat-phase-ring"
-      className="rounded-xl border border-slate-800/90 bg-slate-900/60 p-4 flex flex-col justify-between"
+      className="border border-[var(--ink)] bg-[var(--paper-light)] p-5 flex flex-col justify-between"
     >
-      <div className="flex items-center justify-between mb-2">
-        <div className="flex items-center gap-2">
-          <Disc className="h-4 w-4 text-emerald-400" />
-          <h2 className="text-sm font-semibold text-slate-100">
+      <div className="flex flex-wrap items-baseline justify-between gap-2 mb-3 pb-2.5 border-b border-[var(--rule)]">
+        <div>
+          <span className="eyebrow text-[var(--red)]">
+            KURAMOTO PHASE-LOCKED LOOP
+          </span>
+          <h2 className="font-display text-2xl font-medium text-[var(--ink)] mt-1 mb-0 flex items-center gap-2">
+            <Disc className="h-4 w-4 text-[var(--woodwinds)]" />
             Beat-Phase Alignment Radar
           </h2>
         </div>
@@ -53,16 +56,16 @@ export const BeatPhaseRing: React.FC<BeatPhaseRingProps> = ({
         <div className="flex items-center gap-2">
           <span
             data-testid="phase-error-readout"
-            className="inline-flex items-center gap-1 rounded-md bg-slate-950 border border-slate-800 px-2 py-0.5 text-xs font-mono text-slate-200"
+            className="inline-flex items-center gap-1 border border-[var(--rule)] bg-[var(--paper)] px-2.5 py-1 font-mono text-[10px] text-[var(--ink)]"
           >
-            <Timer className="h-3 w-3 text-cyan-400" />
+            <Timer className="h-3 w-3 text-[var(--red)]" />
             Δ {phaseErrorMs.toFixed(1)} ms
           </span>
 
           {isPhaseLocked ? (
             <span
               data-testid="phase-lock-badge"
-              className="inline-flex items-center gap-1 rounded-full bg-emerald-500/15 border border-emerald-500/40 px-2.5 py-0.5 text-[11px] font-semibold text-emerald-300"
+              className="inline-flex items-center gap-1 border border-[var(--woodwinds)] bg-[#3d665815] px-2.5 py-1 font-mono text-[10px] font-semibold text-[var(--woodwinds)]"
             >
               <CheckCircle2 className="h-3 w-3" />
               &lt;15ms LOCK
@@ -70,7 +73,7 @@ export const BeatPhaseRing: React.FC<BeatPhaseRingProps> = ({
           ) : (
             <span
               data-testid="phase-lock-badge"
-              className="inline-flex items-center gap-1 rounded-full bg-amber-500/15 border border-amber-500/40 px-2.5 py-0.5 text-[11px] font-semibold text-amber-300"
+              className="inline-flex items-center gap-1 border border-[var(--red)] bg-[#bc382415] px-2.5 py-1 font-mono text-[10px] font-semibold text-[var(--red)]"
             >
               {modeState === "partitioned" ? "DRIFTING" : "CONVERGING"}
             </span>
@@ -78,7 +81,7 @@ export const BeatPhaseRing: React.FC<BeatPhaseRingProps> = ({
         </div>
       </div>
 
-      <div className="flex flex-col sm:flex-row items-center justify-around gap-3 bg-slate-950/90 rounded-lg border border-slate-800/70 p-3">
+      <div className="flex flex-col sm:flex-row items-center justify-around gap-3 bg-[var(--paper)] border border-[var(--rule)] p-3">
         <svg
           viewBox="0 0 280 280"
           className="w-[220px] h-[220px] select-none"
@@ -93,8 +96,9 @@ export const BeatPhaseRing: React.FC<BeatPhaseRingProps> = ({
               cy={cy}
               r={ORBIT_RADII[role]}
               fill="none"
-              stroke="#1e293b"
-              strokeWidth="1.5"
+              stroke="#c7c0af"
+              strokeWidth="1"
+              strokeDasharray="2 3"
             />
           ))}
 
@@ -113,16 +117,17 @@ export const BeatPhaseRing: React.FC<BeatPhaseRingProps> = ({
                   y1={cy}
                   x2={xOuter}
                   y2={yOuter}
-                  stroke={beat === 1 ? "#10b981" : "#334155"}
-                  strokeWidth={beat === 1 ? "2" : "1"}
+                  stroke={beat === 1 ? "#bc3824" : "#706b5e"}
+                  strokeWidth={beat === 1 ? "1.8" : "0.9"}
                   strokeDasharray={beat === 1 ? undefined : "3 3"}
                 />
                 <text
                   x={xLabel}
                   y={yLabel + 4}
                   textAnchor="middle"
-                  fill={beat === 1 ? "#34d399" : "#94a3b8"}
+                  fill={beat === 1 ? "#bc3824" : "#706b5e"}
                   fontSize="10"
+                  fontFamily="IBM Plex Mono, monospace"
                   fontWeight={beat === 1 ? "bold" : "normal"}
                 >
                   B{beat}
@@ -136,28 +141,28 @@ export const BeatPhaseRing: React.FC<BeatPhaseRingProps> = ({
             cx={cx}
             cy={cy}
             r="36"
-            fill="#0f172a"
-            stroke="#334155"
-            strokeWidth="1.5"
+            fill="#faf6eb"
+            stroke="#27251f"
+            strokeWidth="1.2"
           />
           <text
             x={cx}
             y={cy - 4}
             textAnchor="middle"
-            fill="#94a3b8"
-            fontSize="9"
-            fontWeight="600"
+            fill="#706b5e"
+            fontSize="8"
+            fontFamily="IBM Plex Mono, monospace"
           >
             BAR
           </text>
           <text
             x={cx}
-            y={cy + 13}
+            y={cy + 14}
             textAnchor="middle"
-            fill="#f8fafc"
-            fontSize="15"
-            fontWeight="bold"
-            fontFamily="monospace"
+            fill="#27251f"
+            fontSize="17"
+            fontStyle="italic"
+            fontFamily="Bodoni Moda, serif"
           >
             #{barNumber + 1}
           </text>
@@ -176,17 +181,18 @@ export const BeatPhaseRing: React.FC<BeatPhaseRingProps> = ({
                 <circle
                   cx={dotX}
                   cy={dotY}
-                  r="7.5"
+                  r="8"
                   fill={ROLE_META[role].colorHex}
-                  stroke="#020617"
-                  strokeWidth="2"
+                  stroke="#faf6eb"
+                  strokeWidth="1.5"
                 />
                 <text
                   x={dotX}
                   y={dotY + 3}
                   textAnchor="middle"
-                  fill="#ffffff"
+                  fill="#faf6eb"
                   fontSize="8"
+                  fontFamily="IBM Plex Mono, monospace"
                   fontWeight="bold"
                 >
                   {role[0].toUpperCase()}
@@ -204,20 +210,20 @@ export const BeatPhaseRing: React.FC<BeatPhaseRingProps> = ({
             return (
               <div
                 key={role}
-                className="flex items-center justify-between gap-4 rounded-lg bg-slate-900/90 border border-slate-800 px-3 py-1.5"
+                className="flex items-center justify-between gap-4 bg-[var(--paper-light)] border border-[var(--rule)] px-3 py-1.5"
               >
                 <div className="flex items-center gap-2">
                   <span
                     className="h-2.5 w-2.5 rounded-full"
                     style={{ backgroundColor: meta.colorHex }}
                   />
-                  <span className="font-semibold text-slate-200">
+                  <span className="font-medium text-base text-[var(--ink)]">
                     {meta.label}
                   </span>
                 </div>
-                <div className="font-mono text-slate-300">
+                <div className="font-mono text-[10px] text-[var(--muted)]">
                   Beat {(node.beatPhase + 1).toFixed(2)} ·{" "}
-                  <span className="text-white font-semibold">
+                  <span className="text-[var(--ink)] font-semibold">
                     {node.bpm.toFixed(0)}
                   </span>{" "}
                   BPM

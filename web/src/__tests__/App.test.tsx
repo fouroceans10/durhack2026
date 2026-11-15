@@ -74,14 +74,18 @@ function makeSampleNodes(
 }
 
 describe("Judge Observatory Dashboard UI Components (Phase 4)", () => {
-  it("renders full App observatory dashboard shell with all 6 sections", () => {
+  it("renders full App observatory dashboard shell with all sections including Voice Recording and Local LLM", () => {
     const html = renderToStaticMarkup(<App />);
     expect(html).toContain("Symphony Without a Conductor");
     expect(html).toContain("Join Orchestra &amp; Start Audio");
+    expect(html).toContain("PRELUDE / A PHRASE OF YOUR OWN");
+    expect(html).toContain("Record voice");
     expect(html).toContain("Live P2P Mesh Topology");
     expect(html).toContain("Beat-Phase Alignment Radar");
     expect(html).toContain("Circle-of-Fifths Harmonic Radar");
     expect(html).toContain("Motif Provenance &amp; Live Intent Telemetry");
+    expect(html).toContain("Local LLM composition");
+    expect(html).toContain("Check local model");
     expect(html).toContain("Split 2v2 (Drums+Bass | Piano+Lead)");
     expect(html).toContain("Isolate Lead (1v3)");
     expect(html).toContain("Heal Network &amp; Reconcile (4-Bar Bridge)");

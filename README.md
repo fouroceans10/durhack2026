@@ -159,3 +159,17 @@ npm run build
 3. While the music is playing, **kill the signalling server process (`Ctrl+C`)**.
 4. Observe the header badge immediately switch to **`SIGNALLING: OFFLINE — P2P AUTONOMOUS`**.
 5. Click **`Split 2v2`** and **`Heal Network & Reconcile`**: the orchestra continues performing, partitioning, and reconciling over direct P2P `RTCDataChannel`s with zero interruption.
+
+### Playbook 5: Live Voice Recording & Audio Motif Extraction (`Pitchy` DSP)
+1. In the **PRELUDE / A PHRASE OF YOUR OWN** panel, click **`● Record voice`** and hum, sing, or whistle a short melody into your microphone (or drag-and-drop an MP3/WAV audio file).
+2. Click **`■ Stop & extract`**. The browser decodes your recording offline at 16 kHz, extracts fundamental pitches via `pitchy`, quantizes relative onsets into a 16-step bar, and renders the waveform and 5-line musical staff notation.
+3. Click **`Use as opening motif ↗`** to seed the entire P2P orchestra with your melody.
+
+### Playbook 6: Local LLM Composition (`Ollama` / `qwen3:1.7b`)
+1. In separate terminals, start the local Ollama runtime and pull the default lightweight model:
+   ```bash
+   npm run llm:serve
+   npm run llm:pull
+   ```
+2. In the **03 — EACH VOICE THINKS FOR ITSELF** section, enable **`Local LLM composition`** and click **`Check local model`**.
+3. Each autonomous peer queries `/api/local-llm/chat` asynchronously off the audio thread to choose contrapuntal approaches (`echo`, `counterpoint`, `support`, `contrast`, `develop`) and ornamental gestures (`plain`, `arpeggio`, `mordent`, `trill`, `ostinato`). If Ollama is offline or slow, the engine falls back to deterministic music theory with zero audio glitches.

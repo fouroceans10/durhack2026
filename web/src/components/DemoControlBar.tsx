@@ -74,22 +74,34 @@ export const DemoControlBar: React.FC<DemoControlBarProps> = ({
   return (
     <section
       data-testid="demo-control-bar"
-      className="rounded-xl border border-slate-800/90 bg-slate-900/75 p-4 flex flex-col gap-3.5"
+      className="py-6 border-y border-[var(--ink)] flex flex-col gap-5"
     >
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 items-center">
-        {/* Left (4 cols): Energy & Tension Sliders + Improvise Motif Button */}
-        <div className="lg:col-span-5 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 bg-slate-950/80 border border-slate-800/80 rounded-lg p-3">
-          <div className="flex-1 space-y-2">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+        {/* Left (5 cols): Musical Expression & Improvisation Controls */}
+        <div className="lg:col-span-5 flex flex-col justify-between gap-4 bg-[var(--paper-light)] border border-[var(--ink)] p-5">
+          <div>
+            <span className="eyebrow text-[var(--red)]">
+              LIVE MUSICAL EXPRESSION
+            </span>
+            <h3 className="font-display text-2xl font-medium text-[var(--ink)] mt-1 mb-3">
+              Drive, Tension &amp;{" "}
+              <em className="italic font-medium text-[var(--red)]">
+                Improvisation.
+              </em>
+            </h3>
+          </div>
+
+          <div className="space-y-4">
             <div>
-              <div className="flex items-center justify-between text-xs mb-1">
+              <div className="flex items-center justify-between text-sm mb-1">
                 <label
                   htmlFor="energy-slider"
-                  className="inline-flex items-center gap-1 font-semibold text-rose-300"
+                  className="inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-wider text-[var(--ink)]"
                 >
-                  <Flame className="h-3.5 w-3.5 text-rose-400" />
+                  <Flame className="h-3.5 w-3.5 text-[var(--red)]" />
                   Energy (Syncopation &amp; Drive)
                 </label>
-                <span className="font-mono text-slate-200">
+                <span className="font-mono text-xs text-[var(--ink)]">
                   {Math.round(energy * 100)}%
                 </span>
               </div>
@@ -101,20 +113,20 @@ export const DemoControlBar: React.FC<DemoControlBarProps> = ({
                 max={100}
                 value={Math.round(energy * 100)}
                 onChange={(e) => onChangeEnergy(Number(e.target.value) / 100)}
-                className="w-full accent-rose-500 cursor-pointer h-1.5 bg-slate-800 rounded-lg"
+                className="w-full accent-[var(--red)] cursor-pointer h-2 bg-[var(--rule)]"
               />
             </div>
 
             <div>
-              <div className="flex items-center justify-between text-xs mb-1">
+              <div className="flex items-center justify-between text-sm mb-1">
                 <label
                   htmlFor="tension-slider"
-                  className="inline-flex items-center gap-1 font-semibold text-purple-300"
+                  className="inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-wider text-[var(--ink)]"
                 >
-                  <Zap className="h-3.5 w-3.5 text-purple-400" />
+                  <Zap className="h-3.5 w-3.5 text-[var(--brass)]" />
                   Harmonic Tension (7th/9th/Modal)
                 </label>
-                <span className="font-mono text-slate-200">
+                <span className="font-mono text-xs text-[var(--ink)]">
                   {Math.round(tension * 100)}%
                 </span>
               </div>
@@ -126,7 +138,7 @@ export const DemoControlBar: React.FC<DemoControlBarProps> = ({
                 max={100}
                 value={Math.round(tension * 100)}
                 onChange={(e) => onChangeTension(Number(e.target.value) / 100)}
-                className="w-full accent-purple-500 cursor-pointer h-1.5 bg-slate-800 rounded-lg"
+                className="w-full accent-[var(--red)] cursor-pointer h-2 bg-[var(--rule)]"
               />
             </div>
           </div>
@@ -135,28 +147,72 @@ export const DemoControlBar: React.FC<DemoControlBarProps> = ({
             type="button"
             data-testid="improvise-motif-btn"
             onClick={onImproviseMotif}
-            className="inline-flex flex-col items-center justify-center gap-1 rounded-lg bg-indigo-600/25 hover:bg-indigo-600/40 border border-indigo-400/40 px-3.5 py-2.5 text-xs font-semibold text-indigo-200 transition cursor-pointer shrink-0"
+            className="editorial-btn w-full flex items-center justify-center gap-2 mt-2"
           >
-            <Wand2 className="h-4 w-4 text-indigo-300" />
-            <span>Improvise</span>
-            <span>New Motif</span>
+            <Wand2 className="h-4 w-4 text-[var(--red)]" />
+            <span>Improvise New Motif</span>
           </button>
         </div>
 
-        {/* Center/Right (7 cols): One-Click Partition Presets & Guided 90s Auto-Demo */}
-        <div className="lg:col-span-7 flex flex-wrap items-center justify-between gap-2.5 bg-slate-950/80 border border-slate-800/80 rounded-lg p-3">
-          <div className="flex flex-wrap items-center gap-2">
+        {/* Right (7 cols): Iconic Vermilion Experiment / Partition Card from main branch */}
+        <div className="lg:col-span-7 bg-[var(--red)] text-[var(--paper-light)] p-6 flex flex-col justify-between relative">
+          <div className="flex items-center justify-between mb-2">
+            <span className="eyebrow text-[var(--paper-light)] opacity-90">
+              AN INVITATION TO INTERRUPT · PARTITION MATRIX
+            </span>
+            <span className="text-2xl leading-none" aria-hidden="true">
+              ↯
+            </span>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-4 items-center my-2">
+            <div className="md:col-span-7">
+              <h2 className="font-display text-3xl sm:text-4xl font-medium tracking-tight leading-tight text-[var(--paper-light)] m-0 mb-2">
+                What if the{" "}
+                <em className="italic font-medium">network breaks?</em>
+              </h2>
+              <p className="text-[17px] leading-snug text-[#faf6ebdd] m-0">
+                Split the orchestra into isolated sub-groups. Hear independent
+                tempos, keys, and motifs emerge in isolation—then heal the
+                network to trigger a 4-bar creative reconciliation bridge.
+              </p>
+            </div>
+
+            <div className="md:col-span-5 grid grid-cols-3 items-center text-center py-2 border border-[#faf6eb44] bg-[#922c1d66]">
+              <div>
+                <b className="block font-display italic text-4xl leading-none">
+                  02
+                </b>
+                <small className="font-mono text-[8px] tracking-widest uppercase">
+                  BRANCH A
+                </small>
+              </div>
+              <span className="font-display text-2xl">
+                {modeState === "partitioned" ? "╳" : "↔"}
+              </span>
+              <div>
+                <b className="block font-display italic text-4xl leading-none">
+                  02
+                </b>
+                <small className="font-mono text-[8px] tracking-widest uppercase">
+                  BRANCH B
+                </small>
+              </div>
+            </div>
+          </div>
+
+          <div className="flex flex-wrap items-center gap-2.5 mt-4">
             <button
               type="button"
               data-testid="preset-split-2v2-btn"
               onClick={() => onApplyPreset("SPLIT_2V2")}
-              className={`inline-flex items-center gap-1.5 rounded-lg border px-3 py-2 text-xs font-semibold transition cursor-pointer ${
+              className={`inline-flex items-center gap-1.5 border px-3.5 py-2.5 text-base transition cursor-pointer ${
                 modeState === "partitioned"
-                  ? "bg-rose-500/25 border-rose-400 text-rose-100"
-                  : "bg-slate-900 hover:bg-rose-950/60 border-rose-500/40 text-rose-200"
+                  ? "bg-[var(--paper-light)] text-[var(--red)] border-[var(--paper-light)] font-semibold"
+                  : "bg-transparent hover:bg-[var(--paper-light)] hover:text-[var(--red)] border-[#faf6eb88] text-[var(--paper-light)]"
               }`}
             >
-              <GitFork className="h-3.5 w-3.5 text-rose-400" />
+              <GitFork className="h-3.5 w-3.5" />
               Split 2v2 (Drums+Bass | Piano+Lead)
             </button>
 
@@ -164,9 +220,9 @@ export const DemoControlBar: React.FC<DemoControlBarProps> = ({
               type="button"
               data-testid="preset-isolate-lead-btn"
               onClick={() => onApplyPreset("ISOLATE_LEAD")}
-              className="inline-flex items-center gap-1.5 rounded-lg bg-slate-900 hover:bg-amber-950/60 border border-amber-500/40 px-3 py-2 text-xs font-semibold text-amber-200 transition cursor-pointer"
+              className="inline-flex items-center gap-1.5 border border-[#faf6eb88] bg-transparent hover:bg-[var(--paper-light)] hover:text-[var(--red)] px-3.5 py-2.5 text-base text-[var(--paper-light)] transition cursor-pointer"
             >
-              <UserMinus className="h-3.5 w-3.5 text-amber-400" />
+              <UserMinus className="h-3.5 w-3.5" />
               Isolate Lead (1v3)
             </button>
 
@@ -174,53 +230,55 @@ export const DemoControlBar: React.FC<DemoControlBarProps> = ({
               type="button"
               data-testid="preset-heal-all-btn"
               onClick={() => onApplyPreset("HEAL_ALL")}
-              className={`inline-flex items-center gap-1.5 rounded-lg border px-3.5 py-2 text-xs font-semibold transition cursor-pointer ${
+              className={`inline-flex items-center gap-1.5 border px-3.5 py-2.5 text-base transition cursor-pointer ${
                 modeState === "bridging"
-                  ? "bg-amber-500 text-slate-950 border-amber-300 shadow-lg shadow-amber-950/50"
-                  : "bg-emerald-600/25 hover:bg-emerald-600/40 border-emerald-400/50 text-emerald-200"
+                  ? "bg-[var(--paper-light)] text-[var(--red)] border-[var(--paper-light)] font-semibold"
+                  : "bg-[#27251f] hover:bg-[var(--paper-light)] hover:text-[var(--red)] border-[#faf6eb88] text-[var(--paper-light)]"
               }`}
             >
               <GitMerge className="h-3.5 w-3.5" />
               Heal Network &amp; Reconcile (4-Bar Bridge)
             </button>
-          </div>
 
-          <button
-            type="button"
-            data-testid="guided-demo-btn"
-            onClick={onToggleGuidedDemo}
-            className={`inline-flex items-center gap-1.5 rounded-lg border px-3.5 py-2 text-xs font-semibold transition cursor-pointer ${
-              guidedDemoActive
-                ? "bg-amber-400 text-slate-950 border-amber-300 shadow-md"
-                : "bg-gradient-to-r from-indigo-600/30 to-cyan-600/30 hover:from-indigo-600/50 hover:to-cyan-600/50 border-cyan-400/40 text-cyan-100"
-            }`}
-          >
-            <Sparkles className="h-3.5 w-3.5" />
-            {guidedDemoActive
-              ? "Stop Guided 90s Auto-Demo"
-              : "Guided 90s Auto-Demo"}
-          </button>
+            <button
+              type="button"
+              data-testid="guided-demo-btn"
+              onClick={onToggleGuidedDemo}
+              className={`inline-flex items-center gap-1.5 border px-3.5 py-2.5 text-base transition cursor-pointer ml-auto ${
+                guidedDemoActive
+                  ? "bg-[var(--paper-light)] text-[var(--red)] border-[var(--paper-light)] font-semibold"
+                  : "bg-transparent hover:bg-[var(--paper-light)] hover:text-[var(--red)] border-[#faf6ebaa] text-[var(--paper-light)]"
+              }`}
+            >
+              <Sparkles className="h-3.5 w-3.5" />
+              {guidedDemoActive
+                ? "Stop Guided 90s Auto-Demo"
+                : "Guided 90s Auto-Demo"}
+            </button>
+          </div>
         </div>
       </div>
 
-      {/* 4-Stage Guided Choreography Timeline Bar */}
-      <div className="grid grid-cols-1 sm:grid-cols-4 gap-2">
+      {/* 4-Stage Guided Choreography Itinerary */}
+      <div className="grid grid-cols-1 sm:grid-cols-4 border-t border-l border-[var(--rule)]">
         {GUIDED_DEMO_STAGES.map((stage) => {
           const isCurrent =
             guidedDemoActive && guidedDemoStage === stage.stageIndex;
           return (
             <div
               key={stage.stageIndex}
-              className={`rounded-lg border px-3 py-2 transition ${
+              className={`border-r border-b border-[var(--rule)] p-3.5 transition ${
                 isCurrent
-                  ? "bg-indigo-950/70 border-cyan-400/70 text-white shadow"
-                  : "bg-slate-950/50 border-slate-800/70 text-slate-400"
+                  ? "bg-[var(--ink)] text-[var(--paper-light)]"
+                  : "bg-[var(--paper-light)] text-[var(--ink)]"
               }`}
             >
-              <div className="text-xs font-semibold text-slate-200">
-                {stage.label}
-              </div>
-              <div className="text-[11px] text-slate-400 mt-0.5 leading-snug">
+              <div className="text-base font-semibold">{stage.label}</div>
+              <div
+                className={`font-mono text-[10px] mt-1 leading-relaxed ${
+                  isCurrent ? "text-[var(--paper)]" : "text-[var(--muted)]"
+                }`}
+              >
                 {stage.description}
               </div>
             </div>
